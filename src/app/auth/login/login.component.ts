@@ -35,29 +35,32 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(): void {
-    // this.loginUsuario = new LoginUsuario(this.nombreUsuario, this.password);
-    // console.log("DATA"+ this.loginUsuario);
-    // this.authService.login(this.loginUsuario).subscribe(
-    //   data => {
-    //     this.isLogged = true;
-    //     this.tokenService.setToken(data.token);
-    //     this.tokenService.setAuthorities(data.authorities);
-    //     this.roles = data.authorities;
-    //     // this.toastr.success('Bienvenido ' + data.nombreUsuario, 'OK', {
-    //     //   timeOut: 3000, positionClass: 'toast-top-center'
-    //     // });
-    //    this.router.navigate(['#']);
-    //   },
-    //   err => {
-    //     this.isLogged = false;
-    //     this.errMsj = err.error.message;
-       
-    //     console.log(err.error.message);
-    //   }
-    // );
-    // console.log("DATOS "+this.password,this.nombreUsuario,this.isLogged);
-    
-      this.router.navigate(['#']);
+    this.loginUsuario = new LoginUsuario(this.nombreUsuario, this.password);
+    this.authService.login(this.loginUsuario).subscribe(
+      data => {
+        this.tokenService.setToken(data.token);
+        const token = {
+          token: data.token,
+          date: new Date().toString()
+        };
+        try {
+          // this.fbstore.collection('tokens').add(token).then(data => {
+          // });
+        } catch (err) {
+          console.log(err.error.message);
+        }
+        this.router.navigate(['/']);
+      },
+      err => {
+        this.errMsj = err.error.message;
+        // this.messageService.add({
+        //   severity: 'error',
+        //   summary: 'Error',
+        //   detail: 'Error al ingresar, credenciales incorrectas.',
+        //   life: 3000,
+        // });
+      }
+    );
   }
 
 
