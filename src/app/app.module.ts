@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegistroComponent } from './auth/registro/registro.component';
+import { ListaAdoptadoComponent } from './lista-adoptado/lista-adoptado.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { RegistroComponent } from './auth/registro/registro.component';
     AdminLayoutComponent,
     LoginComponent,
     RegistroComponent,
+    ListaAdoptadoComponent,
 
   ],
   providers: [],
