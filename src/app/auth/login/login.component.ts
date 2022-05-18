@@ -59,7 +59,6 @@ export class LoginComponent implements OnInit {
           icon: 'error',
           title: 'Oops...',
           text: 'Credenciales incorrectas!',
-          footer: '<a href="">Why do I have this issue?</a>'
         })
       }
     );
