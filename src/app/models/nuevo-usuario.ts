@@ -1,12 +1,19 @@
 export class NuevoUsuario {
-    nombre: string;
-    nombreUsuario: string;
     email: string;
     password: string;
-    constructor(nombre: string, nombreUsuario: string, email: string, password: string) {
-        this.nombre = nombre;
-        this.nombreUsuario = nombreUsuario;
+    username: string;
+    nombre:string;
+    telefono:string;
+    roles:string[];
+
+    constructor(email: string,password: string, nombre: string, username: string, telefono:string, roles:string[] ) {
         this.email = email;
         this.password = password;
+        this.nombre = nombre;
+        this.username = username;
+        this.telefono = telefono;
+        this.roles = roles;
+        
+        
     }
 }

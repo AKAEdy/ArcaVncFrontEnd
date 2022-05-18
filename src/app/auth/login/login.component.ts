@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoginUsuario } from 'app/models/login-usuario';
 import { AuthService } from 'app/service/auth.service';
 import { TokenService } from 'app/service/token.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   isLogged = false;
   isLoginFail = false;
   loginUsuario: LoginUsuario;
-  nombreUsuario: string;
+  username: string;
   password: string;
   roles: string[] = [];
   errMsj: string;
@@ -35,30 +36,31 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(): void {
-    this.loginUsuario = new LoginUsuario(this.nombreUsuario, this.password);
+    this.loginUsuario = new LoginUsuario(this.username, this.password);
     this.authService.login(this.loginUsuario).subscribe(
       data => {
+        this.isLogged = true;
+
         this.tokenService.setToken(data.token);
-        const token = {
-          token: data.token,
-          date: new Date().toString()
-        };
-        try {
-          // this.fbstore.collection('tokens').add(token).then(data => {
-          // });
-        } catch (err) {
-          console.log(err.error.message);
-        }
-        this.router.navigate(['/']);
+        this.tokenService.setUserName(data.nombreUsuario);
+        this.tokenService.setAuthorities(data.authorities);
+        this.roles = data.authorities;
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Bienvenido! '+ this.username,
+          showConfirmButton: false,
+          timer: 1500
+        })
+        this.router.navigate(['#']);
       },
       err => {
-        this.errMsj = err.error.message;
-        // this.messageService.add({
-        //   severity: 'error',
-        //   summary: 'Error',
-        //   detail: 'Error al ingresar, credenciales incorrectas.',
-        //   life: 3000,
-        // });
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Credenciales incorrectas!',
+          footer: '<a href="">Why do I have this issue?</a>'
+        })
       }
     );
   }
