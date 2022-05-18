@@ -40,7 +40,7 @@ export class RegistroComponent implements OnInit {
       //    timeOut: 3000, positionClass: 'toast-top-center'
         //});
 
-        this.router.navigate(['/login']);
+        this.router.navigate(['/login']); 
       },
       err => {
     //    this.errMsj = err.error.mensaje;
