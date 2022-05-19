@@ -54,12 +54,69 @@
         </li>
     </ul>
   </div>
-    <ul class="nav">
-        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+    <ul class="nav" >
+        <!-- INICIO -->
+        <div class="btn-group" >
+            <button type="button" onclick="window.location.href='#/menu'" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-home"></i> 
+              Inicio
+            </button>
+          </div>
+
+          <!-- GESTION ADOPTADOS -->
+          <div class="btn-group" >
+            <button type="button"  data-toggle="dropdown" href="#/menu" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-heart"></i> 
+              Gestión de adoptados
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#/table-list">Listar adoptados</a>
+              <a class="dropdown-item" href="#/user-profile">Registrar adoptados</a>
+            </div>
+          </div>
+
+          <!-- GESTION ANIMALES  -->
+          <div class="btn-group" >
+            <button type="button"  data-toggle="dropdown" href="#/menu" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-paw"></i> 
+              Gestión de animales
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#/table-list">Listar de animales</a>
+              <a class="dropdown-item" href="#/user-profile">Registrar animales</a>
+            </div>
+          </div>
+
+          <!-- <div class="btn-group" style="width:99%;">
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Perfil
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#/user-profile">Perfil de usuario</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+          </div>
+<br>
+          <div class="btn-group" style="width:99%;">
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Action
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+          </div> -->
+        <!-- <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
             <a class="nav-link" [routerLink]="[menuItem.path]">
                 <i class="material-icons">{{menuItem.icon}}</i>
                 <p>{{menuItem.title}}</p>
             </a>
-        </li>
+        </li> -->
     </ul>
 </div>

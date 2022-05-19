@@ -1,3 +1,28 @@
 #fondo{
     background-color: rgb(255, 238, 238);
 }
+
+.btn-group{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-group button {
+    text-align: left;
+    border: none;
+    outline: none;
+    height: 48px;
+    width: 230px; 
+    background: transparent;
+    color: rgb(112, 112, 112);
+    font-size: 15px;
+    border-radius: 3px;
+
+    
+  }
+  
+  .btn-group button:hover {
+    cursor: pointer;
+    background: #ff4848;
+    color: #000;
+  }

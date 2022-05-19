@@ -46,9 +46,9 @@ export class LoginComponent implements OnInit {
         this.tokenService.setAuthorities(data.authorities);
         this.roles = data.authorities;
         Swal.fire({
-          position: 'top-end',
+          position: 'center',
           icon: 'success',
-          title: 'Bienvenido! '+ this.username,
+          title: 'Bienvenido '+ this.username,
           showConfirmButton: false,
           timer: 1500
         })
