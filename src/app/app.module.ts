@@ -10,6 +10,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './auth/login/login.component';
 import { RegistroComponent } from './auth/registro/registro.component';
 import { ListaAdoptadoComponent } from './lista-adoptado/lista-adoptado.component';
+import { RegistrarAdoptadoComponent } from './registrar-adoptado/registrar-adoptado.component';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { ListaAdoptadoComponent } from './lista-adoptado/lista-adoptado.componen
     LoginComponent,
     RegistroComponent,
     ListaAdoptadoComponent,
+    RegistrarAdoptadoComponent,
 
   ],
   providers: [],
