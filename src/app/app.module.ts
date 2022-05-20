@@ -11,6 +11,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegistroComponent } from './auth/registro/registro.component';
 import { ListaAdoptadoComponent } from './lista-adoptado/lista-adoptado.component';
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -21,14 +22,14 @@ import { ListaAdoptadoComponent } from './lista-adoptado/lista-adoptado.componen
     RouterModule,
     AppRoutingModule,
   ],
-  declarations: [
+  declarations: [	
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
     RegistroComponent,
     ListaAdoptadoComponent,
-
-  ],
+     
+   ],
   providers: [],
   bootstrap: [AppComponent]
 })

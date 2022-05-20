@@ -1,93 +1,91 @@
-<div class="main-content">
-  <div class="container-fluid">
-      <div class="row">
-         
-              <div class="card">
-                  <div class="card-header card-header-danger">
-                      <h4 class="card-title">INGRESO DE MASCOTAS</h4>
-                      <p class="card-category">Complete</p>
-                  </div>
+<div class="container-fluid">
+  <div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+           
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">INGRESO DE MASCOTAS</h4>
+                        <p class="card-category">Registro</p>
+                    </div>
 
-                  
-                  <form>
-                  <div class="card-body">
-                    <div class="col-md-4">
-                      <div class="card card-profile">
-                    <img class="img" src="../assets/img/perrito.jpeg"  />
-                      </div></div>
-  <div class="form-row">
-   
-    <div class="form-group col-md-6">
-    
-      <input type="email" class="form-control" id="inputEmail4" placeholder="NOMBRE:">
-      <br>
-    </div>
-    <div class="form-group col-md-6">
-    
-      <input type="password" class="form-control" id="inputPassword4" placeholder="RAZA:">
-      <br>
-    </div>
-    <div class="form-group col-md-6">
-    
-      <input type="email" class="form-control" id="inputEmail4" placeholder="NOMBRE:">
-    </div>
-    <div class="form-group col-md-6">
-    
-      <input type="password" class="form-control" id="inputPassword4" placeholder="RAZA:">
-    </div>
-  </div>
- <br>
-                  
-  <div class="form-row">
-  <div class="form-group col-md-6">
-    <label for="inputState">Especie</label>
-    <select id="inputState" class="form-control">
-      <option selected>Seleccione...</option>
-      <option>...</option>
-    </select>
-  </div>
-    <div class="form-group col-md-4">
-      <label for="inputState">Color</label>
-      <select id="inputState" class="form-control">
-        <option selected>seleccione...</option>
-        <option>...</option>
-      </select>
-    </div>
 
-    <div class="form-group col-md-2">
-      <label for="inputState">Sexo</label>
-      <select id="inputState" class="form-control">
-        <option selected>Seleccione...</option>
-        <option>...</option>
-      </select>
-    
+<div class="container">   
+  <div class="card-group">
 
-  </div>
+    <div class= "col-md-5 image-fluid" >
+     
+      <div class="card-body">
+        <img class="card-img-top" src="../assets/img/perrito.jpeg" alt="Card image cap">
+        <div class="mb-5">
+          <label for="formFileSm" class="form-label"  class="control-label col-sm-4 d-flex justify-content-center align-items-center">Subir foto</label>
+          <input class="form-control form-control-sm" id="formFileSm" type="file">
+        </div>
+      </div>
+    </div>          
+
+    <div class="card text-center border-info">
+      <div class="card-body"><form>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+          
+            <input type="text" class="form-control" id="inputEmail4" placeholder="Nombre">
+          </div>
+          <div class="form-group col-md-6">
+       
+            <input type="text" class="form-control" id="inputPassword4" placeholder="Especie">
+          </div>
+        </div>
+        <div class="form-row">
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" id="inputEmail4" placeholder="Peso">
+         </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-3">
+            <select class="custom-select custom-select-sm" id="gender2">
+              <option selected>Sexo</option>
+              <option value="1">Male</option>
+              <option value="2">Female</option>
+            </select> 
+            </div>
+        
+        
+          <div class="form-group col-md-3">
+        
+            <select id="inputState" class="custom-select custom-select-sm">
+              <option selected>Color</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="form-group col-md-3">
+            <select id="inputState" class="custom-select custom-select-sm">
+
+            <option selected>Raza</option>
+            <option>...</option>
+          </select>
+          </div>
+          <div class="form-group col-md-3">
+            <select id="inputState" class="custom-select custom-select-sm">
+
+            <option selected>Tamaño</option>
+            <option>...</option>
+          </select>
+          </div>
+
+        
+        <div class="form-group col-md-8">
+          <label for="exampleFormControlTextarea1">Observaciones</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        </div>
+        <br>
+        <button mat-raised-button type="submit" routerLink="/menu" class="btn btn-danger pull-left">Cancelar</button>
+                        
+  <button mat-raised-button type="submit" routerLink="/fichaClinica"class="btn btn-danger pull-right">Siguiente</button>
   
-  <button mat-raised-button type="submit" routerLink="/loco"class="btn btn-danger pull-right">Cancelar</button>
-  <button mat-raised-button type="submit" routerLink="/loco" class="btn btn-danger pull-left">Siguiente</button>
+      </form>
+      </div>
+    </div>  
   </div>
-                  </div></form>
-  
-                  
-
-
-<!---
-
-          <div class="col-md-4">
-              <div class="card card-profile">
-                  <div class="card-avatar">
-                      <a href="javascript:void(0)">
-                          <img class="img" src="./assets/img/faces/marc.jpg" />
-                      </a>
-                  </div>
-                  <div class="card-body">
-                      <h6 class="card-category text-gray">CEO / Co-Founder</h6>
-                      <h4 class="card-title">Alec Thompson</h4>
-                      <p class="card-description">
-                          Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                      </p>
-                      <a href="javascript:void(0)" class="btn btn-danger btn-round">Follow</a>
-                  </div>-->
-              
-</div>
+</div>  

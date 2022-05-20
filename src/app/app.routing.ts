@@ -7,6 +7,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './auth/login/login.component';
 import { RegistroComponent } from './auth/registro/registro.component';
 
+
 const routes: Routes =[
   {
     path: '',
@@ -35,6 +36,7 @@ const routes: Routes =[
     path: 'registro',
     component: RegistroComponent
   },
+  
   {
     path: '**',
     redirectTo: 'menu'
