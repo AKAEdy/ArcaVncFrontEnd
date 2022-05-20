@@ -1,3 +1,39 @@
 #fondo{
     background-color: rgb(255, 238, 238);
 }
+
+.btn-group{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-group button {
+    text-align: left;
+    border: none;
+    outline: none;
+    height: 48px;
+    width: 230px; 
+    background: transparent;
+    color: rgb(112, 112, 112);
+    font-size: 15px;
+    border-radius: 3px;
+
+    
+  }
+  
+  .btn-group button:hover {
+    cursor: pointer;
+    background: #ff4848;
+    color: #000;
+  }
+
+  .btn-group button:focus {   
+    background: #ff4848;
+    color: #000;
+  }
+  .dropdown-menu .dropdown-item{
+    background:rgb(255, 246, 246);
+  }
+  .dropdown-menu .dropdown-item:hover{
+    background: #ff5252bd;
+  }
