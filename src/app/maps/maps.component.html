@@ -13,7 +13,7 @@
                                 <!-- fecha Ingreso -->
                                 <div class="col-md-5">
                                     <mat-form-field class="example-full-width">
-                                       <input matInput placeholder="Fecha Ingreso" type="text">
+                                       <input matInput placeholder="Fecha Ingreso" type="date">
                                     </mat-form-field>
                                 </div>
 
@@ -93,9 +93,10 @@
                                 <div class="row">
                                     <!--Desparacitaciones-->
                                     <div class="col-md-5">
+                                        <label>Desparacitaciones</label>
                                         <div class="caja">
                                         <select class="form-select" aria-label="Default select example">
-                                            <option selected>Desparacitaciones</option>
+                                            <option selected disabled>Seleccione:</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -106,22 +107,14 @@
                                     <!--Esterilizacion-->
                                     <div class="col-md-5">
                                         <label>Esterilización</label>
-                                            <div class="col-sm-5">
-                                              <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                                                <label class="form-check-label" for="gridRadios1">
-                                                  SI
-                                                </label>
-                                              </div>
-                                              <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                                                <label class="form-check-label" for="gridRadios2">
-                                                  NO
-                                                </label>
-                                              </div>
-                                             
-                                        </div>
-                                          
+                                        <div class="caja">
+                                            <select class="form-select" aria-label="Default select example">
+                                                <option selected disabled>Seleccione:</option>
+                                                <option value="1">SI</option>
+                                                <option value="2">NO</option>
+                                            </select>
+                                            </div>
+                                      
                                     </div>
                                 </div>
 
@@ -142,7 +135,7 @@
                                     </div>
 
                                     <div class="col-md-3">
-                                    <button mat-raised-button type="submit" class="btn btn-danger pull-right" >AGREGAR</button>
+                                    <button mat-raised-button type="submit" class="btn btn-danger pull-right"  >AGREGAR</button>
                                     <div class="clearfix"></div>
                                     </div>
 
@@ -190,7 +183,7 @@
                                     <div class="col-md-5">
                                         <div class="caja">
                                         <select class="form-select" aria-label="Default select example">
-                                            <option selected>Tutor</option>
+                                            <option selected disabled>Tutor:</option>
                                             <option value="1">1</option>
                                         </select>
                                         </div>

@@ -28,7 +28,6 @@ import { FichaClinicaComponent } from './ficha-clinica/ficha-clinica.component';
     LoginComponent,
     RegistroComponent,
     ListaAdoptadoComponent,
-    FichaClinicaComponent,
 
   ],
   providers: [],
