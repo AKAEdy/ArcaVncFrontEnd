@@ -1,0 +1,111 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: white; 
+    /* background: url(https://veterinariaeltoro.com/wp-content/uploads/2016/06/background-fondo-veterinaria-el-toro-pet-shop-colombia.jpg) no-repeat center top; */
+    background-size: cover;
+    font-family: sans-serif;
+    height: 100vh;
+  }
+  
+  .login-box {
+    width: 350px;
+    height: 550px;
+    margin: 20px;
+    padding: 0;
+    background: rgb(144, 144, 243);
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+  }
+  
+  .login-box h1 {
+    margin: 0;
+    padding: 0 0 0px;
+    text-align: center;
+    font-size: 25px;
+    color:rgba(0, 0, 0, 0.699);
+  }
+
+  #select{
+    border-radius: .3em;
+    color:  rgb(180, 180, 180);
+    background-color: transparent;
+    appearance: none;
+    margin-bottom: 20px;
+    font-family: 'Verdana', sans-serif;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.226);
+    font-size:13px;
+  }
+
+  #option{
+    background-color: rgba(0, 0, 0, 0.699);
+  }
+
+  .login-box label {
+    margin-top: -10px;
+    margin-bottom: -1px;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+    color: rgb(230, 230, 230);
+  }
+
+  .login-box input {
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  .login-box input[type="text"], .login-box input[type="password"] {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+  }
+
+  .login-box input[type="submit"] {
+    border: none;
+    outline: none;
+    height:40px;
+    background: #0087bd;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+  }
+
+  .login-box input[type="submit"]:hover {
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+  }
+  
+  .login-box a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: rgb(204, 203, 203);
+  }
+  
+  .login-box a:hover {
+    color: #fff;
+  }
+
+  .login-box a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: rgb(204, 203, 203);
+    margin-bottom: 10px;
+  }
+  
+  .login-box a:hover {
+    color: #fff;
+  }

@@ -1,1 +1,39 @@
-<p>registrar-adoptado works!</p>
+<body>
+    
+    <div class="login-box">
+    <h1>REGISTRAR ADOPCIONES</h1>
+  
+                         
+                <div class="card-body">
+                  <form #f="ngForm" (ngSubmit)=" ngOnInit()" novalidate>
+  
+                        <label for="nombreUsuario">Nombres de la Persona</label>
+                        <input type="text" name="nombre" id="nombre" class="form-control"
+                        [(ngModel)]="nombrePersona"  placeholder="Ingrese el nombre">
+                        
+                        <label for="nombreUsuario">Nombres de la Mascota</label>
+                        <input type="text" name="nombre" id="nombre" class="form-control"
+                        [(ngModel)]="nombreAnimal"  placeholder="Ingrese el nombre">
+
+                        <label for="fecha">fecha de la adopcion</label>
+                        <input type="text" name="fecha" id="fecha" class="form-control"
+                        [(ngModel)]="fechaAdop"  placeholder="Ingrese la fecha de adopcion">
+  
+  
+                        <label for="descripcion">DESCRIPCION</label>
+                        <input type="text" name="descripcion" id="descripcion" class="form-control"
+                        [(ngModel)]="descripcionAdop"  placeholder="Ingrese la descripcion">
+  
+                 
+                  <input type="submit" value="REGISTRAR ADOPCIONES" [disabled]="!f.valid">
+                 
+  
+  
+                   
+                </form>
+              </div>    
+          
+        </div>
+  
+  
+  </body>
