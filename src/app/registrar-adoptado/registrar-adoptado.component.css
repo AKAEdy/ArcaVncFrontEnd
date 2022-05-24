@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: white; 
+    background: rgb(250, 220, 220); 
     /* background: url(https://veterinariaeltoro.com/wp-content/uploads/2016/06/background-fondo-veterinaria-el-toro-pet-shop-colombia.jpg) no-repeat center top; */
     background-size: cover;
     font-family: sans-serif;
@@ -13,8 +13,8 @@ body {
     height: 550px;
     margin: 20px;
     padding: 0;
-    background: rgb(144, 144, 243);
-    color: #fff;
+    background: rgb(250, 226, 226);
+    color: rgb(7, 7, 7);
     top: 50%;
     left: 50%;
     position: absolute;
@@ -33,8 +33,8 @@ body {
 
   #select{
     border-radius: .3em;
-    color:  rgb(180, 180, 180);
-    background-color: transparent;
+    color:  rgb(0, 0, 0);
+    background-color: black;
     appearance: none;
     margin-bottom: 20px;
     font-family: 'Verdana', sans-serif;
@@ -53,7 +53,7 @@ body {
     padding: 0;
     font-weight: bold;
     display: block;
-    color: rgb(230, 230, 230);
+    color: rgb(15, 15, 15);
   }
 
   .login-box input {
@@ -63,11 +63,11 @@ body {
 
   .login-box input[type="text"], .login-box input[type="password"] {
     border: none;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid rgb(3, 3, 3);
     background: transparent;
     outline: none;
     height: 40px;
-    color: #fff;
+    color: rgb(15, 15, 15);
     font-size: 16px;
   }
 
@@ -75,8 +75,8 @@ body {
     border: none;
     outline: none;
     height:40px;
-    background: #0087bd;
-    color: #fff;
+    background: #f5d7d7;
+    color: rgb(5, 5, 5);
     font-size: 18px;
     border-radius: 20px;
   }
@@ -91,21 +91,21 @@ body {
     text-decoration: none;
     font-size: 12px;
     line-height: 20px;
-    color: rgb(204, 203, 203);
+    color: rgb(8, 8, 8);
   }
   
   .login-box a:hover {
-    color: #fff;
+    color: rgb(8, 8, 8);
   }
 
   .login-box a {
     text-decoration: none;
     font-size: 12px;
     line-height: 20px;
-    color: rgb(204, 203, 203);
+    color: rgb(8, 8, 8);
     margin-bottom: 10px;
   }
   
   .login-box a:hover {
-    color: #fff;
+    color: rgb(0, 0, 0);
   }
