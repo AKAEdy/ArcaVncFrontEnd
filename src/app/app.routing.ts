@@ -25,7 +25,7 @@ const routes: Routes =[
    {
     path: '',
     component: AdminLayoutComponent,
-    canActivate:[guard], data:{expectedRol: ['admin']},
+    // canActivate:[guard], data:{expectedRol: ['admin']},
     children: [{
       path: '',
       loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)

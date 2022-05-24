@@ -23,7 +23,7 @@ import { VoluntarioControllerService } from './api/voluntarioController.service'
     VoluntarioControllerService ]
 })
 export class ApiModule {
-    public static forRoot(configurationFactory: () => Configuration): ModuleWithProviders {
+    public static forRoot(configurationFactory: () => Configuration){
         return {
             ngModule: ApiModule,
             providers: [ { provide: Configuration, useFactory: configurationFactory } ]
