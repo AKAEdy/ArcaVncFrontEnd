@@ -11,6 +11,10 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegistroComponent } from './auth/registro/registro.component';
 import { ListaAdoptadoComponent } from './lista-adoptado/lista-adoptado.component';
 import { RegistrarAdoptadoComponent } from './registrar-adoptado/registrar-adoptado.component';
+import { ListaPersonaComponent } from './lista-persona/lista-persona.component';
+import { RegistrarPersonaComponent } from './registrar-persona/registrar-persona.component';
+import { RegistrarMedicamentoComponent } from './registrar-medicamento/registrar-medicamento.component';
+import { ListarMedicamentoComponent } from './listar-medicamento/listar-medicamento.component';
 
 @NgModule({
   imports: [
@@ -29,6 +33,10 @@ import { RegistrarAdoptadoComponent } from './registrar-adoptado/registrar-adopt
     RegistroComponent,
     ListaAdoptadoComponent,
     RegistrarAdoptadoComponent,
+    ListaPersonaComponent,
+    RegistrarPersonaComponent,
+    RegistrarMedicamentoComponent,
+    ListarMedicamentoComponent,
 
   ],
   providers: [],
