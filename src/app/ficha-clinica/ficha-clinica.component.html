@@ -10,6 +10,16 @@
                   <div class="card-body">
                       <form>
                           <div class="row">
+                              <!--Desparacitaciones-->
+                              <div class="col-md-5">
+                                <label>Nombre del Animal:</label>
+                                <div class="caja">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected disabled>Seleccione:</option>
+                                    <option value="1">MAX</option>
+                                </select>
+                                </div>
+                            </div>
                               <!-- fecha Ingreso -->
                               <div class="col-md-5">
                                   <mat-form-field class="example-full-width">
@@ -135,18 +145,60 @@
 
                               </div>
 
-                              <div class="row">
-                                  <!--Vacunas-->
-                                  <div class="col-md-3">
-                                      <label>Vacunas</label>
-                                  </div>
+                              <!--Vacunas-->
+                                  <div class="container-fluid">
+                                     
+                                    <div class="row">
+                                        <div class="col-md-3">
 
-                                  <div class="col-md-3">
-                                  <button mat-raised-button type="submit" class="btn btn-danger pull-right"  >AGREGAR</button>
-                                  <div class="clearfix"></div>
-                                  </div>
+                                                    <label>Vacunas</label>
+                                                    <button mat-raised-button type="submit" class="btn btn-danger pull-right"  >AGREGAR</button>
+                                                    <div class="clearfix"></div> 
+                                                
+                                            
+                                        </div>
 
-                              </div>
+                                        <div class="col-md-12">
+                                            <table class="table table-striped table-hover">
+                                                <thead class="text-center">
+                                                    <tr>
+                                                      <th scope="col">ID</th>
+                                                      <th scope="col">Nombre</th>
+                                                      <th scope="col">Tipo</th>
+                                                      <th scope="col">Fecha</th>
+                                                      <th scope="col">Descripción</th>
+                                                      <th scope="col">Acciones</th>
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody>
+
+                                                    <!---->
+                                                    <tr>
+
+                                                      <td scope="row"></td>
+                                                      <td></td>
+                                                      <td></td>
+                                                      <td></td>
+                                                      <td></td>
+                                                      <td>
+                                                          <div class="text-center">
+                                                              <div class="btn-group">
+                                                                  <button class="btn btn-warning" type="submit">Editar</button>
+                                                                  
+                                                                  <button class="btn btn-danger" type="submit">Eliminar</button>
+
+                                                              </div>
+                                                          </div>
+                                                      </td>
+
+                                                    </tr>
+                                                  </tbody>
+                                        
+                                            </table>
+                                        </div>
+                                    </div> <!--fin row-->
+                                  </div> <!--fin container-fluid-->
+                              
 
                               <!--Diagnostico Diferencial 
                               <div class="row">
@@ -163,19 +215,53 @@
                               </div>
                               -->
 
-                              <div class="row">
-                                  <!--Tratamiento-->
-                                  <div class="col-md-3">
-                                      <label>Tratamiento</label>
-                                  </div>
+                           
+                              
+                            <!--Tratamientos-->
+                            <div class="container-fluid">
+                                <div class="row">
+                                       <div class="col-md-3">
+                                           <label>Tratamientos</label>
+                                           <button mat-raised-button type="submit" class="btn btn-danger pull-right">AGREGAR</button>
+                                           <div class="clearfix"></div>
+                                       </div>
 
-                                  <div class="col-md-3">
-                                      <button mat-raised-button type="submit" class="btn btn-danger pull-right">AGREGAR</button>
-                                      <div class="clearfix"></div>
-                                  </div>
+                                       <div class="col-md-12">
+                                           <table class="table table-striped table-hover">
+                                               <thead class="text-center">
+                                                   <tr>
+                                                     <th scope="col">ID</th>
+                                                     <th scope="col">Descripción</th>
+                                                     <th scope="col">Indicaciones</th>
+                                                     <th scope="col">Estado</th>
+                                                     <th scope="col">Acciones</th>
+                                                   </tr>
+                                                 </thead>
+                                                 <tbody>
+                                                   <tr>
+                                                       <td></td>
+                                                       <td></td>
+                                                       <td></td>
+                                                       <td></td>
+                                                       <td>
+                                                            <div class="text-center">
+                                                                <div class="btn-group">
+                                                                    <button class="btn btn-warning" type="submit">Editar</button>
+                                                                    
+                                                                    <button class="btn btn-danger" type="submit">Eliminar</button>
+
+                                                                </div>
+                                                            </div>
+                                                       </td>
+                                                   </tr>
+                                                 </tbody>
+                                       
+                                           </table>
+                                       </div>
+                                       
+                                     </div> <!--fin row tratamientos-->
+                                 </div> <!--fin container-fluid-->
                                   
-
-                              </div>
 
                               <div class="row">
                                   <!--Costo -->
@@ -196,11 +282,23 @@
                                   </div>
                                   
 
-                              </div>
+                                </div> <!--fin row costos-->
 
-                          
-                          <button mat-raised-button type="submit" class="btn btn-danger pull-right">REGISTRAR FICHA CLINICA</button>
-                          <div class="clearfix"></div>
+                        <!--lista de botones para registar la ficha clinica-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                <button mat-raised-button type="submit" class="btn btn-danger pull-right">REGRESAR</button>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-md-3">
+                                <button mat-raised-button type="submit" class="btn btn-danger pull-right">LIMPIAR CAMPOS</button>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-md-3">
+                                <button mat-raised-button type="submit" class="btn btn-danger pull-right">REGISTRAR FICHA CLINICA</button>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div> <!--fin row botones-->
 
                       </form>
 
