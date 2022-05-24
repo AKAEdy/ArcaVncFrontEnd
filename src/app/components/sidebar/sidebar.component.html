@@ -72,8 +72,8 @@
               Gestión de adoptados
             </button>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="#/table-list">Listar adoptados</a>
-              <a class="dropdown-item" href="#/user-profile">Registrar adoptados</a>
+              <a class="dropdown-item" href="#/ListaAdoptado">Listar adoptados</a>
+              <a class="dropdown-item" href="#/RegistrarAdoptado">Registrar adoptados</a>
             </div>
           </div>
 
@@ -90,11 +90,29 @@
           </div>
 
          
-        <!-- <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
-            <a class="nav-link" [routerLink]="[menuItem.path]">
-                <i class="material-icons">{{menuItem.icon}}</i>
-                <p>{{menuItem.title}}</p>
-            </a>
-        </li> -->
+
+
+           <!-- GESTION PERSONAS  -->
+           <div class="btn-group" >
+            <button type="button"  data-toggle="dropdown" href="#/menu" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-user"></i> 
+              Gestión de personas
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#/listaPersonas">Listar de personas</a>
+              <a class="dropdown-item" href="#/registroPersonas">Registrar personas</a>
+            </div>
+          </div>
+                  <!-- GESTION MEDICAMENTOS  -->
+                  <div class="btn-group" >
+                    <button type="button"  data-toggle="dropdown" href="#/menu" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-medkit"></i> 
+                      Gestión de medicamentos
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#/listaMedicamentos">Listar de medicamentos</a>
+                      <a class="dropdown-item" href="#/registroMedicamentos">Registrar medicamentos</a>
+                    </div>
+                  </div>
     </ul>
 </div>
