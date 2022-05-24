@@ -18,6 +18,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import { RegistrarVoluntariadoComponent } from 'app/registroVoluntariado/registrar-voluntariado/registrar-voluntariado.component';
+import { ListaAdoptadoComponent } from 'app/lista-adoptado/lista-adoptado.component';
+import { RegistrarAdoptadoComponent } from 'app/registrar-adoptado/registrar-adoptado.component';
+import { RegistrarPersonaComponent } from 'app/registrar-persona/registrar-persona.component';
+import { ListaPersonaComponent } from 'app/lista-persona/lista-persona.component';
+import { RegistrarMedicamentoComponent } from 'app/registrar-medicamento/registrar-medicamento.component';
+import { ListarMedicamentoComponent } from 'app/listar-medicamento/listar-medicamento.component';
 
 @NgModule({
   imports: [
@@ -41,7 +47,17 @@ import { RegistrarVoluntariadoComponent } from 'app/registroVoluntariado/registr
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
+    
+    // COMPONENTES DEL MENU
     RegistrarVoluntariadoComponent,
+    ListaAdoptadoComponent,
+    RegistrarAdoptadoComponent,
+    ListaAdoptadoComponent,
+    ListaPersonaComponent,
+    RegistrarPersonaComponent,
+    RegistrarMedicamentoComponent,
+    ListarMedicamentoComponent,
+
   ]
 })
 
