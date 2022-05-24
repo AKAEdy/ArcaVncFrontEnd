@@ -33,12 +33,17 @@ export class LoginComponent implements OnInit {
       this.isLoginFail = false;
       this.roles = this.tokenService.getAuthorities();
     }
+   
+    
   }
 
   onLogin(): void {
+    localStorage.setItem('usernameSesion', this.username);
     this.loginUsuario = new LoginUsuario(this.username, this.password);
     this.authService.login(this.loginUsuario).subscribe(
       data => {
+        console.log("DATOS DEL TOKEN"+data.authorities, data.nombreUsuario, data.token);
+
         this.isLogged = true;
 
         this.tokenService.setToken(data.token);

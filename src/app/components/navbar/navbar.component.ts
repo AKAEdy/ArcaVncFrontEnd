@@ -10,6 +10,7 @@ import { TokenService } from 'app/service/token.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+    usernameSesion:string;
     isLogged = false;
     private listTitles: any[];
     location: Location;
@@ -23,6 +24,7 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit(){
+        this.usernameSesion = localStorage.getItem("usernameSesion")
       this.listTitles = ROUTES.filter(listTitle => listTitle);
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
