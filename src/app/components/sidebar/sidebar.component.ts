@@ -9,18 +9,20 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
     { path: '/menu', title: 'Inicio',  icon: 'dashboard', class: '' },
-    { path: '/listaPersonas', title: 'Lista Personas',  icon: 'dashboard', class: '' },
-    { path: '/registroPersonas', title: 'Registro Personas',  icon: 'dashboard', class: '' },
+    { path: '/listaAdoptado', title: 'Lista de Adoptados',  icon: 'dashboard', class: '' },
+    { path: '/registrarAdoptado', title: 'Registro de Adoptados',  icon: 'dashboard', class: '' },
+    { path: '/listaPersonas', title: 'Lista de Personas',  icon: 'dashboard', class: '' },
+    { path: '/registroPersonas', title: 'Registro de Personas',  icon: 'dashboard', class: '' },
     { path: '/listaMedicamentos', title: 'Lista de Medicamento',  icon: 'dashboard', class: '' },
-    { path: '/registroMedicamentos', title: 'Registro Medicamento',  icon: 'dashboard', class: '' },
-    { path: '/user-profile', title: 'User Profile',  icon:'person', class: '' },
-    { path: '/RegistroVoluntariado', title: 'Registrar Voluntariado',  icon:'person', class: '' },
-    { path: '/table-list', title: 'Table List',  icon:'content_paste', class: '' },
-    { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
-    { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },
-    { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
-    { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
-    { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
+    { path: '/registroMedicamentos', title: 'Registro de Medicamento',  icon: 'dashboard', class: '' },
+    { path: '/RegistroVoluntariado', title: 'Registro de Voluntariado',  icon:'person', class: '' },
+    // { path: '/user-profile', title: 'User Profile',  icon:'person', class: '' },
+    // { path: '/table-list', title: 'Table List',  icon:'content_paste', class: '' },
+    // { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
+    // { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },
+    // { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
+    // { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
+    // { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
 ];
 
 @Component({

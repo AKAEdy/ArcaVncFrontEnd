@@ -3,24 +3,24 @@ import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
 
+import { AdopcionControllerService } from './api/adopcionController.service';
 import { AdoptanteControllerService } from './api/adoptanteController.service';
 import { AnimalesService } from './api/animales.service';
 import { FichasClnicasService } from './api/fichasClnicas.service';
 import { PersonasService } from './api/personas.service';
 import { VeterinariosService } from './api/veterinarios.service';
-import { VoluntarioControllerService } from './api/voluntarioController.service';
 
 @NgModule({
   imports:      [],
   declarations: [],
   exports:      [],
   providers: [
+    AdopcionControllerService,
     AdoptanteControllerService,
     AnimalesService,
     FichasClnicasService,
     PersonasService,
-    VeterinariosService,
-    VoluntarioControllerService ]
+    VeterinariosService ]
 })
 export class ApiModule {
     public static forRoot(configurationFactory: () => Configuration){

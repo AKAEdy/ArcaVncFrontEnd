@@ -64,17 +64,18 @@ export const AdminLayoutRoutes: Routes = [
     //RUTAS PARA LAS DIRECCIONES
 
     { path: 'menu',      component: DashboardComponent },
-    { path: 'RegistrarAdoptado',   component: RegistrarAdoptadoComponent },
+    { path: 'listaAdoptado',   component: ListaAdoptadoComponent },
+    { path: 'registrarAdoptado',   component: RegistrarAdoptadoComponent },
     { path: 'listaPersonas',   component: ListaPersonaComponent },
     { path: 'registroPersonas',   component: RegistrarPersonaComponent },
     { path: 'listaMedicamentos',   component: ListarMedicamentoComponent },
-    { path: 'registroMedicamentos',   component: RegistrarMedicamentoComponent },
-    { path: 'ListaAdoptado',   component: ListaAdoptadoComponent },
-    { path: 'table-list',     component: TableListComponent },
-    { path: 'typography',     component: TypographyComponent },
-    { path: 'icons',          component: IconsComponent },
-    { path: 'maps',           component: MapsComponent },
-    { path: 'notifications',  component: NotificationsComponent },
-    { path: 'upgrade',        component: UpgradeComponent },
+    { path: 'registroMedicamentos',   component: RegistrarMedicamentoComponent },  
     { path: 'RegistroVoluntariado',   component: RegistrarVoluntariadoComponent  },
+    // { path: 'table-list',     component: TableListComponent },
+    // { path: 'typography',     component: TypographyComponent },
+    // { path: 'icons',          component: IconsComponent },
+    // { path: 'maps',           component: MapsComponent },
+    // { path: 'notifications',  component: NotificationsComponent },
+    // { path: 'upgrade',        component: UpgradeComponent },
+   
 ];

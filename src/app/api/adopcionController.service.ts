@@ -17,14 +17,13 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { AdoptanteDto } from '../model/adoptanteDto';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
 
 
 @Injectable()
-export class AdoptanteControllerService {
+export class AdopcionControllerService {
 
     protected basePath = '//localhost:9898/';
     public defaultHeaders = new HttpHeaders();
@@ -56,24 +55,36 @@ export class AdoptanteControllerService {
 
 
     /**
-     * actualizarAdoptante
+     * actualizarAdocion
      * 
-     * @param body adoptanteDto
-     * @param idAdoptante idAdoptante
+     * @param idAdopcion idAdopcion
+     * @param idAnimal idAnimal
+     * @param descripcion 
+     * @param fechaAdopcion 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public actualizarAdoptanteUsingPUT(body: AdoptanteDto, idAdoptante: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public actualizarAdoptanteUsingPUT(body: AdoptanteDto, idAdoptante: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public actualizarAdoptanteUsingPUT(body: AdoptanteDto, idAdoptante: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public actualizarAdoptanteUsingPUT(body: AdoptanteDto, idAdoptante: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public actualizarAdocionUsingPUT(idAdopcion: number, idAnimal: number, descripcion?: string, fechaAdopcion?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public actualizarAdocionUsingPUT(idAdopcion: number, idAnimal: number, descripcion?: string, fechaAdopcion?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public actualizarAdocionUsingPUT(idAdopcion: number, idAnimal: number, descripcion?: string, fechaAdopcion?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public actualizarAdocionUsingPUT(idAdopcion: number, idAnimal: number, descripcion?: string, fechaAdopcion?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling actualizarAdoptanteUsingPUT.');
+        if (idAdopcion === null || idAdopcion === undefined) {
+            throw new Error('Required parameter idAdopcion was null or undefined when calling actualizarAdocionUsingPUT.');
         }
 
-        if (idAdoptante === null || idAdoptante === undefined) {
-            throw new Error('Required parameter idAdoptante was null or undefined when calling actualizarAdoptanteUsingPUT.');
+        if (idAnimal === null || idAnimal === undefined) {
+            throw new Error('Required parameter idAnimal was null or undefined when calling actualizarAdocionUsingPUT.');
+        }
+
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (descripcion !== undefined && descripcion !== null) {
+            queryParameters = queryParameters.set('descripcion', <any>descripcion);
+        }
+        if (fechaAdopcion !== undefined && fechaAdopcion !== null) {
+            queryParameters = queryParameters.set('fechaAdopcion', <any>fechaAdopcion);
         }
 
         let headers = this.defaultHeaders;
@@ -94,16 +105,11 @@ export class AdoptanteControllerService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
-            'application/json'
         ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
-        }
 
-        return this.httpClient.request<any>('put',`${this.basePath}/api/adoptantes/${encodeURIComponent(String(idAdoptante))}`,
+        return this.httpClient.request<any>('put',`${this.basePath}/api/adopciones/${encodeURIComponent(String(idAdopcion))}/${encodeURIComponent(String(idAnimal))}`,
             {
-                body: body,
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
@@ -113,71 +119,36 @@ export class AdoptanteControllerService {
     }
 
     /**
-     * crearAdoptante
-     * 
-     * @param body adoptanteDto
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public crearAdoptanteUsingPOST(body: AdoptanteDto, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public crearAdoptanteUsingPOST(body: AdoptanteDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public crearAdoptanteUsingPOST(body: AdoptanteDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public crearAdoptanteUsingPOST(body: AdoptanteDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling crearAdoptanteUsingPOST.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // authentication (JWT) required
-        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
-            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
-        }
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            '*/*'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
-        }
-
-        return this.httpClient.request<any>('post',`${this.basePath}/api/adoptantes/`,
-            {
-                body: body,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * eliminarAdoptante
+     * crearAdocion
      * 
      * @param idAdoptante idAdoptante
+     * @param idAnimal idAnimal
+     * @param descripcion 
+     * @param fechaAdopcion 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public eliminarAdoptanteUsingDELETE(idAdoptante: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public eliminarAdoptanteUsingDELETE(idAdoptante: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public eliminarAdoptanteUsingDELETE(idAdoptante: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public eliminarAdoptanteUsingDELETE(idAdoptante: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public crearAdocionUsingPOST(idAdoptante: number, idAnimal: number, descripcion?: string, fechaAdopcion?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public crearAdocionUsingPOST(idAdoptante: number, idAnimal: number, descripcion?: string, fechaAdopcion?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public crearAdocionUsingPOST(idAdoptante: number, idAnimal: number, descripcion?: string, fechaAdopcion?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public crearAdocionUsingPOST(idAdoptante: number, idAnimal: number, descripcion?: string, fechaAdopcion?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (idAdoptante === null || idAdoptante === undefined) {
-            throw new Error('Required parameter idAdoptante was null or undefined when calling eliminarAdoptanteUsingDELETE.');
+            throw new Error('Required parameter idAdoptante was null or undefined when calling crearAdocionUsingPOST.');
+        }
+
+        if (idAnimal === null || idAnimal === undefined) {
+            throw new Error('Required parameter idAnimal was null or undefined when calling crearAdocionUsingPOST.');
+        }
+
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (descripcion !== undefined && descripcion !== null) {
+            queryParameters = queryParameters.set('descripcion', <any>descripcion);
+        }
+        if (fechaAdopcion !== undefined && fechaAdopcion !== null) {
+            queryParameters = queryParameters.set('fechaAdopcion', <any>fechaAdopcion);
         }
 
         let headers = this.defaultHeaders;
@@ -200,7 +171,54 @@ export class AdoptanteControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('delete',`${this.basePath}/api/adoptantes/${encodeURIComponent(String(idAdoptante))}`,
+        return this.httpClient.request<any>('post',`${this.basePath}/api/adopciones/${encodeURIComponent(String(idAdoptante))}/${encodeURIComponent(String(idAnimal))}`,
+            {
+                params: queryParameters,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * eliminarAdopcion
+     * 
+     * @param idAdopcion idAdopcion
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public eliminarAdopcionUsingDELETE(idAdopcion: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public eliminarAdopcionUsingDELETE(idAdopcion: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public eliminarAdopcionUsingDELETE(idAdopcion: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public eliminarAdopcionUsingDELETE(idAdopcion: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (idAdopcion === null || idAdopcion === undefined) {
+            throw new Error('Required parameter idAdopcion was null or undefined when calling eliminarAdopcionUsingDELETE.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (JWT) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<any>('delete',`${this.basePath}/api/adopciones/${encodeURIComponent(String(idAdopcion))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -211,19 +229,65 @@ export class AdoptanteControllerService {
     }
 
     /**
-     * getAdoptantePorCedula
+     * etAdopcionPorId
+     * 
+     * @param id id
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public etAdopcionPorIdUsingGET(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public etAdopcionPorIdUsingGET(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public etAdopcionPorIdUsingGET(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public etAdopcionPorIdUsingGET(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling etAdopcionPorIdUsingGET.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (JWT) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<any>('get',`${this.basePath}/api/adopciones/${encodeURIComponent(String(id))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * getAdopcionesPorCedulaAdoptante
      * 
      * @param cedula cedula
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAdoptantePorCedulaUsingGET(cedula: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public getAdoptantePorCedulaUsingGET(cedula: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public getAdoptantePorCedulaUsingGET(cedula: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public getAdoptantePorCedulaUsingGET(cedula: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getAdopcionesPorCedulaAdoptanteUsingGET(cedula: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getAdopcionesPorCedulaAdoptanteUsingGET(cedula: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getAdopcionesPorCedulaAdoptanteUsingGET(cedula: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getAdopcionesPorCedulaAdoptanteUsingGET(cedula: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (cedula === null || cedula === undefined) {
-            throw new Error('Required parameter cedula was null or undefined when calling getAdoptantePorCedulaUsingGET.');
+            throw new Error('Required parameter cedula was null or undefined when calling getAdopcionesPorCedulaAdoptanteUsingGET.');
         }
 
         let headers = this.defaultHeaders;
@@ -246,7 +310,7 @@ export class AdoptanteControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/api/adoptantes/adoptanteci/${encodeURIComponent(String(cedula))}`,
+        return this.httpClient.request<any>('get',`${this.basePath}/api/adopciones/allbyci/${encodeURIComponent(String(cedula))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -257,19 +321,19 @@ export class AdoptanteControllerService {
     }
 
     /**
-     * getAdoptantePorId
+     * getAdopcionesPorIdAdoptante
      * 
-     * @param idAdoptante idAdoptante
+     * @param id id
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAdoptantePorIdUsingGET(idAdoptante: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public getAdoptantePorIdUsingGET(idAdoptante: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public getAdoptantePorIdUsingGET(idAdoptante: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public getAdoptantePorIdUsingGET(idAdoptante: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getAdopcionesPorIdAdoptanteUsingGET(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getAdopcionesPorIdAdoptanteUsingGET(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getAdopcionesPorIdAdoptanteUsingGET(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getAdopcionesPorIdAdoptanteUsingGET(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        if (idAdoptante === null || idAdoptante === undefined) {
-            throw new Error('Required parameter idAdoptante was null or undefined when calling getAdoptantePorIdUsingGET.');
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling getAdopcionesPorIdAdoptanteUsingGET.');
         }
 
         let headers = this.defaultHeaders;
@@ -292,7 +356,7 @@ export class AdoptanteControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/api/adoptantes/${encodeURIComponent(String(idAdoptante))}`,
+        return this.httpClient.request<any>('get',`${this.basePath}/api/adopciones/allbyid/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -303,15 +367,15 @@ export class AdoptanteControllerService {
     }
 
     /**
-     * getAllAdoptantes
+     * getAllAdopciones
      * 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAllAdoptantesUsingGET(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public getAllAdoptantesUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public getAllAdoptantesUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public getAllAdoptantesUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getAllAdopcionesUsingGET(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getAllAdopcionesUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getAllAdopcionesUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getAllAdopcionesUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -333,7 +397,7 @@ export class AdoptanteControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/api/adoptantes/`,
+        return this.httpClient.request<any>('get',`${this.basePath}/api/adopciones/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

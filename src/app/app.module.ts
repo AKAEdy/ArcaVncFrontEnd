@@ -10,6 +10,12 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './auth/login/login.component';
 import { RegistroComponent } from './auth/registro/registro.component';
 import { interceptorProvider } from './interceptor/interceptor.service';
+import { AdopcionControllerService } from './api/adopcionController.service';
+import { AdoptanteControllerService } from './api/adoptanteController.service';
+import { AnimalesService } from './api/animales.service';
+import { FichasClnicasService } from './api/fichasClnicas.service';
+import { PersonasService } from './api/personas.service';
+import { VeterinariosService } from './api/veterinarios.service';
 
 @NgModule({
   imports: [
@@ -28,7 +34,13 @@ import { interceptorProvider } from './interceptor/interceptor.service';
     RegistroComponent,
 
   ],
-  providers: [interceptorProvider],
+  providers: [interceptorProvider,
+    AdopcionControllerService,
+    AdoptanteControllerService,
+    AnimalesService,
+    FichasClnicasService,
+    PersonasService,
+    VeterinariosService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
