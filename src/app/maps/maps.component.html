@@ -4,198 +4,132 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header card-header-danger">
-                        <h4 class="card-title">FICHA CLINICA</h4>
+                        <h4 class="card-title">TRATAMIENTO</h4>
                         <p class="card-category">Complete el formulario</p>
                     </div>
                     <div class="card-body">
+
                         <form>
-                            <div class="row">
-                                <!-- fecha Ingreso -->
+
+                            <div class="container">
+                              <div class="row">
+
+                                <!--Descripción-->
                                 <div class="col-md-5">
                                     <mat-form-field class="example-full-width">
-                                       <input matInput placeholder="Fecha Ingreso" type="date">
+                                       <textarea matInput placeholder="Descripción" type="text"></textarea>
                                     </mat-form-field>
                                 </div>
 
-                                <!--Motivo Consulta -->
+                                <!--Indicaciones -->
                                 <div class="col-md-5">
                                     <mat-form-field class="example-full-width">
-                                        <textarea matInput placeholder="Motivo de la Consulta" type="text"></textarea>
+                                        <textarea matInput placeholder="Indicaciones" type="text"></textarea>
                                     </mat-form-field>
                                 </div>
     
-                                <!-- Hallazgos -->
+                                <!-- Fecha Apllicacion -->
                                 <div class="col-md-5">
                                     <mat-form-field class="example-full-width">
-                                        <textarea matInput placeholder="Hallazgos en Revición Clínica" type="text"></textarea>
+                                        <input matInput placeholder="Fecha de Aplicación" type="date">
                                     </mat-form-field>
                                 </div>
 
-                                <!--Alimentación-->
-                                <div class="col-md-5">
-                                    <mat-form-field class="example-full-width"> 
-                                       <textarea matInput placeholder="Alimentación" type="text"></textarea>
-                                    </mat-form-field>
-                                </div>
-
-                            </div>
-
-                                <div class="row">
-                                    
-                                    <div class="col-md-5">
-                                        <label>CONSTANTES FISIOLÓGICAS</label>
-                                    </div>
-
-                                    <!--Temperatura-->
-                                    <div class="col-md-5">
-                                        <mat-form-field class="example-full-width">
-                                           <input matInput placeholder="Temperatura" type="text">
-                                        </mat-form-field>
-                                    </div>
-    
-                                    <!--Conjuntiva-->
-                                    <div class="col-md-5">
-                                        <mat-form-field class="example-full-width">
-                                           <input matInput placeholder="Conjuntiva" type="text">
-                                        </mat-form-field>
-                                    </div>
-                                    
-                                    <!--Mucosas-->
-                                    <div class="col-md-5">
-                                        <mat-form-field class="example-full-width"> 
-                                           <input matInput placeholder="Mucosas" type="text">
-                                        </mat-form-field>
-                                    </div>
-    
-                                     <!--Frecuencia Cardiaca-->
-                                     <div class="col-md-5">
-                                        <mat-form-field class="example-full-width"> 
-                                           <textarea matInput placeholder="Frecuencia Cardiaca (F.C)" type="text"></textarea>
-                                        </mat-form-field>
-                                    </div>
-    
-                                    <!--Frecuencia Respiratoria-->
-                                    <div class="col-md-5">
-                                        <mat-form-field class="example-full-width"> 
-                                           <textarea matInput placeholder="Frecuencia Respiratoria (F.R)" type="text"></textarea>
-                                        </mat-form-field>
-                                    </div>
-    
-                                    <!--Tiempo de Relleno Capilar -->
-                                    <div class="col-md-5">
-                                        <mat-form-field class="example-full-width"> 
-                                           <textarea matInput placeholder="Tiempo de Rellenado Capilar (T.R.C)" type="text"></textarea>
-                                        </mat-form-field>
-                                    </div>
-                                   
-                                </div>
-
-                                <div class="row">
-                                    <!--Desparacitaciones-->
-                                    <div class="col-md-5">
-                                        <label>Desparacitaciones</label>
-                                        <div class="caja">
-                                        <select class="form-select" aria-label="Default select example">
-                                            <option selected disabled>Seleccione:</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                        </select>
+                                        <div class="col-md-3">
+                                            <!--Esterilizacion-->
+                                            <div class="col-md-5">
+                                                <label>ESTADO</label>
+                                                <div class="caja">
+                                                    <select class="form-select" aria-label="Default select example">
+                                                        <option selected disabled>Seleccione:</option>
+                                                        <option value="INICIO">INICIO</option>
+                                                        <option value="CONTINUA">CONTINUA</option>
+                                                        <option value="FINALIZADO">FINALIZADO</option>
+                                                    </select>
+                                                </div>
                                         </div>
                                     </div>
 
-                                    <!--Esterilizacion-->
-                                    <div class="col-md-5">
-                                        <label>Esterilización</label>
-                                        <div class="caja">
-                                            <select class="form-select" aria-label="Default select example">
-                                                <option selected disabled>Seleccione:</option>
-                                                <option value="1">SI</option>
-                                                <option value="2">NO</option>
-                                            </select>
-                                            </div>
-                                      
-                                    </div>
-                                </div>
+                              </div>
+                            </div> 
 
-                                <div class="row">
-                                    <!--Diagnostico Diferencial -->
-                                    <div class="col-md-5">
-                                        <mat-form-field class="example-full-width"> 
-                                           <textarea matInput placeholder="Diagnostico Diferencial" type="text"></textarea>
-                                        </mat-form-field>
+                                <div class="container">
+                                    <div class="row">
+
+                                        <div class="col-md-5">
+                                            <label>LISTA DE MEDICAMENTOS</label>
+                                        </div>
                                     </div>
 
-                                </div>
+                                    <div class="row">
 
-                                <div class="row">
-                                    <!--Diagnostico Diferencial -->
-                                    <div class="col-md-3">
-                                        <label>Vacunas</label>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                    <button mat-raised-button type="submit" class="btn btn-danger pull-right"  >AGREGAR</button>
-                                    <div class="clearfix"></div>
-                                    </div>
-
-
-
-                                </div>
-
-                                <div class="row">
-                                    <!--Diagnostico Diferencial -->
-                                    <div class="col-md-3">
-                                        <label>Examenes Solicitados</label>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <button mat-raised-button type="submit" class="btn btn-danger pull-right">AGREGAR</button>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    
-
-                                </div>
-
-                                <div class="row">
-                                    <!--Diagnostico Diferencial -->
-                                    <div class="col-md-3">
-                                        <label>Tratamiento</label>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <button mat-raised-button type="submit" class="btn btn-danger pull-right">AGREGAR</button>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    
-
-                                </div>
-
-                                <div class="row">
-                                    <!--Diagnostico Diferencial -->
-                                    <div class="col-md-5">
-                                        <mat-form-field class="example-full-width">
-                                            <input matInput placeholder="Costo" type="text">
-                                        </mat-form-field>
-                                    </div>
-
-                                    <!--Desparacitaciones-->
-                                    <div class="col-md-5">
-                                        <div class="caja">
-                                        <select class="form-select" aria-label="Default select example">
-                                            <option selected disabled>Tutor:</option>
-                                            <option value="1">1</option>
-                                        </select>
+                                       <div class="col-md-5">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Buscar Medicamento" type="text">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <button mat-raised-button type="submit" class="btn btn-danger">BUSCAR</button>
                                         </div>
                                     </div>
                                     
+                                    <div class="row">
+
+                                        <div class="col-md-12">
+                                        <table class="table table-striped table-hover">
+                                            <thead class="text-center">
+                                                <tr>
+                                                  <th class="table-danger" scope="col">Código</th>
+                                                  <th class="table-danger" scope="col">Nombre Comercial</th>
+                                                  <th class="table-danger" scope="col">Nombre Génerico</th>
+                                                  <th class="table-danger" scope="col">Cantidad</th>
+                                                  <th class="table-danger" scope="col">Precio</th>
+                                                  <th class="table-danger" scope="col">Acciones</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody class="text-center">
+                                                <tr>
+
+                                                    <td scope="row"></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>
+                                                        <div class="text-center">
+                                                            <div class="btn-group">
+                                                                <button class="btn btn-warning" type="submit">Editar</button>
+                                                                
+                                                                <button class="btn btn-danger" type="submit">Eliminar</button>
+
+                                                            </div>
+                                                        </div>
+                                                    </td>
+
+                                                  </tr>
+                                              </tbody>
+                                        
+                                        </table>
+                                        </div>
+                                    </div>
 
                                 </div>
 
+                
                             
-                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">REGISTRAR FICHA CLINICA</button>
-                            <div class="clearfix"></div>
-
+                                <div class="row">
+                                
+                                        <div class="col-md-5">
+                                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">CANCELAR</button>
+                                            
+                                        </div>
+                                        <div class="col-md-5">
+                                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">AGREGAR</button>
+    
+                                        </div>
+                                    
+                                </div> <!--fin row botones tratamiento-->
+                           
                         </form>
 
                     </div>
