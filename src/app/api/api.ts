@@ -1,0 +1,13 @@
+export * from './adopcionController.service';
+import { AdopcionControllerService } from './adopcionController.service';
+export * from './adoptanteController.service';
+import { AdoptanteControllerService } from './adoptanteController.service';
+export * from './animales.service';
+import { AnimalesService } from './animales.service';
+export * from './fichasClnicas.service';
+import { FichasClnicasService } from './fichasClnicas.service';
+export * from './personas.service';
+import { PersonasService } from './personas.service';
+export * from './veterinarios.service';
+import { VeterinariosService } from './veterinarios.service';
+export const APIS = [AdopcionControllerService, AdoptanteControllerService, AnimalesService, FichasClnicasService, PersonasService, VeterinariosService];

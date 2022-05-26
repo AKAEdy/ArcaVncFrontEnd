@@ -21,6 +21,12 @@ import { RegistrarVoluntariadoComponent } from 'app/registroVoluntariado/registr
 import { RouterModule } from '@angular/router';
 import { FichaClinicaComponent } from 'app/ficha-clinica/ficha-clinica.component';
 
+import { ListaAdoptadoComponent } from 'app/lista-adoptado/lista-adoptado.component';
+import { RegistrarAdoptadoComponent } from 'app/registrar-adoptado/registrar-adoptado.component';
+import { RegistrarPersonaComponent } from 'app/registrar-persona/registrar-persona.component';
+import { ListaPersonaComponent } from 'app/lista-persona/lista-persona.component';
+import { RegistrarMedicamentoComponent } from 'app/registrar-medicamento/registrar-medicamento.component';
+import { ListarMedicamentoComponent } from 'app/listar-medicamento/listar-medicamento.component';
 
 @NgModule({
   imports: [
@@ -44,9 +50,19 @@ import { FichaClinicaComponent } from 'app/ficha-clinica/ficha-clinica.component
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
+    
+    // COMPONENTES DEL MENU
     RegistrarVoluntariadoComponent,
     
     FichaClinicaComponent,
+    ListaAdoptadoComponent,
+    RegistrarAdoptadoComponent,
+    ListaAdoptadoComponent,
+    ListaPersonaComponent,
+    RegistrarPersonaComponent,
+    RegistrarMedicamentoComponent,
+    ListarMedicamentoComponent,
+
   ]
 })
 

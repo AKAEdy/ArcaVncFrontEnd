@@ -1,19 +1,26 @@
+import { ResolveStart } from "@angular/router";
+import { Rol } from "./rol";
+
 export class NuevoUsuario {
-    email: string;
+    // email: string;
     password: string;
     username: string;
-    nombre:string;
-    telefono:string;
-    roles:string[];
+    // nombre:string;
+    // telefono:string;
+    roles:Rol;
 
-    constructor(email: string,password: string, nombre: string, username: string, telefono:string, roles:string[] ) {
-        this.email = email;
+    constructor(password: string,  roles:string, username: string, ) {
+        // this.email = email;
         this.password = password;
-        this.nombre = nombre;
+        // this.nombre = nombre;
         this.username = username;
-        this.telefono = telefono;
-        this.roles = roles;
+        // this.telefono = telefono;
+        // this.roles.nombre = roles;
         
         
+    }
+
+    registro(){
+
     }
 }

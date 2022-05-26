@@ -6,6 +6,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegistroComponent } from './auth/registro/registro.component';
+import { GuardsGuard } from './guards/guards.guard';
+import { GuardsService as guard} from './guards/guards.service';
+import { data } from 'jquery';
 
 
 const routes: Routes =[
@@ -23,6 +26,7 @@ const routes: Routes =[
    {
     path: '',
     component: AdminLayoutComponent,
+    // canActivate:[guard], data:{expectedRol: ['admin']},
     children: [{
       path: '',
       loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
