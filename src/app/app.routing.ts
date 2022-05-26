@@ -41,6 +41,7 @@ const routes: Routes =[
     path: '**',
     redirectTo: 'menu'
   },
+  
 ];
 
 @NgModule({

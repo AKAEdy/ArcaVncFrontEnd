@@ -9,6 +9,7 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { RegistrarVoluntariadoComponent } from 'app/registroVoluntariado/registrar-voluntariado/registrar-voluntariado.component';
+import { FichaClinicaComponent } from 'app/ficha-clinica/ficha-clinica.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -67,4 +68,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'upgrade',        component: UpgradeComponent },
     { path: 'RegistroVoluntariado',   component: RegistrarVoluntariadoComponent  },
     
+    { path: 'registrofichaclinica',   component: FichaClinicaComponent  },
 ];

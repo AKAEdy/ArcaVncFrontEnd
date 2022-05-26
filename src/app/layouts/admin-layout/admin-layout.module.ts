@@ -19,6 +19,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import { RegistrarVoluntariadoComponent } from 'app/registroVoluntariado/registrar-voluntariado/registrar-voluntariado.component';
 import { RouterModule } from '@angular/router';
+import { FichaClinicaComponent } from 'app/ficha-clinica/ficha-clinica.component';
+
 
 @NgModule({
   imports: [
@@ -43,7 +45,9 @@ import { RouterModule } from '@angular/router';
     NotificationsComponent,
     UpgradeComponent,
     RegistrarVoluntariadoComponent,
-    ]
+    
+    FichaClinicaComponent,
+  ]
 })
 
 export class AdminLayoutModule {}
