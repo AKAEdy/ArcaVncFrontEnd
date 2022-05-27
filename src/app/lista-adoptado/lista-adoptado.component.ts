@@ -22,6 +22,5 @@ export class ListaAdoptadoComponent implements OnInit {
      console.log("ADOPCION "+ this.adopcion);
      
     })
-
 }
 }

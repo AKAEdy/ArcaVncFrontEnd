@@ -6,17 +6,17 @@
 
       </div>
       <div class="card-body">
-        <form>
+        <form #f="ngForm" (ngSubmit)="createPersonas()" novalidate>
           <div class="row">
             <div class="col-md-5">
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="CEDULA">
+                <input matInput placeholder="CEDULA"  [(ngModel)]="persona.cedula">
               </mat-form-field>
             </div>
 
             <div class="col-md-5">
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="NOMBRE">
+                <input matInput placeholder="NOMBRE"  [(ngModel)]="persona.nombre">
               </mat-form-field>
             </div>
 
@@ -25,13 +25,13 @@
           <div class="row">
             <div class="col-md-5">
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="APELLIDO">
+                <input matInput placeholder="APELLIDO"  [(ngModel)]="persona.apellidos">
               </mat-form-field>
             </div>
 
             <div class="col-md-5">
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="EMAIL ADDRESS" type="email">
+                <input matInput placeholder="EMAIL ADDRESS" type="email"  [(ngModel)]="persona.correo">
               </mat-form-field>
             </div>
 
@@ -40,17 +40,24 @@
           <div class="row">
             <div class="col-md-5">
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="TELEFONO" type="text">
+                <input matInput placeholder="TELEFONO" type="text"  [(ngModel)]="persona.telefono">
               </mat-form-field>
             </div>
+
             <div class="col-md-5">
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="DIRECCION" type="text">
+                <input matInput placeholder="CELULAR" type="text"  [(ngModel)]="persona.celular">
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-5">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="DIRECCION" type="text"  [(ngModel)]="persona.direccion">
               </mat-form-field>
             </div>
           </div>
 
-          <button mat-raised-button type="submit" class="btn btn-danger pull-right">REGISTRAR</button>
+          <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="createPersonas()">REGISTRAR</button>
           <div class="clearfix"></div>
         </form>
       </div>
