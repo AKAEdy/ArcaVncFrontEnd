@@ -1,17 +1,6 @@
-/* table {
-    font-family: arial, sans-serif;
-    width: 30%;
-    background-color: rgb(236, 199, 205)
+#myInput{
+    float: right;
 }
-
-td,
-th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-    border-color: blue;
+.required{
+    color: rgb(219, 219, 219);
 }
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-} */

@@ -24,6 +24,7 @@ import { RegistrarPersonaComponent } from 'app/registrar-persona/registrar-perso
 import { ListaPersonaComponent } from 'app/lista-persona/lista-persona.component';
 import { RegistrarMedicamentoComponent } from 'app/registrar-medicamento/registrar-medicamento.component';
 import { ListarMedicamentoComponent } from 'app/listar-medicamento/listar-medicamento.component';
+import { FilteradoptadosPipe } from '../../pipes/filteradoptados.pipe';
 
 @NgModule({
   imports: [
@@ -57,6 +58,7 @@ import { ListarMedicamentoComponent } from 'app/listar-medicamento/listar-medica
     RegistrarPersonaComponent,
     RegistrarMedicamentoComponent,
     ListarMedicamentoComponent,
+    FilteradoptadosPipe,
 
   ]
 })

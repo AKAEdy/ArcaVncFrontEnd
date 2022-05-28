@@ -1,11 +1,22 @@
-<!-- <div class="main-content">
+<div class="main-content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-danger">
                         <h4 class="card-title ">Lista Adoptados</h4>
-                        <p class="card-category"> Animalitos en adopción</p>
+                        <div><label><span class="required">Animalitos en adopción </span></label>
+                            <input
+                            id="myInput"
+                            type="text"
+                            class="forms-control"
+                            placeholder="🔎Buscar..."
+                            [(ngModel)]="filterpost"
+                            name="filterpost"
+                          />
+                        <!-- <input id="myInput" (keyup)="filtrar($event)" type="textt" placeholder="🔎Buscar..."> -->
+                        </div>
+                       
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -23,7 +34,7 @@
                                    
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let adopciones of adopcion">
+                                    <tr *ngFor="let adopciones of adopcion | filteradoptados:filterpost" >
                                         <td>
                                             {{adopciones.fechaAdopcion}}
                                         </td>
@@ -44,9 +55,9 @@
     </div>
   </div>
   
-     -->
+    
 
-     <!DOCTYPE html>
+     <!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -72,7 +83,7 @@
     <h2 style="text-align: center; margin-top: 5%;">¡Vamos a filtrar datos!</h2>
     <p style="text-align: center;"> Puedes consultar en el campo de entrada por el nombre, apellido y correo.</p>
    
-        <input style="background-color: rgb(212, 235, 238);" id="myInput" type="textt" placeholder="Buscar...">
+        <input (keyup)="filtrar($event)" style="background-color: rgb(212, 235, 238);" id="myInput" type="textt" placeholder="Buscar...">
     
     <br><br>
    
@@ -112,7 +123,7 @@
 
 </body>
 
-</html>
+</html> -->
 
 
 
