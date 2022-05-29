@@ -27,7 +27,9 @@ import { RegistrarPersonaComponent } from 'app/registrar-persona/registrar-perso
 import { ListaPersonaComponent } from 'app/lista-persona/lista-persona.component';
 import { RegistrarMedicamentoComponent } from 'app/registrar-medicamento/registrar-medicamento.component';
 import { ListarMedicamentoComponent } from 'app/listar-medicamento/listar-medicamento.component';
-
+import { MatPaginatorModule } from '@angular/material/paginator';import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 @NgModule({
   imports: [
     CommonModule,
@@ -40,6 +42,9 @@ import { ListarMedicamentoComponent } from 'app/listar-medicamento/listar-medica
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule,
   ],
   declarations: [
     DashboardComponent,

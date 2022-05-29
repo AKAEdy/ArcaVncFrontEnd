@@ -8,84 +8,427 @@
                         <h4 class="card-title">INGRESO DE MASCOTAS</h4>
                         <p class="card-category">Registro</p>
                     </div>
-
-
+                </div></div>
+               
+              <!--   <button class="control-btn" id="prev-btn" onclick="previous()">Back</button>
+                <button class="control-btn" id="next-btn" onclick="next()">Continue</button>
+                  
+              -->
+                    </div>
+                      <div class="col-md-15">
+                    
+                      
+ <!-- foto -->
 <div class="container">   
+
   <div class="card-group">
 
-    <div class= "col-md-5 image-fluid" >
+    <div class= "col-md-4 image-fluid" >
      
       <div class="card-body">
         <img class="card-img-top" src="../assets/img/perrito.jpeg" alt="Card image cap">
-        <div class="mb-5">
+        <div class="mb-4">
+          <br>
           <label for="formFileSm" class="form-label"  class="control-label col-sm-4 d-flex justify-content-center align-items-center">Subir foto</label>
           <input class="form-control form-control-sm" id="formFileSm" type="file">
         </div>
       </div>
     </div>          
 
-    <div class="card text-center border-info">
-      <div class="card-body"><form>
-        <div class="form-row">
-          <div class="form-group col-md-6">
+
+ <!-- formulario -->
+ 
+    <div class="card ">
+      <div class="card-body">
+      
+        <form #MyForm="ngForm" (submit)="guardarMascota(MyForm)">
+          <div class="form-body">
+            <h4 class="card-title">Complete los campos.</h4>
+            <hr />
+            <!-- nOMBRE -->
+            <div class="row">
+              <div class="col-md-5">
+                <div class="form-group">
+                
+                  <input
+                    type="text" placeholder="Nombre"
+                    class="form-control"
+                    name="nombre"
+                    #nombre="ngModel"
+                    [(ngModel)]="animal.nombre"
+                    required
+                  />
+                  <div
+                    class="text-danger"
+                    *ngIf="nombre.hasError('required') && nombre.touched"
+                  >
+                  Nombre es requerido!
+                  </div>
+                  
+                </div>
+              </div>
+
+
+              <!-- SEXO -->
+              <div class="col-md-5">
+                <div class="form-group">
+                
+                  <select class="custom-select"
+                  
+                    class="form-control"
+                    name="sexo"
+                    #sexo="ngModel"
+                    [(ngModel)]="animal.sexo"
+                    required
+                  >
+                  >
+                    <option [ngValue]="undefined">
+                      Sexo..
+                    </option>
+                    <option value="m">MACHO</option>
+                    <option value="h">HEMBRA</option>
+                  </select>
+
+                  <div
+                    class="text-danger"
+                    *ngIf="sexo.hasError('required') && sexo.touched"
+                  >
+                  Sexo es requerido!
+                  </div>
+                </div>
+              
           
-            <input type="text" class="form-control" id="inputEmail4" placeholder="Nombre">
-          </div>
-          <div class="form-group col-md-6">
-       
-            <input type="text" class="form-control" id="inputPassword4" placeholder="Especie">
-          </div>
-        </div>
-        <div class="form-row">
-        <div class="form-group col-md-6">
-          <input type="text" class="form-control" id="inputEmail4" placeholder="Peso">
-         </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-md-3">
-            <select class="custom-select custom-select-sm" id="gender2">
-              <option selected>Sexo</option>
-              <option value="1">Male</option>
-              <option value="2">Female</option>
-            </select> 
             </div>
-        
-        
-          <div class="form-group col-md-3">
-        
-            <select id="inputState" class="custom-select custom-select-sm">
-              <option selected>Color</option>
-              <option>...</option>
-            </select>
-          </div>
-          <div class="form-group col-md-3">
-            <select id="inputState" class="custom-select custom-select-sm">
+            <br> <br>
 
-            <option selected>Raza</option>
-            <option>...</option>
-          </select>
-          </div>
-          <div class="form-group col-md-3">
-            <select id="inputState" class="custom-select custom-select-sm">
+            <!--ESPECIE-->
+                
+              <div class="col-md-3">
+                <div class="form-group">
+                
+                  <select class="custom-select"
+                  
+                    class="form-control"
+                    name="especie"
+                    #especie="ngModel"
+                    [(ngModel)]="animal.especie"
+                    required
+                  >
+                    <option [ngValue]="undefined">
+                     Especie*
+                    </option>
+                    <option value="perro">Perro</option>
+                    <option value="gato">Gato</option>
+                  </select>
 
-            <option selected>Tamaño</option>
-            <option>...</option>
-          </select>
-          </div>
+                  <div
+                    class="text-danger"
+                    *ngIf="especie.hasError('required') && especie.touched"
+                  >
+                  Especie es requerido!
+                  </div>
+                </div>
+              </div>
 
-        
-        <div class="form-group col-md-8">
-          <label for="exampleFormControlTextarea1">Observaciones</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-        </div>
-        <br>
+
+              <!--raza-->
+              <div class="col-md-3">
+                <div class="form-group">
+                  
+                  <input
+                    type="text"  placeholder="Raza"
+                    class="form-control"
+                    name="raza"
+                    #raza="ngModel"
+                    [(ngModel)]="animal.raza"
+                    required
+                  />
+                  <div
+                    class="text-danger"
+                    *ngIf="
+                    raza.hasError('required') && raza.touched
+                    "
+                  >
+                    Raza es requerido!
+                  </div>
+                </div>
+              </div>
+<!--peso -->
+              <div class="col-md-3">
+                <div class="form-group">
+                 
+                  <input
+                    type="text" placeholder="Peso"
+                    class="form-control"
+                    name="peso"
+                    #peso="ngModel"
+                    [(ngModel)]="animal.peso"
+                    required
+                  />
+                  <div
+                    class="text-danger"
+                    *ngIf="
+                    peso.hasError('required') && peso.touched
+                    "
+                  >
+                    Peso es requerido!
+                  </div>
+                </div>
+              </div>
+<br><br><br>
+
+              <!--edad-->
+              <div class="col-md-3">
+                <div class="form-group">
+                 
+                  <input
+                  type="text"
+                  name="edad"
+                  class="form-control"
+                  #edad="ngModel"
+                  [(ngModel)]="animal.edad"
+                  [ngClass]="{
+                    'is-invalid': edad.errors && edad.touched
+                  }"
+                  required
+                  minlength="2"
+                />
+
+                <div
+              [hidden]="!edad.errors?.required"
+              class="invalid-fedback"
+            >
+               Requerido
+            </div>
+            <div
+              [hidden]="!edad.errors?.minlength"
+              class="invalid-fedback"
+            >
+              Ingrese su segundo nombre
+            </div>
+                 
+                </div>
+              </div>
+
+
+<!--tamanio-->
+<div class="col-md-4">
+  <div class="form-group">
+  
+    <select class="custom-select"
+    
+      class="form-control"
+      name="tamanyo"
+      #tamanyo="ngModel"
+      [(ngModel)]="animal.tamanyo"
+      required
+    >
+      <option [ngValue]="undefined">
+       Tamaño*
+      </option>
+      <option value="G">Grande</option>
+      <option value="M">Mediano</option>
+      <option value="P">Pequeño</option>
+    </select>
+
+    <div
+      class="text-danger"
+      *ngIf="tamanyo.hasError('required') && tamanyo.touched"
+    >
+    Tamaño es requerido!
+    </div>
+  </div>
+</div>
+
+
+<!--  color-->
+<div class="col-md-3">
+  <div class="form-group">
+    
+    <input
+      type="text"  placeholder="Color"
+      class="form-control"
+      name="color"
+      #color="ngModel"
+      [(ngModel)]="animal.color"
+      required
+    />
+    <div
+      class="text-danger"
+      *ngIf="
+      color.hasError('required') && color.touched
+      "
+    >
+      Color es requerido!
+    </div>
+  </div>
+</div>
+
+<!-- fecha nac-->
+
+
+                    <div class="col-md-3">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Fecha nacimiento" type="date"
+                        [(ngModel)]="animal.fechaNacimiento">
+                      </mat-form-field>
+                    </div>
+                 
+
+            
+                
+
+
+
+<!--caracteristicas-->
+<div class="col-md-12">
+  <mat-form-field class="example-full-width">
+    <textarea matInput rows="5"
+      placeholder="Describa las caracteristicas"
+      [(ngModel)]="animal.caracteristicas">
+    </textarea>
+  </mat-form-field>
+  
+</div>
+              
+             <!--<div
+                class="text-danger"
+                *ngIf="
+                  caracteristicas.hasError('required') && caracteristicas.touched
+                "
+              >
+                Caracteristicas es requerido!
+              </div>
+
+
+
+              </div>
+       --> 
+              
+              <!--/span-->
+            </div>
+            
+          
+          </div>
+          <hr />
+          <div class="form-actions">
+            <button type="submit" class="btn btn-success mr-2" 
+
+         
+             >
+              <i class="fa fa-check"></i> Guardar
+            </button>
+            <button
+              type="button"
+              class="btn btn-inverse"
+             
+            >
+              Cancelar
+            </button>
+          </div>
+         
+        </form>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+              <br>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Nombre">
+              </div>
+              <div class="form-group col-md-6">
+               <br>
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Color">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+               <br>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Peso">
+              </div>
+              <div class="form-group col-md-6">
+            <br>
+            <label for="birthday">Fecha nac.</label>
+            <input type="date" id="birthday" name="seleccione">
+            <input type="submit" value="Submit">
+              </div>
+            </div>
+
+            <div class="form-group">
+             <br>
+              <input type="text" class="form-control" id="inputAddress" placeholder="Caracteristicas:">
+            </div>
+            <br>
+            <div class="form-row">
+              <div class="form-group col-md-3">
+                <select class="custom-select custom-select-sm" id="gender2">
+                  <option selected>Sexo</option>
+                  <option value="1">M</option>
+                  <option value="2">H</option>
+                </select> 
+              </div>
+              <div class="form-group col-md-4">
+                <select class="custom-select custom-select-sm" id="gender2">
+                  <option selected>Tamaño</option>
+                  <option value="1">G</option>
+                  <option value="2">P</option>
+                </select> 
+              </div>
+              <div class="form-group col-md-3">
+                <select class="custom-select custom-select-sm" id="gender2">
+                  <option selected>Raza</option>
+                  <option value="1">M</option>
+                  <option value="2">H</option>
+                </select> 
+              </div>
+            </div>
+            <br>
+            <div class="form-row">
+              <div class="form-group col-md-3">
+                <select class="custom-select custom-select-sm" id="gender2">
+                  <option selected>Edad</option>
+                  <option value="1">M</option>
+                  <option value="2">H</option>
+                </select> 
+              </div>
+              <div class="form-group col-md-4">
+                <select class="custom-select custom-select-sm" id="gender2">
+                  <option selected>Especie</option>
+                  <option value="1">Gato</option>
+                  <option value="2">Perro</option>
+                </select> 
+              </div>
+            </div>
+           <br>
         <button mat-raised-button type="submit" routerLink="/menu" class="btn btn-danger pull-left">Cancelar</button>
                         
-  <button mat-raised-button type="submit" routerLink="/fichaClinica"class="btn btn-danger pull-right">Siguiente</button>
-  
-      </form>
-      </div>
-    </div>  
-  </div>
+        <button mat-raised-button type="submit" routerLink="/fichaClinica"class="btn btn-info pull-right"><span class="glyphicon glyphicon-search"></span>Siguiente</button>
+        
+          </form>
+        -->
 </div>  
+    
