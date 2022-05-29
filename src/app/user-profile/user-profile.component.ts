@@ -75,6 +75,7 @@ s
       //  console.log("LLEGA "+ this.animal.nombre,this.animal.especie,this.animal.raza, this.animal.peso, this.animal.color, this.animal.sexo, this.animal.tamanyo, this.animal.edad);
    
       this.animalesService.createUsingPOST(this.animal).subscribe(data => {
+        this.animal=data;
         Swal.fire(
 
          "Nueva Mascota",

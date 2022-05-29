@@ -1,5 +1,5 @@
 
-<div class="row" *ngIf="!cargando">
+<div class="row">
     <div class="col-12">
       <div class="card">
         <div class="card-body">
@@ -33,7 +33,7 @@
                   <i class="mdi mdi-magnify"></i>
                 </button>
               </div>
-              <div class="row" *ngIf="cargando">
+              <div class="row" >
                 <div class="col-12">
                   <div class="alert alert-info text-center" role="alert">
                     <h4 class="alert-heading">Cargando</h4>
@@ -104,7 +104,7 @@
       </div>
     </div>
   </div>
-  <mat-paginator
+  <!-- <mat-paginator
     [length]="totalRegistros"
     [pageSize]="totalPorPagina"
     [pageSizeOptions]="pageSizeOptions"
@@ -112,7 +112,7 @@
     (page)="paginar($event)"
     showFirstLastButtons
   >
-  </mat-paginator>
+  </mat-paginator> -->
   
 
 

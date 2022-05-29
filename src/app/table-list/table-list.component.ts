@@ -30,11 +30,11 @@ export class TableListComponent implements OnInit {
 
   ngOnInit() {
     
-    this.getAnimalesPage(
-      this.paginaActual.toString(),
-      this.totalPorPagina.toString(),
-      this.busqueda
-    );
+    // this.getAnimalesPage(
+    //   this.paginaActual.toString(),
+    //   this.totalPorPagina.toString(),
+    //   this.busqueda
+    // );
   }
 
   public paginar(event: PageEvent): void {
