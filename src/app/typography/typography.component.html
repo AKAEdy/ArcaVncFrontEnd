@@ -1,98 +1,96 @@
 <div class="main-content">
-  <div class="container-fluid">
-    <div class="card">
-        <div class="card-header card-header-danger">
-            <h4 class="card-title">Material Dashboard Heading</h4>
-            <p class="card-category">Created using Roboto Font Family</p>
-        </div>
-        <div class="card-body">
-            <div id="typography">
-                <div class="card-title">
-                    <h2>Typography</h2>
-                </div>
-                <div class="row">
-                    <div class="tim-typo">
-                        <h1>
-                            <span class="tim-note">Header 1</span>The Life of Material Dashboard </h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">MEDICACIÓN</h4>
+                        <p class="card-category">Complete el formulario</p>
                     </div>
-                    <div class="tim-typo">
-                        <h2>
-                            <span class="tim-note">Header 2</span>The Life of Material Dashboard</h2>
-                    </div>
-                    <div class="tim-typo">
-                        <h3>
-                            <span class="tim-note">Header 3</span>The Life of Material Dashboard</h3>
-                    </div>
-                    <div class="tim-typo">
-                        <h4>
-                            <span class="tim-note">Header 4</span>The Life of Material Dashboard</h4>
-                    </div>
-                    <div class="tim-typo">
-                        <h5>
-                            <span class="tim-note">Header 5</span>The Life of Material Dashboard</h5>
-                    </div>
-                    <div class="tim-typo">
-                        <h6>
-                            <span class="tim-note">Header 6</span>The Life of Material Dashboard</h6>
-                    </div>
-                    <div class="tim-typo">
-                        <p>
-                            <span class="tim-note">Paragraph</span>
-                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
-                    </div>
-                    <div class="tim-typo">
-                        <span class="tim-note">Quote</span>
-                        <blockquote class="blockquote">
-                            <p>
-                                I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.
-                            </p>
-                            <small>
-                                Kanye West, Musician
-                            </small>
-                        </blockquote>
-                    </div>
-                    <div class="tim-typo">
-                        <span class="tim-note">Muted Text</span>
-                        <p class="text-muted">
-                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers...
-                        </p>
-                    </div>
-                    <div class="tim-typo">
-                        <span class="tim-note">Primary Text</span>
-                        <p class="text-primary">
-                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
-                    </div>
-                    <div class="tim-typo">
-                        <span class="tim-note">Info Text</span>
-                        <p class="text-info">
-                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
-                    </div>
-                    <div class="tim-typo">
-                        <span class="tim-note">Success Text</span>
-                        <p class="text-success">
-                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
-                    </div>
-                    <div class="tim-typo">
-                        <span class="tim-note">Warning Text</span>
-                        <p class="text-warning">
-                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers...
-                        </p>
-                    </div>
-                    <div class="tim-typo">
-                        <span class="tim-note">Danger Text</span>
-                        <p class="text-danger">
-                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
-                    </div>
-                    <div class="tim-typo">
-                        <h2>
-                            <span class="tim-note">Small Tag</span>
-                            Header with small subtitle
-                            <br>
-                            <small>Use "small" tag for the headers</small>
-                        </h2>
+                    <div class="card-body">
+            
+                        <form>
+
+                            <div class="container">
+
+                                <div class="row">
+
+                                    <!--Medicamento-->
+                                    <div class="col-md-3">
+                                    
+                                        <div class="col-md-5">
+                                            <label>MEDICAMENTO</label>
+                                            <div class="caja">
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option selected disabled>Seleccione:</option>
+                                                    <option value="INICIO">Paracetamol</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!--Fin row medicamento-->
+
+
+                              <div class="row">
+
+                                <!--Descripción-->
+                                <div class="col-md-5">
+                                    <mat-form-field class="example-full-width">
+                                       <textarea matInput placeholder="Descripción" type="text"></textarea>
+                                    </mat-form-field>
+                                </div>
+
+                                <!--dosis-->
+                                <div class="col-md-5">
+                                    <mat-form-field class="example-full-width">
+                                       <textarea matInput placeholder="Dosis" type="text"></textarea>
+                                    </mat-form-field>
+                                </div>
+
+                                <!--frecuencia-->
+                                <div class="col-md-5">
+                                    <mat-form-field class="example-full-width">
+                                       <textarea matInput placeholder="Frecuencia" type="text"></textarea>
+                                    </mat-form-field>
+                                </div>
+
+                                <!--frecuencia-->
+                                <div class="col-md-5">
+                                    <mat-form-field class="example-full-width">
+                                       <textarea matInput placeholder="Duración" type="text"></textarea>
+                                    </mat-form-field>
+                                </div>
+    
+                                <!-- Fecha Apllicacion -->
+                                <div class="col-md-5">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Fecha de Caducidad" type="date">
+                                    </mat-form-field>
+                                </div>
+
+                              </div>
+                            </div> 
+
+                                   
+                                <div class="row">
+                                
+                                        <div class="col-md-5">
+                                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">CANCELAR</button>
+                                            
+                                        </div>
+                                        <div class="col-md-5">
+                                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">AGREGAR</button>
+    
+                                        </div>
+                                    
+                                </div> <!--fin row botones tratamiento-->
+                           
+                        </form>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+  </div>
+       

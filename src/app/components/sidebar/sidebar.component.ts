@@ -17,8 +17,6 @@ export const ROUTES: RouteInfo[] = [
 
     { path: '/table-list', title: 'Table List',  icon:'content_paste', class: '' },
 
-    { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
-
     { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },
 
     { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
@@ -26,7 +24,8 @@ export const ROUTES: RouteInfo[] = [
     { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
 
     { path: '/registrofichaclinica', title: 'REGISTRO FICHA CLINICA',  icon:'location_on', class: '' }, // nueva
-    { path: '/tratamiento', title: 'TRATAMIENTO',  icon:'location_on', class: '' }, // map
+    { path: '/tratamiento', title: 'REGISTRO TRATAMIENTO',  icon:'location_on', class: '' }, // map
+    { path: '/medicacion', title: 'REGISTRO MEDICACION',  icon:'library_books', class: '' }, //typography
     
 ];
 

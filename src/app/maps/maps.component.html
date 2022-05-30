@@ -12,6 +12,7 @@
                         <form>
 
                             <div class="container">
+
                               <div class="row">
 
                                 <!--Descripción-->
@@ -36,7 +37,7 @@
                                 </div>
 
                                         <div class="col-md-3">
-                                            <!--Esterilizacion-->
+                                            <!--Estado-->
                                             <div class="col-md-5">
                                                 <label>ESTADO</label>
                                                 <div class="caja">
@@ -63,13 +64,16 @@
 
                                     <div class="row">
 
-                                       <div class="col-md-5">
-                                            <mat-form-field class="example-full-width">
-                                                <input matInput placeholder="Buscar Medicamento" type="text">
-                                            </mat-form-field>
-                                        </div>
                                         <div class="col-md-5">
-                                            <button mat-raised-button type="submit" class="btn btn-danger">BUSCAR</button>
+
+                                            <div class="input-group no-border">
+                                                <input type="text" value="" class="form-control" placeholder="Search...">
+                                                <button mat-raised-button type="submit" class="btn btn-red btn-round btn-just-icon">
+                                                    <i class="material-icons">search</i>
+                                                    <div class="ripple-container"></div>
+                                                </button>
+                                            </div>
+
                                         </div>
                                     </div>
                                     
@@ -98,9 +102,21 @@
                                                     <td>
                                                         <div class="text-center">
                                                             <div class="btn-group">
-                                                                <button class="btn btn-warning" type="submit">Editar</button>
                                                                 
-                                                                <button class="btn btn-danger" type="submit">Eliminar</button>
+                                                                <div class="col-md-5" >
+
+                                                                    <div class="input-group no-border">
+                                                                    
+                                                                        <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon" class="btneliminar">
+                                                                            <i class="material-icons">delete</i>
+                                                                            <div class="ripple-container"></div>
+                                                                        </button>
+                                                                        
+                                                                    </div>
+
+                                                                </div>
+
+                                                    
 
                                                             </div>
                                                         </div>
