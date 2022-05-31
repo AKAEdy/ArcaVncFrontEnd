@@ -25,7 +25,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class AdopcionControllerService {
 
-    protected basePath = '//localhost:9898/';
+    protected basePath = 'http://localhost:9898';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 

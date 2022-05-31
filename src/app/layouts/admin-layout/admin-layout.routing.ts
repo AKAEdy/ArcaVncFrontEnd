@@ -16,6 +16,9 @@ import { RegistrarPersonaComponent } from 'app/registrar-persona/registrar-perso
 import { ListarMedicamentoComponent } from 'app/listar-medicamento/listar-medicamento.component';
 import { RegistrarMedicamentoComponent } from 'app/registrar-medicamento/registrar-medicamento.component';
 
+import { RoleGuard } from 'app/guards/role.guard';
+import { IsAuthenticatedGuard } from 'app/guards/is-authenticated.guard';
+
 export const AdminLayoutRoutes: Routes = [
     // {
     //   path: '',
@@ -63,19 +66,19 @@ export const AdminLayoutRoutes: Routes = [
 
     //RUTAS PARA LAS DIRECCIONES
 
-    { path: 'menu',      component: DashboardComponent },
-    { path: 'listaAdoptado',   component: ListaAdoptadoComponent },
-    { path: 'registrarAdoptado',   component: RegistrarAdoptadoComponent },
-    { path: 'listaPersonas',   component: ListaPersonaComponent },
-    { path: 'registroPersonas',   component: RegistrarPersonaComponent },
-    { path: 'listaMedicamentos',   component: ListarMedicamentoComponent },
-    { path: 'registroMedicamentos',   component: RegistrarMedicamentoComponent },  
-    { path: 'RegistroVoluntariado',   component: RegistrarVoluntariadoComponent  },
+    { path: 'menu', component: DashboardComponent },
+    { path: 'listaAdoptado', component: ListaAdoptadoComponent },
+    { path: 'registrarAdoptado', component: RegistrarAdoptadoComponent },
+    { path: 'listaPersonas', component: ListaPersonaComponent, canActivate: [ IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN','ROLE_PIPO']} },
+    { path: 'registroPersonas', component: RegistrarPersonaComponent, canActivate: [IsAuthenticatedGuard],},
+    { path: 'listaMedicamentos', component: ListarMedicamentoComponent , canActivate: [IsAuthenticatedGuard],},
+    { path: 'registroMedicamentos', component: RegistrarMedicamentoComponent, canActivate: [IsAuthenticatedGuard],},
+    { path: 'RegistroVoluntariado', component: RegistrarVoluntariadoComponent, canActivate: [IsAuthenticatedGuard],},
     // { path: 'table-list',     component: TableListComponent },
     // { path: 'typography',     component: TypographyComponent },
     // { path: 'icons',          component: IconsComponent },
     // { path: 'maps',           component: MapsComponent },
     // { path: 'notifications',  component: NotificationsComponent },
     // { path: 'upgrade',        component: UpgradeComponent },
-   
+
 ];

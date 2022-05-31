@@ -13,67 +13,67 @@ import Swal from 'sweetalert2';
 })
 export class RegistroComponent implements OnInit {
 
-  nuevoUsuario: NuevoUsuario={
-    password: '',
-    username: '',
-    roles: new Rol,
-    registro: function (): void {
-      throw new Error('Function not implemented.');
-    }
-  };
+  // nuevoUsuario: NuevoUsuario={
+  //   password: '',
+  //   username: '',
+  //   roles: new,
+  //   registro: function (): void {
+  //     throw new Error('Function not implemented.');
+  //   }
+  // };
   
-  password1: string;
-  errMsj: string;
-  isLogged = false;
+  // password1: string;
+  // errMsj: string;
+  // isLogged = false;
 
-  constructor(
-    private tokenService: TokenService,
-    private authService: AuthService,
-    private router: Router,
-  //  private toastr: ToastrService
-  ) {
-    this.nuevoUsuario.roles.nombre='';
-  }
+  // constructor(
+  //   private tokenService: TokenService,
+  //   private authService: AuthService,
+  //   private router: Router,
+  // //  private toastr: ToastrService
+  // ) {
+  //   this.nuevoUsuario.roles.nombre='';
+  // }
 
   ngOnInit() {
-    if (this.tokenService.getToken()) {
-      this.isLogged = true;
-    }
+    // if (this.tokenService.getToken()) {
+    //   this.isLogged = true;
+    // }
   }
 
-  onRegister(): void {
+  // onRegister(): void {
    
     
-  if (this.password1 === this.nuevoUsuario.password) { 
-    console.log("datooo   "+this.nuevoUsuario.password,this.nuevoUsuario.roles.nombre, this.nuevoUsuario.username);
+  // if (this.password1 === this.nuevoUsuario.password) { 
+  //   console.log("datooo   "+this.nuevoUsuario.password,this.nuevoUsuario.roles.nombre, this.nuevoUsuario.username);
 
-    this.authService.nuevo(this.nuevoUsuario).subscribe(
-      data => {
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'La cuenta '+ this.nuevoUsuario.username + ' a sido creada!',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        this.router.navigate(['/login']);
-      },
-      err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Campos incorrectos!',
-        })
-      }
-    );
-  } else {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Las contraseñas no coinciden!',
-    })
-  }
+  //   this.authService.nuevo(this.nuevoUsuario).subscribe(
+  //     data => {
+  //       Swal.fire({
+  //         position: 'center',
+  //         icon: 'success',
+  //         title: 'La cuenta '+ this.nuevoUsuario.username + ' a sido creada!',
+  //         showConfirmButton: false,
+  //         timer: 1500
+  //       })
+  //       this.router.navigate(['/login']);
+  //     },
+  //     err => {
+  //       Swal.fire({
+  //         icon: 'error',
+  //         title: 'Oops...',
+  //         text: 'Campos incorrectos!',
+  //       })
+  //     }
+  //   );
+  // } else {
+  //   Swal.fire({
+  //     icon: 'error',
+  //     title: 'Oops...',
+  //     text: 'Las contraseñas no coinciden!',
+  //   })
+  // }
   
-  }
+  // }
 
 }

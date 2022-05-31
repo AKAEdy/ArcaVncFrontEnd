@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
@@ -9,13 +9,13 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegistroComponent } from './auth/registro/registro.component';
-import { interceptorProvider } from './interceptor/interceptor.service';
 import { AdopcionControllerService } from './api/adopcionController.service';
 import { AdoptanteControllerService } from './api/adoptanteController.service';
 import { AnimalesService } from './api/animales.service';
 import { FichasClnicasService } from './api/fichasClnicas.service';
 import { PersonasService } from './api/personas.service';
 import { VeterinariosService } from './api/veterinarios.service';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   imports: [
@@ -34,7 +34,7 @@ import { VeterinariosService } from './api/veterinarios.service';
     RegistroComponent,
 
   ],
-  providers: [interceptorProvider,
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
     AdopcionControllerService,
     AdoptanteControllerService,
     AnimalesService,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthInterceptor } from 'app/interceptors/auth.interceptor';
 import { LoginUsuario } from 'app/models/login-usuario';
 import { AuthService } from 'app/service/auth.service';
 import { TokenService } from 'app/service/token.service';
@@ -13,13 +14,9 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
-  isLogged = false;
-  isLoginFail = false;
   loginUsuario: LoginUsuario;
   username: string;
   password: string;
-  roles: string[] = [];
-  errMsj: string;
 
   constructor(
     private tokenService: TokenService,
@@ -28,38 +25,26 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (this.tokenService.getToken()) {
-      this.isLogged = true;
-      this.isLoginFail = false;
-      this.roles = this.tokenService.getAuthorities();
-    }
-   
-    
   }
 
   onLogin(): void {
-    localStorage.setItem('usernameSesion', this.username);
-    this.loginUsuario = new LoginUsuario(this.username, this.password);
+    this.loginUsuario = new LoginUsuario("admin", "admin");
     this.authService.login(this.loginUsuario).subscribe(
       data => {
-        console.log("DATOS DEL TOKEN"+data.authorities, data.nombreUsuario, data.token);
-
-        this.isLogged = true;
-
-        this.tokenService.setToken(data.token);
-        this.tokenService.setUserName(data.nombreUsuario);
-        this.tokenService.setAuthorities(data.authorities);
-        this.roles = data.authorities;
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Bienvenido '+ this.username,
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
           showConfirmButton: false,
           timer: 1500
         })
-        this.router.navigate(['#']);
+        Toast.fire({
+          icon: 'success',
+          title: `Bienvenido ${data.username}`
+        })
       },
       err => {
+        console.warn(err);
+        
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
