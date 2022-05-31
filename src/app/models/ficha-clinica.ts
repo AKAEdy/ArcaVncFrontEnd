@@ -68,13 +68,6 @@ export class FichaClinica {
                     this.id_historia=id_historia;
                     this.id_veterinario=id_veterinario;
                     this.id_vacuna=id_vacuna;
-
-
             }
-
-            
-    
-    
-        
 
 }
