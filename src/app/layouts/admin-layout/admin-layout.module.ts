@@ -25,6 +25,10 @@ import { ListaPersonaComponent } from 'app/lista-persona/lista-persona.component
 import { RegistrarMedicamentoComponent } from 'app/registrar-medicamento/registrar-medicamento.component';
 import { ListarMedicamentoComponent } from 'app/listar-medicamento/listar-medicamento.component';
 import { FilteradoptadosPipe } from '../../pipes/filteradoptados.pipe';
+import { RegistrarVacunasComponent } from '../../registrar-vacunas/registrar-vacunas.component';
+import { ListarVacunasComponent } from '../../listar-vacunas/listar-vacunas.component';
+import { ListarCitasComponent } from '../../listar-citas/listar-citas.component';
+import { RegistrarCitasComponent } from '../../registrar-citas/registrar-citas.component';
 
 @NgModule({
   imports: [
@@ -59,6 +63,10 @@ import { FilteradoptadosPipe } from '../../pipes/filteradoptados.pipe';
     RegistrarMedicamentoComponent,
     ListarMedicamentoComponent,
     FilteradoptadosPipe,
+    RegistrarVacunasComponent,
+    ListarVacunasComponent,
+    ListarCitasComponent,
+    RegistrarCitasComponent,
 
   ]
 })
