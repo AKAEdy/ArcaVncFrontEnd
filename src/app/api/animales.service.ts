@@ -31,7 +31,7 @@ export class AnimalesService {
       throw new Error('Method not implemented.');
     }
 
-    protected basePath = '//localhost:9898/';
+    protected basePath = '//localhost:9898';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -167,29 +167,7 @@ export class AnimalesService {
      * @param reportProgress flag to report request and response progress.
      */
     
-     getAnimalesPage(
-        page: string,
-        size: string,
-        busqueda: string
-      ): Observable<any> {
-        return this.httpClient
-          .get(
-            `${this.basePath}/page?page=${page}&size=${size}&busqueda=${busqueda || ""} `
-          )
-          .pipe(
-            tap((response: any) => {
-              (response.content as Animal[]).forEach((Animal) => {
-                return ;
-              });
-            }),
-            map((response: any) => {
-              (response.content as Animal[]).map((Animal) => {
-                return Animal;
-              });
-              return response;
-            })
-          );
-      }
+
     
     public getAnimalsUsingGET(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PageAnimal>;
     public getAnimalsUsingGET(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageAnimal>>;
