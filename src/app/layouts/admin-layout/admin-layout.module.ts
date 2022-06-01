@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
@@ -18,17 +18,26 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import { RegistrarVoluntariadoComponent } from 'app/registroVoluntariado/registrar-voluntariado/registrar-voluntariado.component';
+import { RouterModule } from '@angular/router';
+import { FichaClinicaComponent } from 'app/ficha-clinica/ficha-clinica.component';
+
 import { ListaAdoptadoComponent } from 'app/lista-adoptado/lista-adoptado.component';
 import { RegistrarAdoptadoComponent } from 'app/registrar-adoptado/registrar-adoptado.component';
 import { RegistrarPersonaComponent } from 'app/registrar-persona/registrar-persona.component';
 import { ListaPersonaComponent } from 'app/lista-persona/lista-persona.component';
 import { RegistrarMedicamentoComponent } from 'app/registrar-medicamento/registrar-medicamento.component';
 import { ListarMedicamentoComponent } from 'app/listar-medicamento/listar-medicamento.component';
+
 import { FilteradoptadosPipe } from '../../pipes/filteradoptados.pipe';
 import { RegistrarVacunasComponent } from '../../registrar-vacunas/registrar-vacunas.component';
 import { ListarVacunasComponent } from '../../listar-vacunas/listar-vacunas.component';
 import { ListarCitasComponent } from '../../listar-citas/listar-citas.component';
 import { RegistrarCitasComponent } from '../../registrar-citas/registrar-citas.component';
+
+
+import { MatPaginatorModule } from '@angular/material/paginator';import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   imports: [
@@ -42,6 +51,9 @@ import { RegistrarCitasComponent } from '../../registrar-citas/registrar-citas.c
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule,
   ],
   declarations: [
     DashboardComponent,
@@ -55,6 +67,8 @@ import { RegistrarCitasComponent } from '../../registrar-citas/registrar-citas.c
     
     // COMPONENTES DEL MENU
     RegistrarVoluntariadoComponent,
+    
+    FichaClinicaComponent,
     ListaAdoptadoComponent,
     RegistrarAdoptadoComponent,
     ListaAdoptadoComponent,

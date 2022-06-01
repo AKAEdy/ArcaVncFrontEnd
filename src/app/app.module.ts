@@ -9,6 +9,11 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegistroComponent } from './auth/registro/registro.component';
+import { ListaAdoptadoComponent } from './lista-adoptado/lista-adoptado.component';
+
+
+import { FichaClinicaComponent } from './ficha-clinica/ficha-clinica.component';
+
 import { interceptorProvider } from './interceptor/interceptor.service';
 import { AdopcionControllerService } from './api/adopcionController.service';
 import { AdoptanteControllerService } from './api/adoptanteController.service';
@@ -27,7 +32,7 @@ import { VeterinariosService } from './api/veterinarios.service';
     RouterModule,
     AppRoutingModule,
   ],
-  declarations: [
+  declarations: [	
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,

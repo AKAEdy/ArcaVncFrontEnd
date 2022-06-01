@@ -15,23 +15,27 @@ import { HttpClient, HttpHeaders, HttpParams,
          HttpResponse, HttpEvent }                           from '@angular/common/http';
 import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
-import { Observable }                                        from 'rxjs';
+import { map, Observable, tap }                                        from 'rxjs';
 
 import { Animal } from '../model/animal';
 import { PageAnimal } from '../model/pageAnimal';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
-
+import { environment } from 'environments/environment';
+const basePath = environment.basePath + "/animales";
 
 @Injectable()
 export class AnimalesService {
+    eliminar(id: number) {
+      throw new Error('Method not implemented.');
+    }
 
-    protected basePath = '//localhost:9898/';
+    protected basePath = '//localhost:9898';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
-    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
+    constructor( protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
         if (basePath) {
             this.basePath = basePath;
         }
@@ -162,6 +166,9 @@ export class AnimalesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
+    
+
+    
     public getAnimalsUsingGET(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PageAnimal>;
     public getAnimalsUsingGET(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageAnimal>>;
     public getAnimalsUsingGET(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageAnimal>>;

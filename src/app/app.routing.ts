@@ -10,6 +10,7 @@ import { GuardsGuard } from './guards/guards.guard';
 import { GuardsService as guard} from './guards/guards.service';
 import { data } from 'jquery';
 
+
 const routes: Routes =[
   {
     path: '',
@@ -39,10 +40,12 @@ const routes: Routes =[
     path: 'registro',
     component: RegistroComponent
   },
+  
   {
     path: '**',
     redirectTo: 'menu'
   },
+  
 ];
 
 @NgModule({
