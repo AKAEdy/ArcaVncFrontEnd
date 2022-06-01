@@ -9,6 +9,7 @@ import { RegistroComponent } from './auth/registro/registro.component';
 import { RoleGuard } from './guards/role.guard';
 import { IsAuthenticatedGuard } from './guards/is-authenticated.guard';
 
+
 const routes: Routes =[
   {
     path: '',
@@ -38,10 +39,12 @@ const routes: Routes =[
     path: 'signup',
     component: RegistroComponent
   },
+  
   {
     path: '**',
     redirectTo: 'menu'
   },
+  
 ];
 
 @NgModule({

@@ -9,6 +9,15 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegistroComponent } from './auth/registro/registro.component';
+<<<<<<< HEAD
+=======
+import { ListaAdoptadoComponent } from './lista-adoptado/lista-adoptado.component';
+
+
+import { FichaClinicaComponent } from './ficha-clinica/ficha-clinica.component';
+
+import { interceptorProvider } from './interceptor/interceptor.service';
+>>>>>>> ab2bfb46631789a1d7aa703ee476f17520295f70
 import { AdopcionControllerService } from './api/adopcionController.service';
 import { AdoptanteControllerService } from './api/adoptanteController.service';
 import { AnimalesService } from './api/animales.service';
@@ -27,7 +36,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     RouterModule,
     AppRoutingModule,
   ],
-  declarations: [
+  declarations: [	
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,

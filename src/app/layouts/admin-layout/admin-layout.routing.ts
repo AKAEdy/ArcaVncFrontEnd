@@ -9,6 +9,7 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { RegistrarVoluntariadoComponent } from 'app/registroVoluntariado/registrar-voluntariado/registrar-voluntariado.component';
+import { FichaClinicaComponent } from 'app/ficha-clinica/ficha-clinica.component';
 import { RegistrarAdoptadoComponent } from 'app/registrar-adoptado/registrar-adoptado.component';
 import { ListaAdoptadoComponent } from 'app/lista-adoptado/lista-adoptado.component';
 import { ListaPersonaComponent } from 'app/lista-persona/lista-persona.component';
@@ -66,6 +67,7 @@ export const AdminLayoutRoutes: Routes = [
 
     //RUTAS PARA LAS DIRECCIONES
 
+<<<<<<< HEAD
     { path: 'menu', component: DashboardComponent },
     { path: 'listaAdoptado', component: ListaAdoptadoComponent,canActivate: [ IsAuthenticatedGuard] },
     { path: 'registrarAdoptado', component: RegistrarAdoptadoComponent,canActivate: [ IsAuthenticatedGuard] },
@@ -74,6 +76,26 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'listaMedicamentos', component: ListarMedicamentoComponent , canActivate: [IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']} },
     { path: 'registroMedicamentos', component: RegistrarMedicamentoComponent, canActivate: [IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN','ROLE_DEFAULT_USER']} },
     { path: 'RegistroVoluntariado', component: RegistrarVoluntariadoComponent, canActivate: [IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN','ROLE_DEFAULT_USER']} },
+=======
+    { path: 'menu',      component: DashboardComponent },
+    { path: 'user-profile',   component: UserProfileComponent },
+    { path: 'table-list',     component: TableListComponent },
+    { path: 'regist',     component: TypographyComponent },
+    { path: 'icons',          component: IconsComponent },
+    { path: 'tratamiento',           component: MapsComponent }, // map
+    { path: 'notifications',  component: NotificationsComponent },
+    { path: 'upgrade',        component: UpgradeComponent },
+    { path: 'RegistroVoluntariado',   component: RegistrarVoluntariadoComponent  },
+    
+    { path: 'registrofichaclinica',   component: FichaClinicaComponent  },
+    { path: 'listaAdoptado',   component: ListaAdoptadoComponent },
+    { path: 'registrarAdoptado',   component: RegistrarAdoptadoComponent },
+    { path: 'listaPersonas',   component: ListaPersonaComponent },
+    { path: 'registroPersonas',   component: RegistrarPersonaComponent },
+    { path: 'listaMedicamentos',   component: ListarMedicamentoComponent },
+    { path: 'registroMedicamentos',   component: RegistrarMedicamentoComponent },  
+    { path: 'RegistroVoluntariado',   component: RegistrarVoluntariadoComponent  },
+>>>>>>> ab2bfb46631789a1d7aa703ee476f17520295f70
     // { path: 'table-list',     component: TableListComponent },
     // { path: 'typography',     component: TypographyComponent },
     // { path: 'icons',          component: IconsComponent },

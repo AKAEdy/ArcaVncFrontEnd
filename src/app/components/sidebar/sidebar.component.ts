@@ -8,7 +8,22 @@ declare interface RouteInfo {
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
+
     { path: '/menu', title: 'Inicio',  icon: 'dashboard', class: '' },
+
+    { path: '/user-profile', title: 'User Profile',  icon:'person', class: '' },
+
+    { path: '/RegistroVoluntariado', title: 'Registrar Voluntariado',  icon:'person', class: '' },
+
+    { path: '/table-list', title: 'Table List',  icon:'content_paste', class: '' },
+
+    { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },
+
+    { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
+
+    { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
+
+    { path: '/registrofichaclinica', title: 'REGISTRO FICHA CLINICA',  icon:'location_on', class: '' },
     { path: '/listaAdoptado', title: 'Lista de Adoptados',  icon: 'dashboard', class: '' },
     { path: '/registrarAdoptado', title: 'Registro de Adoptados',  icon: 'dashboard', class: '' },
     { path: '/listaPersonas', title: 'Lista de Personas',  icon: 'dashboard', class: '' },
@@ -23,6 +38,13 @@ export const ROUTES: RouteInfo[] = [
     // { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
     // { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
     // { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
+
+
+    { path: '/registrofichaclinica', title: 'REGISTRO FICHA CLINICA',  icon:'location_on', class: '' }, // nueva
+    { path: '/tratamiento', title: 'REGISTRO TRATAMIENTO',  icon:'location_on', class: '' }, // map
+    { path: '/medicacion', title: 'REGISTRO MEDICACION',  icon:'library_books', class: '' }, //typography
+    
+
 ];
 
 @Component({
