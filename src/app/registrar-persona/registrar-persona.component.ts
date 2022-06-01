@@ -41,7 +41,7 @@ if(this.persona.cedula === undefined|| this.persona.nombre === undefined || this
     })
         })
       }
-      
+      location.reload();   
       
 }
 

@@ -44,6 +44,7 @@ export class RegistrarAdoptadoComponent implements OnInit {
           timer: 1500
         })
       })
+      location.reload();
     }
   
   }
