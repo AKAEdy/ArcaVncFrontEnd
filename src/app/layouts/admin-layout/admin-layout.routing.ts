@@ -67,16 +67,6 @@ export const AdminLayoutRoutes: Routes = [
 
     //RUTAS PARA LAS DIRECCIONES
 
-<<<<<<< HEAD
-    { path: 'menu', component: DashboardComponent },
-    { path: 'listaAdoptado', component: ListaAdoptadoComponent,canActivate: [ IsAuthenticatedGuard] },
-    { path: 'registrarAdoptado', component: RegistrarAdoptadoComponent,canActivate: [ IsAuthenticatedGuard] },
-    { path: 'listaPersonas', component: ListaPersonaComponent, canActivate: [ IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN','ROLE_DEFAULT_USER']} },
-    { path: 'registroPersonas', component: RegistrarPersonaComponent, canActivate: [IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']} },
-    { path: 'listaMedicamentos', component: ListarMedicamentoComponent , canActivate: [IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']} },
-    { path: 'registroMedicamentos', component: RegistrarMedicamentoComponent, canActivate: [IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN','ROLE_DEFAULT_USER']} },
-    { path: 'RegistroVoluntariado', component: RegistrarVoluntariadoComponent, canActivate: [IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN','ROLE_DEFAULT_USER']} },
-=======
     { path: 'menu',      component: DashboardComponent },
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'table-list',     component: TableListComponent },
@@ -86,16 +76,15 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
     { path: 'RegistroVoluntariado',   component: RegistrarVoluntariadoComponent  },
-    
+
     { path: 'registrofichaclinica',   component: FichaClinicaComponent  },
     { path: 'listaAdoptado',   component: ListaAdoptadoComponent },
     { path: 'registrarAdoptado',   component: RegistrarAdoptadoComponent },
     { path: 'listaPersonas',   component: ListaPersonaComponent },
     { path: 'registroPersonas',   component: RegistrarPersonaComponent },
     { path: 'listaMedicamentos',   component: ListarMedicamentoComponent },
-    { path: 'registroMedicamentos',   component: RegistrarMedicamentoComponent },  
+    { path: 'registroMedicamentos',   component: RegistrarMedicamentoComponent },
     { path: 'RegistroVoluntariado',   component: RegistrarVoluntariadoComponent  },
->>>>>>> ab2bfb46631789a1d7aa703ee476f17520295f70
     // { path: 'table-list',     component: TableListComponent },
     // { path: 'typography',     component: TypographyComponent },
     // { path: 'icons',          component: IconsComponent },
