@@ -7,20 +7,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class IsAuthenticatedGuard implements CanActivate {
+
   constructor(private authService: AuthService, private router: Router) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
     this.authService.refreshSession();
     return this.authService.isLoggedIn$.pipe(tap((isLogged) => {
-      if (!isLogged) {
-        this.authService.redirectUrl = state.url;
-        return this.router.navigateByUrl('/login');
-      }
-    }
-    )
-    );
+    !isLogged ? this.router.navigate(['/login'], { queryParams: { redirectUrl: state.url } }) : null;
+    }));
   }
 }

@@ -1,6 +1,7 @@
+import { tap } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthInterceptor } from 'app/interceptors/auth.interceptor';
 import { LoginUsuario } from 'app/models/login-usuario';
 import { AuthService } from 'app/service/auth.service';
 import { TokenService } from 'app/service/token.service';
@@ -13,22 +14,25 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  public showPassword: boolean = false;
 
   loginUsuario: LoginUsuario;
   username: string;
   password: string;
+  errorMessage: string;
 
   constructor(
-    private tokenService: TokenService,
-    private authService: AuthService,
-    private router: Router,
+    private authService: AuthService, private router: Router
   ) { }
 
   ngOnInit() {
   }
-
-  onLogin(): void {
-    this.loginUsuario = new LoginUsuario("admin", "admin");
+  public showPass(): void {
+    this.showPassword = !this.showPassword;
+  }
+  onLogin(f: NgForm): void {
+    this.errorMessage = '';
+    this.loginUsuario = f.value
     this.authService.login(this.loginUsuario).subscribe(
       data => {
         const Toast = Swal.mixin({
@@ -43,13 +47,15 @@ export class LoginComponent implements OnInit {
         })
       },
       err => {
-        console.warn(err);
-        
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Credenciales incorrectas!',
-        })
+        console.warn("code", err);
+        if (err.error.code === 401) {
+          this.errorMessage = err.error.message
+        }
+        else if (err.error.code === 400) {
+          if (err.error.errors.length === 1) {
+            this.errorMessage = err.error.errors
+          }
+        }
       }
     );
   }

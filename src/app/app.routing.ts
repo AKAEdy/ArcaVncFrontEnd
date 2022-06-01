@@ -7,6 +7,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './auth/login/login.component';
 import { RegistroComponent } from './auth/registro/registro.component';
 import { RoleGuard } from './guards/role.guard';
+import { IsAuthenticatedGuard } from './guards/is-authenticated.guard';
 
 const routes: Routes =[
   {
@@ -23,6 +24,7 @@ const routes: Routes =[
    {
     path: '',
     component: AdminLayoutComponent,
+    canActivate: [ IsAuthenticatedGuard],
     children: [{
       path: '',
       loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
@@ -33,7 +35,7 @@ const routes: Routes =[
     component: LoginComponent
   },
   {
-    path: 'registro',
+    path: 'signup',
     component: RegistroComponent
   },
   {

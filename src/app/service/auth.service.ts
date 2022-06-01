@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 import { LoginResponse } from 'app/models/login-response';
 import { LoginUsuario } from 'app/models/login-usuario';
 import { NuevoUsuario } from 'app/models/nuevo-usuario';
 import { Rol } from 'app/models/rol';
 import { environment } from 'environments/environment';
-import { BehaviorSubject, catchError, Observable, of, tap } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of, tap, throwError } from 'rxjs';
+import Swal from 'sweetalert2';
 import { TokenService } from './token.service';
 
 export interface ROL {
@@ -23,7 +24,7 @@ export class AuthService {
   redirectUrl = '';
 
 
-  constructor(private httpClient: HttpClient, private router: Router) { }
+  constructor(private httpClient: HttpClient, private router: Router,private activateRouted:ActivatedRoute) { }
 
   public login(loginUsuario: LoginUsuario): Observable<any> {
     return this.httpClient.post<LoginUsuario>(environment.AUTH_URL + 'login', loginUsuario).pipe(tap((loginResponse: LoginResponse) => {
@@ -32,18 +33,14 @@ export class AuthService {
       this._isLoggedIn$.next(true);
       console.log(this.redirectUrl);
 
-      if (this.redirectUrl) {
-        this.router.navigate([this.redirectUrl]);
-        this.redirectUrl = '';
-      } else {
-        this.router.navigate(['#']);
-      }
+      this.router.navigate([this.activateRouted.snapshot.queryParamMap.get('redirectUrl')|| '#']);
     }
-
-    ), catchError(() => {
-      console.log('BEEEP ERROR!')
-      return of([])
-    }));
+  ),catchError((e) => {
+          console.log('BEEEP ERROR!')
+          return throwError(e);
+        }
+      )
+    );
   }
 
   private getUser(token: string): any | null {
@@ -56,17 +53,15 @@ export class AuthService {
 
   ///////////////Session///////////////////
   isAuthenticated(): boolean {
-    if (this.AuthToken != null) {
-      return true;
-    }
-    return false;
+    return !! this.AuthToken;
   }
   logout() {
+    this.redirectUrl = '';
     localStorage.removeItem(environment.TOKEN_NAME);
     this.router.navigate(['login']);
   }
   refreshSession(): any {
-    this._isLoggedIn$.next(!!this.AuthToken);
+    this._isLoggedIn$.next(this.isAuthenticated());
   }
 
   //////Roles//////
