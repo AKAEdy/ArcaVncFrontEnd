@@ -3,7 +3,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AnimalesService } from 'app/api/animales.service';
 import { Animal } from 'app/model/animal';
 import { environment } from 'environments/environment';
-const basePath = environment.basePath + "/animales";
 
 import Swal from 'sweetalert2';
 
@@ -15,7 +14,7 @@ import Swal from 'sweetalert2';
 export class TableListComponent implements OnInit {
 
 
- 
+
   //VARIABLE DE animal
   public animales: Animal[] = [];
   pagina=0;
@@ -30,9 +29,9 @@ export class TableListComponent implements OnInit {
     //   this.totalPorPagina.toString(),
     //   this.busqueda
     // );
-  } 
+  }
   listarAnimales(){
-    
+
     this.animalesService.getAnimalsUsingGET(this.pagina,this.tamaño).subscribe(data =>{
        this.animales = data.content
        console.log ("listado", data)
@@ -51,7 +50,7 @@ export class TableListComponent implements OnInit {
     if(this.pagina < 0){
       this.pagina = 0;
     }
-    
+
     this.listarAnimales();
     console.log(this.pagina);
 

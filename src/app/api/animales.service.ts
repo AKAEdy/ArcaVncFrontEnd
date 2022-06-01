@@ -23,7 +23,6 @@ import { PageAnimal } from '../model/pageAnimal';
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
 import { environment } from 'environments/environment';
-const basePath = environment.basePath + "/animales";
 
 @Injectable()
 export class AnimalesService {
@@ -62,7 +61,7 @@ export class AnimalesService {
 
     /**
      * create
-     * 
+     *
      * @param body animal
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -114,7 +113,7 @@ export class AnimalesService {
 
     /**
      * delete
-     * 
+     *
      * @param id id
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -160,15 +159,15 @@ export class AnimalesService {
 
     /**
      * getAnimals
-     * 
+     *
      * @param page page
      * @param size size
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    
 
-    
+
+
     public getAnimalsUsingGET(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PageAnimal>;
     public getAnimalsUsingGET(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageAnimal>>;
     public getAnimalsUsingGET(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageAnimal>>;
@@ -223,7 +222,7 @@ export class AnimalesService {
 
     /**
      * getById
-     * 
+     *
      * @param id id
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -269,7 +268,7 @@ export class AnimalesService {
 
     /**
      * update
-     * 
+     *
      * @param body animal
      * @param id id
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
