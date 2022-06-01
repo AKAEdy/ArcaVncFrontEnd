@@ -15,6 +15,10 @@ import { ListaPersonaComponent } from 'app/lista-persona/lista-persona.component
 import { RegistrarPersonaComponent } from 'app/registrar-persona/registrar-persona.component';
 import { ListarMedicamentoComponent } from 'app/listar-medicamento/listar-medicamento.component';
 import { RegistrarMedicamentoComponent } from 'app/registrar-medicamento/registrar-medicamento.component';
+import { ListarCitasComponent } from 'app/listar-citas/listar-citas.component';
+import { RegistrarCitasComponent } from 'app/registrar-citas/registrar-citas.component';
+import { ListarVacunasComponent } from 'app/listar-vacunas/listar-vacunas.component';
+import { RegistrarVacunasComponent } from 'app/registrar-vacunas/registrar-vacunas.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -68,6 +72,11 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'registrarAdoptado',   component: RegistrarAdoptadoComponent },
     { path: 'listaPersonas',   component: ListaPersonaComponent },
     { path: 'registroPersonas',   component: RegistrarPersonaComponent },
+    { path: 'listaMedicamentos',   component: ListarMedicamentoComponent },
+    { path: 'listarCitas',   component: ListarCitasComponent },
+    { path: 'registrarCitas',   component: RegistrarCitasComponent },
+    { path: 'listarVacunas',   component: ListarVacunasComponent},
+    { path: 'registrarVacunas',   component: RegistrarVacunasComponent },
     { path: 'listaMedicamentos',   component: ListarMedicamentoComponent },
     { path: 'registroMedicamentos',   component: RegistrarMedicamentoComponent },  
     { path: 'RegistroVoluntariado',   component: RegistrarVoluntariadoComponent  },
