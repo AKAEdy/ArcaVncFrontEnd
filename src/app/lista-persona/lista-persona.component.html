@@ -31,111 +31,45 @@
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr *ngFor="let persona of personas">
                                         <td>
-                                            0107162497
+                                            {{persona.cedula}}
                                         </td>
                                         <td>
-                                            ESTEBAN
+                                            {{persona.nombre}}
                                         </td>
                                         <td>
-                                            LUCERO
+                                            {{persona.apellidos}}
                                         </td>
                                         <td>
-                                            christianolucero@gmail.com
+                                            {{persona.correo}}
                                         </td>
                                         <td>
-                                            0968518495
+                                            {{persona.telefono}}
                                         </td>
                                         <td>
-                                            NULTI
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            0107162499
-                                        </td>
-                                        <td>
-                                            AMELIA
-                                        </td>
-                                        <td>
-                                            AUQUILLA
-                                        </td>
-                                        <td>
-                                            ameliae@gmail.com
-                                        </td>
-                                        <td>
-                                            0968518420
-                                        </td>
-                                        <td>
-                                            NULTI
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            0107173497
-                                        </td>
-                                        <td>
-                                            ANTHONY
-                                        </td>
-                                        <td>
-                                            LUCERO
-                                        </td>
-                                        <td>
-                                            alucero@gmail.com
-                                        </td>
-                                        <td>
-                                            0964418495
-                                        </td>
-                                        <td>
-                                            NULTI
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            0107162433
-                                        </td>
-                                        <td>
-                                            ADAMARIS
-                                        </td>
-                                        <td>
-                                            LUCERO
-                                        </td>
-                                        <td>
-                                            adamarisvale11@gmail.com
-                                        </td>
-                                        <td>
-                                            0968518455
-                                        </td>
-                                        <td>
-                                            NULTI
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            0107162455
-                                        </td>
-                                        <td>
-                                            SCARLETT
-                                        </td>
-                                        <td>
-                                            MARCILLO
-                                        </td>
-                                        <td>
-                                            smarcillo@gmail.com
-                                        </td>
-                                        <td>
-                                            0968518145
-                                        </td>
-                                        <td>
-                                            NULTI
+                                            {{persona.direccion}}
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
+                    
+                    
+                    <div class="container">
+                       
+                        <div class="pagination p11">
+                          <ul>
+                            <button (click)="previous()"> < </button>
+                         
+                            <button (click)="next()"> > </button>
+                          </ul>
+                        </div>  
+                                
+                      </div>
+                       
+
                 </div>
             </div>
         </div>

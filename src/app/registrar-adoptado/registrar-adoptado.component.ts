@@ -31,7 +31,7 @@ export class RegistrarAdoptadoComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Llenne todos los campos!',
+        text: 'Llene todos los campos!',
       })
     } else{
       this.adopcionesService.crearAdocionUsingPOST(this.adoptante.id,this.animal.id,this.adopcion.descripcion, this.adopcion.fechaAdopcion).subscribe(data =>{
@@ -44,6 +44,7 @@ export class RegistrarAdoptadoComponent implements OnInit {
           timer: 1500
         })
       })
+      location.reload();
     }
   
   }

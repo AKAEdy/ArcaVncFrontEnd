@@ -1,1 +1,6 @@
-.noTiene{display:none}
+#myInput{
+    float: right;
+}
+.required{
+    color: rgb(219, 219, 219);
+}

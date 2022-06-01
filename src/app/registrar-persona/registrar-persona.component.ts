@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PersonasService } from 'app/api/personas.service';
+import { Persona } from 'app/model/persona';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'registrar-persona',
@@ -7,9 +10,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrarPersonaComponent implements OnInit {
 
-  constructor() { }
+  persona: Persona = {}
+  constructor(private personaService: PersonasService) { }
 
   ngOnInit(): void {
   }
+
+  createPersonas(){
+    console.log("CEDULA"+ this.persona.cedula, this.persona.nombre ,this.persona.apellidos ,this.persona.correo , this.persona.telefono ,this.persona.celular ,
+    this.persona.direccion );
+    
+if(this.persona.cedula === undefined|| this.persona.nombre === undefined || this.persona.apellidos === undefined 
+  || this.persona.correo === undefined || this.persona.telefono === undefined ||this.persona.celular === undefined 
+  || this.persona.direccion === undefined || this.persona.cedula === "" || this.persona.nombre === "" || 
+  this.persona.apellidos === "" || this.persona.correo === "" || this.persona.telefono === "" ||this.persona.celular === ""
+  || this.persona.direccion === ""){
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Ingrese todos los datos!',
+    })
+}else{
+  this.personaService.createUsingPOST2(this.persona).subscribe(data =>{
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Persona registrada exitosamente',
+      showConfirmButton: false,
+      timer: 1500
+    })
+        })
+      }
+      location.reload();   
+      
+}
+
+    
 
 }
