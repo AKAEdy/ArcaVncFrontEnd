@@ -16,6 +16,10 @@ import { ListaPersonaComponent } from 'app/lista-persona/lista-persona.component
 import { RegistrarPersonaComponent } from 'app/registrar-persona/registrar-persona.component';
 import { ListarMedicamentoComponent } from 'app/listar-medicamento/listar-medicamento.component';
 import { RegistrarMedicamentoComponent } from 'app/registrar-medicamento/registrar-medicamento.component';
+import { ListarCitasComponent } from 'app/listar-citas/listar-citas.component';
+import { RegistrarCitasComponent } from 'app/registrar-citas/registrar-citas.component';
+import { ListarVacunasComponent } from 'app/listar-vacunas/listar-vacunas.component';
+import { RegistrarVacunasComponent } from 'app/registrar-vacunas/registrar-vacunas.component';
 
 import { RoleGuard } from 'app/guards/role.guard';
 import { IsAuthenticatedGuard } from 'app/guards/is-authenticated.guard';
@@ -66,25 +70,19 @@ export const AdminLayoutRoutes: Routes = [
 
 
     //RUTAS PARA LAS DIRECCIONES
-
-    { path: 'menu',      component: DashboardComponent ,canActivate:[IsAuthenticatedGuard]},
-    { path: 'user-profile',   component: UserProfileComponent,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']} },
-    { path: 'table-list',     component: TableListComponent,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']} },
-    { path: 'regist',     component: TypographyComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}},
-    { path: 'icons',          component: IconsComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}},
-    { path: 'tratamiento',           component: MapsComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}}, // map
-    { path: 'notifications',  component: NotificationsComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}},
-    { path: 'upgrade',        component: UpgradeComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}},
-    { path: 'RegistroVoluntariado',   component: RegistrarVoluntariadoComponent,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}  },
-
-    { path: 'registrofichaclinica',   component: FichaClinicaComponent,canActivate:[IsAuthenticatedGuard] ,data:{roles:['ROLE_ADMIN']} },
-    { path: 'listaAdoptado',   component: ListaAdoptadoComponent,canActivate:[IsAuthenticatedGuard] ,data:{roles:['ROLE_ADMIN']}},
-    { path: 'registrarAdoptado',   component: RegistrarAdoptadoComponent,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']} },
-    { path: 'listaPersonas',   component: ListaPersonaComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}},
-    { path: 'registroPersonas',   component: RegistrarPersonaComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}},
-    { path: 'listaMedicamentos',   component: ListarMedicamentoComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}},
-    { path: 'registroMedicamentos',   component: RegistrarMedicamentoComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}},
-    { path: 'RegistroVoluntariado',   component: RegistrarVoluntariadoComponent  ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']} },
+    { path: 'menu',      component: DashboardComponent },
+    { path: 'listaAdoptado',   component: ListaAdoptadoComponent },
+    { path: 'registrarAdoptado',   component: RegistrarAdoptadoComponent },
+    { path: 'listaPersonas',   component: ListaPersonaComponent },
+    { path: 'registroPersonas',   component: RegistrarPersonaComponent },
+    { path: 'listaMedicamentos',   component: ListarMedicamentoComponent },
+    { path: 'listarCitas',   component: ListarCitasComponent },
+    { path: 'registrarCitas',   component: RegistrarCitasComponent },
+    { path: 'listarVacunas',   component: ListarVacunasComponent},
+    { path: 'registrarVacunas',   component: RegistrarVacunasComponent },
+    { path: 'listaMedicamentos',   component: ListarMedicamentoComponent },
+    { path: 'registroMedicamentos',   component: RegistrarMedicamentoComponent },  
+    { path: 'RegistroVoluntariado',   component: RegistrarVoluntariadoComponent  },
     // { path: 'table-list',     component: TableListComponent },
     // { path: 'typography',     component: TypographyComponent },
     // { path: 'icons',          component: IconsComponent },
