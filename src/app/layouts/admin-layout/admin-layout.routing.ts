@@ -70,7 +70,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'menu',      component: DashboardComponent ,canActivate:[IsAuthenticatedGuard]},
     { path: 'user-profile',   component: UserProfileComponent,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']} },
     { path: 'table-list',     component: TableListComponent,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']} },
-    { path: 'regist',     component: TypographyComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}},
+    { path: 'medicacion',     component: TypographyComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}},
     { path: 'icons',          component: IconsComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}},
     { path: 'tratamiento',           component: MapsComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}}, // map
     { path: 'notifications',  component: NotificationsComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}},
