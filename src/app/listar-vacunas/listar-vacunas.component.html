@@ -17,89 +17,24 @@
                                     </th>
                                     <th>
                                         TIPO DE VACUNA
-                                    </th>
-                                    <th>
-                                        FECHA DE LA VACUNA
-                                    </th>
+                                    </th>                                   
                                     <th>
                                         DESCRIPCION
                                     </th>
 
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr *ngFor="let vacuna of vacunas">
                                         <td>
-                                            distemper
+                                            {{vacuna.nombre}}
                                         </td>
                                         <td>
-                                            VR, VVM
+                                            {{vacuna.tipo}}
                                         </td>
                                         <td>
-                                            01/06/2022
-                                        </td>
-                                        <td>
-                                            CADA 3 AÑOS
+                                           {{vacuna.descripcion}}
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            distemper
-                                        </td>
-                                        <td>
-                                            VR, VVM
-                                        </td>
-                                        <td>
-                                            01/06/2022
-                                        </td>
-                                        <td>
-                                            CADA 3 AÑOS
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            distemper
-                                        </td>
-                                        <td>
-                                            VR, VVM
-                                        </td>
-                                        <td>
-                                            01/06/2022
-                                        </td>
-                                        <td>
-                                            CADA 3 AÑOS
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            distemper
-                                        </td>
-                                        <td>
-                                            VR, VVM
-                                        </td>
-                                        <td>
-                                            01/06/2022
-                                        </td>
-                                        <td>
-                                            CADA 3 AÑOS
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            distemper
-                                        </td>
-                                        <td>
-                                            VR, VVM
-                                        </td>
-                                        <td>
-                                            01/06/2022
-                                        </td>
-                                        <td>
-                                            CADA 3 AÑOS
-                                        </td>
-                                    </tr>
-
                                 </tbody>
                             </table>
                         </div>

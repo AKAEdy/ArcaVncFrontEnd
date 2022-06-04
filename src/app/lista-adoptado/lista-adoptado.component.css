@@ -1,6 +1,8 @@
 #myInput{
     float: right;
+    width: 200px;
+    color: rgb(255, 255, 255);
 }
 .required{
-    color: rgb(219, 219, 219);
+    float: right;
 }

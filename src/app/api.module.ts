@@ -6,8 +6,13 @@ import { HttpClient } from '@angular/common/http';
 import { AdopcionControllerService } from './api/adopcionController.service';
 import { AdoptanteControllerService } from './api/adoptanteController.service';
 import { AnimalesService } from './api/animales.service';
+import { AuthControllerService } from './api/authController.service';
+import { CitasService } from './api/citas.service';
 import { FichasClnicasService } from './api/fichasClnicas.service';
 import { PersonasService } from './api/personas.service';
+import { ServiciosService } from './api/servicios.service';
+import { UserControllerService } from './api/userController.service';
+import { VacunasService } from './api/vacunas.service';
 import { VeterinariosService } from './api/veterinarios.service';
 
 @NgModule({
@@ -18,12 +23,17 @@ import { VeterinariosService } from './api/veterinarios.service';
     AdopcionControllerService,
     AdoptanteControllerService,
     AnimalesService,
+    AuthControllerService,
+    CitasService,
     FichasClnicasService,
     PersonasService,
+    ServiciosService,
+    UserControllerService,
+    VacunasService,
     VeterinariosService ]
 })
 export class ApiModule {
-    public static forRoot(configurationFactory: () => Configuration){
+    public static forRoot(configurationFactory: () => Configuration) {
         return {
             ngModule: ApiModule,
             providers: [ { provide: Configuration, useFactory: configurationFactory } ]

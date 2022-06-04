@@ -21,7 +21,7 @@ export class ListaPersonaComponent implements OnInit {
 
   listarAllPersonas(){
     
-    this.personaService.getPersonasUsingGET(this.pagina,this.tamaño).subscribe(data =>{
+    this.personaService.getPersonasUsingGET1(this.pagina,this.tamaño).subscribe(data =>{
        this.personas = data.content
     })
   }
@@ -41,7 +41,7 @@ export class ListaPersonaComponent implements OnInit {
     
     this.listarAllPersonas();
     console.log(this.pagina);
-
+ 
   }
 
 }

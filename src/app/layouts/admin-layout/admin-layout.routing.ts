@@ -76,7 +76,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'listaPersonas',   component: ListaPersonaComponent },
     { path: 'registroPersonas',   component: RegistrarPersonaComponent },
     { path: 'listaMedicamentos',   component: ListarMedicamentoComponent },
-    { path: 'listarCitas',   component: ListarCitasComponent },
+    { path: 'listaCitas',   component: ListarCitasComponent },
     { path: 'registrarCitas',   component: RegistrarCitasComponent },
     { path: 'listarVacunas',   component: ListarVacunasComponent},
     { path: 'registrarVacunas',   component: RegistrarVacunasComponent },

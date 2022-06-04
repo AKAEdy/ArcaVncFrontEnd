@@ -26,7 +26,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class AdoptanteControllerService {
 
-    protected basePath = '//localhost:9898/';
+    protected basePath = '//localhost:9898/api';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -101,7 +101,7 @@ export class AdoptanteControllerService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('put',`${this.basePath}/api/adoptantes/${encodeURIComponent(String(idAdoptante))}`,
+        return this.httpClient.request<any>('put',`${this.basePath}/adoptantes/${encodeURIComponent(String(idAdoptante))}`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -153,7 +153,7 @@ export class AdoptanteControllerService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/api/adoptantes/`,
+        return this.httpClient.request<any>('post',`${this.basePath}/adoptantes/`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -200,7 +200,7 @@ export class AdoptanteControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('delete',`${this.basePath}/api/adoptantes/${encodeURIComponent(String(idAdoptante))}`,
+        return this.httpClient.request<any>('delete',`${this.basePath}/adoptantes/${encodeURIComponent(String(idAdoptante))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -246,7 +246,7 @@ export class AdoptanteControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/api/adoptantes/adoptanteci/${encodeURIComponent(String(cedula))}`,
+        return this.httpClient.request<any>('get',`${this.basePath}/adoptantes/adoptanteci/${encodeURIComponent(String(cedula))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -292,7 +292,7 @@ export class AdoptanteControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/api/adoptantes/${encodeURIComponent(String(idAdoptante))}`,
+        return this.httpClient.request<any>('get',`${this.basePath}/adoptantes/${encodeURIComponent(String(idAdoptante))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -333,7 +333,7 @@ export class AdoptanteControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/api/adoptantes/`,
+        return this.httpClient.request<any>('get',`${this.basePath}/adoptantes/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

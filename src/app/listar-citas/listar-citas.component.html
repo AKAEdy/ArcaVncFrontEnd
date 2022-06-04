@@ -17,7 +17,7 @@
                                         FECHA 
                                     </th>
                                     <th>
-                                        HORA 
+                                        CLIENTE
                                     </th>
                                     <th>
                                         MOTIVO_CITA
@@ -28,79 +28,20 @@
                                    
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr *ngFor="let cita of citas">
                                         <td>
-                                           01/06/2022    
+                                            {{cita.fechaCita}}  
                                         </td>
                                         <td>
-                                            09:00 
+                                            {{cita.nombreCliente}}
                                         </td>
                                         <td>
-                                           GRIPE
+                                           {{cita.motivo}}
                                         </td>
                                         <td>
-                                           URGENCIA
+                                           {{cita.estado}}
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            01/06/2022    
-                                         </td>
-                                         <td>
-                                             09:00 
-                                         </td>
-                                         <td>
-                                            GRIPE
-                                         </td>
-                                         <td>
-                                            URGENCIA
-                                         </td>
-                                       
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            01/06/2022    
-                                         </td>
-                                         <td>
-                                             09:00 
-                                         </td>
-                                         <td>
-                                            GRIPE
-                                         </td>
-                                         <td>
-                                            URGENCIA
-                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            01/06/2022    
-                                         </td>
-                                         <td>
-                                             09:00 
-                                         </td>
-                                         <td>
-                                            GRIPE
-                                         </td>
-                                         <td>
-                                            URGENCIA
-                                         </td>
-                                       
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            01/06/2022    
-                                         </td>
-                                         <td>
-                                             09:00 
-                                         </td>
-                                         <td>
-                                            GRIPE
-                                         </td>
-                                         <td>
-                                            URGENCIA
-                                         </td>
-                                        </tr>
-
                                 </tbody>
                             </table>
                         </div>

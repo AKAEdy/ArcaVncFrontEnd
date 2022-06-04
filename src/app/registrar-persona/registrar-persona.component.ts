@@ -16,10 +16,7 @@ export class RegistrarPersonaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createPersonas(){
-    console.log("CEDULA"+ this.persona.cedula, this.persona.nombre ,this.persona.apellidos ,this.persona.correo , this.persona.telefono ,this.persona.celular ,
-    this.persona.direccion );
-    
+  createPersonas(){    
 if(this.persona.cedula === undefined|| this.persona.nombre === undefined || this.persona.apellidos === undefined 
   || this.persona.correo === undefined || this.persona.telefono === undefined ||this.persona.celular === undefined 
   || this.persona.direccion === undefined || this.persona.cedula === "" || this.persona.nombre === "" || 
@@ -40,8 +37,9 @@ if(this.persona.cedula === undefined|| this.persona.nombre === undefined || this
       timer: 1500
     })
         })
+        location.reload();  
       }
-      location.reload();   
+       
       
 }
 
