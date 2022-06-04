@@ -17,13 +17,16 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
+import { Cita } from '../model/cita';
+import { CitaDto } from '../model/citaDto';
+import { DetalleCita } from '../model/detalleCita';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
 
 
 @Injectable()
-export class AdopcionControllerService {
+export class CitasService {
 
     protected basePath = '//localhost:9898/api';
     public defaultHeaders = new HttpHeaders();
@@ -55,36 +58,78 @@ export class AdopcionControllerService {
 
 
     /**
-     * actualizarAdocion
+     * crearCita
      * 
-     * @param idAdopcion idAdopcion
-     * @param idAnimal idAnimal
-     * @param descripcion 
-     * @param fechaAdopcion 
+     * @param body citaDto
+     * @param idVeterinario idVeterinario
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public actualizarAdocionUsingPUT(idAdopcion: number, idAnimal: number, descripcion?: string, fechaAdopcion?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public actualizarAdocionUsingPUT(idAdopcion: number, idAnimal: number, descripcion?: string, fechaAdopcion?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public actualizarAdocionUsingPUT(idAdopcion: number, idAnimal: number, descripcion?: string, fechaAdopcion?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public actualizarAdocionUsingPUT(idAdopcion: number, idAnimal: number, descripcion?: string, fechaAdopcion?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public crearCitaUsingPOST(body: CitaDto, idVeterinario: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public crearCitaUsingPOST(body: CitaDto, idVeterinario: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public crearCitaUsingPOST(body: CitaDto, idVeterinario: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public crearCitaUsingPOST(body: CitaDto, idVeterinario: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        if (idAdopcion === null || idAdopcion === undefined) {
-            throw new Error('Required parameter idAdopcion was null or undefined when calling actualizarAdocionUsingPUT.');
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling crearCitaUsingPOST.');
         }
 
-        if (idAnimal === null || idAnimal === undefined) {
-            throw new Error('Required parameter idAnimal was null or undefined when calling actualizarAdocionUsingPUT.');
+        if (idVeterinario === null || idVeterinario === undefined) {
+            throw new Error('Required parameter idVeterinario was null or undefined when calling crearCitaUsingPOST.');
         }
 
+        let headers = this.defaultHeaders;
+
+        // authentication (JWT) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.request<any>('post',`${this.basePath}/citas/${encodeURIComponent(String(idVeterinario))}`,
+            {
+                body: body,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * eliminarCita
+     * 
+     * @param idCita idCita
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public eliminarCitaUsingDELETE(idCita?: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public eliminarCitaUsingDELETE(idCita?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public eliminarCitaUsingDELETE(idCita?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public eliminarCitaUsingDELETE(idCita?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (descripcion !== undefined && descripcion !== null) {
-            queryParameters = queryParameters.set('descripcion', <any>descripcion);
-        }
-        if (fechaAdopcion !== undefined && fechaAdopcion !== null) {
-            queryParameters = queryParameters.set('fechaAdopcion', <any>fechaAdopcion);
+        if (idCita !== undefined && idCita !== null) {
+            queryParameters = queryParameters.set('idCita', <any>idCita);
         }
 
         let headers = this.defaultHeaders;
@@ -107,7 +152,7 @@ export class AdopcionControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('put',`${this.basePath}/adopciones/${encodeURIComponent(String(idAdopcion))}/${encodeURIComponent(String(idAnimal))}`,
+        return this.httpClient.request<any>('delete',`${this.basePath}/citas/${encodeURIComponent(String(idCita))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -119,37 +164,15 @@ export class AdopcionControllerService {
     }
 
     /**
-     * crearAdocion
+     * getAllCitas
      * 
-     * @param idAdoptante idAdoptante
-     * @param idAnimal idAnimal
-     * @param descripcion 
-     * @param fechaAdopcion 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public crearAdocionUsingPOST(idAdoptante: number, idAnimal: number, descripcion?: string, fechaAdopcion?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public crearAdocionUsingPOST(idAdoptante: number, idAnimal: number, descripcion?: string, fechaAdopcion?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public crearAdocionUsingPOST(idAdoptante: number, idAnimal: number, descripcion?: string, fechaAdopcion?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public crearAdocionUsingPOST(idAdoptante: number, idAnimal: number, descripcion?: string, fechaAdopcion?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (idAdoptante === null || idAdoptante === undefined) {
-            throw new Error('Required parameter idAdoptante was null or undefined when calling crearAdocionUsingPOST.');
-        }
-
-        if (idAnimal === null || idAnimal === undefined) {
-            throw new Error('Required parameter idAnimal was null or undefined when calling crearAdocionUsingPOST.');
-        }
-
-
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (descripcion !== undefined && descripcion !== null) {
-            queryParameters = queryParameters.set('descripcion', <any>descripcion);
-        }
-        if (fechaAdopcion !== undefined && fechaAdopcion !== null) {
-            queryParameters = queryParameters.set('fechaAdopcion', <any>fechaAdopcion);
-        }
+    public getAllCitasUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<Cita>>;
+    public getAllCitasUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Cita>>>;
+    public getAllCitasUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Cita>>>;
+    public getAllCitasUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -171,54 +194,7 @@ export class AdopcionControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('post',`${this.basePath}/adopciones/${encodeURIComponent(String(idAdoptante))}/${encodeURIComponent(String(idAnimal))}`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * eliminarAdopcion
-     * 
-     * @param idAdopcion idAdopcion
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public eliminarAdopcionUsingDELETE(idAdopcion: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public eliminarAdopcionUsingDELETE(idAdopcion: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public eliminarAdopcionUsingDELETE(idAdopcion: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public eliminarAdopcionUsingDELETE(idAdopcion: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (idAdopcion === null || idAdopcion === undefined) {
-            throw new Error('Required parameter idAdopcion was null or undefined when calling eliminarAdopcionUsingDELETE.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // authentication (JWT) required
-        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
-            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
-        }
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            '*/*'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<any>('delete',`${this.basePath}/adopciones/${encodeURIComponent(String(idAdopcion))}`,
+        return this.httpClient.request<Array<Cita>>('get',`${this.basePath}/citas/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -229,19 +205,19 @@ export class AdopcionControllerService {
     }
 
     /**
-     * etAdopcionPorId
+     * getAllDetallesCita
      * 
-     * @param id id
+     * @param idCita idCita
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public etAdopcionPorIdUsingGET(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public etAdopcionPorIdUsingGET(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public etAdopcionPorIdUsingGET(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public etAdopcionPorIdUsingGET(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getAllDetallesCitaUsingGET(idCita: number, observe?: 'body', reportProgress?: boolean): Observable<Array<DetalleCita>>;
+    public getAllDetallesCitaUsingGET(idCita: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<DetalleCita>>>;
+    public getAllDetallesCitaUsingGET(idCita: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<DetalleCita>>>;
+    public getAllDetallesCitaUsingGET(idCita: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling etAdopcionPorIdUsingGET.');
+        if (idCita === null || idCita === undefined) {
+            throw new Error('Required parameter idCita was null or undefined when calling getAllDetallesCitaUsingGET.');
         }
 
         let headers = this.defaultHeaders;
@@ -264,7 +240,7 @@ export class AdopcionControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/adopciones/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<Array<DetalleCita>>('get',`${this.basePath}/citas/detallesCita/${encodeURIComponent(String(idCita))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -275,19 +251,19 @@ export class AdopcionControllerService {
     }
 
     /**
-     * getAdopcionesPorCedulaAdoptante
+     * getCitaPorId
      * 
-     * @param cedula cedula
+     * @param idCita idCita
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAdopcionesPorCedulaAdoptanteUsingGET(cedula: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public getAdopcionesPorCedulaAdoptanteUsingGET(cedula: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public getAdopcionesPorCedulaAdoptanteUsingGET(cedula: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public getAdopcionesPorCedulaAdoptanteUsingGET(cedula: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCitaPorIdUsingGET(idCita: number, observe?: 'body', reportProgress?: boolean): Observable<Cita>;
+    public getCitaPorIdUsingGET(idCita: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Cita>>;
+    public getCitaPorIdUsingGET(idCita: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Cita>>;
+    public getCitaPorIdUsingGET(idCita: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        if (cedula === null || cedula === undefined) {
-            throw new Error('Required parameter cedula was null or undefined when calling getAdopcionesPorCedulaAdoptanteUsingGET.');
+        if (idCita === null || idCita === undefined) {
+            throw new Error('Required parameter idCita was null or undefined when calling getCitaPorIdUsingGET.');
         }
 
         let headers = this.defaultHeaders;
@@ -310,7 +286,7 @@ export class AdopcionControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/adopciones/allbyci/${encodeURIComponent(String(cedula))}`,
+        return this.httpClient.request<Cita>('get',`${this.basePath}/citas/${encodeURIComponent(String(idCita))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -321,19 +297,19 @@ export class AdopcionControllerService {
     }
 
     /**
-     * getAdopcionesPorIdAdoptante
+     * getCitasPorFechaAgenda
      * 
-     * @param id id
+     * @param fechaAgenda fechaAgenda
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAdopcionesPorIdAdoptanteUsingGET(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public getAdopcionesPorIdAdoptanteUsingGET(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public getAdopcionesPorIdAdoptanteUsingGET(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public getAdopcionesPorIdAdoptanteUsingGET(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCitasPorFechaAgendaUsingGET(fechaAgenda: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getCitasPorFechaAgendaUsingGET(fechaAgenda: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getCitasPorFechaAgendaUsingGET(fechaAgenda: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getCitasPorFechaAgendaUsingGET(fechaAgenda: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling getAdopcionesPorIdAdoptanteUsingGET.');
+        if (fechaAgenda === null || fechaAgenda === undefined) {
+            throw new Error('Required parameter fechaAgenda was null or undefined when calling getCitasPorFechaAgendaUsingGET.');
         }
 
         let headers = this.defaultHeaders;
@@ -356,7 +332,7 @@ export class AdopcionControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/adopciones/allbyid/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<any>('get',`${this.basePath}/citas/fecha/${encodeURIComponent(String(fechaAgenda))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -367,15 +343,20 @@ export class AdopcionControllerService {
     }
 
     /**
-     * getAllAdopciones
+     * getCitasPorVeterinario
      * 
+     * @param idVeterinario idVeterinario
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAllAdopcionesUsingGET(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public getAllAdopcionesUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public getAllAdopcionesUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public getAllAdopcionesUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCitasPorVeterinarioUsingGET(idVeterinario: number, observe?: 'body', reportProgress?: boolean): Observable<Array<Cita>>;
+    public getCitasPorVeterinarioUsingGET(idVeterinario: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Cita>>>;
+    public getCitasPorVeterinarioUsingGET(idVeterinario: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Cita>>>;
+    public getCitasPorVeterinarioUsingGET(idVeterinario: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (idVeterinario === null || idVeterinario === undefined) {
+            throw new Error('Required parameter idVeterinario was null or undefined when calling getCitasPorVeterinarioUsingGET.');
+        }
 
         let headers = this.defaultHeaders;
 
@@ -397,8 +378,70 @@ export class AdopcionControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/adopciones/`,
+        return this.httpClient.request<Array<Cita>>('get',`${this.basePath}/citas/veterinario/${encodeURIComponent(String(idVeterinario))}`,
             {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * modificarCita
+     * 
+     * @param body citaDto
+     * @param idCita idCita
+     * @param idVeterinario idVeterinario
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public modificarCitaUsingPUT(body: CitaDto, idCita: number, idVeterinario: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public modificarCitaUsingPUT(body: CitaDto, idCita: number, idVeterinario: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public modificarCitaUsingPUT(body: CitaDto, idCita: number, idVeterinario: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public modificarCitaUsingPUT(body: CitaDto, idCita: number, idVeterinario: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling modificarCitaUsingPUT.');
+        }
+
+        if (idCita === null || idCita === undefined) {
+            throw new Error('Required parameter idCita was null or undefined when calling modificarCitaUsingPUT.');
+        }
+
+        if (idVeterinario === null || idVeterinario === undefined) {
+            throw new Error('Required parameter idVeterinario was null or undefined when calling modificarCitaUsingPUT.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (JWT) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.request<any>('put',`${this.basePath}/citas/${encodeURIComponent(String(idCita))}/${encodeURIComponent(String(idVeterinario))}`,
+            {
+                body: body,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

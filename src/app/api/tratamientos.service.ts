@@ -17,15 +17,15 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { PageVeterinario } from '../model/pageVeterinario';
-import { Veterinario } from '../model/veterinario';
+import { PageTratamiento } from '../model/pageTratamiento';
+import { Tratamiento } from '../model/tratamiento';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
 
 
 @Injectable()
-export class VeterinariosService {
+export class TratamientosService {
 
     protected basePath = '//localhost:9898/api';
     public defaultHeaders = new HttpHeaders();
@@ -59,17 +59,17 @@ export class VeterinariosService {
     /**
      * create
      * 
-     * @param body veterinario
+     * @param body tratamiento
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createUsingPOST6(body: Veterinario, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createUsingPOST6(body: Veterinario, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createUsingPOST6(body: Veterinario, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createUsingPOST6(body: Veterinario, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createUsingPOST4(body: Tratamiento, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createUsingPOST4(body: Tratamiento, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createUsingPOST4(body: Tratamiento, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createUsingPOST4(body: Tratamiento, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling createUsingPOST6.');
+            throw new Error('Required parameter body was null or undefined when calling createUsingPOST4.');
         }
 
         let headers = this.defaultHeaders;
@@ -97,7 +97,7 @@ export class VeterinariosService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/veterinario/`,
+        return this.httpClient.request<any>('post',`${this.basePath}/tratamientos/`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -115,13 +115,13 @@ export class VeterinariosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteUsingDELETE6(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteUsingDELETE6(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteUsingDELETE6(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteUsingDELETE6(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteUsingDELETE4(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteUsingDELETE4(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteUsingDELETE4(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteUsingDELETE4(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling deleteUsingDELETE6.');
+            throw new Error('Required parameter id was null or undefined when calling deleteUsingDELETE4.');
         }
 
         let headers = this.defaultHeaders;
@@ -144,7 +144,7 @@ export class VeterinariosService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('delete',`${this.basePath}/veterinario/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<any>('delete',`${this.basePath}/tratamientos/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -161,13 +161,13 @@ export class VeterinariosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getByIdUsingGET6(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public getByIdUsingGET6(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public getByIdUsingGET6(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public getByIdUsingGET6(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getByIdUsingGET4(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getByIdUsingGET4(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getByIdUsingGET4(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getByIdUsingGET4(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling getByIdUsingGET6.');
+            throw new Error('Required parameter id was null or undefined when calling getByIdUsingGET4.');
         }
 
         let headers = this.defaultHeaders;
@@ -190,7 +190,7 @@ export class VeterinariosService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/veterinario/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<any>('get',`${this.basePath}/tratamientos/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -201,24 +201,65 @@ export class VeterinariosService {
     }
 
     /**
-     * getVeterinarios
+     * getTratamientos
+     * 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getTratamientosUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<Tratamiento>>;
+    public getTratamientosUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Tratamiento>>>;
+    public getTratamientosUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Tratamiento>>>;
+    public getTratamientosUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // authentication (JWT) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<Array<Tratamiento>>('get',`${this.basePath}/tratamientos/`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * getTratamientos
      * 
      * @param page page
      * @param size size
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getVeterinariosUsingGET(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PageVeterinario>;
-    public getVeterinariosUsingGET(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageVeterinario>>;
-    public getVeterinariosUsingGET(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageVeterinario>>;
-    public getVeterinariosUsingGET(page: number, size: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getTratamientosUsingGET1(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PageTratamiento>;
+    public getTratamientosUsingGET1(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageTratamiento>>;
+    public getTratamientosUsingGET1(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageTratamiento>>;
+    public getTratamientosUsingGET1(page: number, size: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (page === null || page === undefined) {
-            throw new Error('Required parameter page was null or undefined when calling getVeterinariosUsingGET.');
+            throw new Error('Required parameter page was null or undefined when calling getTratamientosUsingGET1.');
         }
 
         if (size === null || size === undefined) {
-            throw new Error('Required parameter size was null or undefined when calling getVeterinariosUsingGET.');
+            throw new Error('Required parameter size was null or undefined when calling getTratamientosUsingGET1.');
         }
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
@@ -249,7 +290,7 @@ export class VeterinariosService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<PageVeterinario>('get',`${this.basePath}/veterinario/page`,
+        return this.httpClient.request<PageTratamiento>('get',`${this.basePath}/tratamientos/page`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -263,22 +304,22 @@ export class VeterinariosService {
     /**
      * update
      * 
-     * @param body veterinario
+     * @param body tratamiento
      * @param id id
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateUsingPUT6(body: Veterinario, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateUsingPUT6(body: Veterinario, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateUsingPUT6(body: Veterinario, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateUsingPUT6(body: Veterinario, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateUsingPUT4(body: Tratamiento, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateUsingPUT4(body: Tratamiento, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateUsingPUT4(body: Tratamiento, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateUsingPUT4(body: Tratamiento, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling updateUsingPUT6.');
+            throw new Error('Required parameter body was null or undefined when calling updateUsingPUT4.');
         }
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling updateUsingPUT6.');
+            throw new Error('Required parameter id was null or undefined when calling updateUsingPUT4.');
         }
 
         let headers = this.defaultHeaders;
@@ -306,7 +347,7 @@ export class VeterinariosService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('put',`${this.basePath}/veterinario/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<any>('put',`${this.basePath}/tratamientos/${encodeURIComponent(String(id))}`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,

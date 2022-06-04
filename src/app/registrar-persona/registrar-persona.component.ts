@@ -31,7 +31,7 @@ if(this.persona.cedula === undefined|| this.persona.nombre === undefined || this
       text: 'Ingrese todos los datos!',
     })
 }else{
-  this.personaService.createUsingPOST2(this.persona).subscribe(data =>{
+  this.personaService.createUsingPOST3(this.persona).subscribe(data =>{
     Swal.fire({
       position: 'center',
       icon: 'success',

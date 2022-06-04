@@ -15,26 +15,23 @@ import { HttpClient, HttpHeaders, HttpParams,
          HttpResponse, HttpEvent }                           from '@angular/common/http';
 import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
-import { map, Observable, tap }                                        from 'rxjs';
+import { Observable }                                        from 'rxjs';
 
 import { Animal } from '../model/animal';
 import { PageAnimal } from '../model/pageAnimal';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
-import { environment } from 'environments/environment';
+
 
 @Injectable()
 export class AnimalesService {
-    eliminar(id: number) {
-      throw new Error('Method not implemented.');
-    }
 
-    protected basePath = '//localhost:9898';
+    protected basePath = '//localhost:9898/api';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
-    constructor( protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
+    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
         if (basePath) {
             this.basePath = basePath;
         }
@@ -61,7 +58,7 @@ export class AnimalesService {
 
     /**
      * create
-     *
+     * 
      * @param body animal
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -100,7 +97,7 @@ export class AnimalesService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/api/animales/`,
+        return this.httpClient.request<any>('post',`${this.basePath}/animales/`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -113,7 +110,7 @@ export class AnimalesService {
 
     /**
      * delete
-     *
+     * 
      * @param id id
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -147,7 +144,48 @@ export class AnimalesService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('delete',`${this.basePath}/api/animales/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<any>('delete',`${this.basePath}/animales/${encodeURIComponent(String(id))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * getAnimales
+     * 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getAnimalesUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<Animal>>;
+    public getAnimalesUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Animal>>>;
+    public getAnimalesUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Animal>>>;
+    public getAnimalesUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // authentication (JWT) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<Array<Animal>>('get',`${this.basePath}/animales/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -159,15 +197,12 @@ export class AnimalesService {
 
     /**
      * getAnimals
-     *
+     * 
      * @param page page
      * @param size size
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-
-
-
     public getAnimalsUsingGET(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PageAnimal>;
     public getAnimalsUsingGET(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageAnimal>>;
     public getAnimalsUsingGET(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageAnimal>>;
@@ -209,7 +244,7 @@ export class AnimalesService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<PageAnimal>('get',`${this.basePath}/api/animales/page`,
+        return this.httpClient.request<PageAnimal>('get',`${this.basePath}/animales/page`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -222,7 +257,7 @@ export class AnimalesService {
 
     /**
      * getById
-     *
+     * 
      * @param id id
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -256,7 +291,7 @@ export class AnimalesService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/api/animales/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<any>('get',`${this.basePath}/animales/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -268,7 +303,7 @@ export class AnimalesService {
 
     /**
      * update
-     *
+     * 
      * @param body animal
      * @param id id
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -312,7 +347,7 @@ export class AnimalesService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('put',`${this.basePath}/api/animales/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<any>('put',`${this.basePath}/animales/${encodeURIComponent(String(id))}`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
