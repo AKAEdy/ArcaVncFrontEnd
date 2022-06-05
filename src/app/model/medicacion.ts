@@ -12,11 +12,10 @@
 import { Medicamento } from './medicamento';
 
 export interface Medicacion { 
+    descripcionMd: string;
     dosis?: string;
     duracion?: string;
-    fechaCaducidad?: Date;
     frecuencia?: string;
     id?: number;
     medicamento?: Medicamento;
-    nombreCliente: string;
 }
