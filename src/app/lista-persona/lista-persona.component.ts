@@ -40,8 +40,6 @@ export class ListaPersonaComponent implements OnInit {
     }
     
     this.listarAllPersonas();
-    console.log(this.pagina);
- 
   }
 
 }

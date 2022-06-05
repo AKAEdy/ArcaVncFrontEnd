@@ -8,7 +8,7 @@
                         <!-- <p class="card-category">Complete your profile</p> -->
                     </div>
                     <div class="card-body">
-                        <form #f="ngForm" (ngSubmit)="createCita()" novalidate>
+                        <form >
                           <div class="row">
                             <div class="col-md-12">
                               <mat-form-field class="example-full-width">
@@ -30,8 +30,10 @@
                               <option value="opcion2">1 hora</option>
                               <option value="opcion3">1 horas 30 minutos</option>
                               <option value="opcion4">2 horas</option>
-                            </select> <button (click)="opcionHoras()">🔎</button>
 
+                             </select> <button (click)="opcionHoras()">🔎</button> 
+
+                            <label id="lop1">HORARIOS</label>  
                             <select id="op1" name="select" [(ngModel)]="hora">
                               <option value="08:00:00">08:00am - 08:30am</option>
                               <option value="08:30:00">08:30am - 09:00am</option>
@@ -75,15 +77,14 @@
                               <option value="15:30:00">15:30pm - 17:00pm</option>
                               <option value="17:00:00">17:00pm - 19:00pm</option>
                             </select>
-                          </div>
 
-                          <select id="op4" name="select" [(ngModel)]="hora">
-                            <option value="08:00:00">08:00am - 10:00am</option>
-                            <option value="08:00:00">10:00am - 12:00pmm</option>
-                            <option value="08:00:00">14:00am - 16:00pm</option>
-                            <option value="08:00:00">16:00pm - 18:00pm</option>
-                          </select>
-                         
+                            <select id="op4" name="select" [(ngModel)]="hora">
+                              <option value="08:00:00">08:00am - 10:00am</option>
+                              <option value="08:00:00">10:00am - 12:00pm</option>
+                              <option value="08:00:00">14:00am - 16:00pm</option>
+                              <option value="08:00:00">16:00pm - 18:00pm</option>
+                            </select>
+                          </div>
                         </div>
 
                             <div class="row">

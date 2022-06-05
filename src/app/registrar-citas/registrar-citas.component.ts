@@ -34,25 +34,44 @@ export class RegistrarCitasComponent implements OnInit {
 
   createCita(){
     this.citaDto.fechaCita = this.fecha+' '+this.hora
-    if(this.citaDto.estado === undefined || this.veterinario.id === undefined || this.citaDto.fechaCita === undefined || this.citaDto.motivo === undefined || this.citaDto.nombreCliente === undefined){
+    if(this.citaDto.estado === undefined || this.veterinario.id === undefined || this.citaDto.fechaCita === undefined || this.citaDto.motivo === undefined || this.citaDto.nombreCliente === undefined ||
+      this.citaDto.estado === undefined    || this.citaDto.fechaCita === '' || this.citaDto.motivo === '' || this.citaDto.nombreCliente === ''){
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'Ingrese todos los datos!',
       })
     }else{
-      this.citaService.crearCitaUsingPOST(this.citaDto, this.veterinario.id).subscribe(data =>{
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Cita agendada exitosamente',
-          showConfirmButton: false,
-          timer: 1500
-          
-        })
+      Swal.fire({
+        title: 'Seguro quiere realizar esta acción?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Registrar',
+        denyButtonText: `No registrar`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          this.citaService.crearCitaUsingPOST(this.citaDto, this.veterinario.id).subscribe(data =>{
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Cita agendada exitosamente',
+              showConfirmButton: false,
+              timer: 1500
+              
             })
-         
-    console.log("fecha"+ this.citaDto.fechaCita);
+            location.reload();
+                }, err => {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Esta fecha y hora ya esta registrada!',
+                  })
+              })
+        } else if (result.isDenied) {
+          Swal.fire('Acción cancelada', '', 'info')
+        }
+      })
           }
   }
 

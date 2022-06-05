@@ -9,8 +9,11 @@ import { AnimalesService } from './api/animales.service';
 import { AuthControllerService } from './api/authController.service';
 import { CitasService } from './api/citas.service';
 import { FichasClnicasService } from './api/fichasClnicas.service';
+import { MedicacionesService } from './api/medicaciones.service';
+import { MedicamentosService } from './api/medicamentos.service';
 import { PersonasService } from './api/personas.service';
 import { ServiciosService } from './api/servicios.service';
+import { TratamientosService } from './api/tratamientos.service';
 import { UserControllerService } from './api/userController.service';
 import { VacunasService } from './api/vacunas.service';
 import { VeterinariosService } from './api/veterinarios.service';
@@ -26,8 +29,11 @@ import { VeterinariosService } from './api/veterinarios.service';
     AuthControllerService,
     CitasService,
     FichasClnicasService,
+    MedicacionesService,
+    MedicamentosService,
     PersonasService,
     ServiciosService,
+    TratamientosService,
     UserControllerService,
     VacunasService,
     VeterinariosService ]

@@ -80,7 +80,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'registrarCitas',   component: RegistrarCitasComponent },
     { path: 'listarVacunas',   component: ListarVacunasComponent},
     { path: 'registrarVacunas',   component: RegistrarVacunasComponent },
-    { path: 'listaMedicamentos',   component: ListarMedicamentoComponent },
     { path: 'registroMedicamentos',   component: RegistrarMedicamentoComponent },  
     { path: 'RegistroVoluntariado',   component: RegistrarVoluntariadoComponent  },
     // { path: 'table-list',     component: TableListComponent },
