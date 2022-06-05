@@ -18,5 +18,5 @@ export interface Medicacion {
     frecuencia?: string;
     id?: number;
     medicamento?: Medicamento;
-    nombreCliente: string;
+    descripcion_md: string;
 }

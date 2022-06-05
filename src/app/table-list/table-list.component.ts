@@ -18,7 +18,8 @@ export class TableListComponent implements OnInit {
   //VARIABLE DE animal
   public animales: Animal[] = [];
   pagina=0;
-  tamaño=2;
+  tamaño=8;
+  router: any;
   constructor(private animalesService: AnimalesService) { }
 
   ngOnInit(): void {
@@ -29,6 +30,10 @@ export class TableListComponent implements OnInit {
     //   this.totalPorPagina.toString(),
     //   this.busqueda
     // );
+  }
+
+  Detalle(id: number) {
+    this.router.navigate (['/upgrade', id]);
   }
   listarAnimales(){
 
