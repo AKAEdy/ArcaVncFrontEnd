@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Router } from '@angular/router';
-import { MedicacionesService } from 'app/api/medicaciones.service';
 import { MedicamentosService } from 'app/api/medicamentos.service';
 
 @Component({
@@ -11,12 +9,12 @@ import { MedicamentosService } from 'app/api/medicamentos.service';
 })
 export class MapsComponent implements OnInit {
 
-  constructor(private medicamentosService:MedicamentosService,private router:Router) { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
-ListarMedicamento(nombre:string){
-    this.medicamentosService
+// ListarMedicamento(nombre:string){
+    // this.medicamentosService
 
-}
+// }
 }

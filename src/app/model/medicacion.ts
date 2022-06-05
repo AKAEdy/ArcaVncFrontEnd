@@ -18,8 +18,5 @@ export interface Medicacion {
     frecuencia?: string;
     id?: number;
     medicamento?: Medicamento;
-<<<<<<< HEAD
     descripcion_md: string;
-=======
->>>>>>> d3987b2acc9aa99b9842ebe1e2870c6368e981b0
 }
