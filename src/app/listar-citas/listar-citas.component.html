@@ -22,7 +22,7 @@
                                     <th>
                                         MOTIVO_CITA
                                     </th>
-                                    <th>
+                                    <th style="text-align:center;">
                                         ESTADO_CITA
                                     </th>
                                    
@@ -38,9 +38,14 @@
                                         <td>
                                            {{cita.motivo}}
                                         </td>
-                                        <td>
-                                           {{cita.estado}}
+                                        <td *ngIf="cita.estado == true;else rojo" style="text-align:center;">
+                                           🟢
                                         </td>
+                                        <ng-template #rojo style="margin-bottom:20px;">
+                                            <td style="text-align:center;">
+                                                🔴 
+                                            </td>
+                                          </ng-template>
                                     </tr>
                                 </tbody>
                             </table>

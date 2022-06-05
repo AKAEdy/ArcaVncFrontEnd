@@ -13,8 +13,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./registrar-citas.component.css']
 })
 export class RegistrarCitasComponent implements OnInit {
-  fechaCita: Date = new Date(moment(new Date()).format('YYYY-MM-DD h:mm:ss'));
-  
+  // fechaCita: Date = new Date(moment(new Date()).format('YYYY-MM-DD h:mm:ss'));
+  fecha: string;
+  hora:String;
+  opcionHora:string="none"; 
   veterinario: Veterinario = {}
 
   citaDto: CitaDto={
@@ -27,19 +29,18 @@ export class RegistrarCitasComponent implements OnInit {
   constructor(private citaService: CitasService) { }
   
   ngOnInit(): void {
-    
+    this.opcionHoras();
   }
 
   createCita(){
-    
-    // this.fechaCita = moment(this.citaDto.fechaCita,"yyyy/MM/dd").toDate()
-    // if(this.citaDto === undefined || this.veterinario.id === undefined){
-    //   Swal.fire({
-    //     icon: 'error',
-    //     title: 'Oops...',
-    //     text: 'Ingrese todos los datos!',
-    //   })
-    // }else{
+    this.citaDto.fechaCita = this.fecha+' '+this.hora
+    if(this.citaDto.estado === undefined || this.veterinario.id === undefined || this.citaDto.fechaCita === undefined || this.citaDto.motivo === undefined || this.citaDto.nombreCliente === undefined){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Ingrese todos los datos!',
+      })
+    }else{
       this.citaService.crearCitaUsingPOST(this.citaDto, this.veterinario.id).subscribe(data =>{
         Swal.fire({
           position: 'center',
@@ -50,9 +51,37 @@ export class RegistrarCitasComponent implements OnInit {
           
         })
             })
-          //  x
          
-    console.log(this.citaDto.fechaCita);
-    
+    console.log("fecha"+ this.citaDto.fechaCita);
+          }
   }
+
+  opcionHoras(){
+if(this.opcionHora === 'opcion1' ){
+  document.getElementById("op1").style.display = "inline";
+}else{
+  document.getElementById("op1").style.display = "none";
+}
+
+if(this.opcionHora === 'opcion2' ){
+  document.getElementById("op2").style.display = "inline";
+}else{
+  document.getElementById("op2").style.display = "none";
+}
+
+
+if(this.opcionHora === 'opcion3' ){
+  document.getElementById("op3").style.display = "inline";
+}else{
+  document.getElementById("op3").style.display = "none";
+}
+
+
+if(this.opcionHora === 'opcion4' ){
+  document.getElementById("op4").style.display = "inline";
+}else{
+  document.getElementById("op4").style.display = "none";
+}
+  }
+
 }
