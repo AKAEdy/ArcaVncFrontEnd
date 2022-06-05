@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { AnimalesService } from 'app/api/animales.service';
 import { Animal } from 'app/model/animal';
 import { environment } from 'environments/environment';
@@ -19,8 +19,8 @@ export class TableListComponent implements OnInit {
   public animales: Animal[] = [];
   pagina=0;
   tamaño=8;
-  router: any;
-  constructor(private animalesService: AnimalesService) { }
+  // router: any;
+  constructor(private animalesService: AnimalesService,private router: Router) { }
 
   ngOnInit(): void {
     this.listarAnimales();
@@ -32,8 +32,13 @@ export class TableListComponent implements OnInit {
     // );
   }
 
-  Detalle(id: number) {
+
+  Detalle(id: number){
+    this.animalesService.getByIdUsingGET(id).subscribe(data =>{
+      this.animales=data;
+    console.log("listado",data);
     this.router.navigate (['/upgrade', id]);
+    });
   }
   listarAnimales(){
 
