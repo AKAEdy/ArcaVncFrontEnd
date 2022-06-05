@@ -203,25 +203,71 @@ export class MedicamentosService {
     /**
      * getMedicamentos
      * 
-     * @param page page
-     * @param size size
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getMedicamentosUsingGET(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PageMedicamento>;
-    public getMedicamentosUsingGET(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageMedicamento>>;
-    public getMedicamentosUsingGET(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageMedicamento>>;
-    public getMedicamentosUsingGET(page: number, size: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getMedicamentosUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<Medicamento>>;
+    public getMedicamentosUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Medicamento>>>;
+    public getMedicamentosUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Medicamento>>>;
+    public getMedicamentosUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // authentication (JWT) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<Array<Medicamento>>('get',`${this.basePath}/api/medicamentos/`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * getMedicamentos
+     * 
+     * @param page page
+     * @param size size
+     * @param nombre nombre
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getMedicamentosUsingGET1(page: number, size: number, nombre?: string, observe?: 'body', reportProgress?: boolean): Observable<PageMedicamento>;
+    public getMedicamentosUsingGET1(page: number, size: number, nombre?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageMedicamento>>;
+    public getMedicamentosUsingGET1(page: number, size: number, nombre?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageMedicamento>>;
+    public getMedicamentosUsingGET1(page: number, size: number, nombre?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (page === null || page === undefined) {
-            throw new Error('Required parameter page was null or undefined when calling getMedicamentosUsingGET.');
+            throw new Error('Required parameter page was null or undefined when calling getMedicamentosUsingGET1.');
         }
 
         if (size === null || size === undefined) {
-            throw new Error('Required parameter size was null or undefined when calling getMedicamentosUsingGET.');
+            throw new Error('Required parameter size was null or undefined when calling getMedicamentosUsingGET1.');
         }
 
+
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (nombre !== undefined && nombre !== null) {
+            queryParameters = queryParameters.set('nombre', <any>nombre);
+        }
         if (page !== undefined && page !== null) {
             queryParameters = queryParameters.set('page', <any>page);
         }
