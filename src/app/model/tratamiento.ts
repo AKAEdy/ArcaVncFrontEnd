@@ -17,7 +17,7 @@ export interface Tratamiento {
     estado?: string;
     fechaAplicacion?: Date;
     id?: number;
-    idFichaClinica: FichaClinica;
+    idFichaClinica?: FichaClinica;
     indicaciones?: string;
-    medicacion: Medicacion;
+    medicacion?: Medicacion;
 }

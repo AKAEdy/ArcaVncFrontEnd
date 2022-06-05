@@ -16,6 +16,8 @@ import { FichasClnicasService } from './api/fichasClnicas.service';
 import { PersonasService } from './api/personas.service';
 import { VeterinariosService } from './api/veterinarios.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { TratamientosService } from './api/tratamientos.service';
+import { MedicamentosService } from './api/medicamentos.service';
 
 @NgModule({
   imports: [
@@ -40,7 +42,10 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     AnimalesService,
     FichasClnicasService,
     PersonasService,
+    TratamientosService,
+    MedicamentosService,
     VeterinariosService ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
