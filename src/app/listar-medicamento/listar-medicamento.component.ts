@@ -19,7 +19,7 @@ export class ListarMedicamentoComponent implements OnInit {
   }
 
   getAllMedicamentos(){
-    this.medicamentoService.getMedicamentosUsingGET(this.pagina,this.tamaño).subscribe(data=>{
+    this.medicamentoService.getMedicamentosUsingGET1(this.pagina,this.tamaño).subscribe(data=>{
 this.medicamento=data.content
     })
   }
