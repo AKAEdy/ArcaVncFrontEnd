@@ -295,7 +295,7 @@ export class MedicamentosService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<PageMedicamento>('get',`${this.basePath}/api/medicamentos/page`,
+        return this.httpClient.request<PageMedicamento>('get',`${this.basePath}/medicamentos/page`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
