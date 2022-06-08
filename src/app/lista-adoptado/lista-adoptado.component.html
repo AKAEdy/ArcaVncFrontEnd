@@ -30,7 +30,9 @@
                                     <th class="table-danger" scope="col">
                                         DESCRIPCION
                                     </th>
-                                   
+                                    <th class="table-danger" scope="col">
+                                        ACCION
+                                    </th>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let adopciones of adopcion | filteradoptados:filterpost" >
@@ -42,6 +44,39 @@
                                         </td>
                                         <td>
                                             {{adopciones.descripcion}}
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <div class="btn-group">
+
+                                                    <div>
+                                                      
+                                                   
+                                                      
+                                                          <button mat-raised-button type="submit" class="btn btn-danger btn-round" class="btneditar">
+                                                              <i class="material-icons">mode_edit</i>
+                                                             
+                                                          </button>
+                                                          
+                                                 
+
+                                                    </div>
+
+                                                    <div>
+                                                      
+                                                    
+                                                      
+                                                          <button mat-raised-button type="submit" class="btn btn-danger btn-round" class="btneliminar">
+                                                              <i class="material-icons">delete</i>
+                                                              
+                                                          </button>
+                                                          
+                                                   
+                                                      
+                                                    </div>
+
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>
