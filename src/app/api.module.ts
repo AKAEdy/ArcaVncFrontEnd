@@ -39,7 +39,7 @@ import { VeterinariosService } from './api/veterinarios.service';
     VeterinariosService ]
 })
 export class ApiModule {
-    public static forRoot(configurationFactory: () => Configuration){
+    public static forRoot(configurationFactory: () => Configuration) {
         return {
             ngModule: ApiModule,
             providers: [ { provide: Configuration, useFactory: configurationFactory } ]

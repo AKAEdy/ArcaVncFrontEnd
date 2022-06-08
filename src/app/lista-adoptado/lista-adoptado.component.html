@@ -9,12 +9,11 @@
                             <input
                             id="myInput"
                             type="text"
-                            class="forms-control"
+                            class="form-control"
                             placeholder="🔎Buscar..."
                             [(ngModel)]="filterpost"
                             name="filterpost"
                           />
-                        <!-- <input id="myInput" (keyup)="filtrar($event)" type="textt" placeholder="🔎Buscar..."> -->
                         </div>
                        
                     </div>
@@ -22,16 +21,18 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class=" text-primary">
-                                    <th>
+                                    <th class="table-danger" scope="col">
                                         FECHA
                                     </th>
-                                    <th>
+                                    <th class="table-danger" scope="col">
                                         ADOPTANTE
                                     </th>
-                                    <th>
+                                    <th class="table-danger" scope="col">
                                         DESCRIPCION
                                     </th>
-                                   
+                                    <th class="table-danger" scope="col">
+                                        ACCION
+                                    </th>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let adopciones of adopcion | filteradoptados:filterpost" >
@@ -43,6 +44,39 @@
                                         </td>
                                         <td>
                                             {{adopciones.descripcion}}
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <div class="btn-group">
+
+                                                    <div>
+                                                      
+                                                   
+                                                      
+                                                          <button mat-raised-button type="submit" class="btn btn-danger btn-round" class="btneditar">
+                                                              <i class="material-icons">mode_edit</i>
+                                                             
+                                                          </button>
+                                                          
+                                                 
+
+                                                    </div>
+
+                                                    <div>
+                                                      
+                                                    
+                                                      
+                                                          <button mat-raised-button type="submit" class="btn btn-danger btn-round" class="btneliminar">
+                                                              <i class="material-icons">delete</i>
+                                                              
+                                                          </button>
+                                                          
+                                                   
+                                                      
+                                                    </div>
+
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>

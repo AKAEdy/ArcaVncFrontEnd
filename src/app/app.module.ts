@@ -16,6 +16,9 @@ import { FichasClnicasService } from './api/fichasClnicas.service';
 import { PersonasService } from './api/personas.service';
 import { VeterinariosService } from './api/veterinarios.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { CitasService } from './api/citas.service';
+import { VacunasService } from './api/vacunas.service';
+import { MedicamentosService } from './api/medicamentos.service';
 
 @NgModule({
   imports: [
@@ -32,6 +35,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     AdminLayoutComponent,
     LoginComponent,
     RegistroComponent,
+    
 
   ],
   providers: [{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
@@ -40,7 +44,10 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     AnimalesService,
     FichasClnicasService,
     PersonasService,
-    VeterinariosService ],
+    CitasService,
+    VacunasService,
+    VeterinariosService,
+    MedicamentosService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

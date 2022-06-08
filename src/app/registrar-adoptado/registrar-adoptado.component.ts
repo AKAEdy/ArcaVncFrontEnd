@@ -34,17 +34,35 @@ export class RegistrarAdoptadoComponent implements OnInit {
         text: 'Llene todos los campos!',
       })
     } else{
-      this.adopcionesService.crearAdocionUsingPOST(this.adoptante.id,this.animal.id,this.adopcion.descripcion, this.adopcion.fechaAdopcion).subscribe(data =>{
-        console.log("LOS DATOS"+data);
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Se a adoptado correctamente',
-          showConfirmButton: false,
-          timer: 1500
-        })
+      Swal.fire({
+        title: 'Seguro quiere realizar esta accion??',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Registrar',
+        denyButtonText: `No registrar`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          this.adopcionesService.crearAdocionUsingPOST(this.adoptante.id,this.animal.id,this.adopcion.descripcion, this.adopcion.fechaAdopcion).subscribe(data =>{
+            console.log("LOS DATOS"+data);
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Se a adoptado correctamente',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            location.reload();
+          })
+          
+        } else if (result.isDenied) {
+          Swal.fire('Acción cancelada', '', 'info')
+        }
       })
-      location.reload();
+
+
+
+    
     }
   
   }

@@ -26,4 +26,4 @@ export * from './vacunas.service';
 import { VacunasService } from './vacunas.service';
 export * from './veterinarios.service';
 import { VeterinariosService } from './veterinarios.service';
-export const APIS = [AdopcionControllerService, AdoptanteControllerService, AnimalesService, AuthControllerService, CitasService, FichasClnicasService, MedicacionesService, MedicamentosService, PersonasService, ServiciosService, TratamientosService, UserControllerService, VacunasService, VeterinariosService];
+export const APIS = [AdopcionControllerService, AdoptanteControllerService, AnimalesService, AuthControllerService, CitasService, FichasClnicasService, PersonasService, ServiciosService, UserControllerService, VacunasService, VeterinariosService];
