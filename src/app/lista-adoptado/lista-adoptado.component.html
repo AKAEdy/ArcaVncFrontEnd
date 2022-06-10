@@ -1,167 +1,105 @@
-<div class="main-content">
-    <div class="container-fluid">
+<div class="container-fluid">
+    <div class="main-content">
+      <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title ">Lista Adoptados</h4>
-                        <div><label><span class="required">Animalitos en adopción </span></label>
-                            <input
-                            id="myInput"
-                            type="text"
-                            class="form-control"
-                            placeholder="🔎Buscar..."
-                            [(ngModel)]="filterpost"
-                            name="filterpost"
-                          />
-                        </div>
-                       
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead class=" text-primary">
-                                    <th class="table-danger" scope="col">
-                                        FECHA
-                                    </th>
-                                    <th class="table-danger" scope="col">
-                                        ADOPTANTE
-                                    </th>
-                                    <th class="table-danger" scope="col">
-                                        DESCRIPCION
-                                    </th>
-                                    <th class="table-danger" scope="col">
-                                        ACCION
-                                    </th>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let adopciones of adopcion | filteradoptados:filterpost" >
-                                        <td>
-                                            {{adopciones.fechaAdopcion}}
-                                        </td>
-                                        <td>
-                                            {{adopciones.adoptante.persona.nombre}}  {{adopciones.adoptante.persona.apellidos}}
-                                        </td>
-                                        <td>
-                                            {{adopciones.descripcion}}
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <div class="btn-group">
-
-                                                    <div>
-                                                      
-                                                   
-                                                      
-                                                          <button mat-raised-button type="submit" class="btn btn-danger btn-round" class="btneditar">
-                                                              <i class="material-icons">mode_edit</i>
-                                                             
-                                                          </button>
-                                                          
-                                                 
-
-                                                    </div>
-
-                                                    <div>
-                                                      
-                                                    
-                                                      
-                                                          <button mat-raised-button type="submit" class="btn btn-danger btn-round" class="btneliminar">
-                                                              <i class="material-icons">delete</i>
-                                                              
-                                                          </button>
-                                                          
-                                                   
-                                                      
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
   
+          <div class="card">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title">Listado DE MASCOTAS</h4>
+              
+            </div>
+          </div>
+        </div>
+  
+
+
+<div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title text-center">Listado de Mascotas</h4>
+          <div class="row">
+           
+            <div class="col-md-3">
+              <select class="form-control">
+                <option [ngValue]="undefined">Nombre (TODAS)</option>
+                <option *ngFor="let animal of animales" [ngValue]="animal.nombre">
+                  {{ animal.nombre }}
+                </option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-primary">
+                <i class="mdi mdi-magnify"></i>
+                Buscar
+              </button>
+            </div>
+            <div class="col-md-3 text-right">
+              <button class="btn btn-light btn-sm" >
+                Mostrar Todas
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-md-5" *ngFor="let animal of animales">
+              <!-- Card -->
+              <div class="card border-dark">
+                <img class="card-img-top img-responsive" src="../assets/img/perrito.jpeg" alt="Card image cap" />
+                <div class="card-body">
+                  <h4 class="card-title">
+                    Nombre  {{animal.nombre}}
+                
+                  </h4>
+                  <p class="card-text">
+                    Especie: {{animal.especie}}
+                  </p>
+                  <p class="card-text">
+                    Raza: {{animal.raza}}
+                  </p>
+                   <p class="card-text">
+                    Sexo:  {{ animal.sexo}}
+                  </p>
+                
+  
+                  <div class="col-md-3 text-right">
+                    <button class="btn btn-primary btn-sm"(click)="Detalle(animal.id)">
+                     Ver
+                    </button>
+  
+  
+  
+                    <br>
+                    <br>
+  
+                  </div>
+  
+                </div>
+              </div>
+              <!-- Card -->
+            
     
 
-     <!-- <!DOCTYPE html>
-<html lang="en">
+                 
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejemplo filtrar tabla con jquery</title>
-    <link rel="stylesheet" href="CSS/estilos.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#myInput").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
-</head>
-
-<body>
-    <h2 style="text-align: center; margin-top: 5%;">¡Vamos a filtrar datos!</h2>
-    <p style="text-align: center;"> Puedes consultar en el campo de entrada por el nombre, apellido y correo.</p>
+                    
+    </div></div></div></div>
    
-        <input (keyup)="filtrar($event)" style="background-color: rgb(212, 235, 238);" id="myInput" type="textt" placeholder="Buscar...">
-    
-    <br><br>
-   
-        <table>
-            <thead>
-                <tr>
-                    <th style="text-align: center;">Nombre</th>
-                    <th style="text-align: center;">Apellido</th>
-                    <th style="text-align: center;">Correo</th>
 
-                </tr>
-            </thead>
-            <tbody id="myTable">
-                <tr>
-                    <td>Renchi</td>
-                    <td>Meléndez</td>
-                    <td>renchi123@gmail.com</td>
-                </tr>
-                <tr>
-                    <td>Luisa</td>
-                    <td>Nuñez</td>
-                    <td>luisan@gmail.com</td>
-                </tr>
-                <tr>
-                    <td>Odalys</td>
-                    <td>Icaza</td>
-                    <td>odalysi16@gmail.com</td>
-                </tr>
-                <tr>
-                    <td>Yaró</td>
-                    <td>Flores</td>
-                    <td>yaro10@gmail.com</td>
-                </tr>
+</div>
+</div>
 
-            </tbody>
-        </table>
+<div class="container " >
+                       
+    <div class="pagination p11 " >
+      <ul>
+        <button (click)="previous()"> < </button>
+     
+        <button (click)="next()"> > </button>
+      </ul>
+    </div>  
+            
+  </div>
+</div>
+</div>
+</div>
 
-</body>
-
-</html> -->
-
-
-
-
-
-
-    
