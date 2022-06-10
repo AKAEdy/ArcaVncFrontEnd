@@ -38,6 +38,8 @@ import { RegistrarCitasComponent } from '../../registrar-citas/registrar-citas.c
 import { MatPaginatorModule } from '@angular/material/paginator';import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { RegistrarVeterinariosComponent } from '../../registrar-veterinarios/registrar-veterinarios.component';
+import { ListarVeterinariosComponent } from '../../listar-veterinarios/listar-veterinarios.component';
 
 @NgModule({
   imports: [
@@ -81,6 +83,8 @@ import { MatSortModule } from '@angular/material/sort';
     ListarVacunasComponent,
     ListarCitasComponent,
     RegistrarCitasComponent,
+    RegistrarVeterinariosComponent,
+    ListarVeterinariosComponent,
 
   ]
 })
