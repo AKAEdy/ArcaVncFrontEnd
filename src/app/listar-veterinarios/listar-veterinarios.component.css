@@ -1,0 +1,51 @@
+.btneliminar{
+    margin-left: 20px;
+    background-color: rgb(255, 58, 58);
+}
+
+.btneditar{
+    background-color: rgb(250, 193, 37);
+}
+
+/* GENERAL STYLES */
+  
+.pagination{
+    padding: 30px 0;
+  }
+  
+  .pagination ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .pagination button{
+    display: inline-block;
+    width:30px;
+    border-radius: 500%;
+    color: #222;
+  }
+  
+  
+  
+  /* ELEVEN */
+  
+  .p11 button{
+    background-color: #ff3737;
+    margin: auto 5px;
+    color: #fff;
+    border: 3px solid #ff3737;
+    position: relative;
+  }
+
+  .container{
+    width: 100%;
+    max-width: 940px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .card-body{
+    height: 500px;
+}

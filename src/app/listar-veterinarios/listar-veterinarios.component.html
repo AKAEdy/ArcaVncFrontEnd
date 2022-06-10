@@ -1,1 +1,116 @@
-<p>listar-veterinarios works!</p>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">LISTA DE VETERINARIOS</h4>
+                        <!-- <div>
+                            <label><span class="required">Animalitos en adopción </span></label>
+                            <input id="myInput" type="text" class="form-control" placeholder="🔎Buscar..."
+                                [(ngModel)]="filterpost" name="filterpost" />
+                        </div> -->
+
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th class="table-danger" scope="col">
+                                        CEDULA
+                                    </th>
+                                    <th class="table-danger" scope="col">
+                                        NOMBRE
+                                    </th>
+                                    <th class="table-danger" scope="col">
+                                        CARGO
+                                    </th>
+                                    <th class="table-danger" scope="col">
+                                        CELULAR
+                                    </th>
+                                    <th class="table-danger" scope="col">
+                                        DIRECCION
+                                    </th>
+                                    <th class="table-danger" scope="col">
+                                        CORREO
+                                    </th>
+                                    <th class="table-danger" scope="col">
+                                        ACCION
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let veterinario of veterinarios">
+                                        <td>
+                                            {{veterinario.persona.cedula}}
+                                        </td>
+                                        <td>
+                                            {{veterinario.persona.nombre}} {{veterinario.persona.apellidos}}
+                                        </td>
+                                        <td>
+                                            {{veterinario.cargo}}
+                                        </td>
+                                        <td>
+                                            {{veterinario.persona.direccion}}
+                                        </td>
+                                        <td>
+                                            {{veterinario.persona.celular}}
+                                        </td>
+                                        <td>
+                                            {{veterinario.persona.correo}}
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <div class="btn-group">
+
+                                                    <div>
+
+
+
+                                                        <button mat-raised-button type="submit"
+                                                            class="btn btn-danger btn-round" class="btneditar">
+                                                            <i class="material-icons">mode_edit</i>
+
+                                                        </button>
+
+
+
+                                                    </div>
+
+                                                    <div>
+
+
+
+                                                        <button mat-raised-button type="submit"
+                                                            class="btn btn-danger btn-round" class="btneliminar">
+                                                            <i class="material-icons">delete</i>
+
+                                                        </button>
+
+
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="container">
+                       
+                        <div class="pagination p11">
+                          <ul>
+                            <button (click)="previous()"> « </button>
+                         
+                            <button (click)="next()"> » </button>
+                          </ul>
+                        </div>  
+                                
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
