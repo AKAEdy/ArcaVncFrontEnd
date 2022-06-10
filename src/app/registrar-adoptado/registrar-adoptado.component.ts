@@ -57,7 +57,7 @@ export class RegistrarAdoptadoComponent implements OnInit {
             })
             location.reload();
           })
-          
+           
         } else if (result.isDenied) {
           Swal.fire('Acción cancelada', '', 'info')
         }
