@@ -25,6 +25,11 @@ export class ListaAdoptadoComponent implements OnInit {
     
 }
 
+
+// updateAdopcion(adopcion: Adopcion){
+// this.adopcionService.actualizarAdocionUsingPUT
+// }
+
 // filtrar(event: Event) {
 //   for (let index = 0; index < this.adopcion.length; index++) {
 //   this.dataSource = this.adopcion[index];

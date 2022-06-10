@@ -1,8 +1,10 @@
 import { noUndefined } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { AdopcionControllerService } from 'app/api/adopcionController.service';
+import { AdoptanteControllerService } from 'app/api/adoptanteController.service';
 import { Adopcion } from 'app/model/adopcion';
 import { Adoptante } from 'app/model/adoptante';
+import { AdoptanteDto } from 'app/model/adoptanteDto';
 import { Animal } from 'app/model/animal';
 import Swal from 'sweetalert2';
 
@@ -15,8 +17,10 @@ import Swal from 'sweetalert2';
 export class RegistrarAdoptadoComponent implements OnInit {
   adopcion: Adopcion = {};
  adoptante: Adoptante = {};
+ adoptantes: Adoptante[]=[];
  animal: Animal={};
-  constructor(private adopcionesService:AdopcionControllerService) {
+ cedulas: string;
+  constructor(private adopcionesService:AdopcionControllerService, private adoptanteService: AdoptanteControllerService) {
  
   }
 
@@ -44,7 +48,6 @@ export class RegistrarAdoptadoComponent implements OnInit {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           this.adopcionesService.crearAdocionUsingPOST(this.adoptante.id,this.animal.id,this.adopcion.descripcion, this.adopcion.fechaAdopcion).subscribe(data =>{
-            console.log("LOS DATOS"+data);
             Swal.fire({
               position: 'center',
               icon: 'success',
@@ -58,13 +61,19 @@ export class RegistrarAdoptadoComponent implements OnInit {
         } else if (result.isDenied) {
           Swal.fire('Acción cancelada', '', 'info')
         }
-      })
-
-
-
-    
+      }) 
     }
-  
   }
 
+  getCedulaAdoptante(cedula: string){
+    this.adoptanteService.getAdoptantePorCedulaUsingGET(cedula).subscribe(data =>{
+this.adoptantes = data
+// for (let index = 0; index < this.adoptantes.length; index++) {
+//   var element = this.adoptantes[index];
+  
+// }
+window.alert("EDITAR "+ data);
+
+    })
+  }
 }
