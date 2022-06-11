@@ -13,6 +13,7 @@ import { FichaClinica } from './fichaClinica';
 import { Medicacion } from './medicacion';
 
 export interface Tratamiento { 
+    
     descripcionTr?: string;
     estado?: string;
     fechaAplicacion?: Date;
@@ -20,4 +21,6 @@ export interface Tratamiento {
     idFichaClinica?: FichaClinica;
     indicaciones?: string;
     medicacion?: Medicacion;
+
+
 }
