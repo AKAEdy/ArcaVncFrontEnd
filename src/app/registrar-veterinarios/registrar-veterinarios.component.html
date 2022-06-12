@@ -11,57 +11,87 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                                <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="CEDULA" [(ngModel)]="veterinarios.persona.cedula">
-                                </mat-form-field>
+                                <div class="form-group">
+                                    <input matInput placeholder="CEDULA" [(ngModel)]="veterinarios.persona.cedula"
+                                        class="form-control" name="cedula" #cedula="ngModel" required>
+                                    <div class="text-danger" *ngIf="cedula.hasError('required') && cedula.touched">
+                                        La cédula es requerido!
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="CARGO" [(ngModel)]="veterinarios.cargo">
-                                </mat-form-field>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="NOMBRE" [(ngModel)]="veterinarios.persona.nombre">
-                                </mat-form-field>
-                            </div>
-                            <div class="col-md-6">
-                                <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="APELLIDO" [(ngModel)]="veterinarios.persona.apellidos">
-                                </mat-form-field>
+                                <div class="form-group">
+                                    <input matInput placeholder="CARGO" [(ngModel)]="veterinarios.cargo"
+                                        class="form-control" name="cargo" #cargo="ngModel" required>
+                                    <div class="text-danger" *ngIf="cargo.hasError('required') && cargo.touched">
+                                        EL cargo es requerido!
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6">
-                                <mat-form-field class="example-full-width">
+                                <div class="form-group">
+                                    <input matInput placeholder="NOMBRE" [(ngModel)]="veterinarios.persona.nombre"
+                                        class="form-control" name="nombre" #nombre="ngModel" required>
+                                    <div class="text-danger" *ngIf="nombre.hasError('required') && nombre.touched">
+                                        EL nombre es requerido!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input matInput placeholder="APELLIDO" [(ngModel)]="veterinarios.persona.apellidos"
+                                        class="form-control" name="apellido" #apellido="ngModel" required>
+                                    <div class="text-danger" *ngIf="apellido.hasError('required') && apellido.touched">
+                                        El apellido es requerido!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
                                     <input matInput placeholder="EMAIL ADDRESS" type="email"
-                                        [(ngModel)]="veterinarios.persona.correo">
-                                </mat-form-field>
+                                        [(ngModel)]="veterinarios.persona.correo" class="form-control" name="email"
+                                        #email="ngModel" required>
+                                    <div class="text-danger" *ngIf="email.hasError('required') && email.touched">
+                                        El correo es requerido!
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="TELEFONO" type="text"
-                                        [(ngModel)]="veterinarios.persona.telefono">
-                                </mat-form-field>
+                                <div class="form-group">
+                                    <input matInput placeholder="TELEFONO" [(ngModel)]="veterinarios.persona.telefono"
+                                        class="form-control" name="telefono" #telefono="ngModel" required>
+                                    <div class="text-danger" *ngIf="telefono.hasError('required') && telefono.touched">
+                                        El teléfono es requerido!
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6">
-                                <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="CELULAR" type="text"
-                                        [(ngModel)]="veterinarios.persona.celular">
-                                </mat-form-field>
+                                <div class="form-group">
+                                    <input matInput placeholder="CELULAR" [(ngModel)]="veterinarios.persona.celular"
+                                        class="form-control" name="celular" #celular="ngModel" required>
+                                    <div class="text-danger" *ngIf="celular.hasError('required') && celular.touched">
+                                        El celular es requerido!
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="DIRECCION" type="text"
-                                        [(ngModel)]="veterinarios.persona.direccion">
-                                </mat-form-field>
+                                <div class="form-group">
+                                    <input matInput placeholder="DIRECCION" [(ngModel)]="veterinarios.persona.direccion"
+                                        class="form-control" name="direccion" #direccion="ngModel" required>
+                                    <div class="text-danger"
+                                        *ngIf="direccion.hasError('required') && direccion.touched">
+                                        La dirección es requerido!
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="row">

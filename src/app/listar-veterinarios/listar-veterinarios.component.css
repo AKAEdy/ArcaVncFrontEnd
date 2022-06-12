@@ -49,3 +49,35 @@
   .card-body{
     height: 500px;
 }
+
+#targeta{
+  width: 1000px;
+  margin: auto auto;
+}
+
+#cancelar{
+margin-right:10px;
+}
+
+#basic-addon1{
+  color: rgb(156, 156, 156);
+}
+
+/* ENCABEZADO */
+#myInput{
+  float: right;
+  width: 200px;
+  color: rgb(255, 255, 255);
+}
+#myInputBoton{
+  float: right;
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  height: 35px;
+  border:hsl(0, 100%, 75%);
+}
+.required{
+  float: right;
+  color: rgb(236, 236, 236);
+  font-size: 20px;
+}
