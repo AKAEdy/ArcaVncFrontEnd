@@ -10,9 +10,24 @@ import Swal from 'sweetalert2';
   styleUrls: ['./registrar-veterinarios.component.css']
 })
 export class RegistrarVeterinariosComponent implements OnInit {
- veterinarios:Veterinario={};
+ veterinarios:Veterinario={
+  cargo: '',
+  id: 0,
+  persona: {
+    apellidos: '',
+    cedula: '',
+    celular: '',
+    correo: '',
+    direccion: '',
+    id: 0,
+    nombre: '',
+    telefono: ''
+  }
+ };
+ cargo:string
   constructor(private veterinarioService: VeterinariosService) { 
-    this.veterinarios.persona = {} 
+    // this.veterinarios.cargo 
+    // this.veterinarios.persona = {} 
   }
 
   ngOnInit(): void {
@@ -39,7 +54,7 @@ if (this.veterinarios.persona.cedula === undefined || this.veterinarios.cargo ==
   }).then((result) => {
     /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
-      this.veterinarioService.createUsingPOST6(this.veterinarios).subscribe(data =>{
+      this.veterinarioService.createUsingPOST8(this.veterinarios).subscribe(data =>{
         Swal.fire({
           position: 'center',
           icon: 'success',

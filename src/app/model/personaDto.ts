@@ -9,14 +9,14 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { Persona } from './persona';
-import { Rol } from './rol';
 
-export interface Usuario { 
-    enabled: boolean;
+export interface PersonaDto { 
+    apellidos?: string;
+    cedula?: string;
+    celular?: string;
+    correo?: string;
+    direccion?: string;
     id?: number;
-    password: string;
-    persona: Persona;
-    roles?: Array<Rol>;
-    username: string;
+    nombre?: string;
+    telefono?: string;
 }

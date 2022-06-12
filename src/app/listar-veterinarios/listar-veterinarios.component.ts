@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 export class ListarVeterinariosComponent implements OnInit {
 veterinarios: Veterinario[]=[];
 veterinarioid: Veterinario={};
-cedula:string;
+buscarCedula:string;
 pagina=0;
 tamaño=2;
   constructor(private veterinarioService: VeterinariosService, private personaService:PersonasService) { }
@@ -51,7 +51,7 @@ tamaño=2;
       this.getAllVeterinarios();
     }
   })
-this.veterinarioService.deleteUsingDELETE6(id).subscribe(data =>{
+this.veterinarioService.deleteUsingDELETE8(id).subscribe(data =>{
 
 })
  }
@@ -83,7 +83,7 @@ botonCancelar(){
 }
 
 getVeterinarioById(id:number){
-  this.veterinarioService.getByIdUsingGET6(id).subscribe(data =>{
+  this.veterinarioService.getByIdUsingGET8(id).subscribe(data =>{
   this.veterinarioid = data
   
   })
@@ -112,7 +112,7 @@ updateVeterinarios(){
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-        this.veterinarioService.updateUsingPUT6(this.veterinarioid, this.veterinarioid.id).subscribe(data=>{
+        this.veterinarioService.updateUsingPUT8(this.veterinarioid, this.veterinarioid.id).subscribe(data=>{
           this.veterinarioid = data
           Swal.fire({
             position: 'center',
@@ -130,8 +130,10 @@ updateVeterinarios(){
     }
 }
 
-// getByCedula(){
-//   this.personaService.ge
-// }
+getByCedula(){
+  this.veterinarioService.getVeterinariosUsingGET(0,1,this.buscarCedula).subscribe(data =>{
+this.veterinarios = data.content
+  })
+}
 
 }

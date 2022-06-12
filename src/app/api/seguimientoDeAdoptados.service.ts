@@ -17,16 +17,14 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { PageTratamiento } from '../model/pageTratamiento';
-import { Tratamiento } from '../model/tratamiento';
-import { TratamientoDto } from '../model/tratamientoDto';
+import { SeguimientoAdopcionDto } from '../model/seguimientoAdopcionDto';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
 
 
 @Injectable()
-export class TratamientosService {
+export class SeguimientoDeAdoptadosService {
 
     protected basePath = '//localhost:9898/api';
     public defaultHeaders = new HttpHeaders();
@@ -58,24 +56,24 @@ export class TratamientosService {
 
 
     /**
-     * create
+     * crearSeguimiento
      * 
-     * @param body tratamientoDto
-     * @param idFicha idFicha
+     * @param body seguimientoDto
+     * @param idAdopcion idAdopcion
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createUsingPOST5(body: TratamientoDto, idFicha: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createUsingPOST5(body: TratamientoDto, idFicha: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createUsingPOST5(body: TratamientoDto, idFicha: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createUsingPOST5(body: TratamientoDto, idFicha: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public crearSeguimientoUsingPOST(body: SeguimientoAdopcionDto, idAdopcion: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public crearSeguimientoUsingPOST(body: SeguimientoAdopcionDto, idAdopcion: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public crearSeguimientoUsingPOST(body: SeguimientoAdopcionDto, idAdopcion: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public crearSeguimientoUsingPOST(body: SeguimientoAdopcionDto, idAdopcion: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling createUsingPOST5.');
+            throw new Error('Required parameter body was null or undefined when calling crearSeguimientoUsingPOST.');
         }
 
-        if (idFicha === null || idFicha === undefined) {
-            throw new Error('Required parameter idFicha was null or undefined when calling createUsingPOST5.');
+        if (idAdopcion === null || idAdopcion === undefined) {
+            throw new Error('Required parameter idAdopcion was null or undefined when calling crearSeguimientoUsingPOST.');
         }
 
         let headers = this.defaultHeaders;
@@ -103,7 +101,7 @@ export class TratamientosService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/tratamientos/${encodeURIComponent(String(idFicha))}`,
+        return this.httpClient.request<any>('post',`${this.basePath}/adopciones/seguimientos/${encodeURIComponent(String(idAdopcion))}`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -115,268 +113,24 @@ export class TratamientosService {
     }
 
     /**
-     * delete
+     * editarSeguimiento
      * 
-     * @param id id
+     * @param body seguimientoDto
+     * @param idSeguimiento idSeguimiento
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteUsingDELETE5(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteUsingDELETE5(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteUsingDELETE5(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteUsingDELETE5(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling deleteUsingDELETE5.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // authentication (JWT) required
-        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
-            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
-        }
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            '*/*'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<any>('delete',`${this.basePath}/tratamientos/${encodeURIComponent(String(id))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * findByFichaClinica
-     * 
-     * @param idFichaClinica idFichaClinica
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public findByFichaClinicaUsingGET(idFichaClinica: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public findByFichaClinicaUsingGET(idFichaClinica: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public findByFichaClinicaUsingGET(idFichaClinica: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public findByFichaClinicaUsingGET(idFichaClinica: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (idFichaClinica === null || idFichaClinica === undefined) {
-            throw new Error('Required parameter idFichaClinica was null or undefined when calling findByFichaClinicaUsingGET.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // authentication (JWT) required
-        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
-            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
-        }
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            '*/*'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<any>('get',`${this.basePath}/tratamientos/ficha/${encodeURIComponent(String(idFichaClinica))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * getById
-     * 
-     * @param id id
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public getByIdUsingGET5(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public getByIdUsingGET5(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public getByIdUsingGET5(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public getByIdUsingGET5(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling getByIdUsingGET5.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // authentication (JWT) required
-        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
-            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
-        }
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            '*/*'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<any>('get',`${this.basePath}/tratamientos/${encodeURIComponent(String(id))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * getTratamientos
-     * 
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public getTratamientosUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<Tratamiento>>;
-    public getTratamientosUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Tratamiento>>>;
-    public getTratamientosUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Tratamiento>>>;
-    public getTratamientosUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let headers = this.defaultHeaders;
-
-        // authentication (JWT) required
-        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
-            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
-        }
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            '*/*'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<Array<Tratamiento>>('get',`${this.basePath}/tratamientos/`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * getTratamientos
-     * 
-     * @param page page
-     * @param size size
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public getTratamientosUsingGET1(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PageTratamiento>;
-    public getTratamientosUsingGET1(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageTratamiento>>;
-    public getTratamientosUsingGET1(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageTratamiento>>;
-    public getTratamientosUsingGET1(page: number, size: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (page === null || page === undefined) {
-            throw new Error('Required parameter page was null or undefined when calling getTratamientosUsingGET1.');
-        }
-
-        if (size === null || size === undefined) {
-            throw new Error('Required parameter size was null or undefined when calling getTratamientosUsingGET1.');
-        }
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (page !== undefined && page !== null) {
-            queryParameters = queryParameters.set('page', <any>page);
-        }
-        if (size !== undefined && size !== null) {
-            queryParameters = queryParameters.set('size', <any>size);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // authentication (JWT) required
-        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
-            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
-        }
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            '*/*'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<PageTratamiento>('get',`${this.basePath}/tratamientos/page`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * update
-     * 
-     * @param body tratamientoDto
-     * @param idFicha idFicha
-     * @param idTratamiento idTratamiento
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public updateUsingPUT5(body: TratamientoDto, idFicha: number, idTratamiento: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateUsingPUT5(body: TratamientoDto, idFicha: number, idTratamiento: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateUsingPUT5(body: TratamientoDto, idFicha: number, idTratamiento: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateUsingPUT5(body: TratamientoDto, idFicha: number, idTratamiento: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public editarSeguimientoUsingPUT(body: SeguimientoAdopcionDto, idSeguimiento: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public editarSeguimientoUsingPUT(body: SeguimientoAdopcionDto, idSeguimiento: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public editarSeguimientoUsingPUT(body: SeguimientoAdopcionDto, idSeguimiento: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public editarSeguimientoUsingPUT(body: SeguimientoAdopcionDto, idSeguimiento: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling updateUsingPUT5.');
+            throw new Error('Required parameter body was null or undefined when calling editarSeguimientoUsingPUT.');
         }
 
-        if (idFicha === null || idFicha === undefined) {
-            throw new Error('Required parameter idFicha was null or undefined when calling updateUsingPUT5.');
-        }
-
-        if (idTratamiento === null || idTratamiento === undefined) {
-            throw new Error('Required parameter idTratamiento was null or undefined when calling updateUsingPUT5.');
+        if (idSeguimiento === null || idSeguimiento === undefined) {
+            throw new Error('Required parameter idSeguimiento was null or undefined when calling editarSeguimientoUsingPUT.');
         }
 
         let headers = this.defaultHeaders;
@@ -404,9 +158,291 @@ export class TratamientosService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('put',`${this.basePath}/tratamientos/${encodeURIComponent(String(idTratamiento))}/${encodeURIComponent(String(idFicha))}`,
+        return this.httpClient.request<any>('put',`${this.basePath}/adopciones/seguimientos/${encodeURIComponent(String(idSeguimiento))}`,
             {
                 body: body,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * eliminarSeguimiento
+     * 
+     * @param idSeguimiento idSeguimiento
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public eliminarSeguimientoUsingDELETE(idSeguimiento: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public eliminarSeguimientoUsingDELETE(idSeguimiento: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public eliminarSeguimientoUsingDELETE(idSeguimiento: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public eliminarSeguimientoUsingDELETE(idSeguimiento: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (idSeguimiento === null || idSeguimiento === undefined) {
+            throw new Error('Required parameter idSeguimiento was null or undefined when calling eliminarSeguimientoUsingDELETE.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (JWT) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<any>('delete',`${this.basePath}/adopciones/seguimientos/${encodeURIComponent(String(idSeguimiento))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * finalizarSeguimiento
+     * 
+     * @param body seguimientoDto
+     * @param idSeguimiento idSeguimiento
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public finalizarSeguimientoUsingPUT(body: SeguimientoAdopcionDto, idSeguimiento: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public finalizarSeguimientoUsingPUT(body: SeguimientoAdopcionDto, idSeguimiento: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public finalizarSeguimientoUsingPUT(body: SeguimientoAdopcionDto, idSeguimiento: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public finalizarSeguimientoUsingPUT(body: SeguimientoAdopcionDto, idSeguimiento: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling finalizarSeguimientoUsingPUT.');
+        }
+
+        if (idSeguimiento === null || idSeguimiento === undefined) {
+            throw new Error('Required parameter idSeguimiento was null or undefined when calling finalizarSeguimientoUsingPUT.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (JWT) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.request<any>('put',`${this.basePath}/adopciones/seguimientos/finalizar/${encodeURIComponent(String(idSeguimiento))}`,
+            {
+                body: body,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * getAdopcionesEnSeguimientoActivo
+     * 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getAdopcionesEnSeguimientoActivoUsingGET(observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getAdopcionesEnSeguimientoActivoUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getAdopcionesEnSeguimientoActivoUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getAdopcionesEnSeguimientoActivoUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // authentication (JWT) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<any>('get',`${this.basePath}/adopciones/seguimientos/adopciones`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * getAllSeguimientosActivos
+     * 
+     * @param idAdopcion idAdopcion
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getAllSeguimientosActivosUsingGET(idAdopcion: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getAllSeguimientosActivosUsingGET(idAdopcion: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getAllSeguimientosActivosUsingGET(idAdopcion: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getAllSeguimientosActivosUsingGET(idAdopcion: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (idAdopcion === null || idAdopcion === undefined) {
+            throw new Error('Required parameter idAdopcion was null or undefined when calling getAllSeguimientosActivosUsingGET.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (JWT) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<any>('get',`${this.basePath}/adopciones/seguimientos/all/enproceso/${encodeURIComponent(String(idAdopcion))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * getAllSeguimientosTerminados
+     * 
+     * @param idAdopcion idAdopcion
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getAllSeguimientosTerminadosUsingGET(idAdopcion: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getAllSeguimientosTerminadosUsingGET(idAdopcion: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getAllSeguimientosTerminadosUsingGET(idAdopcion: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getAllSeguimientosTerminadosUsingGET(idAdopcion: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (idAdopcion === null || idAdopcion === undefined) {
+            throw new Error('Required parameter idAdopcion was null or undefined when calling getAllSeguimientosTerminadosUsingGET.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (JWT) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<any>('get',`${this.basePath}/adopciones/seguimientos/all/finalizado/${encodeURIComponent(String(idAdopcion))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * getNumSeguimientosActivos
+     * 
+     * @param idAdopcion idAdopcion
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getNumSeguimientosActivosUsingGET(idAdopcion: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getNumSeguimientosActivosUsingGET(idAdopcion: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getNumSeguimientosActivosUsingGET(idAdopcion: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getNumSeguimientosActivosUsingGET(idAdopcion: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (idAdopcion === null || idAdopcion === undefined) {
+            throw new Error('Required parameter idAdopcion was null or undefined when calling getNumSeguimientosActivosUsingGET.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (JWT) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<any>('get',`${this.basePath}/adopciones/seguimientos/count/${encodeURIComponent(String(idAdopcion))}`,
+            {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

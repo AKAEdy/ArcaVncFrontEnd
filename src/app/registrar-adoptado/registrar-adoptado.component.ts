@@ -18,7 +18,21 @@ export class RegistrarAdoptadoComponent implements OnInit {
   adopcion: Adopcion = {};
  adoptante: Adoptante = {};
  adoptantes: Adoptante[]=[];
- animal: Animal={};
+ animal: Animal={
+   colorCaracteristicas: '',
+   edad: 0,
+   especie: '',
+   fechaNacimiento: undefined,
+   foto: '',
+   lugarEstancia: '',
+   nombre: '',
+   observacionesProcedencia: '',
+   peso: 0,
+   procedencia: '',
+   raza: '',
+   sexo: '',
+   tamanyo: ''
+ };
  cedulas: string;
   constructor(private adopcionesService:AdopcionControllerService, private adoptanteService: AdoptanteControllerService) {
  

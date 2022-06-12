@@ -13,7 +13,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <input matInput placeholder="CEDULA" [(ngModel)]="veterinarios.persona.cedula"
-                                        class="form-control" name="cedula" #cedula="ngModel" required>
+                                        class="form-control" name="cedula" #cedula="ngModel" maxlength="10" required>
                                     <div class="text-danger" *ngIf="cedula.hasError('required') && cedula.touched">
                                         La cédula es requerido!
                                     </div>
@@ -65,7 +65,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <input matInput placeholder="TELEFONO" [(ngModel)]="veterinarios.persona.telefono"
-                                        class="form-control" name="telefono" #telefono="ngModel" required>
+                                        class="form-control" name="telefono" #telefono="ngModel" maxlength="9" required>
                                     <div class="text-danger" *ngIf="telefono.hasError('required') && telefono.touched">
                                         El teléfono es requerido!
                                     </div>
@@ -77,7 +77,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <input matInput placeholder="CELULAR" [(ngModel)]="veterinarios.persona.celular"
-                                        class="form-control" name="celular" #celular="ngModel" required>
+                                        class="form-control" name="celular" #celular="ngModel"maxlength="10" required>
                                     <div class="text-danger" *ngIf="celular.hasError('required') && celular.touched">
                                         El celular es requerido!
                                     </div>

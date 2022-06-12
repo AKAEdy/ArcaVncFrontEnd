@@ -9,14 +9,13 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { Persona } from './persona';
-import { Rol } from './rol';
+import { AnimalDTO } from './animalDTO';
+import { VacunaDTO } from './vacunaDTO';
 
-export interface Usuario { 
-    enabled: boolean;
+export interface CarnetVacunacionDTO { 
+    animal?: AnimalDTO;
+    fechaAplicacion?: Date;
+    fechaProximaAplicacion?: Date;
     id?: number;
-    password: string;
-    persona: Persona;
-    roles?: Array<Rol>;
-    username: string;
+    vacuna?: VacunaDTO;
 }

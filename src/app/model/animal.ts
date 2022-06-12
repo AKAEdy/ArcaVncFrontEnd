@@ -9,22 +9,21 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { CarnetVacunacion } from './carnetVacunacion';
-import { FichaClinica } from './fichaClinica';
 
 export interface Animal { 
-    caracteristicas?: string;
-    color?: string;
-    edad?: number;
-    especie?: string;
-    fechaNacimiento?: Date;
-    fichasClinicas?: Array<FichaClinica>;
-    foto?: string;
-    historialVacunaciones?: Array<CarnetVacunacion>;
+    adoptado?: boolean;
+    colorCaracteristicas: string;
+    edad: number;
+    especie: string;
+    fechaNacimiento: Date;
+    foto: string;
     id?: number;
-    nombre?: string;
-    peso?: number;
-    raza?: string;
-    sexo?: string;
-    tamanyo?: string;
+    lugarEstancia: string;
+    nombre: string;
+    observacionesProcedencia: string;
+    peso: number;
+    procedencia: string;
+    raza: string;
+    sexo: string;
+    tamanyo: string;
 }

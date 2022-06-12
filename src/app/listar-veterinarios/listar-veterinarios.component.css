@@ -64,18 +64,29 @@ margin-right:10px;
 }
 
 /* ENCABEZADO */
+
+#myInputBotonSearch{
+  float: right;
+  margin-left: 10px;
+  margin-right: 0px;
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  height: 35px;
+}
+
 #myInput{
   float: right;
   width: 200px;
   color: rgb(255, 255, 255);
 }
-#myInputBoton{
+#myInputBotonRefresh{
   float: right;
   color: rgb(255, 255, 255);
   background-color: transparent;
   height: 35px;
-  border:hsl(0, 100%, 75%);
+  border: transparent;
 }
+
 .required{
   float: right;
   color: rgb(236, 236, 236);

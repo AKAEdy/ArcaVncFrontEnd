@@ -12,7 +12,21 @@ import Swal from 'sweetalert2';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  animal: Animal={};
+  animal: Animal={
+    colorCaracteristicas: '',
+    edad: 0,
+    especie: '',
+    fechaNacimiento: undefined,
+    foto: '',
+    lugarEstancia: '',
+    nombre: '',
+    observacionesProcedencia: '',
+    peso: 0,
+    procedencia: '',
+    raza: '',
+    sexo: '',
+    tamanyo: ''
+  };
   public formSubmitted = false;
   
   constructor(private animalesService: AnimalesService, private router: Router,) { }

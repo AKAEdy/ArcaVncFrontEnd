@@ -6,8 +6,9 @@
                     <div class="card-header card-header-danger">
                         <div>
                             <label><span class="required">LISTA DE VETERINARIOS </span></label>
-                            <input id="myInput" type="text" class="form-control" placeholder="Buscar por cedula"/>
-                            <button id="myInputBoton"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            <input id="myInput" [(ngModel)]="buscarCedula" type="text" class="form-control" placeholder="Buscar por cedula"/>
+                            <button id="myInputBotonSearch" (click)="getByCedula()"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            <button id="myInputBotonRefresh" (click)="getAllVeterinarios()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
                         </div>
                     </div>
                     <div class="card-body">
