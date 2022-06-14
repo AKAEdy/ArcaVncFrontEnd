@@ -29,6 +29,9 @@
                                     <th>
                                         DIRECCION
                                     </th>
+                                    <th>
+                                        ACCION
+                                    </th>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let persona of personas">
@@ -50,28 +53,67 @@
                                         <td>
                                             {{persona.direccion}}
                                         </td>
+                                        <td>
+                                            <button _ngcontent-ffd-c89="" mat-raised-button="" (click)="editar(persona)"
+                                                class="mat-focus-indicator btneliminar mat-raised-button mat-button-base"><span
+                                                    class="mat-button-wrapper"><i _ngcontent-ffd-c89=""
+                                                        class="material-icons">mode_edit</i>
+                                                    <div _ngcontent-ffd-c89="" class="ripple-container"></div>
+                                                </span><span matripple=""
+                                                    class="mat-ripple mat-button-ripple"></span><span
+                                                    class="mat-button-focus-overlay"></span></button>
+                                        </td>
+                                        <td>
+                                            <button _ngcontent-slk-c89="" mat-raised-button="" (click)="prueba('eliminar')"
+                                                class="mat-focus-indicator btneliminar mat-raised-button mat-button-base"><span
+                                                    class="mat-button-wrapper"><i _ngcontent-slk-c89=""
+                                                        class="material-icons">delete</i>
+                                                    <div _ngcontent-slk-c89="" class="ripple-container"></div>
+                                                </span><span matripple=""
+                                                    class="mat-ripple mat-button-ripple"></span><span
+                                                    class="mat-button-focus-overlay"></span></button>
+                                        </td>
+
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    
-                    
+
+
                     <div class="container">
-                       
+
                         <div class="pagination p11">
-                          <ul>
-                            <button (click)="previous()"> < </button>
-                         
-                            <button (click)="next()"> > </button>
-                          </ul>
-                        </div>  
-                                
-                      </div>
-                       
+                            <ul>
+                                <button (click)="previous()">
+                                    < </button>
+
+                                        <button (click)="next()"> > </button>
+                            </ul>
+                        </div>
+
+                    </div>
+
 
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>

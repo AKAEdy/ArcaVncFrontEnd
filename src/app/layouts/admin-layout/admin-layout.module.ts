@@ -40,6 +40,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { RegistrarVeterinariosComponent } from '../../registrar-veterinarios/registrar-veterinarios.component';
 import { ListarVeterinariosComponent } from '../../listar-veterinarios/listar-veterinarios.component';
+import { EditarPersonaComponent } from '../../components/editar-persona/editar-persona.component';
 
 @NgModule({
   imports: [
@@ -84,7 +85,8 @@ import { ListarVeterinariosComponent } from '../../listar-veterinarios/listar-ve
     ListarCitasComponent,
     RegistrarCitasComponent,
     RegistrarVeterinariosComponent,
-    ListarVeterinariosComponent,
+    ListarVeterinariosComponent,   
+    EditarPersonaComponent,
 
   ]
 })

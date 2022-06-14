@@ -25,6 +25,7 @@ import { RoleGuard } from 'app/guards/role.guard';
 import { IsAuthenticatedGuard } from 'app/guards/is-authenticated.guard';
 import { RegistrarVeterinariosComponent } from 'app/registrar-veterinarios/registrar-veterinarios.component';
 import { ListarVeterinariosComponent } from 'app/listar-veterinarios/listar-veterinarios.component';
+import { EditarPersonaComponent } from 'app/components/editar-persona/editar-persona.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -87,6 +88,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'listaAdoptado',   component: ListaAdoptadoComponent,canActivate:[IsAuthenticatedGuard,RoleGuard] ,data:{roles:['ROLE_ADMIN']}},
     { path: 'registrarAdoptado',   component: RegistrarAdoptadoComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']} },
     { path: 'listaPersonas',   component: ListaPersonaComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN','ROLE_VETERINARIO']}},
+    { path: 'editar-personas',   component: EditarPersonaComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN','ROLE_VETERINARIO']}},
     { path: 'registroPersonas',   component: RegistrarPersonaComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
     { path: 'listaMedicamentos',   component: ListarMedicamentoComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
     { path: 'registroMedicamentos',   component: RegistrarMedicamentoComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},

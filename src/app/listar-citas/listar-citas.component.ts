@@ -15,6 +15,7 @@ citas: Cita[]=[];
   ngOnInit(): void {
     this.listarAllCitas();
   }
+  
 
   listarAllCitas(){
     this.citaService.getAllCitasUsingGET().subscribe(data => {

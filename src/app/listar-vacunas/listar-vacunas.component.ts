@@ -14,7 +14,9 @@ vacunas: Vacuna[] = [];
   ngOnInit(): void {
     this.getAllVacunas();
   }
-
+  prueba(p:any){
+    alert(p)
+  }
   getAllVacunas(){
     this.vacunaService.getVacunasUsingGET().subscribe(date =>
       {
