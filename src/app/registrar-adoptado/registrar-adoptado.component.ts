@@ -17,7 +17,6 @@ import Swal from 'sweetalert2';
 export class RegistrarAdoptadoComponent implements OnInit {
   adopcion: Adopcion = {};
  adoptante: Adoptante = {};
- adoptantes: Adoptante[]=[];
  animal: Animal={
    colorCaracteristicas: '',
    edad: 0,
@@ -34,6 +33,10 @@ export class RegistrarAdoptadoComponent implements OnInit {
    tamanyo: ''
  };
  cedulas: string;
+ nombres:string;
+ direccion:string;
+ celular:string;
+ correo:string;
   constructor(private adopcionesService:AdopcionControllerService, private adoptanteService: AdoptanteControllerService) {
  
   }
@@ -79,15 +82,34 @@ export class RegistrarAdoptadoComponent implements OnInit {
     }
   }
 
-  getCedulaAdoptante(cedula: string){
-    this.adoptanteService.getAdoptantePorCedulaUsingGET(cedula).subscribe(data =>{
-this.adoptantes = data
-// for (let index = 0; index < this.adoptantes.length; index++) {
-//   var element = this.adoptantes[index];
+  getCedulaAdoptante(){
+    if(this.cedulas === undefined || this.cedulas === ""){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Ingrese la cedula!',
+      })
+    }else{
+      this.adoptanteService.getAdoptantePorCedulaUsingGET(this.cedulas).subscribe(data =>{
+        this.adoptante = data
+        document.getElementById("tabla").style.display="block";
+        console.log(this.nombres+" DATOS");
+        this.nombres = this.adoptante.persona.nombre +" " + this.adoptante.persona.apellidos
+        this.celular = this.adoptante.persona.celular
+        this.direccion = this.adoptante.persona.direccion
+        this.correo = this.adoptante.persona.correo
+        console.log(this.nombres+" DATOS");
+        
+            },err =>{
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Registro no encontrado!' ,
+              })
+              this.adoptante = {};
+              document.getElementById("tabla").style.display="none";
+            })
+    }
   
-// }
-window.alert("EDITAR "+ data);
-
-    })
   }
 }

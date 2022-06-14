@@ -23,7 +23,7 @@
                       <div class="btn-group">
                         <div>
                           <button mat-raised-button type="submit" class="btn btn-danger btn-round" class="btneditar"
-                            (click)="getCedulaAdoptante(cedulas)">
+                            (click)="getCedulaAdoptante()">
                             <i class="fa fa-search"></i> Buscar
                           </button>
                         </div>
@@ -37,7 +37,42 @@
                 </div>
 
                 
-
+                <div class="card-body" id="tabla" style="display:none;">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th class="table-danger" scope="col">
+                          Nombre adoptante
+                        </th>
+                        <th class="table-danger" scope="col">
+                          Celular
+                        </th>
+                        <th class="table-danger" scope="col">
+                          Direccion
+                        </th>
+                        <th class="table-danger" scope="col">
+                          Correo electronico
+                        </th>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            {{nombres}}
+                          </td>
+                          <td>
+                            {{celular}}
+                          </td>
+                          <td>
+                            {{direccion}}
+                          </td>
+                          <td>
+                            {{correo}}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
 
                 <div class="row">
                   <div class="col-md-12">
@@ -79,39 +114,3 @@
 
 </body>
 
-<div class="card-body">
-  <div class="table-responsive">
-    <table class="table">
-      <thead class=" text-primary">
-        <th class="table-danger" scope="col">
-          Nombre adoptante
-        </th>
-        <th class="table-danger" scope="col">
-          Celular
-        </th>
-        <th class="table-danger" scope="col">
-          Direccion
-        </th>
-        <th class="table-danger" scope="col">
-          Correo electronico
-        </th>
-      </thead>
-      <tbody>
-        <tr *ngFor="let adoptante of adoptantes">
-          <td>
-            {{adoptante.nombre}} {{adoptante.apellidos}}
-          </td>
-          <td>
-            {{adoptante.persona.celular}}
-          </td>
-          <td>
-            {{adoptante.persona.direccion}}
-          </td>
-          <td>
-            {{adoptante.nicknameFacebook}}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
