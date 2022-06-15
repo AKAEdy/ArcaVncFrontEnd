@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AnimalesService } from 'app/api/animales.service';
+import { FichasClnicasService } from 'app/api/fichasClnicas.service';
 import { Animal } from 'app/model/animal';
+import { FichaClinica } from 'app/model/fichaClinica';
+import { Validacion } from 'app/validaciones/Validacion';
+import { ViewChild } from '@angular/core';
 
 
 import Swal from 'sweetalert2';
@@ -12,10 +16,22 @@ import Swal from 'sweetalert2';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  animal: Animal={};
-  public formSubmitted = false;
+
+  name = 'Angular';
+  @ViewChild('MyForm', { static: false }) MyForm: NgForm;
+
+ 
+  animales:any[] = [];
+  validacion: Validacion = new Validacion();
   
-  constructor(private animalesService: AnimalesService, private router: Router,) { }
+  fichaClinica:FichaClinica={};
+  animal: Animal={};
+
+
+  public formSubmitted = false;
+
+  
+  constructor(private animalesService: AnimalesService, private fichasClinicasService: FichasClnicasService, private router: Router,private _formBuilder: FormBuilder) { }
 
   ngOnInit():void {
 
@@ -41,7 +57,9 @@ export class UserProfileComponent implements OnInit {
 
 
 
-
+  resetForm() {
+    this.MyForm.reset();
+  }
 
 
 
@@ -72,17 +90,20 @@ s
           this.irFicha();
         });
       }else {
+        
       //  console.log("LLEGA "+ this.animal.nombre,this.animal.especie,this.animal.raza, this.animal.peso, this.animal.color, this.animal.sexo, this.animal.tamanyo, this.animal.edad);
-   
+  // this.animales.push(this.animal);this.animal={}
       this.animalesService.createUsingPOST(this.animal).subscribe(data => {
+        
         this.animal=data;
         Swal.fire(
 
          "Nueva Mascota",
-         `¡${data.especie} creada con exito!`,
+         `¡${this.animal.especie} creada con exito!`,
           "success"
         );
         console.log("imprimiendo", data)
+      
        this.irFicha();
      });
    } }
@@ -90,7 +111,63 @@ s
   irFicha() {
    this.router.navigateByUrl("/registrofichaclinica");
  }
+ irAtras() {
+  this.router.navigateByUrl("/menu");
+}
 
+
+
+
+
+//  Detalle(id: number){
+//   this.animalesService.getByIdUsingGET(id).subscribe(data =>{
+//     this.animales=data;
+//   console.log("listado",data);
+//   //this.router.navigate (['/upgrade', id]);
+//   });
+// }
+
+
+
+
+
+
+guardarFicha(form: NgForm) {
+  this.formSubmitted = true;
+  if (form.invalid) {
+    return;
+  } 
+  if (this.fichaClinica.id) {
+    this.fichasClinicasService
+      .updateUsingPUT1(this.fichaClinica, this.fichaClinica.id)
+      .subscribe((fichasClinicas) => {
+        Swal.fire(
+          "Actualizar mascota",
+          `¡${this.fichaClinica.id} actualizado con exito!`,
+          "success"
+        );
+        this.irLista();
+      });
+    }else {
+    //  console.log("LLEGA "+ this.animal.nombre,this.animal.especie,this.animal.raza, this.animal.peso, this.animal.color, this.animal.sexo, this.animal.tamanyo, this.animal.edad);
+// this.animales.push(this.animal);this.animal={}
+    this.fichasClinicasService.createUsingPOST1(this.fichaClinica).subscribe(data => {
+      this.fichaClinica=data;
+      Swal.fire(
+
+       "Nueva Ficha",
+       `¡${this.fichaClinica.id} creada con exito!`,
+        "success"
+      );
+      console.log("imprimiendo", data)
+    
+   //  this.irFicha();
+   });
+  }}
+
+ irLista() {
+  this.router.navigateByUrl("/TableList");
+}
 
 
 }

@@ -34,7 +34,7 @@ import { ListarVacunasComponent } from '../../listar-vacunas/listar-vacunas.comp
 import { ListarCitasComponent } from '../../listar-citas/listar-citas.component';
 import { RegistrarCitasComponent } from '../../registrar-citas/registrar-citas.component';
 
-
+import {MatStepperModule} from '@angular/material/stepper';
 import { MatPaginatorModule } from '@angular/material/paginator';import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
@@ -56,6 +56,7 @@ import { ListarVeterinariosComponent } from '../../listar-veterinarios/listar-ve
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
+    MatStepperModule,
   ],
   declarations: [
     DashboardComponent,

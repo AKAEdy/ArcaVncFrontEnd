@@ -29,6 +29,7 @@ import { MedicamentosService } from './api/medicamentos.service';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    
   ],
   declarations: [
     AppComponent,
