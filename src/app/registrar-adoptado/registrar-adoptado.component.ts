@@ -37,6 +37,9 @@ export class RegistrarAdoptadoComponent implements OnInit {
  direccion:string;
  celular:string;
  correo:string;
+ telefono:string;
+ telfamiliar:string;
+ facebook:string;
   constructor(private adopcionesService:AdopcionControllerService, private adoptanteService: AdoptanteControllerService) {
  
   }
@@ -90,15 +93,21 @@ export class RegistrarAdoptadoComponent implements OnInit {
         text: 'Ingrese la cedula!',
       })
     }else{
-      this.adoptanteService.getAdoptantePorCedulaUsingGET(this.cedulas).subscribe(data =>{
+           this.adoptanteService.getAdoptantePorCedulaUsingGET(this.cedulas).subscribe(data =>{
         this.adoptante = data
-        document.getElementById("tabla").style.display="block";
-        console.log(this.nombres+" DATOS");
+        // document.getElementById("tabla").style.display="block";
         this.nombres = this.adoptante.persona.nombre +" " + this.adoptante.persona.apellidos
         this.celular = this.adoptante.persona.celular
         this.direccion = this.adoptante.persona.direccion
         this.correo = this.adoptante.persona.correo
-        console.log(this.nombres+" DATOS");
+        this.telefono = this.adoptante.persona.telefono
+        this.telfamiliar =  this.adoptante.telefonoFamiliar
+        this.facebook = this.adoptante.nicknameFacebook
+        Swal.fire({
+          icon: 'success',
+          title: 'Cedula encontrada',
+          text: 'El adoptante es '+this.nombres,
+        })
         
             },err =>{
               Swal.fire({
@@ -107,7 +116,7 @@ export class RegistrarAdoptadoComponent implements OnInit {
                 text: 'Registro no encontrado!' ,
               })
               this.adoptante = {};
-              document.getElementById("tabla").style.display="none";
+              // document.getElementById("tabla").style.display="none";
             })
     }
   

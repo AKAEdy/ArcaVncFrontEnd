@@ -37,7 +37,7 @@
                 </div>
 
 
-                <div class="card-body" id="tabla" style="display:none;">
+                <!-- <div class="card-body" id="tabla" style="display:none;">
                   <div class="table-responsive">
                     <table class="table">
                       <thead class=" text-primary">
@@ -72,7 +72,7 @@
                       </tbody>
                     </table>
                   </div>
-                </div>
+                </div> -->
 
                 <div class="row">
                   <div class="col-md-12">
@@ -111,7 +111,7 @@
                 </div>
 
                 <button mat-raised-button type="submit" class="btn btn-danger pull-right"
-                  (click)="saveAdopciones()">Update Profile</button>
+                  (click)="saveAdopciones()">Registrar</button>
                 <div class="clearfix"></div>
               </form>
 
@@ -131,39 +131,30 @@
   <div class="modal-dialog" role="document" style="max-width:1000px!important ;">>
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Documento de adopcion</h5>
+        <h3 class="modal-title" id="exampleModalLabel">Documento de adopción</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://scontent.fcue2-1.fna.fbcdn.net/v/t31.18172-8/20901343_1486928208061776_5459970871099575552_o.jpg?_nc_cat=108&amp;ccb=1-7&amp;_nc_sid=09cbfe&amp;_nc_eui2=AeECnBmOMVPs6kN22D2NFOyTMe2n9B4DCXUx7af0HgMJdT5dNx9AZ-1EadbHhp4SdzZJTpkX0yQNcRZ0s9WlXQlW&amp;_nc_ohc=iQvc3L0SFIAAX8th23s&amp;_nc_ht=scontent.fcue2-1.fna&amp;oh=00_AT97qLeqOIJrD1G91HDUgdGQm5rlSHw-IjvQezCw60pNBA&amp;oe=62CF9E79" alt="" width="100" height="100" /></p>
+      <div class="modal-body" id="print-section">
+        <p><img style="display: block; margin-left: auto; margin-right: auto;" src="../../assets/img/arca-logo.png" alt="" width="100" height="100" /></p>
         <p style="text-align: center;">BALTAZARA DE CALDERON 2-37 Y MIGUEL VELEZ</p>
         <p style="text-align: center;">TELF: 2835201&nbsp; CELULAR:0983350434</p>
         <p style="text-align: center;">DOCUMENTO DE ADOPCION</p>
         <p style="text-align: left;">ADOPTADO(A): <strong><span style="text-decoration: underline;">NOMBRE&nbsp;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong>CLINICA&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;EVENTO</p>
-        <p style="text-align: left;">Nombre del adoptante: <span style="text-decoration: underline;"><strong>ADOPTANTE</strong></span></p>
-        <p style="text-align: left;">Direccion: <span style="text-decoration: underline;"><strong>DIRECCION</strong></span></p>
-        <p style="text-align: left;">Telefono de casa: <span style="text-decoration: underline;"><strong>TELEFONO&nbsp;</strong> </span>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Celular: <span style="text-decoration: underline;"><strong>CELULAR</strong></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; Telf de familiar: <span style="text-decoration: underline;"><strong>TELEFAMILIAR</strong></span></p>
-        <p style="text-align: left;">Correo electr&oacute;nico: <span style="text-decoration: underline;"><strong>CORREO</strong>&nbsp;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;Fabook:<span style="text-decoration: underline;"><strong>FACEBOOK</strong></span></p>
+        <p style="text-align: left;">Nombre del adoptante: <span style="text-decoration: underline;"><strong>{{nombres}}</strong></span></p>
+        <p style="text-align: left;">Direccion: <span style="text-decoration: underline;"><strong>{{direccion}}</strong></span></p>
+        <p style="text-align: left;">Telefono de casa: <span style="text-decoration: underline;"><strong>{{telefono}}&nbsp;</strong> </span>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Celular: <span style="text-decoration: underline;"><strong>{{celular}}</strong></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; Telf de familiar: <span style="text-decoration: underline;"><strong>{{telfamiliar}}</strong></span></p>
+        <p style="text-align: left;">Correo electrónico: <span style="text-decoration: underline;"><strong>{{correo}}</strong>&nbsp;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;Fabook:<span style="text-decoration: underline;"><strong>{{facebook}}</strong></span></p>
         <p style="text-align: left;">EL Sr. o Sra. ADOPTANTE mayor de edad, con c&eacute;dula de identidad N&deg; CEDULA a quien en adelante se le denominara el <strong>Adoptante</strong>, suscribe el presente convenio con ARCA Fundaci&oacute;n Protectora de animales a quien se le denominara la<em><strong> Fundaci&oacute;n</strong>&nbsp;</em>bajo la siguente cl&aacute;usulas:</p>
         <p style="text-align: left;">&nbsp;</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-        
+        <button type="button" class="btn btn-primary" printSectionId="print-section" ngxPrint>Imprimir</button>    
       </div>
     </div>
   </div>
 </div>
 
-<div id="print-section"> 
-  <h1>HOLAAAAAA</h1>
-</div>
 
- <!--
-   2)- Add the directive name in your button (ngxPrint),
-   3)- Affect your ID to printSectionId
- -->
-<button printSectionId="print-section" ngxPrint>print</button> 

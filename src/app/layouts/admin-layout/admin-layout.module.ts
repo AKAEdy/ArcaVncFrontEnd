@@ -40,6 +40,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { RegistrarVeterinariosComponent } from '../../registrar-veterinarios/registrar-veterinarios.component';
 import { ListarVeterinariosComponent } from '../../listar-veterinarios/listar-veterinarios.component';
+import { NgxPrintModule } from 'ngx-print';
 
 @NgModule({
   imports: [
@@ -56,6 +57,8 @@ import { ListarVeterinariosComponent } from '../../listar-veterinarios/listar-ve
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
+    NgxPrintModule,
+    
   ],
   declarations: [
     DashboardComponent,
