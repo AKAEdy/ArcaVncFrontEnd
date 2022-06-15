@@ -4,7 +4,7 @@ import { AnimalesService } from 'app/api/animales.service';
 import { Animal } from 'app/model/animal';
 import { environment } from 'environments/environment';
 
-import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-table-list',

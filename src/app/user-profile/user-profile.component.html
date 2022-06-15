@@ -17,6 +17,7 @@
     <div class="col-md-4 image-fluid">
 
       <div class="card-body">
+        
         <img class="card-img-top" src="../assets/img/perrito.jpeg" alt="Card image cap">
         <div class="mb-4">
           <br>
@@ -40,7 +41,8 @@
                   <div class="col-md-5">
                     <div class="form-group">
                       <input type="text" placeholder="Nombre" class="form-control" name="nombre" #nombre="ngModel"
-                        [(ngModel)]="animal.nombre" required />
+                        [(ngModel)]="animal.nombre" style="text-transform:uppercase"  pattern="[a-zA-Z ]{2,15}"
+                        title="Solo letras" required />
                       <div class="text-danger" *ngIf="nombre.hasError('required') && nombre.touched">
                         Nombre es requerido!
                       </div>
@@ -100,9 +102,9 @@
                         <option [ngValue]="undefined">
                           Procedencia
                         </option>
-                        <option value="911">911</option>
-                        <option value="Particular">Particular</option>
-                       
+                        <option value="ECU911">ECU911</option>
+                        <option value="PARTICULAR">PARTICULAR</option>
+   
                       </select>
 
                       <div class="text-danger" *ngIf="procedencia.hasError('required') && procedencia.touched">
@@ -119,9 +121,9 @@
                         <option [ngValue]="undefined">
                           Lugar de Estancia
                         </option>
-                        <option value="Refugio">Refugio</option>
-                        <option value="Clinica">Clinica</option>
-                       
+                        <option value="REFUGIO">REFUGIO</option>
+                        <option value="CLINICA">CLINICA</option>
+                        <option value="HOGAR">HOGAR</option>
                       </select>
 
                       <div class="text-danger" *ngIf="lugarEstancia.hasError('required') && lugarEstancia.touched">
@@ -135,10 +137,10 @@
                     <div class="form-group">
 
                       <input type="text" placeholder="Raza" class="form-control" name="raza" #raza="ngModel"
-                        [(ngModel)]="animal.raza" required />
+                        [(ngModel)]="animal.raza" style="text-transform:uppercase"  pattern="[a-zA-Z ]{2,15}"  title="Solo letras" required />
                       <div class="text-danger" *ngIf="
                   raza.hasError('required') && raza.touched
-                  ">
+                  " >
                         Raza es requerido!
                       </div>
                     </div>
@@ -151,7 +153,7 @@
                   <div class="col-md-3">
                     <div class="form-group">
 
-                      <input type="text" placeholder="Peso" class="form-control" name="peso" #peso="ngModel"
+                      <input type="number" placeholder="Peso" class="form-control" name="peso" #peso="ngModel"
                         [(ngModel)]="animal.peso" required />
                       <div class="text-danger" *ngIf="
                   peso.hasError('required') && peso.touched
@@ -165,7 +167,7 @@
                   <!--edad-->
                   <div class="col-md-3">
                     <div class="form-group">
-                      <input type="text" placeholder="Edad" class="form-control" name="edad" #edad="ngModel"
+                      <input type="number" placeholder="Edad" class="form-control" name="edad" #edad="ngModel"
                         [(ngModel)]="animal.edad" required />
                       <div class="text-danger" *ngIf="
                 edad.hasError('required') && edad.touched
@@ -258,16 +260,36 @@
                   <!--/span-->
                 </div>
 
+<!--foto-->
+              </div>
+              <div class="col-md-8">
+                <div class="form-group">
+                  <input type="text" placeholder="foto ( solo una url)" class="form-control" name="foto" #foto="ngModel"
+                    [(ngModel)]="animal.foto" required />
+                  <div class="text-danger" *ngIf="
+            foto.hasError('required') && foto.touched
+            ">
+                    foto es requerido!
+                  </div>
 
+
+                </div>
               </div>
               <hr />
               <div class="form-actions">
+                <button type="button" class="btn btn-inverse"(click)="irAtras()" >
+                  <i class="fa fa-reply" aria-hidden="true"></i> Regresar
+                </button>
+              
+                <button type="button" class="btn btn-danger mr-2" (click)="resetForm()">
+                  <i class="fa fa-times-circle" aria-hidden="true"></i>
+                  Cancelar
+                </button>
                 <button type="submit" class="btn btn-success mr-2">
                   <i class="fa fa-check"></i> Guardar
                 </button>
-                <button type="button" class="btn btn-inverse">
-                  Cancelar
-                </button>
+
+                
               </div>
 
             </form>

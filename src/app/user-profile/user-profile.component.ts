@@ -5,6 +5,8 @@ import { AnimalesService } from 'app/api/animales.service';
 import { FichasClnicasService } from 'app/api/fichasClnicas.service';
 import { Animal } from 'app/model/animal';
 import { FichaClinica } from 'app/model/fichaClinica';
+import { Validacion } from 'app/validaciones/Validacion';
+import { ViewChild } from '@angular/core';
 
 
 import Swal from 'sweetalert2';
@@ -14,14 +16,14 @@ import Swal from 'sweetalert2';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+
+  name = 'Angular';
+  @ViewChild('MyForm', { static: false }) MyForm: NgForm;
+
+ 
   animales:any[] = [];
+  validacion: Validacion = new Validacion();
   
-  firstFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
-  });
-  secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
-  });
   fichaClinica:FichaClinica={};
   animal: Animal={};
 
@@ -55,7 +57,9 @@ export class UserProfileComponent implements OnInit {
 
 
 
-
+  resetForm() {
+    this.MyForm.reset();
+  }
 
 
 
@@ -86,9 +90,11 @@ s
           this.irFicha();
         });
       }else {
+        
       //  console.log("LLEGA "+ this.animal.nombre,this.animal.especie,this.animal.raza, this.animal.peso, this.animal.color, this.animal.sexo, this.animal.tamanyo, this.animal.edad);
   // this.animales.push(this.animal);this.animal={}
       this.animalesService.createUsingPOST(this.animal).subscribe(data => {
+        
         this.animal=data;
         Swal.fire(
 
@@ -98,13 +104,16 @@ s
         );
         console.log("imprimiendo", data)
       
-     //  this.irFicha();
+       this.irFicha();
      });
    } }
 
   irFicha() {
    this.router.navigateByUrl("/registrofichaclinica");
  }
+ irAtras() {
+  this.router.navigateByUrl("/menu");
+}
 
 
 

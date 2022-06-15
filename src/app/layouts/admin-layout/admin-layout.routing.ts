@@ -73,7 +73,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'medicacion',     component: TypographyComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}},
     { path: 'icons',          component: IconsComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}},
     { path: 'tratamiento',           component: MapsComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}}, // map
-    { path: 'notifications',  component: NotificationsComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}},
+    { path: 'notifications/:id',  component: NotificationsComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}},
     { path: 'upgrade/:id',        component: UpgradeComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}},
     { path: 'RegistroVoluntariado',   component: RegistrarVoluntariadoComponent,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}  },
 
