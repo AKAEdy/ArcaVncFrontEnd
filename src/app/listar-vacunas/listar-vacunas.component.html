@@ -1,4 +1,5 @@
-<div class="main-content">
+<div class="main-content" id="tabla">
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -36,6 +37,28 @@
                                         <td>
                                            {{vacuna.descripcion}}
                                         </td>
+                                        <td>
+                                            <button _ngcontent-uqa-c89="" mat-raised-button="" type="submit"
+                                                class="mat-focus-indicator btneliminar mat-raised-button mat-button-base" (click)="getVacunasById(vacuna.id)"><span
+                                                    class="mat-button-wrapper"><i _ngcontent-uqa-c89=""
+                                                        class="material-icons">mode_edit</i>
+                                                    <div _ngcontent-uqa-c89="" class="ripple-container"></div>
+                                                </span><span matripple=""
+                                                    class="mat-ripple mat-button-ripple"></span><span
+                                                    class="mat-button-focus-overlay"></span></button>
+                                        </td>
+                                        <td>
+                                            <button _ngcontent-die-c89="" mat-raised-button="" type="submit"
+                                                class="mat-focus-indicator btneliminar mat-raised-button mat-button-base" (click)="deleteVacunas(vacuna.id)"><span
+                                                    class="mat-button-wrapper"><i _ngcontent-die-c89=""
+                                                        class="material-icons">delete</i>
+                                                    <div _ngcontent-die-c89="" class="ripple-container"></div>
+                                                </span><span matripple=""
+                                                    class="mat-ripple mat-button-ripple"></span><span
+                                                    class="mat-button-focus-overlay"></span></button>
+
+
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -46,3 +69,69 @@
         </div>
     </div>
 </div>
+
+<!-- editar vacunas -->
+<div class="main-content" >
+    <div class="container-fluid">
+        <div class="card" id="tarjeta" style="display: none;" >
+            
+            <div class="card-header card-header-danger">
+                <h4 class="card-title">EDITAR VACUNASS</h4>
+
+            </div>
+            <div class="card-body">
+                <form #f="ngForm" (ngSubmit)="updateVacunas()" novalidate>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Nombre de la Vacuna</span>
+                                </div>
+                                <input matInput placeholder="Nombre de la Vacuna" [(ngModel)]="vacunasid.nombre"
+                                    class="form-control" name="nombre de la vacuna" #nombre="ngModel" required>
+                                <div class="text-danger" *ngIf="nombre.hasError('required') && nombre.touched">
+                                EL Nonmbre de la Vacuna  es requerido!
+                                </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Tipo de Vacuna</span>
+                                </div>
+                                <input matInput placeholder="Tipo de Vacuna" [(ngModel)]="vacunasid.tipo"
+                                    class="form-control" name="tipo de Vacuna" #tipo="ngModel" required>
+                                <div class="text-danger" *ngIf="tipo.hasError('required') && tipo.touched">
+                                    EL tipo de Vacuna es requerido!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">DESCRIPCION</span>
+                                </div>
+                                <input matInput placeholder="DESCRIPCION" [(ngModel)]="vacunasid.descripcion"
+                                    class="form-control" name="descripcion" #descripcion="ngModel" required>
+                                <div class="text-danger" *ngIf="descripcion.hasError('required') && descripcion.touched">
+                                    La descripcion es requerido!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+             
+                    <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                        (click)="botonCancelar()">CANCELAR</button>
+                    <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                        (click)="updateVacunas()">REGISTRAR</button>
+
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>

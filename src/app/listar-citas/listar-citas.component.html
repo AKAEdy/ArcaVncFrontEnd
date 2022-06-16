@@ -1,5 +1,5 @@
 
-<div class="main-content">
+<div class="main-content" id="tabla" style="display: block">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -48,6 +48,28 @@
                                                 🔴 
                                             </td>
                                           </ng-template>
+                                          <td>
+                                            <button _ngcontent-uqa-c89="" mat-raised-button="" type="submit"
+                                                class="mat-focus-indicator btneliminar mat-raised-button mat-button-base" (click)="getCitasById(cita.id)"><span
+                                                    class="mat-button-wrapper"><i _ngcontent-uqa-c89=""
+                                                        class="material-icons">mode_edit</i>
+                                                    <div _ngcontent-uqa-c89="" class="ripple-container"></div>
+                                                </span><span matripple=""
+                                                    class="mat-ripple mat-button-ripple"></span><span
+                                                    class="mat-button-focus-overlay"></span></button>
+                                        </td>
+                                        <td>
+                                            <button _ngcontent-die-c89="" mat-raised-button="" type="submit"
+                                                class="mat-focus-indicator btneliminar mat-raised-button mat-button-base" (click)="deleteCitas(cita.id)"><span
+                                                    class="mat-button-wrapper"><i _ngcontent-die-c89=""
+                                                        class="material-icons">delete</i>
+                                                    <div _ngcontent-die-c89="" class="ripple-container"></div>
+                                                </span><span matripple=""
+                                                    class="mat-ripple mat-button-ripple"></span><span
+                                                    class="mat-button-focus-overlay"></span></button>
+
+
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -57,5 +79,63 @@
             </div>
         </div>
     </div>
+  </div>
+  <!-- registrar citas -->
+  <div class="main-content">
+    <div class="container-fluid">
+        <!-- <div class="row"> -->
+            <!-- <div class="col-md-8"> -->
+                <div class="card" id="tajeta" style="display: none">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">EDITAR DE CITAS</h4>
+                        <!-- <p class="card-category">Complete your profile</p> -->
+                    </div>
+                    <div class="card-body">
+                        <form >
+                          <div class="row">
+                            <div class="col-md-12">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="VETERINARIO" type="text"  [(ngModel)]="citasid.id">
+                              </mat-form-field>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="FECHA" type="date"  [(ngModel)]="citasid.fechaCita">
+                            </mat-form-field>
+                          </div>
+                        </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="NOMBRE DEL CLIENTE" type="text"  [(ngModel)]="citasid.nombreCliente">
+                                  </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-12">
+                                <mat-form-field class="example-full-width">
+                                  <textarea matInput rows="5"
+                                    placeholder="MOTIVO DE CITA"
+                                    [(ngModel)]="citasid.motivo">
+                                  </textarea>
+                                </mat-form-field>
+                              </div>
+                            </div>
+                   
+                            
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="updateCitas()">REGISTRAR</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            <!-- </div> -->
+          
+        </div>
+    <!-- </div> -->
   </div>
   
