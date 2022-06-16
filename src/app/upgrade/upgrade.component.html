@@ -1,78 +1,108 @@
-<div class="main-content">
+<div class="container-fluid">
+  <div class="main-content">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8 ml-auto mr-auto">
-                <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title">Material Dashboard PRO Angular</h4>
-                        <p class="card-category">Are you looking for more components? Please check our Premium Version of Material Dashboard Angular.</p>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive table-upgrade">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th class="text-center">Free</th>
-                                        <th class="text-center">PRO</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Components</td>
-                                        <td class="text-center">60</td>
-                                        <td class="text-center">200</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Plugins</td>
-                                        <td class="text-center">2</td>
-                                        <td class="text-center">15</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Example Pages</td>
-                                        <td class="text-center">3</td>
-                                        <td class="text-center">27</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Login, Register, Pricing, Lock Pages</td>
-                                        <td class="text-center"><i class="fa fa-times text-danger"></i></td>
-                                        <td class="text-center"><i class="fa fa-check text-success"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td>DataTables, VectorMap, SweetAlert, Wizard, jQueryValidation, FullCalendar etc...</td>
-                                        <td class="text-center"><i class="fa fa-times text-danger"></i></td>
-                                        <td class="text-center"><i class="fa fa-check text-success"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mini Sidebar</td>
-                                        <td class="text-center"><i class="fa fa-times text-danger"></i></td>
-                                        <td class="text-center"><i class="fa fa-check text-success"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Premium Support</td>
-                                        <td class="text-center"><i class="fa fa-times text-danger"></i></td>
-                                        <td class="text-center"><i class="fa fa-check text-success"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td class="text-center">Free</td>
-                                        <td class="text-center">Just $59</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center"></td>
-                                        <td class="text-center">
-                                            <a href="javascript:void(0)" class="btn btn-round btn-fill btn-default disabled">Current Version</a>
-                                        </td>
-                                        <td class="text-center">
-                                            <a target="_blank" href="https://www.creative-tim.com/product/material-dashboard-pro-angular2?ref=md-free-angular-upgrade-live" class="btn btn-round btn-fill btn-info">Upgrade to PRO</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="row">
+
+        <div class="card">
+          
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Historia Clinica</h4>
+           
+            <img class="card-img" src="https://dam.ngenespanol.com/wp-content/uploads/2020/04/perros-gatos-china.jpg" alt="Card image"height="170" width="200">
+      <div class="card-img-overlay">
+          </div>
         </div>
-    </div>
+      </div>
+
+<div class="container">
+<div class="row ">
+  <div class="col-12">
+    <div class="card">
+     <h1 class="card-title text-center">Historial Clinico</h1>
+  
+        <div class="row justify-content-center">
+          <div class="col-lg-8 col-md-8" *ngIf="animal">
+            <!-- Card -->
+            <div class="card border-dark">
+              <br>
+              <h2> Nombre: {{animal.nombre}}</h2>
+              <br>
+              <img class="card-img" src="{{animal.foto}}" class="img-rounded" class="mx-auto d-block"alt="Cinque Terre" width="304" height="236">
+          
+              <div class="card-body">
+                <h3>CODIGO: {{animal.id}}</h3>
+                
+                
+                <p class="card-text">
+                  Especie {{animal.especie}}
+                </p>
+                <p class="card-text">
+                  RAZA: {{animal.raza}}
+                </p>
+                 <p class="card-text">
+                  SEXO:  {{ animal.sexo}}
+                </p>
+                <p class="card-text">
+                  Lugar de estancia  {{ animal.lugarEstancia}}
+                </p>
+                <p class="card-text">
+                 Procedencia:  {{ animal.procedencia}}
+                </p>
+                <p class="card-text">
+                  Peso: {{ animal.peso}}
+                 </p>
+
+                 <p class="card-text">
+                  Edad :{{ animal.edad}}
+                 </p>
+
+                 <p class="card-text">
+                  Tamaño:{{ animal.tamanyo}}
+                 </p>
+                 <p class="card-text">
+                  Fecha:{{ animal.fechaNacimiento}}
+                 </p>
+                 <p class="card-text">
+                Color/Caracteristicas:{{ animal.colorCaracteristicas}}
+                 </p>
+                 <p class="card-text">
+                  Observaciones:{{ animal.observacionesProcedencia}}
+                   </p>
+                   
+                   <div class="form-actions">
+                    <button type="button" class="btn btn-inverse"(click)="irAtras()" >
+                      <i class="fa fa-reply" aria-hidden="true"></i> Regresar
+                    </button>
+                  
+                    <button type="button" class="btn btn-danger mr-2"(click)="onDelete(animal.id)" >
+                      <i class="fa fa-times-circle" aria-hidden="true" ></i>
+                      Eliminar
+                    </button>
+                    <button type="button" class="btn btn-success mr-2" (click)="modificar(animal.id)">
+                      <i class="fa fa-check"></i> Modificar
+                    </button>
+    
+                    
+                  </div>
+    
+
+              </div>
+            </div>
+            <!-- Card -->
+          
+  
+
+               
+
+                  
+  </div></div></div></div>
+ 
+
 </div>
+</div>
+
+</div>
+</div>
+
+
+

@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { AnimalesService } from 'app/api/animales.service';
 import { Animal } from 'app/model/animal';
 import { environment } from 'environments/environment';
 
-import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-table-list',
@@ -18,8 +18,9 @@ export class TableListComponent implements OnInit {
   //VARIABLE DE animal
   public animales: Animal[] = [];
   pagina=0;
-  tamaño=2;
-  constructor(private animalesService: AnimalesService) { }
+  tamaño=8;
+  // router: any;
+  constructor(private animalesService: AnimalesService,private router: Router) { }
 
   ngOnInit(): void {
     this.listarAnimales();
@@ -29,6 +30,15 @@ export class TableListComponent implements OnInit {
     //   this.totalPorPagina.toString(),
     //   this.busqueda
     // );
+  }
+
+
+  Detalle(id: number){
+    this.animalesService.getByIdUsingGET(id).subscribe(data =>{
+      this.animales=data;
+    console.log("listado",data);
+    this.router.navigate (['/upgrade', id]);
+    });
   }
   listarAnimales(){
 

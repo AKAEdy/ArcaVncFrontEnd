@@ -18,6 +18,7 @@ import { VeterinariosService } from './api/veterinarios.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { CitasService } from './api/citas.service';
 import { VacunasService } from './api/vacunas.service';
+import { TratamientosService } from './api/tratamientos.service';
 import { MedicamentosService } from './api/medicamentos.service';
 
 @NgModule({
@@ -29,6 +30,7 @@ import { MedicamentosService } from './api/medicamentos.service';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    
   ],
   declarations: [
     AppComponent,
@@ -47,7 +49,12 @@ import { MedicamentosService } from './api/medicamentos.service';
     CitasService,
     VacunasService,
     VeterinariosService,
-    MedicamentosService ],
+    MedicamentosService,
+    TratamientosService,
+    MedicamentosService,
+    VeterinariosService ],
+
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

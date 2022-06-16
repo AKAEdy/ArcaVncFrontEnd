@@ -9,7 +9,7 @@
                     </div>
                     <div class="card-body">
             
-                        <form>
+                        <form #MyForm="ngForm" (submit)="guardarTratamiento(MyForm)">
 
                             <div class="container">
 
@@ -18,21 +18,35 @@
                                 <!--Descripción-->
                                 <div class="col-md-5">
                                     <mat-form-field class="example-full-width">
-                                       <textarea matInput placeholder="Descripción" type="text"></textarea>
+                                       <textarea matInput placeholder="Descripción" type="text" name="descripcionTr" #descripcionTr="ngModel"
+                                       [(ngModel)]="tratamiento.descripcionTr" required ></textarea>
                                     </mat-form-field>
                                 </div>
-
+                                <!-- variables temporales de prueba seteando Id fichaclinica y medicamento -->
+                                <div class="col-md-5">
+                                    <mat-form-field class="example-full-width">
+                                       <textarea matInput placeholder="Id Ficha clinica" type="text" name="idFichaClinica" #idFichaClinica="ngModel"
+                                       [(ngModel)]="tratamiento.idFichaClinica" required ></textarea>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-5">
+                                    <mat-form-field class="example-full-width">
+                                       <textarea matInput placeholder="medicacion" type="text" name="medicacion" #medicacion="ngModel"
+                                       [(ngModel)]="tratamiento.medicacion" required ></textarea>
+                                    </mat-form-field>
+                                </div>
                                 <!--Indicaciones -->
                                 <div class="col-md-5">
                                     <mat-form-field class="example-full-width">
-                                        <textarea matInput placeholder="Indicaciones" type="text"></textarea>
+                                        <textarea matInput placeholder="Indicaciones" type="text" name="indicaciones" #indicaciones="ngModel"
+                                        [(ngModel)]="tratamiento.indicaciones" required ></textarea>
                                     </mat-form-field>
                                 </div>
     
                                 <!-- Fecha Apllicacion -->
                                 <div class="col-md-5">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Fecha de Aplicación" type="date">
+                                        <input matInput placeholder="Fecha de Aplicación" type="date"  [(ngModel)]="tratamiento.fechaAplicacion">
                                     </mat-form-field>
                                 </div>
 
@@ -41,7 +55,8 @@
                                             <div class="col-md-5">
                                                 <label>ESTADO</label>
                                                 <div class="caja">
-                                                    <select class="form-select" aria-label="Default select example">
+                                                    <select class="form-select" aria-label="Default select example" name="estado" #estado="ngModel"
+                                                    [(ngModel)]="tratamiento.estado" required>>
                                                         <option selected disabled>Seleccione:</option>
                                                         <option value="INICIO">INICIO</option>
                                                         <option value="CONTINUA">CONTINUA</option>
@@ -67,9 +82,9 @@
                                         <div class="col-md-5">
 
                                             <div class="input-group no-border">
-                                                <input type="text" value="" class="form-control" placeholder="Search...">
+                                                <input type="text" value="" class="form-control" placeholder="Search..." [(ngModel)]="medicamento.nombreComercial">
                                                 <button mat-raised-button type="submit" class="btn btn-red btn-round btn-just-icon">
-                                                    <i class="material-icons">search</i>
+                                                    <i class="material-icons" (click)="FindByNombre(medicamento.nombreComercial)">search</i>
                                                     <div class="ripple-container"></div>
                                                 </button>
                                             </div>
@@ -92,37 +107,29 @@
                                                 </tr>
                                               </thead>
                                               <tbody class="text-center">
-                                                <tr>
-
-                                                    <td scope="row"></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
+                                                <tr *ngFor="let item of medicamento">
                                                     <td>
-                                                        <div class="text-center">
-                                                            <div class="btn-group">
-                                                                
-                                                                <div class="col-md-5" >
-
-                                                                    <div class="input-group no-border">
-                                                                    
-                                                                        <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon" class="btneliminar">
-                                                                            <i class="material-icons">delete</i>
-                                                                            <div class="ripple-container"></div>
-                                                                        </button>
-                                                                        
-                                                                    </div>
-
-                                                                </div>
-
-                                                    
-
-                                                            </div>
-                                                        </div>
+                                                        {{item.id}}
                                                     </td>
-
-                                                  </tr>
+                                                    <td>
+                                                        {{item.nombreComercial}}
+                                                  </td>
+                                                  <td>
+                                                    {{item.nombreGenerico}}
+                                                  </td>
+                                                  <td>
+                                                    {{item.cantidad}}
+                                                  </td>
+                                                  <td>
+                                                    {{item.precio}}
+                                                  </td>
+                                                  <td>
+                                                    <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon" class="btneliminar">
+                                                        <i class="material-icons">delete</i>
+                                                        <div class="ripple-container"></div>
+                                                    </button>
+                                                  </td>
+                                                    </tr>
                                               </tbody>
                                         
                                         </table>

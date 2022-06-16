@@ -22,6 +22,7 @@ import { PageMedicamento } from '../model/pageMedicamento';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
+import { param } from 'jquery';
 
 
 @Injectable()
@@ -412,4 +413,7 @@ export class MedicamentosService {
         );
     }
 
+  getMedicamentoByNombre(nombre: string): Observable<Medicamento> {
+    return this.httpClient.get<Medicamento>(`${this.basePath}/medicamentos/find?nombre=${nombre}`);
+  }
 }
