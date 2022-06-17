@@ -24,7 +24,7 @@ export class UserProfileComponent implements OnInit {
   animales:any[] = [];
   validacion: Validacion = new Validacion();
   
-  fichaClinica:FichaClinica={};
+
   animal: Animal={};
 
 
@@ -162,51 +162,44 @@ s
 
 
 
-//  Detalle(id: number){
-//   this.animalesService.getByIdUsingGET(id).subscribe(data =>{
-//     this.animales=data;
-//   console.log("listado",data);
-//   //this.router.navigate (['/upgrade', id]);
-//   });
-// }
 
 
 
 
 
 
-guardarFicha(form: NgForm) {
-  this.formSubmitted = true;
-  if (form.invalid) {
-    return;
-  } 
-  if (this.fichaClinica.id) {
-    this.fichasClinicasService
-      .updateUsingPUT1(this.fichaClinica, this.fichaClinica.id)
-      .subscribe((fichasClinicas) => {
-        Swal.fire(
-          "Actualizar mascota",
-          `¡${this.fichaClinica.id} actualizado con exito!`,
-          "success"
-        );
-        this.irLista();
-      });
-    }else {
-    //  console.log("LLEGA "+ this.animal.nombre,this.animal.especie,this.animal.raza, this.animal.peso, this.animal.color, this.animal.sexo, this.animal.tamanyo, this.animal.edad);
-// this.animales.push(this.animal);this.animal={}
-    this.fichasClinicasService.createUsingPOST1(this.fichaClinica).subscribe(data => {
-      this.fichaClinica=data;
-      Swal.fire(
+// guardarFicha(form: NgForm) {
+//   this.formSubmitted = true;
+//   if (form.invalid) {
+//     return;
+//   } 
+//   if (this.fichaClinica.id) {
+//     this.fichasClinicasService
+//       .updateUsingPUT1(this.fichaClinica, this.fichaClinica.id)
+//       .subscribe((fichasClinicas) => {
+//         Swal.fire(
+//           "Actualizar mascota",
+//           `¡${this.fichaClinica.id} actualizado con exito!`,
+//           "success"
+//         );
+//         this.irLista();
+//       });
+//     }else {
+//     //  console.log("LLEGA "+ this.animal.nombre,this.animal.especie,this.animal.raza, this.animal.peso, this.animal.color, this.animal.sexo, this.animal.tamanyo, this.animal.edad);
+// // this.animales.push(this.animal);this.animal={}
+//     this.fichasClinicasService.createUsingPOST1(this.fichaClinica).subscribe(data => {
+//       this.fichaClinica=data;
+//       Swal.fire(
 
-       "Nueva Ficha",
-       `¡${this.fichaClinica.id} creada con exito!`,
-        "success"
-      );
-      console.log("imprimiendo", data)
+//        "Nueva Ficha",
+//        `¡${this.fichaClinica.id} creada con exito!`,
+//         "success"
+//       );
+//       console.log("imprimiendo", data)
     
-   //  this.irFicha();
-   });
-  }}
+//    //  this.irFicha();
+//    });
+//   }}
 
  irLista() {
   this.router.navigateByUrl("/TableList");
