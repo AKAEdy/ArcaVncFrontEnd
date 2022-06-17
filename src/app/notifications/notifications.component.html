@@ -14,26 +14,14 @@
 
   <div class="card-group">
 
-    <div class="col-md-4 image-fluid">
-
-      <div class="card-body">
-        
-        <img class="card-img-top" src="../assets/img/perrito.jpeg" alt="Card image cap">
-        <div class="mb-4">
-          <br>
-          <label for="formFileSm" class="form-label"
-            class="control-label col-sm-4 d-flex justify-content-center align-items-center">Subir foto</label>
-          <input class="form-control form-control-sm" id="formFileSm" type="file">
-        </div>
-      </div>
-    </div>
+    
 
 
      <!-- formulario -->
       <div class="card ">
           <div class="card-body">
-            <form (ngSubmit)="modificarAnimal" #MyForm="ngForm" novalidate>
-            
+            <form (ngSubmit)="modificarAnimal()" #MyForm="ngForm" novalidate>
+           
               <div class="form-body">
                 <h4 class="card-title">Complete los campos.</h4>
                 <hr />
@@ -191,8 +179,8 @@
                           Tamaño*
                         </option>
                         <option value="Grande">Grande</option>
-                        <option value="Median@">Mediano</option>
-                        <option value="Pequeñ@">Pequeño</option>
+                        <option value="Mediano">Mediano</option>
+                        <option value="Pequeño">Pequeño</option>
                       </select>
 
                       <div class="text-danger" *ngIf="tamanyo.hasError('required') && tamanyo.touched">
@@ -207,7 +195,13 @@
 
                     <div class="col-md-3">
                       <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Fecha nacimiento" type="date" [(ngModel)]="animal.fechaNacimiento">
+                        <input matInput placeholder="Fecha nacimiento"  name="fechaNacimiento" type="date" #fechaNacimiento="ngModel" [(ngModel)]="animal.fechaNacimiento"
+                        required>
+                      <div class="text-danger" *ngIf="
+                      fechaNacimiento.hasError('required') && fechaNacimiento.touched
+    ">
+                        Fecha  es requerido!
+                      </div>
                       </mat-form-field>
                     </div>
 
@@ -219,8 +213,9 @@
                   <!--  color-->
 
                   <div class="col-md-6">
+                    <div class="form-group">
                     <mat-form-field class="example-full-width">
-                      <textarea matInput rows="5" placeholder="Color/Caracteristicas"
+                      <textarea matInput rows="5" placeholder="Color/Caracteristicas" #colorCaracteristicas="ngModel"  name="colorCaracteristicas"
                         [(ngModel)]="animal.colorCaracteristicas"required>
                       <div class="text-danger" *ngIf="
     colorCaracteristicas.hasError('required') && colorCaracteristicas.touched
@@ -230,7 +225,7 @@
                     </textarea>
                   </mat-form-field>
                     </div>
-                  
+                  </div>
 
  
                     
@@ -238,12 +233,18 @@
 
                   <!--OBSERVACIONES-->
                   <div class="col-md-6">
+                    <div class="form-group">
                     <mat-form-field class="example-full-width">
-                      <textarea matInput rows="5" placeholder=" Observaciones"
-                        [(ngModel)]="animal.observacionesProcedencia">
+                      <textarea matInput rows="5" placeholder=" Observaciones" #observacionesProcedencia="ngModel"  name="observacionesProcedencia"
+                        [(ngModel)]="animal.observacionesProcedencia" required>
+                        <div class="text-danger" *ngIf="
+                        observacionesProcedencia.hasError('required') && observacionesProcedencia.touched
+      ">
+                         Observaciones es requerido!
+                        </div>>
   </textarea>
                     </mat-form-field>
-
+                    </div>
                   </div>
 
                   <!--<div
@@ -258,7 +259,7 @@
      -->
 
                   <!--/span-->
-                </div>
+                
 
 <!--foto-->
               </div>
@@ -271,17 +272,20 @@
             ">
                     foto es requerido!
                   </div>
-
+                </div>
 
                 </div>
               </div>
               <hr />
               <div class="form-actions">
                
-                  <button type="submit" class="btn btn-success">Actualizar</button>
+                  <button type="button" class="btn btn-danger mr-2"  (click)="volver()">
+                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                    Cancelar
+                  </button>
+              <button type="submit" class="btn btn-success" (click)="modificarAnimal()"> <i class="fa fa-repeat" aria-hidden="true"></i>Actualizar</button>
                 
-      
-            <button class="btn btn-primary float-left mr-3" (click)="volver()">Volver</button>
+                
                 
               </div>
 

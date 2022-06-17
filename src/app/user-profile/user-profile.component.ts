@@ -99,6 +99,7 @@ export class UserProfileComponent implements OnInit {
           })
           location.reload();
         })
+        this.irFicha();
          
       } else if (result.isDenied) {
         Swal.fire('Acción cancelada', '', 'info')
