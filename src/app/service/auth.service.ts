@@ -6,6 +6,7 @@ import { LoginUsuario } from 'app/models/login-usuario';
 import { NuevoUsuario } from 'app/models/nuevo-usuario';
 import { Rol } from 'app/models/rol';
 import { environment } from 'environments/environment';
+import * as moment from 'moment';
 import { BehaviorSubject, catchError, Observable, of, tap, throwError } from 'rxjs';
 import Swal from 'sweetalert2';
 import { TokenService } from './token.service';
@@ -21,18 +22,14 @@ export class AuthService {
 	private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
 	isLoggedIn$ = this._isLoggedIn$.asObservable();
 
-	redirectUrl = '';
-
 
 	constructor(private httpClient: HttpClient, private router: Router, private activateRouted: ActivatedRoute) { }
 
 	public login(loginUsuario: LoginUsuario): Observable<any> {
 		return this.httpClient.post<LoginUsuario>(environment.AUTH_URL + 'login', loginUsuario).pipe(tap((loginResponse: LoginResponse) => {
-
-			this.setAuthToken(loginResponse.token.tokenValue);
 			this._isLoggedIn$.next(true);
-			console.log(this.redirectUrl);
-
+			this.setAuthToken(loginResponse.token.tokenValue);
+			this.setExpirationTime(loginResponse.token.expiryDate);
 			this.router.navigate([ this.activateRouted.snapshot.queryParamMap.get('redirectUrl') || '#' ]);
 		}
 		), catchError((e) => {
@@ -53,10 +50,9 @@ export class AuthService {
 
 	///////////////Session///////////////////
 	isAuthenticated(): boolean {
-		return !!this.AuthToken;
+		return !!this.AuthToken || moment().isBefore(this.sessionExpiration);
 	}
 	logout() {
-		this.redirectUrl = '';
 		localStorage.removeItem(environment.TOKEN_NAME);
 		this.router.navigate([ 'login' ]);
 	}
@@ -74,11 +70,25 @@ export class AuthService {
 	}
 	//////ToKen//////
 	get AuthToken(): string {
-		return localStorage.getItem(environment.TOKEN_NAME);
+		return localStorage.getItem(environment.TOKEN_NAME) || null;
+	}
+	get TokenExpiration(): string {
+		return localStorage.getItem("SESSION_TIME") || null;
 	}
 
 	setAuthToken(tokenValue: string) {
 		localStorage.setItem(environment.TOKEN_NAME, tokenValue);
+	}
+	setExpirationTime(tokenExpirationTime: Date) {
+		localStorage.setItem('SESSION_TIME', tokenExpirationTime.toLocaleString());
+	}
+	get sessionExpiration() {
+		try {
+			const expiresAt = JSON.parse(this.TokenExpiration);
+			return moment(expiresAt, true);
+		} catch (e) {
+			return null;
+		}
 	}
 }
 export enum ROLES {
