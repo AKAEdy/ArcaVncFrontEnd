@@ -32,7 +32,8 @@
      <!-- formulario -->
       <div class="card ">
           <div class="card-body">
-            <form #MyForm="ngForm" (submit)="guardarMascota(MyForm)">
+            <form #MyForm="ngForm" (ngSubmit)="guardarMascota()" novalidate>
+            <!--<form #MyForm="ngForm" (submit)="guardarMascota(MyForm)">-->
               <div class="form-body">
                 <h4 class="card-title">Complete los campos.</h4>
                 <hr />
@@ -209,9 +210,8 @@
                         <input matInput placeholder="Fecha nacimiento" type="date" [(ngModel)]="animal.fechaNacimiento">
                       </mat-form-field>
                     </div>
-  
-  
-  
+
+                    
   
   
   
@@ -227,13 +227,14 @@
     ">
                         Color y Caracteristicas es requerido!
                       </div>
+                    </textarea>
+                  </mat-form-field>
                     </div>
                   
 
-  </textarea>
-                    </mat-form-field>
+  
 
-                  </div>
+                  
 
 
                   <!--OBSERVACIONES-->
@@ -261,7 +262,7 @@
                 </div>
 
 <!--foto-->
-              </div>
+             
               <div class="col-md-8">
                 <div class="form-group">
                   <input type="text" placeholder="foto ( solo una url)" class="form-control" name="foto" #foto="ngModel"
@@ -283,17 +284,16 @@
               
                 <button type="button" class="btn btn-danger mr-2" (click)="resetForm()">
                   <i class="fa fa-times-circle" aria-hidden="true"></i>
-                  Cancelar
+                  Cancelar/Limpiar
                 </button>
-                <button type="submit" class="btn btn-success mr-2">
+                <button type="submit" class="btn btn-success mr-2"  (click)="guardarMascota()">
                   <i class="fa fa-check"></i> Guardar
                 </button>
 
-                
               </div>
-
+              </div>
+             
             </form>
-
 
 
 

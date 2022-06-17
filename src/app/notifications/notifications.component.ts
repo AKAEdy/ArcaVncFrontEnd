@@ -21,6 +21,7 @@ animal: Animal={};
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router,
     private es:AnimalesService) { }
+    
   ngOnInit() {
     const id = this.activatedRoute.snapshot.params.id;
     this.es.getByIdUsingGET(id).subscribe(data =>{
@@ -58,19 +59,27 @@ animal: Animal={};
   //   }
   // );
   
-modificar(){
-  if (this.animal.id) {
-    this.es
-      .updateUsingPUT(this.animal, this.animal.id)
-      .subscribe((animales) => {
-        Swal.fire(
-          "Actualizar mascota",
-          `¡${this.animal.nombre} actualizado con exito!`,
-          "success"
-        );
-        this.volver();
-      });
-    }}
+  // modificar(){
+  //   this.es.updateUsingPUT(this.animal,this.animal.id).subscribe(data =>{
+  //     this.animal= data
+  //     location.reload
+  //   })
+  // }
+
+  
+// modificar(){
+//   if (this.animal.id) {
+//     this.es
+//       .updateUsingPUT(this.animal, this.animal.id)
+//       .subscribe((animales) => {
+//         Swal.fire(
+//           "Actualizar mascota",
+//           `¡${this.animal.nombre} actualizado con exito!`,
+//           "success"
+//         );
+//         this.volver();
+//       });
+//     }}
 
 
   volver(){
@@ -91,5 +100,49 @@ modificar(){
   //   }
   //   );
   // }
+
+
+
+ 
+  modificarAnimal() {
+    if(this.animal.nombre === undefined || this.animal.sexo === undefined || this.animal.especie === undefined
+      || this.animal.nombre === '' || this.animal.sexo === '' || this.animal.especie === ''){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Ingrese todos los datos!',
+      })
+    }else{
+      Swal.fire({
+        title: 'Seguro quiere realizar esta acción?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Modificar',
+        denyButtonText: `No modificar`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          this.es.updateUsingPUT(this.animal, this.animal.id).subscribe(data =>{
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Vacuna modificada exitosamente',
+              showConfirmButton: false,
+              timer: 1500
+            })
+                location.reload();
+          })
+        } else if (result.isDenied) {
+          Swal.fire('Acción cancelada', '', 'info')
+        }
+        this.volver();
+      })
+    
+     
+    }
+    
+  }
+
+
 
 }

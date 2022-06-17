@@ -35,35 +35,32 @@ animal:Animal= null;
 
 
 
-  
-  // }
-  //   this.id = this.route.snapshot.params['id'];
-
-  //   this.es.getByIdUsingGET(this.id)
-  //     .subscribe(data => {
-  //       console.log(data)
-  //       this.animal = data;
-  //     }, error => console.log(error));
-  // }
-
   list(){
     this.router.navigate(['/table-list']);
   }
-  onDelete(id: number): void {
-    if (confirm('¿Estás seguro?')) {
-      this.es.deleteUsingDELETE(id).subscribe(data =>{
+  onDelete(id: number) {
+    Swal.fire({
+      title: '¿Esta seguro que decea eliminar?',
+      text: "No podra revertir los cambios!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#FE3838',
+      cancelButtonColor: '#878787',
+      confirmButtonText: 'Si, eliminar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Eliminado!',
+          'Registro eliminado exitosamente.',
+          'success'
+        )
+        this.irAtras();
+      }
+    })
+    this.es.deleteUsingDELETE(id).subscribe(data => {
 
-        this.list();
+    })
 
-     
-      });
-    }
-    else{
-      Swal.fire(
-        "No se puede borrar revise las foraneas"
-     
-      );
-    }
   }
  irAtras(){
     this.router.navigate(['/table-list']);
