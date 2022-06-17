@@ -31,6 +31,7 @@ export class RegistrarVeterinariosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    location.reload
   }
   createVeterinarios(){
 if (this.veterinarios.persona.cedula === undefined || this.veterinarios.cargo === undefined || this.veterinarios.persona.nombre === undefined
