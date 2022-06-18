@@ -76,6 +76,12 @@ export class RegistrarAdoptadoComponent implements OnInit {
               timer: 1500
             })
             location.reload();
+          }, err =>{
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'el animal ya a sido adoptado!',
+            })
           })
            
         } else if (result.isDenied) {
@@ -121,5 +127,6 @@ export class RegistrarAdoptadoComponent implements OnInit {
     }
   
   }
+  
 
 }

@@ -1,167 +1,125 @@
-<div class="main-content">
+<div class="main-content" id="lista" style="display:block;">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-danger">
-                        
-                        <div><label><span class="required">LISTA DE ADOPTADOS </span></label>
-                            <input
-                            id="myInput"
-                            type="text"
-                            class="form-control"
-                            placeholder="🔎Buscar..."
-                            [(ngModel)]="filterpost"
-                            name="filterpost"
-                          />
+        <div class="container">
+            <div class="card-header" style="background-color: rgb(252, 77, 77);">
+
+                <div><label><span class="required">LISTA DE ADOPTADOS </span></label>
+                    <input id="myInput" type="text" class="form-control" placeholder="🔎Buscar..."
+                        [(ngModel)]="filterpost" name="filterpost" />
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-3" *ngFor="let adopciones of adopcion">
+                    <div class="panel panel-info" class="list-group-item" id="card">
+                        <div class="panel-body text-center">
+                            <li class="list-group-item">
+                                <img src="https://s1.eestatic.com/2021/06/24/curiosidades/mascotas/591454065_193121170_1706x960.jpg"
+                                    id="img" alt="Error">
+                                <p class="lead" style="font-size:30px"><strong>{{adopciones.animal.nombre}}</strong></p>
+                            </li>
                         </div>
-                       
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead class=" text-primary">
-                                    <th class="table-danger" scope="col">
-                                        FECHA
-                                    </th>
-                                    <th class="table-danger" scope="col">
-                                        ADOPTANTE
-                                    </th>
-                                    <th class="table-danger" scope="col">
-                                        DESCRIPCION
-                                    </th>
-                                    <th class="table-danger" scope="col">
-                                        ACCION
-                                    </th>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let adopciones of adopcion | filteradoptados:filterpost" >
-                                        <td>
-                                            {{adopciones.fechaAdopcion}}
-                                        </td>
-                                        <td>
-                                            {{adopciones.adoptante.persona.nombre}}  {{adopciones.adoptante.persona.apellidos}}
-                                        </td>
-                                        <td>
-                                            {{adopciones.descripcion}}
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <div class="btn-group">
-
-                                                    <div>
-                                                      
-                                                   
-                                                      
-                                                          <button mat-raised-button type="submit" class="btn btn-danger btn-round" class="btneditar">
-                                                              <i class="material-icons">mode_edit</i>
-                                                             
-                                                          </button>
-                                                          
-                                                 
-
-                                                    </div>
-
-                                                    <div>
-                                                      
-                                                    
-                                                      
-                                                          <button mat-raised-button type="submit" class="btn btn-danger btn-round" class="btneliminar">
-                                                              <i class="material-icons">delete</i>
-                                                              
-                                                          </button>
-                                                          
-                                                   
-                                                      
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <ul class="list-group list-group-flush text-center">
+                            <li class="list-group-item">
+                                <label id="label">Adoptante</label>
+                                <h5>{{adopciones.adoptante.persona.nombre}} {{adopciones.adoptante.persona.apellidos}}
+                                </h5>
+                                <label id="label">Fecha de adopción</label>
+                                <h5>{{adopciones.fechaAdopcion}}</h5>
+                                <label id="label">Descripción</label>
+                                <h5>{{adopciones.descripcion}}</h5>
+                            </li>
+                        </ul>
+                        <div class="btn-group">
+                            <div>
+                                <button mat-raised-button type="submit" class="btn btn-danger btn-round"
+                                    class="btneditar" (click)="getByIdAdopcion(adopciones.id)">
+                                    <i class="material-icons">mode_edit</i>
+                                </button>
+                            </div>
+                            <div>
+                                <button mat-raised-button type="submit" class="btn btn-danger btn-round"
+                                    class="btneliminar" (click)="deleteAdopcion(adopciones.id)">
+                                    <i class="material-icons">delete</i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-  </div>
-  
-    
-
-     <!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejemplo filtrar tabla con jquery</title>
-    <link rel="stylesheet" href="CSS/estilos.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#myInput").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
-</head>
-
-<body>
-    <h2 style="text-align: center; margin-top: 5%;">¡Vamos a filtrar datos!</h2>
-    <p style="text-align: center;"> Puedes consultar en el campo de entrada por el nombre, apellido y correo.</p>
-   
-        <input (keyup)="filtrar($event)" style="background-color: rgb(212, 235, 238);" id="myInput" type="textt" placeholder="Buscar...">
-    
-    <br><br>
-   
-        <table>
-            <thead>
-                <tr>
-                    <th style="text-align: center;">Nombre</th>
-                    <th style="text-align: center;">Apellido</th>
-                    <th style="text-align: center;">Correo</th>
-
-                </tr>
-            </thead>
-            <tbody id="myTable">
-                <tr>
-                    <td>Renchi</td>
-                    <td>Meléndez</td>
-                    <td>renchi123@gmail.com</td>
-                </tr>
-                <tr>
-                    <td>Luisa</td>
-                    <td>Nuñez</td>
-                    <td>luisan@gmail.com</td>
-                </tr>
-                <tr>
-                    <td>Odalys</td>
-                    <td>Icaza</td>
-                    <td>odalysi16@gmail.com</td>
-                </tr>
-                <tr>
-                    <td>Yaró</td>
-                    <td>Flores</td>
-                    <td>yaro10@gmail.com</td>
-                </tr>
-
-            </tbody>
-        </table>
-
-</body>
-
-</html> -->
+</div>
 
 
+<!-- UPDATE DE ADOPCION  -->
 
+<div class="main-content" id="tarjeta" style="display:none;">
+    <div class="container-fluid">
+        <div class="row">
 
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title">Modificación de adoptados</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Buscar adoptante" type="text" [(ngModel)]="cedulas" disabled>
+                            </mat-form-field>
+                        </div>
+                        <!-- <div class="col-md-6">
+                            <div>
+                                <div class="btn-group">
+                                    <div>
+                                        <button mat-raised-button type="submit" class="btn btn-danger btn-round"
+                                            class="btneditar" (click)="getCedulaAdoptante()">
+                                            <i class="fa fa-search"></i> Buscar
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <button mat-raised-button type="submit" class="btn btn-danger btn-round"
+                                            class="btneliminar">
+                                            <i class="fa fa-plus"></i> Registrar Adoptante</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
 
+                    <div class="row">
+                        <div class="col-md-12">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Fecha de adopcion" type="date"
+                                    [(ngModel)]="adopcionid.fechaAdopcion">
+                            </mat-form-field>
+                        </div>
+                    </div>
 
-    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <mat-form-field class="example-full-width">
+                                <textarea matInput rows="5" placeholder="Decripción de adopción"
+                                    [(ngModel)]="adopcionid.descripcion">
+                          </textarea>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                                <button mat-raised-button type="submit" class="btn btn-success pull-right"
+                                    (click)="updateAdopcion()">EDITAR</button>
+                                <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                                    (click)="botonCancelar()" id="cancelar">CANCELAR</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
