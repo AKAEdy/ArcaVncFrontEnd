@@ -12,8 +12,8 @@ import { environment } from 'environments/environment';
   styleUrls: ['./table-list.component.css']
 })
 export class TableListComponent implements OnInit {
-
-
+filterpost:any='';
+dataSource:any={};
 
   //VARIABLE DE animal
   public animales: Animal[] = [];
@@ -23,6 +23,7 @@ export class TableListComponent implements OnInit {
   constructor(private animalesService: AnimalesService,private router: Router) { }
 
   ngOnInit(): void {
+    this.filterpost=this.animales;
     this.listarAnimales();
   this.pagina = 0;
     // this.getAnimalesPage(

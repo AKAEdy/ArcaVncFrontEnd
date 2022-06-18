@@ -21,6 +21,7 @@ animal: Animal={};
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router,
     private es:AnimalesService) { }
+    
   ngOnInit() {
     const id = this.activatedRoute.snapshot.params.id;
     this.es.getByIdUsingGET(id).subscribe(data =>{
@@ -34,62 +35,54 @@ animal: Animal={};
 
   
 
- 
-    // const id = this.activatedRoute.snapshot.params.id;
-    // this.es.getByIdUsingGET(id).subscribe( data => {
-    //   this.form.nombre = data.nombre;
-    //   this.form.sexo = data.sexo;
-    //   this.form.especie = data.especie;
-    //   this.form.procedencia = data.procedencia;
-    //   this.form.lugarEstancia = data.lugarEstancia;
-    //   this.form.raza = data.raza;
-    //   this.form.peso = data.peso;
-    //   this.form.edad = data.edad;
-    //   this.form.tamanyo = data.tamanyo;
-    //   this.form.fechaNacimiento = data.fechaNacimiento;
-    //   this.form.colorCaracteristicas = data.colorCaracteristicas;
-    //   this.form.observacionesProcedencia = data.observacionesProcedencia;
-    //   this.form.foto = data.foto;
-
-  //   },
-  //   (err: any) => {
-  //     this.failInit = true;
-  //     this.router.navigate(['/table-list']);
-  //   }
-  // );
-  
-modificar(){
-  if (this.animal.id) {
-    this.es
-      .updateUsingPUT(this.animal, this.animal.id)
-      .subscribe((animales) => {
-        Swal.fire(
-          "Actualizar mascota",
-          `¡${this.animal.nombre} actualizado con exito!`,
-          "success"
-        );
-        this.volver();
-      });
-    }}
 
 
   volver(){
     this.router.navigate(['/table-list']);
   }
 
-  // onUpdate(): void {
-  //   const id = this.activatedRoute.snapshot.params.id;
-  //   this.es.updateUsingPUT(this.form, id).subscribe( data => {
-  //     this.actualizado = true;
-  //     this.failActualizado = false;
-  //     this.msjOK = data.mensaje;
-  //   },
-  //   (err: any) => {
-  //     this.actualizado = false;
-  //     this.failActualizado = true;
-  //     this.msjErr = err.error.mensaje;
-  //   }
-  //   );
-  // }
 
+
+ 
+  modificarAnimal()  {
+    if(this.animal.nombre === undefined || this.animal.sexo === undefined || this.animal.especie ===  undefined || this.animal.procedencia === undefined || this.animal.lugarEstancia === undefined || this.animal.raza===  undefined || this.animal.peso=== undefined || this.animal.edad === undefined || this.animal.tamanyo ===  undefined || this.animal.fechaNacimiento === undefined || this.animal.colorCaracteristicas=== undefined || this.animal.observacionesProcedencia ===  undefined || this.animal.foto === undefined  || 
+
+
+
+    this.animal.nombre === "" || this.animal.raza === ""   || this.animal.colorCaracteristicas === "" ||this.animal.observacionesProcedencia===""|| this.animal.foto ===""){
+
+        Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Ingrese todos los datos!',
+      })
+    } else {
+      Swal.fire({
+        title: 'Seguro quiere realizar esta acción?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Modificar',
+        denyButtonText: `No modificar`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          this.es.updateUsingPUT(this.animal, this.animal.id).subscribe(data => {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Mascota registrada exitosamente',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            location.reload();
+          })     
+          this.volver();    
+        }
+        else if (result.isDenied) {
+          Swal.fire('Acción cancelada', '', 'info')
+        }
+      })
+    }
+
+  }
 }
