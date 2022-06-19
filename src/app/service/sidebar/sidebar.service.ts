@@ -15,22 +15,28 @@ export interface Menu { //por si hay que mandar ya algo especifico pero no creo
 })
 export class SidebarService {
 	constructor () { }
-
+	//Este formato ayuda a implementar de manera general cualquier tipo de propiedad al menu de sidebar
+	//Como campos obligatoriso en un primer nivel  {url, tittle}
+	//Como campos obligatoriso si contiene un segundo nivel  {ref, tittle, items[{tittle,url}]}
+	//De manera Predeterminada si no se asigna un tittle sera 'Dasboard'
 	private menuItems$ = new BehaviorSubject<any>([
+
 		{ /* Inicio */
 			tittle: 'Inicio',
 			icon: 'fa fa-home',
-			url: 'menu',
+			url: 'menu', //path que corresponde a los componentes del Admin Layout Routing o cualquier otro layout routing.
+			/* Si es necesario se pueden adicionar propiedades a este nivel como a niveles mas bajos, ejemplo : class : 'mt-2' , roles:['ROLE_EJEMPLO'] ...*/
 		},
 		{/* Adopciones */
 			tittle: 'Gestión de adopciones',
 			icon: 'fa fa-heart',
-			ref: 'adopciones',
-			roles: ROLES_POR_MODULOS.MODULO_ADOPCIONES,
+			ref: 'adopciones',// ref(referencia) Necesario para desplegar submenus del modulo si esque contiene alguno.
+			roles: ROLES_POR_MODULOS.MODULO_ADOPCIONES, //Adicionalmente previene la vista de los menus y submenus si no corresponde con algun rol asignado
 			items: [
 				{
 					tittle: 'Listar adoptados',
 					url: 'listaAdoptado',
+					//Los submenus, también pueden tener roles
 				},
 				{
 					tittle: 'Registrar adoptados',
@@ -44,11 +50,11 @@ export class SidebarService {
 			ref: 'animales',
 			items: [
 				{
-					tittle: 'Listar de animales',
+					tittle: 'Listado de mascotas',
 					url: 'table-list',
 				},
 				{
-					tittle: 'Registrar animales',
+					tittle: 'Registro de ingreso de mascota',
 					url: 'user-profile',
 				}
 				,
@@ -119,11 +125,11 @@ export class SidebarService {
 			ref: 'vacunas',
 			items: [
 				{
-					tittle: 'Lista de vaunas',
+					tittle: 'Lista de Vacunas',
 					url: 'listarVacunas',
 				},
 				{
-					tittle: 'Registrar vacunas',
+					tittle: 'Registrar Vacunas',
 					url: 'registrarVacunas',
 				}
 			]
