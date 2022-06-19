@@ -1,15 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoginResponse } from 'app/models/login-response';
 import { LoginUsuario } from 'app/models/login-usuario';
-import { NuevoUsuario } from 'app/models/nuevo-usuario';
 import { Rol } from 'app/models/rol';
 import { environment } from 'environments/environment';
-import * as moment from 'moment';
-import { BehaviorSubject, catchError, Observable, of, tap, throwError } from 'rxjs';
-import Swal from 'sweetalert2';
-import { TokenService } from './token.service';
+import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
+import Swal, { SweetAlertIcon } from 'sweetalert2';
 
 export interface ROL {
 	nombre: string;
@@ -23,13 +20,12 @@ export class AuthService {
 	isLoggedIn$ = this._isLoggedIn$.asObservable();
 
 
-	constructor(private httpClient: HttpClient, private router: Router, private activateRouted: ActivatedRoute) { }
+	constructor (private httpClient: HttpClient, private router: Router, private activateRouted: ActivatedRoute) { }
 
 	public login(loginUsuario: LoginUsuario): Observable<any> {
 		return this.httpClient.post<LoginUsuario>(environment.AUTH_URL + 'login', loginUsuario).pipe(tap((loginResponse: LoginResponse) => {
 			this._isLoggedIn$.next(true);
 			this.setAuthToken(loginResponse.token.tokenValue);
-			this.setExpirationTime(loginResponse.token.expiryDate);
 			this.router.navigate([ this.activateRouted.snapshot.queryParamMap.get('redirectUrl') || '#' ]);
 		}
 		), catchError((e) => {
@@ -47,14 +43,16 @@ export class AuthService {
 		return JSON.parse(atob(token.split('.')[ 1 ])) as any;
 	}
 
-
 	///////////////Session///////////////////
 	isAuthenticated(): boolean {
-		return !!this.AuthToken || moment().isBefore(this.sessionExpiration);
+		return !!this.AuthToken;
 	}
-	logout() {
+	clearLocalStorage() {
 		localStorage.removeItem(environment.TOKEN_NAME);
-		this.router.navigate([ 'login' ]);
+	}
+	logout(hasRedirectUrl?: boolean) {
+		!hasRedirectUrl ? this.router.navigate([ 'login' ]) : null;
+		this.clearLocalStorage()
 	}
 	refreshSession(): any {
 		this._isLoggedIn$.next(this.isAuthenticated());
@@ -62,42 +60,49 @@ export class AuthService {
 
 	//////Roles//////
 	get UserRoles(): any[] {
-		return this.getUser(this.AuthToken).roles;
+		try {
+			return this.getUser(this.AuthToken).roles;
+		} catch (e) {
+			this.showToast('Algo salio mal', 'error', 'login')
+		}
 	}
 	hasRoles(roles: Rol[]) {
-		console.warn('Has roles', this.UserRoles);
+		// console.warn('Has roles', this.UserRoles);
 		return this.UserRoles && roles.some((r) => this.UserRoles.includes(r));
 	}
 	//////ToKen//////
 	get AuthToken(): string {
 		return localStorage.getItem(environment.TOKEN_NAME) || null;
 	}
-	get TokenExpiration(): string {
-		return localStorage.getItem("SESSION_TIME") || null;
-	}
-
 	setAuthToken(tokenValue: string) {
 		localStorage.setItem(environment.TOKEN_NAME, tokenValue);
 	}
-	setExpirationTime(tokenExpirationTime: Date) {
-		localStorage.setItem('SESSION_TIME', tokenExpirationTime.toLocaleString());
-	}
-	get sessionExpiration() {
-		try {
-			const expiresAt = JSON.parse(this.TokenExpiration);
-			return moment(expiresAt, true);
-		} catch (e) {
-			return null;
-		}
+	/**
+	 *
+	 *
+	 * @public
+	 * @param {*} errorMessage
+	 * @param {SweetAlertIcon} icon
+	 * @param {*} [urlToNavigate]
+	 * @param {string} [description]
+	 * @memberof AuthService
+	 */
+	public showToast(errorMessage: any, icon: SweetAlertIcon, urlToNavigate?: any, description?: string) {
+		urlToNavigate ? this.router.navigate([ urlToNavigate ]) : null;
+		Swal.fire({
+			timer: 3000,
+			title: errorMessage,
+			text: description,
+			toast: true,
+			icon: icon,
+			position: 'top-end',
+			showConfirmButton: false,
+			showClass: {
+				popup: 'animate__animated animate__bounceInRight'
+			},
+			hideClass: {
+				popup: 'animate__animated animate__fadeOutRight'
+			}
+		});
 	}
 }
-export enum ROLES {
-	ROLE_ADMIN = "ROLE_ADMIN",
-	ROLE_DEFAULT_USER = "ROLE_DEFAULT_USER",
-	ROLE_VETERINARIO = "ROLE_VETERINARIO",
-}
-export const ROLES_POR_MODULOS = {
-	MODULO_ANIMALES: [ ROLES.ROLE_ADMIN, ROLES.ROLE_VETERINARIO ],
-	MODULO_ADOPCIONES: [ ROLES.ROLE_ADMIN, ROLES.ROLE_VETERINARIO, ROLES.ROLE_DEFAULT_USER ],
-	MODULO_PERSONAS: [ ROLES.ROLE_ADMIN ]
-};

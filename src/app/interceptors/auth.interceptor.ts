@@ -1,51 +1,84 @@
-import { Injectable } from '@angular/core';
 import {
-	HttpRequest,
-	HttpHandler,
-	HttpEvent,
-	HttpInterceptor,
-	HttpErrorResponse
+	HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 } from '@angular/common/http';
-import { catchError, Observable, throwError } from 'rxjs';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
 import { AuthService } from 'app/service/auth.service';
 import { TokenService } from 'app/service/token.service';
-import { environment } from 'environments/environment';
+import { catchError, Observable, throwError } from 'rxjs';
+import Swal, { SweetAlertIcon } from 'sweetalert2';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-	constructor(private router: Router, private authService: AuthService, private tokenService: TokenService) { }
+	constructor (private router: Router, private authService: AuthService, private tokenService: TokenService) { }
 
 	intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
 		const token: string | null = this.authService.AuthToken;
 		let req = request;
-
-		if (token) {
-			request = req.clone({
-				setHeaders: {
-					authorization: `Bearer ${ token }`
-				}
-			});
-		}
+		request = token ? req.clone({
+			setHeaders: {
+				authorization: `Bearer ${ token }`
+			}
+		}) : request;
 		return next.handle(request).pipe(
-			catchError((error: any) => {
-				if (error.status === 403) {
-					console.log(error.errors);
-
-					// this.authService.logout();
+			catchError((e: any) => {
+				if (e.status === 403) {
+					let icon: SweetAlertIcon = 'error';
+					const errorMessage = e.error.errors.find(error => {
+						if (error.includes('cuenta')) {
+							this.authService.logout();
+							return error;
+						} else if (error.includes('expirado')) {
+							icon = 'info'
+							this.authService.logout(true);
+							return this.router.navigate([ 'login' ], {
+								queryParams: {
+									redirectUrl: location.hash.split('#/')[ 1 ]
+								}
+							});
+						} else {
+							this.authService.logout();
+						}
+					});
+					this.showToast(errorMessage, icon);
 				}
-				if (error.status === 401) {
-					console.log('Interceptor', this.authService.isAuthenticated());
-
+				if (e.status === 401) {
+					console.log('Interceptor - Logged?', this.authService.isAuthenticated());
 					if (this.authService.isAuthenticated()) {
+						this.showToast(e.error.errors[ 0 ], 'error', 'menu')
+					} else {
 						this.authService.logout();
 					}
-					this.router.navigate([ "login" ]);
 				}
-				return throwError(() => error);
+				return throwError(() => e);
 			})
 		);
+	}
+	/**
+	 *
+	 *
+	 * @private
+	 * @param {*} errorMessage
+	 * @param {SweetAlertIcon} icon
+	 * @param {*} [urlNavigate]
+	 * @memberof AuthInterceptor
+	 */
+	private showToast(errorMessage: any, icon: SweetAlertIcon, urlToNavigate?: any) {
+		urlToNavigate ? this.router.navigate([ urlToNavigate ]) : null;
+		Swal.fire({
+			timer: 3000,
+			title: errorMessage,
+			toast: true,
+			icon: icon,
+			position: 'top-end',
+			showConfirmButton: false,
+			showClass: {
+				popup: 'animate__animated animate__bounceInRight'
+			},
+			hideClass: {
+				popup: 'animate__animated animate__fadeOutRight'
+			}
+		});
 	}
 }
