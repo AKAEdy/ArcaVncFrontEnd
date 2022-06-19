@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginResponse } from 'app/models/login-response';
 import { LoginUsuario } from 'app/models/login-usuario';
@@ -14,12 +14,16 @@ export interface ROL {
 @Injectable({
 	providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements OnDestroy {
 
-	private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
-	isLoggedIn$ = this._isLoggedIn$.asObservable();
-
-
+	private _isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+	public get isLoggedIn$(): Observable<boolean> {
+		return this._isLoggedIn$.asObservable();
+	}
+	public ngOnDestroy(): void {
+		this._isLoggedIn$.next(false);
+		this._isLoggedIn$.complete();
+	}
 	constructor (private httpClient: HttpClient, private router: Router, private activateRouted: ActivatedRoute) { }
 
 	public login(loginUsuario: LoginUsuario): Observable<any> {
@@ -53,6 +57,7 @@ export class AuthService {
 	logout(hasRedirectUrl?: boolean) {
 		!hasRedirectUrl ? this.router.navigate([ 'login' ]) : null;
 		this.clearLocalStorage()
+		this._isLoggedIn$.next(false);
 	}
 	refreshSession(): any {
 		this._isLoggedIn$.next(this.isAuthenticated());
@@ -64,6 +69,7 @@ export class AuthService {
 			return this.getUser(this.AuthToken).roles;
 		} catch (e) {
 			this.showToast('Algo salio mal', 'error', 'login')
+			this.logout()
 		}
 	}
 	hasRoles(roles: Rol[]) {

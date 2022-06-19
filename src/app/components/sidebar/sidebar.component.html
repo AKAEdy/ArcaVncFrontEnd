@@ -61,8 +61,8 @@
 		<li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item"
 			*ngFor="let menu of menuItems">
 			<ng-container *ngIf="hasRole(menu.roles)">
-				<a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" aria-haspopup="true"
-					aria-expanded="fasle" data-toggle="collapse" [routerLink]="menu.url" [attr.data-target]="'#'+menu.ref">
+				<a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" aria-expanded="false"
+					data-toggle="collapse" [routerLink]="menu.url" [attr.data-target]="'#'+menu.ref">
 					<i [class]="menu.icon"></i>
 					<strong>
 						{{menu.tittle }}
@@ -73,8 +73,8 @@
 						<li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item"
 							*ngFor="let items of menu.items">
 							<ng-container *ngIf="hasRole(items.roles)">
-								<a class="nav-link " routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-									[routerLink]="items.url">
+								<a aria-expanded="false" data-toggle="collapse" [routerLink]="menu.url" class="nav-link"
+									routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="items.url">
 									<i [class]="items.icon" style="font-size: 20px">
 									</i>
 									<strong>{{ items.tittle }}</strong>

@@ -16,7 +16,7 @@ export interface Menu { //por si hay que mandar ya algo especifico pero no creo
 export class SidebarService {
 	constructor () { }
 
-	private menuItems$ = new BehaviorSubject<any[]>([
+	private menuItems$ = new BehaviorSubject<any>([
 		{ /* Inicio */
 			tittle: 'Inicio',
 			icon: 'fa fa-home',

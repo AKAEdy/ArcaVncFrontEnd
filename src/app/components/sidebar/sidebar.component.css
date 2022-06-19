@@ -1,6 +1,6 @@
 #fondo {
-	background-color: rgb(255, 238, 238);
-	/* background-color: rgb(255, 255, 255); */
+	/* background-color: rgb(255, 238, 238); */
+	background-color: rgb(255, 255, 255);
 }
 
 .btn-group {
@@ -43,7 +43,9 @@
 }
 
 .sidebar-wrapper .nav li.active>[data-toggle="collapse"] {
-	background-color: #ffffff;
+	background-color: rgb(255,
+			238,
+			238);
 	color: #3C4858;
 	-webkit-box-shadow: none;
 	box-shadow: none;
