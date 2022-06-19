@@ -103,15 +103,17 @@
 
 
                 <div class="col-md-12">
-                  
+
                   <!-- <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled > -->
-                    <label class="form-check-label"  for="flexCheckIndeterminate" style="color:rgb(69, 36, 255);text-decoration:underline;" data-toggle="modal" data-target="#ducumentoAdopcion" >
-                      Documento de adopcion
-                    </label>
+                  <label class="form-check-label" for="flexCheckIndeterminate"
+                    style="color:rgb(69, 36, 255);text-decoration:underline;" data-toggle="modal"
+                    data-target="#ducumentoAdopcion">
+                    Documento de adopción
+                  </label>
                 </div>
 
                 <button mat-raised-button type="submit" class="btn btn-danger pull-right"
-                  (click)="saveAdopciones()">Registrar</button>
+                  (click)="saveAdopciones()" style="display:none;" id="botonReg">Registrar</button>
                 <div class="clearfix"></div>
               </form>
 
@@ -127,7 +129,8 @@
 
 
 
-<div class="modal fade" id="ducumentoAdopcion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ducumentoAdopcion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog" role="document" style="max-width:1000px!important ;">>
     <div class="modal-content">
       <div class="modal-header">
@@ -137,35 +140,90 @@
         </button>
       </div>
       <div class="modal-body" id="print-section">
-        <p><img style="display: block; margin-left: auto; margin-right: auto;" src="../../assets/img/arca-logo.png" alt="" width="90" height="90" /></p>
+        <p><img style="display: block; margin-left: auto; margin-right: auto;" src="../../assets/img/arca-logo.png"
+            alt="" width="90" height="90" /></p>
         <p style="text-align: center;">BALTAZARA DE CALDERON 2-37 Y MIGUEL VELEZ</p>
         <p style="text-align: center;">TELF: 2835201&nbsp; CELULAR:0983350434</p>
         <p style="text-align: center;">DOCUMENTO DE ADOPCION</p>
-        <p style="text-align: justify;font-size: 15PX;">ADOPTADO(A): <strong><span style="text-decoration: underline;">NOMBRE&nbsp; </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong>CLINICA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input class="form-check-input" type="checkbox" value="">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;EVENTO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-check-input" type="checkbox" value=""></p>
-        <p style="text-align: justify;font-size: 15PX;">Nombre del adoptante: <span style="text-decoration: underline;"><strong>{{nombres}}</strong></span></p>
-        <p style="text-align: justify;font-size: 15PX;">Dirección: <span style="text-decoration: underline;"><strong>{{direccion}}</strong></span></p>
-        <p style="text-align: justify;font-size: 15PX;">Teléfono de casa: <span style="text-decoration: underline;"><strong>{{telefono}}&nbsp;</strong> </span>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Celular: <span style="text-decoration: underline;"><strong>{{celular}}</strong></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; Telf de familiar: <span style="text-decoration: underline;"><strong>{{telfamiliar}}</strong></span></p>
-        <p style="text-align: justify;font-size: 15PX;">Correo electrónico: <span style="text-decoration: underline;"><strong>{{correo}}</strong>&nbsp;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;Fabook:<span style="text-decoration: underline;"><strong>{{facebook}}</strong></span></p>
-        <p style="text-align: justify;font-size:14px;">EL Sr. o Sra. ADOPTANTE mayor de edad, con cédula de identidad N°; CEDULA a quien en adelante se le denominara el <strong>Adoptante</strong>, suscribe el presente convenio con ARCA Fundación Protectora de animales a quien se le denominará la<em><strong> Fundación</strong>&nbsp;</em>bajo la siguente cláusulas:</p>
-        <p style="text-align: justify;font-size:14px;"><strong>PRIMERA:</strong> El motivo del convénio es la adopción de un PERRO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-check-input" type="checkbox" value=""> &nbsp; &nbsp;GATO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-check-input" type="checkbox" value="">&nbsp; &nbsp; HEMBRA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-check-input" type="checkbox" value=""> &nbsp; MACHO &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-check-input" type="checkbox" value="">&nbsp;&nbsp;de nombre <span style="text-decoration: underline;">MASCOTA</span>&nbsp; de <span style="text-decoration: underline;">AÑOS</span> aÑos <span style="text-decoration: underline;">MESES</span> meses de edad de raza RAZA de COLOR el cual se encuentra en perfecto estado de salud, vacunado, desparacitado, con su respectivo collar de identificaciÓn, con derecho a consultas veterinarias gratuita duranre el primer mes de adopción, esterizado&nbsp; &nbsp; &nbsp; &nbsp;SI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-check-input" type="checkbox" value=""> &nbsp; &nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-check-input" type="checkbox" value=""> &nbsp;FECHA ________ PRENDA __________</p>
-        <p style="text-align: justify;font-size:14px;"><strong>SEGUNDA:&nbsp;</strong>El adoptante acogera al adoptado en su hogar, en un&nbsp; espacio adecuado para el efecto, otorgandole todos los cuidadosque requiere y cubriendo sus necesidades de salud, alimentacion, afecto y acicalamiento. Asi mismo debera mantenerlo con su respectivo collar de identificacion.</p>
-        <p style="text-align: justify;font-size:14px;"><strong>TERCERA:&nbsp;</strong>Bajo ningun concepto, el adoptado podra ser encadenado y peor aun ser victimade algun tipo de maltrato, violencia o atropello.</p>
-        <p style="text-align: justify;font-size:14px;"><strong>CUARTA:&nbsp;</strong>El adoptante esta en la obligacion de reportar a la Fundacion cualquier novedad que se presente en la salud del adoptado, asi como cambio de domicilio o perdida.</p>
-        <p style="text-align: justify;font-size:14px;"><strong>QUINTA:&nbsp;</strong>El adoptante es responsable de la vacunacion y desparasitacion periodicas del adoptado y en caso de enfermedad sera responsable de proporcionarle ATENCION VETERINARIA INMEDIATA.</p>
-        <p style="text-align: justify;font-size:14px;"><strong>SEXTA:&nbsp;</strong>El adoptante&nbsp; en ningun caso podra&nbsp; entregar al adoptado a otro tutor. En caso de presentar alguna dificultad que le impida continuar manteniendolo, el adoptante debera reingresarlo a la FUNCION ARCA.</p>
-        <p style="text-align: justify;font-size:14px;"><strong>SEPTIMA:&nbsp;</strong>Los miembros de la Fundacion podran visitar al adoptado las veces que la Fundacion considere necesarias constatar.</p>
-        <p style="text-align: justify;font-size:14px;"><strong>OCTAVA:&nbsp;</strong>En caso de que la fundacion llegara a detectar alguna anomalia o iregularidad en la tendencia del adoptado, la Fundacion procedera inmediatamente a retirarlo y de reingresarlo a la Fundacion.</p>
-        <p style="text-align: justify;font-size:14px;"><strong>NOVENA:</strong> El adoptante aportara la cantidad de $20 DOLARES POR CONCEPTOS DE LA ADOPCION, valor que servira para continuar con la labor del rescate, proteccion y alimentacion de animales.</p>
-        <p style="text-align: justify;font-size:14px;">Luego de conocer a cabalidad las clausulas del presente convenio y expresar su conformidad, firme para constancia:</p>
+        <p style="text-align: justify;font-size: 15PX;">ADOPTADO(A): <strong><span
+              style="text-decoration: underline;">NOMBRE&nbsp; </span> &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp;</strong>CLINICA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input class="form-check-input" type="checkbox"
+            value="">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp;EVENTO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-check-input" type="checkbox" value=""></p>
+        <p style="text-align: justify;font-size: 15PX;">Nombre del adoptante: <span
+            style="text-decoration: underline;"><strong>{{nombres}}</strong></span></p>
+        <p style="text-align: justify;font-size: 15PX;">Dirección: <span
+            style="text-decoration: underline;"><strong>{{direccion}}</strong></span></p>
+        <p style="text-align: justify;font-size: 15PX;">Teléfono de casa: <span
+            style="text-decoration: underline;"><strong>{{telefono}}&nbsp;</strong> </span>&nbsp; &nbsp;&nbsp;
+          &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          &nbsp;Celular: <span style="text-decoration: underline;"><strong>{{celular}}</strong></span>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          &nbsp; Telf de familiar: <span style="text-decoration: underline;"><strong>{{telfamiliar}}</strong></span></p>
+        <p style="text-align: justify;font-size: 15PX;">Correo electrónico: <span
+            style="text-decoration: underline;"><strong>{{correo}}</strong>&nbsp;</span> &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;Fabook:<span
+            style="text-decoration: underline;"><strong>{{facebook}}</strong></span></p>
+        <p style="text-align: justify;font-size:14px;">EL Sr. o Sra. ADOPTANTE mayor de edad, con cédula de identidad
+          N°; CEDULA a quien en adelante se le denominara el <strong>Adoptante</strong>, suscribe el presente convenio
+          con ARCA Fundación Protectora de animales a quien se le denominará la<em><strong>
+              Fundación</strong>&nbsp;</em>bajo la siguente cláusulas:</p>
+        <p style="text-align: justify;font-size:14px;"><strong>PRIMERA:</strong> El motivo del convénio es la adopción
+          de un PERRO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-check-input" type="checkbox" value="">
+          &nbsp; &nbsp;GATO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-check-input" type="checkbox"
+            value="">&nbsp; &nbsp; HEMBRA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-check-input"
+            type="checkbox" value=""> &nbsp; MACHO &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-check-input"
+            type="checkbox" value="">&nbsp;&nbsp;de nombre <span
+            style="text-decoration: underline;">MASCOTA</span>&nbsp; de <span
+            style="text-decoration: underline;">AÑOS</span> aÑos <span style="text-decoration: underline;">MESES</span>
+          meses de edad de raza RAZA de COLOR el cual se encuentra en perfecto estado de salud, vacunado, desparacitado,
+          con su respectivo collar de identificaciÓn, con derecho a consultas veterinarias gratuita duranre el primer
+          mes de adopción, esterizado&nbsp; &nbsp; &nbsp; &nbsp;SI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+            class="form-check-input" type="checkbox" value=""> &nbsp; &nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+            class="form-check-input" type="checkbox" value=""> &nbsp;FECHA ________ PRENDA __________</p>
+        <p style="text-align: justify;font-size:14px;"><strong>SEGUNDA:&nbsp;</strong>El adoptante acogera al adoptado
+          en su hogar, en un&nbsp; espacio adecuado para el efecto, otorgandole todos los cuidadosque requiere y
+          cubriendo sus necesidades de salud, alimentacion, afecto y acicalamiento. Asi mismo debera mantenerlo con su
+          respectivo collar de identificacion.</p>
+        <p style="text-align: justify;font-size:14px;"><strong>TERCERA:&nbsp;</strong>Bajo ningun concepto, el adoptado
+          podra ser encadenado y peor aun ser victimade algun tipo de maltrato, violencia o atropello.</p>
+        <p style="text-align: justify;font-size:14px;"><strong>CUARTA:&nbsp;</strong>El adoptante esta en la obligacion
+          de reportar a la Fundacion cualquier novedad que se presente en la salud del adoptado, asi como cambio de
+          domicilio o perdida.</p>
+        <p style="text-align: justify;font-size:14px;"><strong>QUINTA:&nbsp;</strong>El adoptante es responsable de la
+          vacunacion y desparasitacion periodicas del adoptado y en caso de enfermedad sera responsable de
+          proporcionarle ATENCION VETERINARIA INMEDIATA.</p>
+        <p style="text-align: justify;font-size:14px;"><strong>SEXTA:&nbsp;</strong>El adoptante&nbsp; en ningun caso
+          podra&nbsp; entregar al adoptado a otro tutor. En caso de presentar alguna dificultad que le impida continuar
+          manteniendolo, el adoptante debera reingresarlo a la FUNCION ARCA.</p>
+        <p style="text-align: justify;font-size:14px;"><strong>SEPTIMA:&nbsp;</strong>Los miembros de la Fundacion
+          podran visitar al adoptado las veces que la Fundacion considere necesarias constatar.</p>
+        <p style="text-align: justify;font-size:14px;"><strong>OCTAVA:&nbsp;</strong>En caso de que la fundacion llegara
+          a detectar alguna anomalia o iregularidad en la tendencia del adoptado, la Fundacion procedera inmediatamente
+          a retirarlo y de reingresarlo a la Fundacion.</p>
+        <p style="text-align: justify;font-size:14px;"><strong>NOVENA:</strong> El adoptante aportara la cantidad de $20
+          DOLARES POR CONCEPTOS DE LA ADOPCION, valor que servira para continuar con la labor del rescate, proteccion y
+          alimentacion de animales.</p>
+        <p style="text-align: justify;font-size:14px;">Luego de conocer a cabalidad las clausulas del presente convenio
+          y expresar su conformidad, firme para constancia:</p>
         <p style="text-align: justify;font-size:14px;">Cuenca, a los ____ dias del mes de ___________ del ________ .</p>
-        <p style="text-align: center;font-size:14px;">RESPONSABLE______________&nbsp; &nbsp; &nbsp;ADOPTANTE______________</p>
+        <p style="text-align: center;font-size:14px;">RESPONSABLE______________&nbsp; &nbsp;
+          &nbsp;ADOPTANTE______________</p>
       </div>
+     
       <div class="modal-footer">
+        <div class="col-md-12">
+          <p>Documento de adopción leido&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input class="form-check-input" type="checkbox" (click)="comfirmarDocumento()">
+        </p>
+        </div>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" printSectionId="print-section" ngxPrint>Imprimir</button>    
+        <button type="button" class="btn btn-primary" printSectionId="print-section" ngxPrint style="display:none;" id="botonImp">Imprimir</button>
       </div>
     </div>
   </div>
 </div>
-
 

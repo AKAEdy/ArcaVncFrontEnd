@@ -37,7 +37,7 @@ export class ListaAdoptadoComponent implements OnInit {
 deleteAdopcion(id:number){
   Swal.fire({
     title: '¿Esta seguro que decea eliminar?',
-    text: "No podra revertit los cambios!",
+    text: "No podra revertir los cambios!",
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#FE3838',
@@ -50,7 +50,7 @@ deleteAdopcion(id:number){
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Error al eliminar la adopcion!',
+          text: 'Error al eliminar la adopción!',
         })
       }
       Swal.fire(
@@ -80,7 +80,7 @@ getCedulaAdoptante(){
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
-      text: 'Ingrese la cedula!',
+      text: 'Ingrese la cédula!',
     })
   }else{
          this.adoptanteService.getAdoptantePorCedulaUsingGET(this.cedulas).subscribe(data =>{
@@ -89,7 +89,7 @@ getCedulaAdoptante(){
      
       Swal.fire({
         icon: 'success',
-        title: 'Cedula encontrada',
+        title: 'Cédula encontrada',
         text: 'El adoptante es '+this.adoptante.persona.nombre,
       })
       
@@ -129,7 +129,7 @@ updateAdopcion(){
           Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Se a adoptado correctamente',
+            title: 'Se a actualizado correctamente',
             showConfirmButton: false,
             timer: 1500
           })

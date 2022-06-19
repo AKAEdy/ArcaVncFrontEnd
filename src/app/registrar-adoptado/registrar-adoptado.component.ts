@@ -128,5 +128,9 @@ export class RegistrarAdoptadoComponent implements OnInit {
   
   }
   
+  comfirmarDocumento(){
+  document.getElementById("botonImp").style.display="block";
+  document.getElementById("botonReg").style.display="block";
+  }
 
 }
