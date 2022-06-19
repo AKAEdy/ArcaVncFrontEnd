@@ -2,3 +2,13 @@
     width: 800px;
     margin: auto auto;
 }
+
+.btneliminar{
+    margin-left: 20px;
+    background-color: rgb(47, 179, 91);
+}
+    
+
+.btneditar{
+    background-color: rgb(255, 74, 74);
+}

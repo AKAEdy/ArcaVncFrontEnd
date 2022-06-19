@@ -46,7 +46,7 @@ declare interface RouteInfo {
 //     { path: '/tratamiento', title: 'REGISTRO TRATAMIENTO',  icon:'location_on', class: '' }, // map
 //     { path: '/medicacion', title: 'REGISTRO MEDICACION',  icon:'library_books', class: '' }, //typography
 //     { path: '/listarCitas', title: 'LISTA DE CITAS',  icon:'person', class: '' },
-    
+
 
 // ];
 

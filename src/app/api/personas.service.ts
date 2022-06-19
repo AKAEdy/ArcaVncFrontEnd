@@ -27,7 +27,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class PersonasService {
 
-    protected basePath = '//localhost:9898/';
+    protected basePath = '//localhost:9898/api';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -63,13 +63,13 @@ export class PersonasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createUsingPOST2(body: Persona, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createUsingPOST2(body: Persona, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createUsingPOST2(body: Persona, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createUsingPOST2(body: Persona, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createUsingPOST3(body: Persona, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createUsingPOST3(body: Persona, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createUsingPOST3(body: Persona, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createUsingPOST3(body: Persona, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling createUsingPOST2.');
+            throw new Error('Required parameter body was null or undefined when calling createUsingPOST3.');
         }
 
         let headers = this.defaultHeaders;
@@ -97,7 +97,7 @@ export class PersonasService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/api/personas/`,
+        return this.httpClient.request<any>('post',`${this.basePath}/personas/`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -115,13 +115,13 @@ export class PersonasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteUsingDELETE2(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteUsingDELETE2(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteUsingDELETE2(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteUsingDELETE2(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteUsingDELETE3(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteUsingDELETE3(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteUsingDELETE3(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteUsingDELETE3(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling deleteUsingDELETE2.');
+            throw new Error('Required parameter id was null or undefined when calling deleteUsingDELETE3.');
         }
 
         let headers = this.defaultHeaders;
@@ -144,7 +144,7 @@ export class PersonasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('delete',`${this.basePath}/api/personas/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<any>('delete',`${this.basePath}/personas/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -161,13 +161,13 @@ export class PersonasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getByIdUsingGET2(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public getByIdUsingGET2(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public getByIdUsingGET2(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public getByIdUsingGET2(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getByIdUsingGET3(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getByIdUsingGET3(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getByIdUsingGET3(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getByIdUsingGET3(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling getByIdUsingGET2.');
+            throw new Error('Required parameter id was null or undefined when calling getByIdUsingGET3.');
         }
 
         let headers = this.defaultHeaders;
@@ -190,7 +190,48 @@ export class PersonasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/api/personas/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<any>('get',`${this.basePath}/personas/${encodeURIComponent(String(id))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * getPersonas
+     * 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getPersonasUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
+    public getPersonasUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
+    public getPersonasUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
+    public getPersonasUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // authentication (JWT) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/personas/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -208,17 +249,17 @@ export class PersonasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getPersonasUsingGET(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PagePersona>;
-    public getPersonasUsingGET(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PagePersona>>;
-    public getPersonasUsingGET(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PagePersona>>;
-    public getPersonasUsingGET(page: number, size: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getPersonasUsingGET1(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PagePersona>;
+    public getPersonasUsingGET1(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PagePersona>>;
+    public getPersonasUsingGET1(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PagePersona>>;
+    public getPersonasUsingGET1(page: number, size: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (page === null || page === undefined) {
-            throw new Error('Required parameter page was null or undefined when calling getPersonasUsingGET.');
+            throw new Error('Required parameter page was null or undefined when calling getPersonasUsingGET1.');
         }
 
         if (size === null || size === undefined) {
-            throw new Error('Required parameter size was null or undefined when calling getPersonasUsingGET.');
+            throw new Error('Required parameter size was null or undefined when calling getPersonasUsingGET1.');
         }
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
@@ -249,7 +290,7 @@ export class PersonasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<PagePersona>('get',`${this.basePath}/api/personas/page`,
+        return this.httpClient.request<PagePersona>('get',`${this.basePath}/personas/page`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -268,17 +309,17 @@ export class PersonasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateUsingPUT2(body: Persona, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateUsingPUT2(body: Persona, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateUsingPUT2(body: Persona, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateUsingPUT2(body: Persona, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateUsingPUT3(body: Persona, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateUsingPUT3(body: Persona, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateUsingPUT3(body: Persona, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateUsingPUT3(body: Persona, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling updateUsingPUT2.');
+            throw new Error('Required parameter body was null or undefined when calling updateUsingPUT3.');
         }
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling updateUsingPUT2.');
+            throw new Error('Required parameter id was null or undefined when calling updateUsingPUT3.');
         }
 
         let headers = this.defaultHeaders;
@@ -306,7 +347,7 @@ export class PersonasService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('put',`${this.basePath}/api/personas/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<any>('put',`${this.basePath}/personas/${encodeURIComponent(String(id))}`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,

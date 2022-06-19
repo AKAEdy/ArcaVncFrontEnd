@@ -25,7 +25,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class AdopcionControllerService {
 
-    protected basePath = '//localhost:9898';
+    protected basePath = '//localhost:9898/api';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -107,7 +107,7 @@ export class AdopcionControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('put',`${this.basePath}/api/adopciones/${encodeURIComponent(String(idAdopcion))}/${encodeURIComponent(String(idAnimal))}`,
+        return this.httpClient.request<any>('put',`${this.basePath}/adopciones/${encodeURIComponent(String(idAdopcion))}/${encodeURIComponent(String(idAnimal))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -171,7 +171,7 @@ export class AdopcionControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('post',`${this.basePath}/api/adopciones/${encodeURIComponent(String(idAdoptante))}/${encodeURIComponent(String(idAnimal))}`,
+        return this.httpClient.request<any>('post',`${this.basePath}/adopciones/${encodeURIComponent(String(idAdoptante))}/${encodeURIComponent(String(idAnimal))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -218,7 +218,7 @@ export class AdopcionControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('delete',`${this.basePath}/api/adopciones/${encodeURIComponent(String(idAdopcion))}`,
+        return this.httpClient.request<any>('delete',`${this.basePath}/adopciones/${encodeURIComponent(String(idAdopcion))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -264,7 +264,7 @@ export class AdopcionControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/api/adopciones/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<any>('get',`${this.basePath}/adopciones/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -310,7 +310,7 @@ export class AdopcionControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/api/adopciones/allbyci/${encodeURIComponent(String(cedula))}`,
+        return this.httpClient.request<any>('get',`${this.basePath}/adopciones/allbyci/${encodeURIComponent(String(cedula))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -356,7 +356,7 @@ export class AdopcionControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/api/adopciones/allbyid/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<any>('get',`${this.basePath}/adopciones/allbyid/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -397,7 +397,7 @@ export class AdopcionControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/api/adopciones/`,
+        return this.httpClient.request<any>('get',`${this.basePath}/adopciones/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

@@ -27,83 +27,37 @@
                                    
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr *ngFor="let medicamentos of medicamento">
                                         <td>
-                                           SIMPARICA TRIO     
+                                          {{medicamentos.nombreComercial}}  
                                         </td>
                                         <td>
-                                            ZOETIS 
+                                            {{medicamentos.nombreGenerico}}
                                         </td>
                                         <td>
-                                           3
+                                           {{medicamentos.cantidad}}
                                         </td>
                                         <td>
-                                            $37.50
+                                            {{medicamentos.precio}}
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            SIMPARICA TRIO     
-                                         </td>
-                                         <td>
-                                             ZOETIS 
-                                         </td>
-                                         <td>
-                                            3
-                                         </td>
-                                         <td>
-                                             $37.50
-                                         </td>
-                                       
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            SIMPARICA TRIO     
-                                         </td>
-                                         <td>
-                                             ZOETIS 
-                                         </td>
-                                         <td>
-                                            3
-                                         </td>
-                                         <td>
-                                             $37.50
-                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            SIMPARICA TRIO     
-                                         </td>
-                                         <td>
-                                             ZOETIS 
-                                         </td>
-                                         <td>
-                                            3
-                                         </td>
-                                         <td>
-                                             $37.50
-                                         </td>
-                                       
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            SIMPARICA TRIO     
-                                         </td>
-                                         <td>
-                                             ZOETIS 
-                                         </td>
-                                         <td>
-                                            3
-                                         </td>
-                                         <td>
-                                             $37.50
-                                         </td>
-                                        </tr>
-
                                 </tbody>
                             </table>
                         </div>
                     </div>
+
+                    <div class="container">
+                       
+                        <div class="pagination p11">
+                          <ul>
+                            <button (click)="previous()"> < </button>
+                         
+                            <button (click)="next()"> > </button>
+                          </ul>
+                        </div>  
+                                
+                      </div>
+                      
                 </div>
             </div>
         </div>

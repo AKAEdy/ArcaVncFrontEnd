@@ -27,7 +27,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class FichasClnicasService {
 
-    protected basePath = '//localhost:9898/';
+    protected basePath = '//localhost:9898/api';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -97,7 +97,7 @@ export class FichasClnicasService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/api/fichas-clinicas/`,
+        return this.httpClient.request<any>('post',`${this.basePath}/fichas-clinicas/`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -144,7 +144,7 @@ export class FichasClnicasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('delete',`${this.basePath}/api/fichas-clinicas/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<any>('delete',`${this.basePath}/fichas-clinicas/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -190,7 +190,7 @@ export class FichasClnicasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/api/fichas-clinicas/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<any>('get',`${this.basePath}/fichas-clinicas/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -201,24 +201,65 @@ export class FichasClnicasService {
     }
 
     /**
-     * getFichaClinicas
+     * getFichasClinicas
+     * 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getFichasClinicasUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<FichaClinica>>;
+    public getFichasClinicasUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<FichaClinica>>>;
+    public getFichasClinicasUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<FichaClinica>>>;
+    public getFichasClinicasUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // authentication (JWT) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<Array<FichaClinica>>('get',`${this.basePath}/fichas-clinicas/`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * getFichasClinicas
      * 
      * @param page page
      * @param size size
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getFichaClinicasUsingGET(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PageFichaClinica>;
-    public getFichaClinicasUsingGET(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageFichaClinica>>;
-    public getFichaClinicasUsingGET(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageFichaClinica>>;
-    public getFichaClinicasUsingGET(page: number, size: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getFichasClinicasUsingGET1(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PageFichaClinica>;
+    public getFichasClinicasUsingGET1(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageFichaClinica>>;
+    public getFichasClinicasUsingGET1(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageFichaClinica>>;
+    public getFichasClinicasUsingGET1(page: number, size: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (page === null || page === undefined) {
-            throw new Error('Required parameter page was null or undefined when calling getFichaClinicasUsingGET.');
+            throw new Error('Required parameter page was null or undefined when calling getFichasClinicasUsingGET1.');
         }
 
         if (size === null || size === undefined) {
-            throw new Error('Required parameter size was null or undefined when calling getFichaClinicasUsingGET.');
+            throw new Error('Required parameter size was null or undefined when calling getFichasClinicasUsingGET1.');
         }
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
@@ -249,7 +290,7 @@ export class FichasClnicasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<PageFichaClinica>('get',`${this.basePath}/api/fichas-clinicas/page`,
+        return this.httpClient.request<PageFichaClinica>('get',`${this.basePath}/fichas-clinicas/page`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -306,7 +347,7 @@ export class FichasClnicasService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('put',`${this.basePath}/api/fichas-clinicas/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<any>('put',`${this.basePath}/fichas-clinicas/${encodeURIComponent(String(id))}`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,

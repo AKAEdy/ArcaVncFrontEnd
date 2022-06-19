@@ -1,6 +1,17 @@
 #myInput{
     float: right;
+    width: 200px;
+    color: rgb(255, 255, 255);
 }
 .required{
-    color: rgb(219, 219, 219);
+    float: right;
+}
+
+.btneliminar{
+    margin-left: 20px;
+    background-color: rgb(255, 58, 58);
+}
+
+.btneditar{
+    background-color: rgb(250, 193, 37);
 }

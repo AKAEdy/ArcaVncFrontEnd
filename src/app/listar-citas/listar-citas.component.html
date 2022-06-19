@@ -1,1 +1,61 @@
-<p>listar-citas works!</p>
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Lista de citas </h4>
+                        <p class="card-category"> CITAS
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        FECHA 
+                                    </th>
+                                    <th>
+                                        CLIENTE
+                                    </th>
+                                    <th>
+                                        MOTIVO_CITA
+                                    </th>
+                                    <th style="text-align:center;">
+                                        ESTADO_CITA
+                                    </th>
+                                    <th>
+                                        ACCION
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let cita of citas">
+                                        <td>
+                                            {{cita.fechaCita}}  
+                                        </td>
+                                        <td>
+                                            {{cita.nombreCliente}}
+                                        </td>
+                                        <td>
+                                           {{cita.motivo}}
+                                        </td>
+                                        <td *ngIf="cita.estado == true;else rojo" style="text-align:center;">
+                                           🟢
+                                        </td>
+                                        <ng-template #rojo style="margin-bottom:20px;">
+                                            <td style="text-align:center;">
+                                                🔴 
+                                            </td>
+                                          </ng-template>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

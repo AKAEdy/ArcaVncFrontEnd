@@ -1,62 +1,117 @@
 <body>
-  
+
   <form #f="ngForm" (ngSubmit)="saveAdopciones()" novalidate>
     <div class="main-content">
       <div class="container-fluid">
         <div class="row">
-          
-            <div class="card">
-              <div class="card-header card-header-danger">
-                <h4 class="card-title">Registro de adoptados</h4>
-              </div>
-              <div class="card-body">
-                <form>
-                 
-                  <div class="row">
-                    <div class="col-md-6">
-                      <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Nombre de la persona" type="text"
-                        [(ngModel)]="adoptante.id">
-                      </mat-form-field>
-                    </div>
-                    <div class="col-md-6">
-                      <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Nombre del animal" type="text"
-                        [(ngModel)]="animal.id">
-                      </mat-form-field>
+
+          <div class="card">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title">Registro de adoptados</h4>
+            </div>
+            <div class="card-body">
+              <form>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Buscar adoptante" type="text" [(ngModel)]="cedulas">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <div>
+                      <div class="btn-group">
+                        <div>
+                          <button mat-raised-button type="submit" class="btn btn-danger btn-round" class="btneditar"
+                            (click)="getCedulaAdoptante(cedulas)">
+                            <i class="fa fa-search"></i> Buscar
+                          </button>
+                        </div>
+                        <div>
+                          <button mat-raised-button type="submit" class="btn btn-danger btn-round" class="btneliminar">
+                            <i class="fa fa-plus"></i> Registrar Adoptante</button>
+                        </div>
+                      </div>
                     </div>
                   </div>
-    
-                  <div class="row">
-                    <div class="col-md-12">
-                      <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Fecha de adopcion" type="date"
-                        [(ngModel)]="adopcion.fechaAdopcion">
-                      </mat-form-field>
-                    </div>
+                </div>
+
+                
+
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Nombre del animal" type="text" [(ngModel)]="animal.id">
+                    </mat-form-field>
                   </div>
-                 
-                  <div class="row">
-                    <div class="col-md-12">
-                      <mat-form-field class="example-full-width">
-                        <textarea matInput rows="5"
-                          placeholder="Decripción de adopción"
-                          [(ngModel)]="adopcion.descripcion">
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Fecha de adopcion" type="date" [(ngModel)]="adopcion.fechaAdopcion">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <mat-form-field class="example-full-width">
+                      <textarea matInput rows="5" placeholder="Decripción de adopción"
+                        [(ngModel)]="adopcion.descripcion">
                         </textarea>
-                      </mat-form-field>
-                    </div>
+                    </mat-form-field>
                   </div>
-                  <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="saveAdopciones()">Update Profile</button>
-                  <div class="clearfix"></div>
-                </form>
-              </div>
+                </div>
+                <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                  (click)="saveAdopciones()">Update Profile</button>
+                <div class="clearfix"></div>
+              </form>
+
+              
             </div>
           </div>
         </div>
-      </div>  
+      </div>
+    </div>
   </form>
 
-  </body>
+</body>
 
-
-
+<div class="card-body">
+  <div class="table-responsive">
+    <table class="table">
+      <thead class=" text-primary">
+        <th class="table-danger" scope="col">
+          Nombre adoptante
+        </th>
+        <th class="table-danger" scope="col">
+          Celular
+        </th>
+        <th class="table-danger" scope="col">
+          Direccion
+        </th>
+        <th class="table-danger" scope="col">
+          Correo electronico
+        </th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let adoptante of adoptantes">
+          <td>
+            {{adoptante.nombre}} {{adoptante.apellidos}}
+          </td>
+          <td>
+            {{adoptante.persona.celular}}
+          </td>
+          <td>
+            {{adoptante.persona.direccion}}
+          </td>
+          <td>
+            {{adoptante.nicknameFacebook}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

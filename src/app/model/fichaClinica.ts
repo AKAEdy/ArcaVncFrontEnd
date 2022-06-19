@@ -16,7 +16,7 @@ export interface FichaClinica {
     conjuntiva?: string;
     costo?: number;
     diagnosticoDiferencial?: string;
-    esterilizacion?: boolean;
+    esterilizacion?: string; 
     fechaIngreso?: Date;
     frecuenciaCardiaca?: number;
     frecuenciaRespiratoria?: number;
@@ -27,5 +27,7 @@ export interface FichaClinica {
     pronostico?: string;
     temperatura?: number;
     trc?: string;
-    veterinario: Veterinario;
+    veterinario?: Veterinario;
+    examenes_solicitados?: string;
+    tipoPaciente?:string;
 }
