@@ -15,7 +15,7 @@
                 <div class="row">
                   <div class="col-md-6">
                     <mat-form-field class="example-full-width">
-                      <input matInput placeholder="Buscar adoptante" type="text" [(ngModel)]="cedulas">
+                      <input matInput placeholder="Buscar adoptante por cédula" type="text" [(ngModel)]="cedulas">
                     </mat-form-field>
                   </div>
                   <div class="col-md-6">
@@ -28,7 +28,8 @@
                           </button>
                         </div>
                         <div>
-                          <button mat-raised-button type="submit" class="btn btn-danger btn-round" class="btneliminar">
+                          <button mat-raised-button type="submit" class="btn btn-danger btn-round" class="btneliminar"
+                          (click)="btnAgregarAdoptante()">
                             <i class="fa fa-plus"></i> Registrar Adoptante</button>
                         </div>
                       </div>

@@ -1,11 +1,11 @@
-import { noUndefined } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdopcionControllerService } from 'app/api/adopcionController.service';
 import { AdoptanteControllerService } from 'app/api/adoptanteController.service';
 import { Adopcion } from 'app/model/adopcion';
 import { Adoptante } from 'app/model/adoptante';
-import { AdoptanteDto } from 'app/model/adoptanteDto';
 import { Animal } from 'app/model/animal';
+
 import Swal from 'sweetalert2';
 
 
@@ -40,7 +40,10 @@ export class RegistrarAdoptadoComponent implements OnInit {
  telefono:string;
  telfamiliar:string;
  facebook:string;
-  constructor(private adopcionesService:AdopcionControllerService, private adoptanteService: AdoptanteControllerService) {
+  constructor(
+    private adopcionesService:AdopcionControllerService, 
+    private adoptanteService: AdoptanteControllerService,
+    private router:Router) {
  
   }
 
@@ -48,9 +51,7 @@ export class RegistrarAdoptadoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  saveAdopciones(){
-    console.log("LLEGA "+ this.adoptante.id,this.animal.id,this.adopcion.descripcion, this.adopcion.fechaAdopcion);
-    
+  saveAdopciones(){    
     if(this.adoptante.id ===  undefined || this.animal.id === undefined || this.adopcion.descripcion === undefined || this.adopcion.descripcion === "" || this.adopcion.fechaAdopcion === ""  || this.adopcion.fechaAdopcion === undefined){
       Swal.fire({
         icon: 'error',
@@ -131,6 +132,10 @@ export class RegistrarAdoptadoComponent implements OnInit {
   comfirmarDocumento(){
   document.getElementById("botonImp").style.display="block";
   document.getElementById("botonReg").style.display="block";
+  }
+
+  btnAgregarAdoptante(){
+  this.router.navigate(['registrarAdoptantes'])
   }
 
 }

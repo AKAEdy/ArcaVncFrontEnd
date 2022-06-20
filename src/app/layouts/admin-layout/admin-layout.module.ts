@@ -41,6 +41,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { RegistrarVeterinariosComponent } from '../../registrar-veterinarios/registrar-veterinarios.component';
 import { ListarVeterinariosComponent } from '../../listar-veterinarios/listar-veterinarios.component';
 import { NgxPrintModule } from 'ngx-print';
+import { RegistrarAdoptanteComponent } from '../../registrar-adoptante/registrar-adoptante.component';
+import { RegistrarDonacionesComponent } from '../../registrar-donaciones/registrar-donaciones.component';
+import { ListarDonacionesComponent } from '../../listar-donaciones/listar-donaciones.component';
 
 @NgModule({
   imports: [
@@ -88,6 +91,9 @@ import { NgxPrintModule } from 'ngx-print';
     RegistrarCitasComponent,
     RegistrarVeterinariosComponent,
     ListarVeterinariosComponent,
+    RegistrarAdoptanteComponent,
+    RegistrarDonacionesComponent,
+    ListarDonacionesComponent,
 
   ]
 })
