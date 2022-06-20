@@ -31,7 +31,9 @@ animal:Animal= null;
       err => {
         this.list();
       }
-    );}
+    );
+  
+  }
 
 
 

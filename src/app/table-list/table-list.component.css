@@ -7,6 +7,22 @@
     display: flex;
     justify-content: center;
   }
+
+  p{
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+    text-align: center;
+  }
+  h3{
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+    text-align: center;
+  }
+  .color{
+    border: 2px solid red;
+  }
   
   
   

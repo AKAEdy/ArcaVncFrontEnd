@@ -5,7 +5,7 @@
 
           <div class="card">
             <div class="card-header card-header-danger">
-              <h4 class="card-title">Listado DE MASCOTAS</h4>
+              <h3 class="card-title">LISTADO DE MASCOTAS</h3>
               
             </div>
           </div>
@@ -17,7 +17,6 @@
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title text-center">Listado de Mascotas</h4>
           <div class="row">
            
             <div class="col-md-3">
@@ -29,49 +28,57 @@
            
           </div>
           <div class="row">
+
             <div class="col-lg-3 col-md-3" *ngFor="let animal of animales">
+
               <!-- Card -->
-              <div class="card border-dark">
-                <img class="card-img-top " class="mx-auto d-block" src={{animal.foto}} alt="Card image cap" width="100" height="136" />
-                <div class="card-body">
-                  <h4 class="card-title">
-                    Nombre  {{animal.nombre}}
+              <div class="color" class="card border-danger mb-3" style="max-width: 18rem;">
+
+                <br>
+                <div class="card-header">
+
+                  <img class="card-img-top " class="mx-auto d-block" src={{animal.foto}} alt="Card image cap" width="100" height="136" />
                 
-                  </h4>
+                </div>
+                <br>
+                <div class="card-body">
+
+                  <p class="card-title">
+                    Nombre: {{animal.nombre}}
+                  </p>
+
                   <p class="card-text">
                     Especie: {{animal.especie}}
                   </p>
+
                   <p class="card-text">
                     Raza: {{animal.raza}}
                   </p>
+
                    <p class="card-text">
                     Sexo:  {{ animal.sexo}}
                   </p>
-                
-  
-                  <div class="col-md-3 text-right">
-                    <button class="btn btn-primary btn-sm" 
-                    
-                    (click)="Detalle(animal.id)">
-                     Ver
+              
+                </div>
+
+                <br>
+                <div class="card-footer">
+
+                    <button class="btn btn-primary btn-sm" (click)="Detalle(animal.id)">
+                     Detalle
                     </button>
-  
-  
-  
+
+                    <button class="btn btn-primary btn-sm" (click)="FichaClinica(animal.id)">
+                     Crear Ficha Clinica
+                    </button>
+
                     <br>
-                    <br>
-  
-                  </div>
-  
+
                 </div>
               </div>
               <!-- Card -->
             
-    
-
-                 
-
-                    
+                        
     </div></div></div></div>
    
 

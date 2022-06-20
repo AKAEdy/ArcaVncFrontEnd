@@ -25,12 +25,7 @@ dataSource:any={};
   ngOnInit(): void {
     this.filterpost=this.animales;
     this.listarAnimales();
-  this.pagina = 0;
-    // this.getAnimalesPage(
-    //   this.paginaActual.toString(),
-    //   this.totalPorPagina.toString(),
-    //   this.busqueda
-    // );
+    this.pagina = 0;
   }
 
 
@@ -41,6 +36,15 @@ dataSource:any={};
     this.router.navigate (['/upgrade', id]);
     });
   }
+
+  FichaClinica(id: number){
+    this.animalesService.getByIdUsingGET(id).subscribe(data =>{
+      this.animales=data;
+      console.log("listado",data);
+      this.router.navigate (['/registrofichaclinica', id]);
+    });
+  }
+
   listarAnimales(){
 
     this.animalesService.getAnimalsUsingGET(this.pagina,this.tamaño).subscribe(data =>{
