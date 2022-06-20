@@ -31,9 +31,12 @@ export class UserProfileComponent implements OnInit {
   public formSubmitted = false;
 
   
-  constructor(private animalesService: AnimalesService, private fichasClinicasService: FichasClnicasService, private router: Router,private _formBuilder: FormBuilder) { }
+  constructor(private animalesService: AnimalesService, private fichasClinicasService: FichasClnicasService, private router: Router,private _formBuilder: FormBuilder) {
+
+   }
 
   ngOnInit():void {
+    localStorage.removeItem('animal');
 
   }
   // saveAnimal(){
@@ -66,7 +69,7 @@ export class UserProfileComponent implements OnInit {
 
   guardarMascota(){
 
-  console.log("LLEGA "+ this.animal.id,this.animal.nombre,this.animal.sexo, this.animal.especie, this.animal.procedencia, this.animal.lugarEstancia, this.animal.raza, this.animal.peso, this.animal.edad, this.animal.tamanyo, this.animal.fechaNacimiento, this.animal.colorCaracteristicas, this.animal.observacionesProcedencia, this.animal.foto);
+  // console.log("LLEGA "+ this.animal.id,this.animal.nombre,this.animal.sexo, this.animal.especie, this.animal.procedencia, this.animal.lugarEstancia, this.animal.raza, this.animal.peso, this.animal.edad, this.animal.tamanyo, this.animal.fechaNacimiento, this.animal.colorCaracteristicas, this.animal.observacionesProcedencia, this.animal.foto);
     
   if(this.animal.nombre === undefined || this.animal.sexo === undefined || this.animal.especie ===  undefined || this.animal.procedencia === undefined || this.animal.lugarEstancia === undefined || this.animal.raza===  undefined || this.animal.peso=== undefined || this.animal.edad === undefined || this.animal.tamanyo ===  undefined || this.animal.fechaNacimiento === undefined || this.animal.colorCaracteristicas=== undefined || this.animal.observacionesProcedencia ===  undefined || this.animal.foto === undefined  || 
 
@@ -90,6 +93,7 @@ export class UserProfileComponent implements OnInit {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         this.animalesService.createUsingPOST(this.animal).subscribe(data =>{
+          this.animal=data;
           Swal.fire({
             position: 'center',
             icon: 'success',
@@ -97,8 +101,11 @@ export class UserProfileComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500
           })
+          localStorage.setItem('animal', JSON.stringify(this.animal));
+          // console.log('imprimiendo valores de la data',);
+          
           location.reload();
-        })
+        });
         this.irFicha();
          
       } else if (result.isDenied) {
@@ -156,6 +163,7 @@ s
  }
  irAtras() {
   this.router.navigateByUrl("/menu");
+  localStorage.removeItem('animal');
 }
 
 

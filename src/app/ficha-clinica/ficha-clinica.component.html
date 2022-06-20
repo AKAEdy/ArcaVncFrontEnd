@@ -5,14 +5,13 @@
                 <div class="card">
                     <div class="card-header card-header-danger">
                         <h4 class="card-title">FICHA CLINICA ARCA</h4>
-                        <p class="card-category">Complete el formulario</p>
+                        <p class="card-category">Complete el formulario #{{animal.data.id}} de la mascota: {{animal.data.nombre}}</p>
                     </div>
                     <div class="card-body">
                         <form #f="ngForm" (ngSubmit)="guardar()" novalidate>
                             <div class="row">
                                 <!--Desparacitaciones-->
                                 <div class="col-md-5">
-                                  <label>Nombre del Animal:</label>
                                   <div class="caja">
                                   <select class="form-select" aria-label="Default select example">
                                       <option selected disabled>Seleccione:</option>
@@ -114,7 +113,7 @@
                                         <div class="caja">
                                         <select class="form-select" aria-label="Default select example" [(ngModel)]="fichaClinica.tipoPaciente">
                                             <option selected disabled>Seleccione:</option>
-                                            <option value="1">Interno</option>
+                                            <option value="1">INTERNO</option>
                                             <option value="2">EXTERNO</option>
                                             
                                         </select>
@@ -156,7 +155,7 @@
   
                                 </div>
                                 <!--Vacunas-->
-                                    <div class="container-fluid">
+                                    <div class="container-fluid" id="tablavacunas">
                                        
                                       <div class="row">
   

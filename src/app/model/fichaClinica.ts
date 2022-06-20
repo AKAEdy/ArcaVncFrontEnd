@@ -9,6 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { Animal } from './animal';
 import { Veterinario } from './veterinario';
 
 export interface FichaClinica { 
@@ -28,6 +29,7 @@ export interface FichaClinica {
     temperatura?: number;
     trc?: string;
     veterinario?: Veterinario;
+    animal?:Animal;
     examenes_solicitados?: string;
     tipoPaciente?:string;
 }

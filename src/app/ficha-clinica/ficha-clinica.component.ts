@@ -17,10 +17,18 @@ export class FichaClinicaComponent implements OnInit {
   //animal: Animal={}
 //veterinario: Veterinario={};
 fichaClinica: FichaClinica={};
+animal:any={}
 public formSubmitted = false;
-  constructor(private fichasClinicasService: FichasClnicasService,private router: Router,private _formBuilder: FormBuilder) { }
+  constructor(private fichasClinicasService: FichasClnicasService,private router: Router,private _formBuilder: FormBuilder) {
+  
+    this.animal={};
+    
+
+   }
 
   ngOnInit(): void {
+    this.animal = JSON.parse(localStorage.getItem('animal'));
+    console.log("recibiendo información de animal con localstorage",this.animal);
   }
 
   guardar(){
@@ -36,6 +44,8 @@ public formSubmitted = false;
           })
         })
       }
+
+      
     
    }
   
