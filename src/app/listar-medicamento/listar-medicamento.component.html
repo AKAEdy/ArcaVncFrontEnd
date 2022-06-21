@@ -1,4 +1,4 @@
-<div class="main-content">
+<div class="main-content"  id="tabla">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -24,6 +24,9 @@
                                     <th>
                                         PRECIO
                                     </th>
+                                    <th>
+                                        ACCION
+                                    </th>
                                    
                                 </thead>
                                 <tbody>
@@ -39,6 +42,28 @@
                                         </td>
                                         <td>
                                             {{medicamentos.precio}}
+                                        </td>
+                                        <td>
+                                            <button _ngcontent-uqa-c89="" mat-raised-button="" type="submit"
+                                                class="mat-focus-indicator btneliminar mat-raised-button mat-button-base" (click)="getMedicamentosById(medicamentos.id)"><span
+                                                    class="mat-button-wrapper"><i _ngcontent-uqa-c89=""
+                                                        class="material-icons">mode_edit</i>
+                                                    <div _ngcontent-uqa-c89="" class="ripple-container"></div>
+                                                </span><span matripple=""
+                                                    class="mat-ripple mat-button-ripple"></span><span
+                                                    class="mat-button-focus-overlay"></span></button>
+                                        </td>
+                                        <td>
+                                            <button _ngcontent-die-c89="" mat-raised-button="" type="submit"
+                                                class="mat-focus-indicator btneliminar mat-raised-button mat-button-base" (click)="deleteMedicamentos(medicamentos.id)"><span
+                                                    class="mat-button-wrapper"><i _ngcontent-die-c89=""
+                                                        class="material-icons">delete</i>
+                                                    <div _ngcontent-die-c89="" class="ripple-container"></div>
+                                                </span><span matripple=""
+                                                    class="mat-ripple mat-button-ripple"></span><span
+                                                    class="mat-button-focus-overlay"></span></button>
+
+
                                         </td>
                                     </tr>
                                 </tbody>
@@ -64,3 +89,80 @@
     </div>
   </div>
   
+<!-- editar persona -->
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="card" id="tarjeta" style="display: none;" >
+            
+            <div class="card-header card-header-danger">
+                <h4 class="card-title">EDITAR MEDICAMENTOS</h4>
+
+            </div>
+            <div class="card-body">
+                <form #f="ngForm" (ngSubmit)="updateMedicamentos()" novalidate>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">NOMBRE COMERCIAL</span>
+                                </div>
+                                <input matInput placeholder="NOMBRE COMERCIAL" [(ngModel)]="medicamentoid.nombreComercial"
+                                    class="form-control" name="nombre" #nombre="ngModel" required>
+                                <div class="text-danger" *ngIf="nombre.hasError('required') && nombre.touched">
+                                    El nombre comercial es requerido!
+                                </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">NOMBRE GENERICO</span>
+                                </div>
+                                <input matInput placeholder="NOMBRE GENERICO" [(ngModel)]="medicamentoid.nombreGenerico"
+                                    class="form-control" name="generico" #generico="ngModel" required>
+                                <div class="text-danger" *ngIf="generico.hasError('required') && generico.touched">
+                                    EL nombre generico es requerido!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">CANTIDAD</span>
+                                </div>
+                                <input matInput placeholder="CANTIDAD" [(ngModel)]="medicamentoid.cantidad"
+                                    class="form-control" name="cantidad" #cantidad="ngModel" required>
+                                <div class="text-danger" *ngIf="cantidad.hasError('required') && cantidad.touched">
+                                   La cantidad es requerida!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">PRECIO</span>
+                                </div>
+                                <input matInput placeholder="PRECIO" [(ngModel)]="medicamentoid.precio"
+                                    class="form-control" name="precio" #precio="ngModel" required>
+                                <div class="text-danger" *ngIf="precio.hasError('required') && precio.touched">
+                                    El teléfono es requerido!
+                                </div>
+                            </div>
+                        </div>
+
+                    <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                        (click)="botonCancelar()">CANCELAR</button>
+                    <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                        (click)="updateMedicamentos()">EDITAR</button>
+
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
