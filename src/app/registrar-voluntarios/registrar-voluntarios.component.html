@@ -1,0 +1,128 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title">REGISTRO DE VOLUNTARIOS</h4>
+
+                </div>
+                <div class="card-body">
+                    <form #f="ngForm" (ngSubmit)="createVoluntarios()" novalidate>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input matInput placeholder="CEDULA" [(ngModel)]="voluntarios.persona.cedula"
+                                        class="form-control" name="cedula" #cedula="ngModel" maxlength="10" required>
+                                    <div class="text-danger" *ngIf="cedula.hasError('required') && cedula.touched">
+                                        La cédula es requerido!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input matInput placeholder="ACTIVIDAD" [(ngModel)]="voluntarios.actividad"
+                                        class="form-control" name="actividad" #actividad="ngModel" required>
+                                    <div class="text-danger" *ngIf="actividad.hasError('required') && actividad.touched">
+                                        La actividad es requerido!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input matInput placeholder="NOMBRE" [(ngModel)]="voluntarios.persona.nombre"
+                                        class="form-control" name="nombre" #nombre="ngModel" required>
+                                    <div class="text-danger" *ngIf="nombre.hasError('required') && nombre.touched">
+                                        EL nombre es requerido!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input matInput placeholder="APELLIDO" [(ngModel)]="voluntarios.persona.apellidos"
+                                        class="form-control" name="apellido" #apellido="ngModel" required>
+                                    <div class="text-danger" *ngIf="apellido.hasError('required') && apellido.touched">
+                                        El apellido es requerido!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input matInput placeholder="EMAIL ADDRESS" type="email"
+                                        [(ngModel)]="voluntarios.persona.correo" class="form-control" name="email"
+                                        #email="ngModel" required>
+                                    <div class="text-danger" *ngIf="email.hasError('required') && email.touched">
+                                        El correo es requerido!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input matInput placeholder="TELEFONO" [(ngModel)]="voluntarios.persona.telefono"
+                                        class="form-control" name="telefono" #telefono="ngModel" maxlength="9" required>
+                                    <div class="text-danger" *ngIf="telefono.hasError('required') && telefono.touched">
+                                        El teléfono es requerido!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input matInput placeholder="CELULAR" [(ngModel)]="voluntarios.persona.celular"
+                                        class="form-control" name="celular" #celular="ngModel"maxlength="10" required>
+                                    <div class="text-danger" *ngIf="celular.hasError('required') && celular.touched">
+                                        El celular es requerido!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input matInput placeholder="DIRECCION" [(ngModel)]="voluntarios.persona.direccion"
+                                        class="form-control" name="direccion" #direccion="ngModel" required>
+                                    <div class="text-danger"
+                                        *ngIf="direccion.hasError('required') && direccion.touched">
+                                        La dirección es requerido!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input matInput placeholder="TIPO DE VOLUNTARIO" [(ngModel)]="voluntarios.tipo"
+                                        class="form-control" name="tipo" #tipo="ngModel" required>
+                                    <div class="text-danger" *ngIf="tipo.hasError('required') && tipo.touched">
+                                        El tipo de voluntario es requerido!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+
+                            </div>
+                            <div class="col-md-6">
+                                <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                                    (click)="createVoluntarios()">REGISTRAR</button>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

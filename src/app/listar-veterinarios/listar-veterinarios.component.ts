@@ -15,7 +15,7 @@ veterinarios: Veterinario[]=[];
 veterinarioid: Veterinario={};
 buscarCedula:string;
 pagina=0;
-tamaño=2;
+tamaño=2; 
   constructor(private veterinarioService: VeterinariosService, private personaService:PersonasService) { }
 
   ngOnInit(): void {

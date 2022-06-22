@@ -1,0 +1,100 @@
+<div class="main-content" style="display:block ;" id="tabla">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <!-- <div>
+                            <label><span class="required">LISTA DE VETERINARIOS </span></label>
+                            <input id="myInput" [(ngModel)]="buscarCedula" type="text" class="form-control" placeholder="Buscar por cedula"/>
+                            <button id="myInputBotonSearch" (click)="getByCedula()"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            <button id="myInputBotonRefresh" (click)="getAllVeterinarios()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                        </div> -->
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th class="table-danger" scope="col">
+                                        CEDULA
+                                    </th>
+                                    <th class="table-danger" scope="col">
+                                        NOMBRE
+                                    </th>
+                                    <th class="table-danger" scope="col">
+                                        CARGO
+                                    </th>
+                                    <th class="table-danger" scope="col">
+                                        CELULAR
+                                    </th>
+                                    <th class="table-danger" scope="col">
+                                        DIRECCION
+                                    </th>
+                                    <th class="table-danger" scope="col">
+                                        CORREO
+                                    </th>
+                                    <th class="table-danger" scope="col">
+                                        ACCION
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let voluntario of voluntarios">
+                                        <td>
+                                            {{voluntario.persona.cedula}}
+                                        </td>
+                                        <td>
+                                            {{voluntario.persona.nombre}} {{voluntario.persona.apellidos}}
+                                        </td>
+                                        <td>
+                                            {{voluntario.cargo}}
+                                        </td>
+                                        <td>
+                                            {{voluntario.persona.direccion}}
+                                        </td>
+                                        <td>
+                                            {{voluntario.persona.celular}}
+                                        </td>
+                                        <td>
+                                            {{voluntario.persona.correo}}
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <div class="btn-group">
+                                                    <div>
+                                                        <button mat-raised-button type="submit"
+                                                            class="btn btn-danger btn-round" class="btneditar"
+                                                            (click)="getVeterinarioById(veterinario.id)">
+                                                            <i class="material-icons">mode_edit</i>
+                                                        </button>
+                                                    </div>
+                                                    <div>
+                                                        <button mat-raised-button type="submit"
+                                                            class="btn btn-danger btn-round" class="btneliminar"
+                                                            (click)="deletVeterinarioById(veterinario.id)">
+                                                            <i class="material-icons">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="container">
+
+                        <div class="pagination p11">
+                            <ul>
+                                <button (click)="previous()"> « </button>
+
+                                <button (click)="next()"> » </button>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

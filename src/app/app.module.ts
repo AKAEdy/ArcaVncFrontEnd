@@ -21,6 +21,7 @@ import { VacunasService } from './api/vacunas.service';
 import { MedicamentosService } from './api/medicamentos.service';
 import { AdoptantesService } from './api/adoptantes.service';
 import { DonacionesService } from './api/donaciones.service';
+import { VoluntariosService } from './api/voluntarios.service';
 
 @NgModule({
   imports: [
@@ -51,7 +52,8 @@ import { DonacionesService } from './api/donaciones.service';
     VeterinariosService,
     MedicamentosService,
     AdoptantesService,
-    DonacionesService],
+    DonacionesService,
+    VoluntariosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

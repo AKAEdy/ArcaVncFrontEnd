@@ -8,7 +8,6 @@ import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
-import { RegistrarVoluntariadoComponent } from 'app/registroVoluntariado/registrar-voluntariado/registrar-voluntariado.component';
 import { FichaClinicaComponent } from 'app/ficha-clinica/ficha-clinica.component';
 import { RegistrarAdoptadoComponent } from 'app/registrar-adoptado/registrar-adoptado.component';
 import { ListaAdoptadoComponent } from 'app/lista-adoptado/lista-adoptado.component';
@@ -28,6 +27,8 @@ import { ListarVeterinariosComponent } from 'app/listar-veterinarios/listar-vete
 import { RegistrarAdoptanteComponent } from 'app/registrar-adoptante/registrar-adoptante.component';
 import { RegistrarDonacionesComponent } from 'app/registrar-donaciones/registrar-donaciones.component';
 import { ListarDonacionesComponent } from 'app/listar-donaciones/listar-donaciones.component';
+import { RegistrarVoluntariosComponent } from 'app/registrar-voluntarios/registrar-voluntarios.component';
+import { ListarVoluntariosComponent } from 'app/listar-voluntarios/listar-voluntarios.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -84,7 +85,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'tratamiento',           component: MapsComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}}, // map
     { path: 'notifications',  component: NotificationsComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
     { path: 'upgrade',        component: UpgradeComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
-    { path: 'RegistroVoluntariado',   component: RegistrarVoluntariadoComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}  },
 
     { path: 'registrofichaclinica',   component: FichaClinicaComponent,canActivate:[IsAuthenticatedGuard,RoleGuard] ,data:{roles:['ROLE_ADMIN']} },
     { path: 'listaAdoptado',   component: ListaAdoptadoComponent,canActivate:[IsAuthenticatedGuard,RoleGuard] ,data:{roles:['ROLE_ADMIN']}},
@@ -93,7 +93,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'registroPersonas',   component: RegistrarPersonaComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
     { path: 'listaMedicamentos',   component: ListarMedicamentoComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
     { path: 'registroMedicamentos',   component: RegistrarMedicamentoComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
-    { path: 'RegistroVoluntariado',   component: RegistrarVoluntariadoComponent  ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']} },
     { path: 'registrarVacunas',   component: RegistrarVacunasComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
     { path: 'listarVacunas',   component: ListarVacunasComponent  ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']} },
     { path: 'registrarCitas',   component: RegistrarCitasComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
@@ -104,6 +103,8 @@ export const AdminLayoutRoutes: Routes = [
     
     { path: 'registrarDonaciones',   component: RegistrarDonacionesComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
     { path: 'listarDonaciones',   component: ListarDonacionesComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']} },
+    { path: 'registrarVoluntarios',   component: RegistrarVoluntariosComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
+    { path: 'listarVoluntarios',   component: ListarVoluntariosComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']} },
     // { path: 'table-list',     component: TableListComponent },
     // { path: 'typography',     component: TypographyComponent },
     // { path: 'icons',          component: IconsComponent },

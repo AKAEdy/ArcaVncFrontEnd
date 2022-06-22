@@ -17,7 +17,6 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
-import { RegistrarVoluntariadoComponent } from 'app/registroVoluntariado/registrar-voluntariado/registrar-voluntariado.component';
 import { RouterModule } from '@angular/router';
 import { FichaClinicaComponent } from 'app/ficha-clinica/ficha-clinica.component';
 
@@ -44,6 +43,8 @@ import { NgxPrintModule } from 'ngx-print';
 import { RegistrarAdoptanteComponent } from '../../registrar-adoptante/registrar-adoptante.component';
 import { RegistrarDonacionesComponent } from '../../registrar-donaciones/registrar-donaciones.component';
 import { ListarDonacionesComponent } from '../../listar-donaciones/listar-donaciones.component';
+import { RegistrarVoluntariosComponent } from '../../registrar-voluntarios/registrar-voluntarios.component';
+import { ListarVoluntariosComponent } from '../../listar-voluntarios/listar-voluntarios.component';
 
 @NgModule({
   imports: [
@@ -74,8 +75,6 @@ import { ListarDonacionesComponent } from '../../listar-donaciones/listar-donaci
     UpgradeComponent,
     
     // COMPONENTES DEL MENU
-    RegistrarVoluntariadoComponent,
-    
     FichaClinicaComponent,
     ListaAdoptadoComponent,
     RegistrarAdoptadoComponent,
@@ -94,6 +93,8 @@ import { ListarDonacionesComponent } from '../../listar-donaciones/listar-donaci
     RegistrarAdoptanteComponent,
     RegistrarDonacionesComponent,
     ListarDonacionesComponent,
+    RegistrarVoluntariosComponent,
+    ListarVoluntariosComponent,
 
   ]
 })
