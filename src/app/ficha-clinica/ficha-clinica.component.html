@@ -5,19 +5,14 @@
                 <div class="card">
                     <div class="card-header card-header-danger">
                         <h4 class="card-title">FICHA CLINICA ARCA</h4>
-                        <p class="card-category">Complete el formulario #{{animal.data.id}} de la mascota: {{animal.data.nombre}}</p>
+                        <p class="card-category">Complete el formulario </p>
                     </div>
                     <div class="card-body">
                         <form #f="ngForm" (ngSubmit)="guardar()" novalidate>
                             <div class="row">
                                 <!--Desparacitaciones-->
                                 <div class="col-md-5">
-                                  <div class="caja">
-                                  <select class="form-select" aria-label="Default select example">
-                                      <option selected disabled>Seleccione:</option>
-                                      <option value="1">MAX</option>
-                                  </select>
-                                  </div>
+                                    <input type="number" class="form-control" id="idInput" value="{{animal.data.id}}" [(ngModel)]="animal.id">
                               </div>
                                 <!-- fecha Ingreso -->
                                 <div class="col-md-5">

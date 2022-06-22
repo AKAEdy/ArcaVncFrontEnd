@@ -17,7 +17,8 @@ export class FichaClinicaComponent implements OnInit {
   //animal: Animal={}
 //veterinario: Veterinario={};
 fichaClinica: FichaClinica={};
-animal:any={}
+
+animal:any={};
 public formSubmitted = false;
   constructor(private fichasClinicasService: FichasClnicasService,private router: Router,private _formBuilder: FormBuilder) {
   
@@ -30,6 +31,48 @@ public formSubmitted = false;
     this.animal = JSON.parse(localStorage.getItem('animal'));
     console.log("recibiendo información de animal con localstorage",this.animal);
   }
+
+
+
+  saveAdopciones(){
+    console.log("LLEGA "+ this.fichaClinica.id,this.animal.id,this.fichaClinica.fechaIngreso, );
+    
+    if(this.fichaClinica.id ===  undefined || this.animal.id === undefined || this.fichaClinica.fechaIngreso === undefined || this.fichaClinica.motivoConsulta === "" || this.fichaClinica.trc === ""  || this.fichaClinica.conjuntiva === ""  || this.fichaClinica.diagnosticoDiferencial === ""  || this.fichaClinica.examenes_solicitados === ""  || this.fichaClinica.hallazgos ==="" || this.fichaClinica.pronostico ==="" ){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Llene todos los campos!',
+      })
+    } else{
+      Swal.fire({
+        title: 'Seguro quiere realizar esta accion??',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Registrar',
+        denyButtonText: `No registrar`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          this.fichasClinicasService.createUsingPOST1(this.fichaClinica,this.animal.id).subscribe(data =>{
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Se a adoptado correctamente',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            location.reload();
+          })
+           
+        } else if (result.isDenied) {
+          Swal.fire('Acción cancelada', '', 'info')
+          
+        }
+      }) 
+    }
+  }
+
+
 
   guardar(){
       
