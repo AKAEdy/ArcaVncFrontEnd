@@ -17,7 +17,6 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
-import { RegistrarVoluntariadoComponent } from 'app/registroVoluntariado/registrar-voluntariado/registrar-voluntariado.component';
 import { RouterModule } from '@angular/router';
 import { FichaClinicaComponent } from 'app/ficha-clinica/ficha-clinica.component';
 
@@ -40,6 +39,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { RegistrarVeterinariosComponent } from '../../registrar-veterinarios/registrar-veterinarios.component';
 import { ListarVeterinariosComponent } from '../../listar-veterinarios/listar-veterinarios.component';
+import { NgxPrintModule } from 'ngx-print';
+import { RegistrarAdoptanteComponent } from '../../registrar-adoptante/registrar-adoptante.component';
+import { RegistrarDonacionesComponent } from '../../registrar-donaciones/registrar-donaciones.component';
+import { ListarDonacionesComponent } from '../../listar-donaciones/listar-donaciones.component';
+import { RegistrarVoluntariosComponent } from '../../registrar-voluntarios/registrar-voluntarios.component';
+import { ListarVoluntariosComponent } from '../../listar-voluntarios/listar-voluntarios.component';
 
 @NgModule({
   imports: [
@@ -56,6 +61,8 @@ import { ListarVeterinariosComponent } from '../../listar-veterinarios/listar-ve
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
+    NgxPrintModule,
+    
   ],
   declarations: [
     DashboardComponent,
@@ -68,8 +75,6 @@ import { ListarVeterinariosComponent } from '../../listar-veterinarios/listar-ve
     UpgradeComponent,
     
     // COMPONENTES DEL MENU
-    RegistrarVoluntariadoComponent,
-    
     FichaClinicaComponent,
     ListaAdoptadoComponent,
     RegistrarAdoptadoComponent,
@@ -85,6 +90,11 @@ import { ListarVeterinariosComponent } from '../../listar-veterinarios/listar-ve
     RegistrarCitasComponent,
     RegistrarVeterinariosComponent,
     ListarVeterinariosComponent,
+    RegistrarAdoptanteComponent,
+    RegistrarDonacionesComponent,
+    ListarDonacionesComponent,
+    RegistrarVoluntariosComponent,
+    ListarVoluntariosComponent,
 
   ]
 })

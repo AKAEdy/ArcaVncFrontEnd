@@ -58,7 +58,6 @@ export class RegistrarCitasComponent implements OnInit {
               title: 'Cita agendada exitosamente',
               showConfirmButton: false,
               timer: 1500
-              
             })
             location.reload();
                 }, err => {

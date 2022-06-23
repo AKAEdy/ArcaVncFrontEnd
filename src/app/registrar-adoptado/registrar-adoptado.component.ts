@@ -1,11 +1,11 @@
-import { noUndefined } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdopcionControllerService } from 'app/api/adopcionController.service';
 import { AdoptanteControllerService } from 'app/api/adoptanteController.service';
 import { Adopcion } from 'app/model/adopcion';
 import { Adoptante } from 'app/model/adoptante';
-import { AdoptanteDto } from 'app/model/adoptanteDto';
 import { Animal } from 'app/model/animal';
+
 import Swal from 'sweetalert2';
 
 
@@ -17,10 +17,33 @@ import Swal from 'sweetalert2';
 export class RegistrarAdoptadoComponent implements OnInit {
   adopcion: Adopcion = {};
  adoptante: Adoptante = {};
- adoptantes: Adoptante[]=[];
- animal: Animal={};
+ animal: Animal={
+   colorCaracteristicas: '',
+   edad: 0,
+   especie: '',
+   fechaNacimiento: undefined,
+   foto: '',
+   lugarEstancia: '',
+   nombre: '',
+   observacionesProcedencia: '',
+   peso: 0,
+   procedencia: '',
+   raza: '',
+   sexo: '',
+   tamanyo: ''
+ };
  cedulas: string;
-  constructor(private adopcionesService:AdopcionControllerService, private adoptanteService: AdoptanteControllerService) {
+ nombres:string;
+ direccion:string;
+ celular:string;
+ correo:string;
+ telefono:string;
+ telfamiliar:string;
+ facebook:string;
+  constructor(
+    private adopcionesService:AdopcionControllerService, 
+    private adoptanteService: AdoptanteControllerService,
+    private router:Router) {
  
   }
 
@@ -28,9 +51,7 @@ export class RegistrarAdoptadoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  saveAdopciones(){
-    console.log("LLEGA "+ this.adoptante.id,this.animal.id,this.adopcion.descripcion, this.adopcion.fechaAdopcion);
-    
+  saveAdopciones(){    
     if(this.adoptante.id ===  undefined || this.animal.id === undefined || this.adopcion.descripcion === undefined || this.adopcion.descripcion === "" || this.adopcion.fechaAdopcion === ""  || this.adopcion.fechaAdopcion === undefined){
       Swal.fire({
         icon: 'error',
@@ -56,6 +77,12 @@ export class RegistrarAdoptadoComponent implements OnInit {
               timer: 1500
             })
             location.reload();
+          }, err =>{
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'el animal ya a sido adoptado!',
+            })
           })
            
         } else if (result.isDenied) {
@@ -65,15 +92,50 @@ export class RegistrarAdoptadoComponent implements OnInit {
     }
   }
 
-  getCedulaAdoptante(cedula: string){
-    this.adoptanteService.getAdoptantePorCedulaUsingGET(cedula).subscribe(data =>{
-this.adoptantes = data
-// for (let index = 0; index < this.adoptantes.length; index++) {
-//   var element = this.adoptantes[index];
+  getCedulaAdoptante(){
+    if(this.cedulas === undefined || this.cedulas === ""){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Ingrese la cedula!',
+      })
+    }else{
+           this.adoptanteService.getAdoptantePorCedulaUsingGET(this.cedulas).subscribe(data =>{
+        this.adoptante = data
+        // document.getElementById("tabla").style.display="block";
+        this.nombres = this.adoptante.persona.nombre +" " + this.adoptante.persona.apellidos
+        this.celular = this.adoptante.persona.celular
+        this.direccion = this.adoptante.persona.direccion
+        this.correo = this.adoptante.persona.correo
+        this.telefono = this.adoptante.persona.telefono
+        this.telfamiliar =  this.adoptante.telefonoFamiliar
+        this.facebook = this.adoptante.nicknameFacebook
+        Swal.fire({
+          icon: 'success',
+          title: 'Cedula encontrada',
+          text: 'El adoptante es '+this.nombres,
+        })
+        
+            },err =>{
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Registro no encontrado!' ,
+              })
+              this.adoptante = {};
+              // document.getElementById("tabla").style.display="none";
+            })
+    }
   
-// }
-window.alert("EDITAR "+ data);
-
-    })
   }
+  
+  comfirmarDocumento(){
+  document.getElementById("botonImp").style.display="block";
+  document.getElementById("botonReg").style.display="block";
+  }
+
+  btnAgregarAdoptante(){
+  this.router.navigate(['registrarAdoptantes'])
+  }
+
 }

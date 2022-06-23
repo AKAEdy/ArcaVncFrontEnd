@@ -1,1 +1,112 @@
-<p>registrar-veterinarios works!</p>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title">REGISTRO DE VETERINARIOS</h4>
+
+                </div>
+                <div class="card-body">
+                    <form #f="ngForm" (ngSubmit)="createVeterinarios()" novalidate>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input matInput placeholder="CEDULA" [(ngModel)]="veterinarios.persona.cedula"
+                                        class="form-control" name="cedula" #cedula="ngModel" maxlength="10" required>
+                                    <div class="text-danger" *ngIf="cedula.hasError('required') && cedula.touched">
+                                        La cédula es requerido!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input matInput placeholder="CARGO" [(ngModel)]="veterinarios.cargo"
+                                        class="form-control" name="cargo" #cargo="ngModel" required>
+                                    <div class="text-danger" *ngIf="cargo.hasError('required') && cargo.touched">
+                                        EL cargo es requerido!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input matInput placeholder="NOMBRE" [(ngModel)]="veterinarios.persona.nombre"
+                                        class="form-control" name="nombre" #nombre="ngModel" required>
+                                    <div class="text-danger" *ngIf="nombre.hasError('required') && nombre.touched">
+                                        EL nombre es requerido!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input matInput placeholder="APELLIDO" [(ngModel)]="veterinarios.persona.apellidos"
+                                        class="form-control" name="apellido" #apellido="ngModel" required>
+                                    <div class="text-danger" *ngIf="apellido.hasError('required') && apellido.touched">
+                                        El apellido es requerido!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input matInput placeholder="EMAIL ADDRESS" type="email"
+                                        [(ngModel)]="veterinarios.persona.correo" class="form-control" name="email"
+                                        #email="ngModel" required>
+                                    <div class="text-danger" *ngIf="email.hasError('required') && email.touched">
+                                        El correo es requerido!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input matInput placeholder="TELEFONO" [(ngModel)]="veterinarios.persona.telefono"
+                                        class="form-control" name="telefono" #telefono="ngModel" maxlength="9" required>
+                                    <div class="text-danger" *ngIf="telefono.hasError('required') && telefono.touched">
+                                        El teléfono es requerido!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input matInput placeholder="CELULAR" [(ngModel)]="veterinarios.persona.celular"
+                                        class="form-control" name="celular" #celular="ngModel"maxlength="10" required>
+                                    <div class="text-danger" *ngIf="celular.hasError('required') && celular.touched">
+                                        El celular es requerido!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input matInput placeholder="DIRECCION" [(ngModel)]="veterinarios.persona.direccion"
+                                        class="form-control" name="direccion" #direccion="ngModel" required>
+                                    <div class="text-danger"
+                                        *ngIf="direccion.hasError('required') && direccion.touched">
+                                        La dirección es requerido!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+
+                            </div>
+                            <div class="col-md-6">
+                                <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                                    (click)="createVeterinarios()">REGISTRAR</button>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
