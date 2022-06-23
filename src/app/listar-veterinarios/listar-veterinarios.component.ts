@@ -76,7 +76,7 @@ mostrarEditar(){
   document.getElementById("targeta").style.display="block";
   document.getElementById("tabla").style.display="none";
 }
-
+ 
 botonCancelar(){
   document.getElementById("targeta").style.display="none";
   document.getElementById("tabla").style.display="block";

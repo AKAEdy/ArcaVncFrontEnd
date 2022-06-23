@@ -63,14 +63,14 @@
                                                     <div>
                                                         <button mat-raised-button type="submit"
                                                             class="btn btn-danger btn-round" class="btneditar"
-                                                            (click)="getVeterinarioById(veterinario.id)">
+                                                            (click)="getVoluntariosById(voluntario.id)">
                                                             <i class="material-icons">mode_edit</i>
                                                         </button>
                                                     </div>
                                                     <div>
                                                         <button mat-raised-button type="submit"
                                                             class="btn btn-danger btn-round" class="btneliminar"
-                                                            (click)="deletVeterinarioById(veterinario.id)">
+                                                            (click)="deletVeterinarioById(voluntario.id)">
                                                             <i class="material-icons">delete</i>
                                                         </button>
                                                     </div>
@@ -97,4 +97,153 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- EDITAR VOLUNTARIOS  --> 
+<div class="main-content">
+    <div id="targeta" class="card" style="display: none;">
+    <div class="card-header card-header-danger">
+        <h4 class="card-title">REGISTRO DE VETERINARIOS</h4>
+
+    </div>
+    <div class="card-body">
+        <form>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">CEDULA</span>
+                          </div>
+                        <input matInput placeholder="CEDULA" [(ngModel)]="voluntarioid.persona.cedula"
+                            class="form-control" name="cedula" #cedula="ngModel" required>
+                        <div class="text-danger" *ngIf="cedula.hasError('required') && cedula.touched">
+                            La cédula es requerido!
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">CARGO</span>
+                          </div>
+                        <input matInput placeholder="ACTIVIDAD" [(ngModel)]="voluntarioid.actividad" class="form-control"
+                            name="cargo" #actividad="ngModel" required>
+                        <div class="text-danger" *ngIf="actividad.hasError('required') && actividad.touched">
+                            La actividad es requerida!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Nombre</span>
+                          </div>
+                        <input matInput placeholder="NOMBRE" [(ngModel)]="voluntarioid.persona.nombre"
+                            class="form-control" name="nombre" #nombre="ngModel" required>
+                        <div class="text-danger" *ngIf="nombre.hasError('required') && nombre.touched">
+                            EL nombre es requerido!
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">APELLIDO</span>
+                          </div>
+                        <input matInput placeholder="APELLIDO" [(ngModel)]="voluntarioid.persona.apellidos"
+                            class="form-control" name="apellido" #apellido="ngModel" required>
+                        <div class="text-danger" *ngIf="apellido.hasError('required') && apellido.touched">
+                            El apellido es requerido!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">EMAIL</span>
+                          </div>
+                        <input matInput placeholder="EMAIL ADDRESS" type="email"
+                            [(ngModel)]="voluntarioid.persona.correo" class="form-control" name="email"
+                            #email="ngModel" required>
+                        <div class="text-danger" *ngIf="email.hasError('required') && email.touched">
+                            El correo es requerido!
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">TELEFONO</span>
+                          </div>
+                        <input matInput placeholder="TELEFONO" [(ngModel)]="voluntarioid.persona.telefono"
+                            class="form-control" name="telefono" #telefono="ngModel" required>
+                        <div class="text-danger" *ngIf="telefono.hasError('required') && telefono.touched">
+                            El teléfono es requerido!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">CELULAR</span>
+                          </div>
+                        <input matInput placeholder="CELULAR" [(ngModel)]="voluntarioid.persona.celular"
+                            class="form-control" name="celular" #celular="ngModel" required>
+                        <div class="text-danger" *ngIf="celular.hasError('required') && celular.touched">
+                            El celular es requerido!
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">DIRECCION</span>
+                          </div>
+                        <input matInput placeholder="DIRECCION" [(ngModel)]="voluntarioid.persona.direccion"
+                            class="form-control" name="direccion" #direccion="ngModel" required>
+                        <div class="text-danger" *ngIf="direccion.hasError('required') && direccion.touched">
+                            La dirección es requerido!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">CELULAR</span>
+                          </div>
+                        <input matInput placeholder="TIPO DE VOLUNTARIO" [(ngModel)]="voluntarioid.tipo"
+                            class="form-control" name="tipo" #tipo="ngModel" required>
+                        <div class="text-danger" *ngIf="tipo.hasError('required') && tipo.touched">
+                            El tipo es requerido!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+
+                </div>
+                <div class="col-md-6">
+                    <button mat-raised-button type="submit" class="btn btn-success pull-right" (click)="updateVeterinarios()">EDITAR</button>
+                    <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="botonCancelar()" id="cancelar">CANCELAR</button>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </form>
+    </div>
+</div>
 </div>
