@@ -28,11 +28,11 @@ this.medicamento=data.content
   }
   updateMedicamentos(){
     
-    this.medicamentoService.updateUsingPUT2(this.medicamentoid, this.medicamentoid.id).subscribe(data=>{
+    this.medicamentoService.updateUsingPUT3(this.medicamentoid, this.medicamentoid.id).subscribe(data=>{
     })
   }
   getMedicamentosById(id: number){
-    this.medicamentoService.getByIdUsingGET2(id).subscribe(data=>{
+    this.medicamentoService.getByIdUsingGET3(id).subscribe(data=>{
       this.medicamentoid=data
       this.mostrarEditar();
     })
@@ -57,7 +57,7 @@ this.medicamento=data.content
         this.getAllMedicamentos();
       }
     })
-    this.medicamentoService.deleteUsingDELETE2(id).subscribe(data=>{
+    this.medicamentoService.deleteUsingDELETE3(id).subscribe(data=>{
       
     })
 

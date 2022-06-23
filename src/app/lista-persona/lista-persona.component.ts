@@ -11,7 +11,15 @@ import Swal from 'sweetalert2';
 })
 export class ListaPersonaComponent implements OnInit {
   personas: Persona[] = []
-  personaid: Persona = {}
+  personaid: Persona = {
+    apellidos: '',
+    cedula: '',
+    celular: '',
+    correo: '',
+    direccion: '',
+    nombre: '',
+    telefono: ''
+  }
   cedulas: string
   pagina = 0;
   tamaño = 2;
@@ -49,7 +57,7 @@ export class ListaPersonaComponent implements OnInit {
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-          this.personaService.updateUsingPUT3(this.personaid, this.personaid.id).subscribe(data => {
+          this.personaService.updateUsingPUT4(this.personaid, this.personaid.id).subscribe(data => {
             Swal.fire({
               position: 'center',
               icon: 'success',
@@ -69,7 +77,7 @@ export class ListaPersonaComponent implements OnInit {
   }
   
   getPersonaById(id: number) {
-    this.personaService.getByIdUsingGET3(id).subscribe(data => {
+    this.personaService.getByIdUsingGET4(id).subscribe(data => {
       this.personaid = data
       this.cedulas= this.personaid.cedula
       this.mostrarEditar();
@@ -95,7 +103,7 @@ export class ListaPersonaComponent implements OnInit {
         this.listarAllPersonas();
       }
     })
-    this.personaService.deleteUsingDELETE3(id).subscribe(data =>{
+    this.personaService.deleteUsingDELETE4(id).subscribe(data =>{
       
     })
    
