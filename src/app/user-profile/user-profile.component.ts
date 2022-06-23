@@ -36,6 +36,7 @@ export class UserProfileComponent implements OnInit {
    }
 
   ngOnInit():void {
+    // remuevo datos del animal guarado anteriormente en local storage para poder almacenar uno nuevo
     localStorage.removeItem('animal');
 
   }
@@ -101,6 +102,7 @@ export class UserProfileComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500
           })
+          // almaceno los datos del animal para enviar a ficha clinica
           localStorage.setItem('animal', JSON.stringify(this.animal));
           // console.log('imprimiendo valores de la data',);
           
