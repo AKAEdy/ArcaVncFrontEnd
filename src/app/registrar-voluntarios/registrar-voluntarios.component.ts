@@ -61,8 +61,8 @@ voluntarios:Voluntario ={
               showConfirmButton: false,
               timer: 1500
             })
-            location.reload();
-          });
+                     });
+                     location.reload();
         } else if (result.isDenied) {
           Swal.fire('Acción cancelada', '', 'info')
         }
