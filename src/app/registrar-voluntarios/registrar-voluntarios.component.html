@@ -12,7 +12,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input matInput placeholder="CEDULA" [(ngModel)]="voluntarios.persona.cedula"
+                                    <input matInput placeholder="CEDULA" [(ngModel)]="voluntarios.cedula"
                                         class="form-control" name="cedula" #cedula="ngModel" maxlength="10" required>
                                     <div class="text-danger" *ngIf="cedula.hasError('required') && cedula.touched">
                                         La cédula es requerido!
@@ -33,7 +33,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input matInput placeholder="NOMBRE" [(ngModel)]="voluntarios.persona.nombre"
+                                    <input matInput placeholder="NOMBRE" [(ngModel)]="voluntarios.nombre"
                                         class="form-control" name="nombre" #nombre="ngModel" required>
                                     <div class="text-danger" *ngIf="nombre.hasError('required') && nombre.touched">
                                         EL nombre es requerido!
@@ -42,7 +42,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input matInput placeholder="APELLIDO" [(ngModel)]="voluntarios.persona.apellidos"
+                                    <input matInput placeholder="APELLIDO" [(ngModel)]="voluntarios.apellidos"
                                         class="form-control" name="apellido" #apellido="ngModel" required>
                                     <div class="text-danger" *ngIf="apellido.hasError('required') && apellido.touched">
                                         El apellido es requerido!
@@ -55,7 +55,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <input matInput placeholder="EMAIL ADDRESS" type="email"
-                                        [(ngModel)]="voluntarios.persona.correo" class="form-control" name="email"
+                                        [(ngModel)]="voluntarios.correo" class="form-control" name="email"
                                         #email="ngModel" required>
                                     <div class="text-danger" *ngIf="email.hasError('required') && email.touched">
                                         El correo es requerido!
@@ -64,7 +64,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input matInput placeholder="TELEFONO" [(ngModel)]="voluntarios.persona.telefono"
+                                    <input matInput placeholder="TELEFONO" [(ngModel)]="voluntarios.telefono"
                                         class="form-control" name="telefono" #telefono="ngModel" maxlength="9" required>
                                     <div class="text-danger" *ngIf="telefono.hasError('required') && telefono.touched">
                                         El teléfono es requerido!
@@ -76,7 +76,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input matInput placeholder="CELULAR" [(ngModel)]="voluntarios.persona.celular"
+                                    <input matInput placeholder="CELULAR" [(ngModel)]="voluntarios.celular"
                                         class="form-control" name="celular" #celular="ngModel"maxlength="10" required>
                                     <div class="text-danger" *ngIf="celular.hasError('required') && celular.touched">
                                         El celular es requerido!
@@ -85,7 +85,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input matInput placeholder="DIRECCION" [(ngModel)]="voluntarios.persona.direccion"
+                                    <input matInput placeholder="DIRECCION" [(ngModel)]="voluntarios.direccion"
                                         class="form-control" name="direccion" #direccion="ngModel" required>
                                     <div class="text-danger"
                                         *ngIf="direccion.hasError('required') && direccion.touched">

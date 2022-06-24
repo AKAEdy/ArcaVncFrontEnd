@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VoluntariosService } from 'app/api/voluntarios.service';
 import { Voluntario } from 'app/model/voluntario';
+import { VoluntarioDto } from 'app/model/voluntarioDto';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -9,19 +10,15 @@ import Swal from 'sweetalert2';
   styleUrls: ['./registrar-voluntarios.component.css']
 })
 export class RegistrarVoluntariosComponent implements OnInit {
-voluntarios:Voluntario ={
+voluntarios:VoluntarioDto = {
   actividad: '',
- 
-  persona: {
   apellidos: '',
-    cedula: '',
-    celular: '',
-    correo: '',
-    direccion: '',
-    
-    nombre: '',
-    telefono: ''
-  },
+  cedula: '',
+  celular: '',
+  correo: '',
+  direccion: '',
+  nombre: '',
+  telefono: '',
   tipo: ''
 }
   constructor(private voluntarioService:VoluntariosService) { }
@@ -30,14 +27,14 @@ voluntarios:Voluntario ={
   }
 
   createVoluntarios(){
-    console.log("DATOSS "+this.voluntarios.persona.cedula);
+    console.log("DATOSS "+this.voluntarios.cedula);
     
-    if (this.voluntarios.persona.cedula === undefined || this.voluntarios.actividad === undefined || this.voluntarios.persona.nombre === undefined
-    || this.voluntarios.persona.apellidos === undefined || this.voluntarios.persona.telefono === undefined || this.voluntarios.persona.celular === undefined
-    || this.voluntarios.persona.correo === undefined || this.voluntarios.persona.direccion === undefined || this.voluntarios.tipo === undefined
-    || this.voluntarios.persona.cedula === '' || this.voluntarios.actividad=== '' || this.voluntarios.persona.nombre === ''
-    || this.voluntarios.persona.apellidos === '' || this.voluntarios.persona.telefono === ''|| this.voluntarios.persona.celular === ''
-    || this.voluntarios.persona.correo === '' || this.voluntarios.persona.direccion === ''  || this.voluntarios.tipo === '') {
+    if(this.voluntarios.cedula === undefined || this.voluntarios.actividad === undefined || this.voluntarios.nombre === undefined
+    || this.voluntarios.apellidos === undefined || this.voluntarios.telefono === undefined || this.voluntarios.celular === undefined
+    || this.voluntarios.correo === undefined || this.voluntarios.direccion === undefined || this.voluntarios.tipo === undefined
+    || this.voluntarios.cedula === '' || this.voluntarios.actividad=== '' || this.voluntarios.nombre === ''
+    || this.voluntarios.apellidos === '' || this.voluntarios.telefono === ''|| this.voluntarios.celular === ''
+    || this.voluntarios.correo === '' || this.voluntarios.direccion === ''  || this.voluntarios.tipo === '') {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -53,7 +50,7 @@ voluntarios:Voluntario ={
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-          this.voluntarioService.createUsingPOST9(this.voluntarios).subscribe(data =>{
+          this.voluntarioService.createUsingPOST10(this.voluntarios).subscribe(data =>{
             Swal.fire({
               position: 'center',
               icon: 'success',
@@ -61,8 +58,9 @@ voluntarios:Voluntario ={
               showConfirmButton: false,
               timer: 1500
             })
+            location.reload();
                      });
-                     location.reload();
+                     
         } else if (result.isDenied) {
           Swal.fire('Acción cancelada', '', 'info')
         }

@@ -18,7 +18,7 @@ export interface FichaClinica {
     conjuntiva?: string;
     costo?: number;
     diagnosticoDiferencial?: string;
-    esterilizacion?: boolean;
+    esterilizacion: string;
     examenesSolicitados?: string;
     fechaIngreso?: Date;
     frecuenciaCardiaca?: number;
