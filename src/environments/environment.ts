@@ -4,8 +4,9 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  BASE_URL: 'http://localhost:9898/api/',
-  AUTH_URL: 'http://localhost:9898/api/auth/',
-  TOKEN_NAME :'AUTH_ARCA',
-  production: false
+	BASE_URL: 'http://localhost:9898/api/',
+	AUTH_URL: 'http://localhost:9898/api/auth/',
+	TOKEN_NAME: 'AUTH_ARCA',
+	USER_VALUE: 'CURRENT_USER',
+	production: false
 };

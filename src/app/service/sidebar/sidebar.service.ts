@@ -149,6 +149,11 @@ export class SidebarService {
 				}
 			]
 		}
+		, {/* Veterinarios */
+			tittle: 'Historial alertas',
+			icon: 'fa fa-bell',
+			url: 'alarms'
+		}
 	]);
 	_menuItems$ = this.menuItems$.asObservable();
 

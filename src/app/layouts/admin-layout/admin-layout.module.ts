@@ -40,6 +40,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { RegistrarVeterinariosComponent } from '../../registrar-veterinarios/registrar-veterinarios.component';
 import { ListarVeterinariosComponent } from '../../listar-veterinarios/listar-veterinarios.component';
+import {AlarmListingPageComponent} from "../../alarm/alarm-listing-page/alarm-listing-page.component";
+import {CoreModule} from "../../core/core.module";
+import {AlarmModule} from "../../alarm/alarm.module";
 
 @NgModule({
   imports: [
@@ -57,6 +60,8 @@ import { ListarVeterinariosComponent } from '../../listar-veterinarios/listar-ve
     MatTableModule,
     MatSortModule,
     MatStepperModule,
+    CoreModule,
+    AlarmModule
   ],
   declarations: [
     DashboardComponent,
@@ -67,14 +72,11 @@ import { ListarVeterinariosComponent } from '../../listar-veterinarios/listar-ve
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
-    
     // COMPONENTES DEL MENU
     RegistrarVoluntariadoComponent,
-    
     FichaClinicaComponent,
     ListaAdoptadoComponent,
     RegistrarAdoptadoComponent,
-    ListaAdoptadoComponent,
     ListaPersonaComponent,
     RegistrarPersonaComponent,
     RegistrarMedicamentoComponent,
@@ -86,7 +88,6 @@ import { ListarVeterinariosComponent } from '../../listar-veterinarios/listar-ve
     RegistrarCitasComponent,
     RegistrarVeterinariosComponent,
     ListarVeterinariosComponent,
-
   ]
 })
 

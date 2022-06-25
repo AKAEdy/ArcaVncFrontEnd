@@ -1,31 +1,48 @@
 import { Location } from '@angular/common';
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlarmPost } from 'app/alarm/interfaces/alarm-post';
+import { ListUncheckedEvents } from 'app/alarm/interfaces/list-unchecked-events';
+import { AlarmService } from 'app/service/alarm.service';
 import { AuthService } from 'app/service/auth.service';
 import { SidebarService } from 'app/service/sidebar/sidebar.service';
-import { filter } from 'rxjs';
+import { filter, map, Subject, takeUntil } from 'rxjs';
 
 @Component({
 	selector: 'app-navbar',
 	templateUrl: './navbar.component.html',
 	styleUrls: [ './navbar.component.css' ]
 })
-export class NavbarComponent implements OnInit {
-	usernameSesion: string;
-	isLogged = false;
-	private listTitles: any[];
-	location: Location;
-	mobile_menu_visible: any = 0;
-	private toggleButton: any;
+export class NavbarComponent implements OnInit, OnDestroy {
+	todaysDate: string = new Date().toLocaleDateString();
+	listuncheckedEvents!: ListUncheckedEvents;
 	private sidebarVisible: boolean;
-
-	constructor (location: Location, private sidebar: SidebarService, private element: ElementRef, private router: Router, private authService: AuthService) {
+	mobile_menu_visible: any = 0;
+	private listTitles: any[];
+	private toggleButton: any;
+	usernameSesion: string;
+	totalElements!: number;
+	location: Location;
+	isLogged = false;
+	@Output()
+	onPost: EventEmitter<AlarmPost> = new EventEmitter<AlarmPost>();
+	private unsubscribeSubject: Subject<void> = new Subject<void>();
+	ngOnDestroy(): void {
+		this.unsubscribeSubject.next();
+		this.unsubscribeSubject.complete();
+	}
+	constructor (private service: AlarmService, location: Location, private sidebar: SidebarService, private element: ElementRef, private router: Router, private authService: AuthService) {
 		this.location = location;
 		this.sidebarVisible = false;
 	}
-
+	onclick(id: any) {
+		console.log("checked", id);
+		this.service.update(id);
+		this.listuncheckedEvents.events.splice(id, 1);
+	}
 	ngOnInit() {
-		this.usernameSesion = localStorage.getItem("usernameSesion")
+		this.setNotificationsEvents()
+		this.usernameSesion = localStorage.getItem("usernameSesion") ?? "ARCA USER"
 		this.sidebar._menuItems$.subscribe((menuItems) => {
 			this.listTitles = menuItems;
 		});
@@ -125,7 +142,31 @@ export class NavbarComponent implements OnInit {
 
 		}
 	};
+	setNotificationsEvents() {
+		this.service.findAllByUnchechedCurrentEvent().pipe(takeUntil(this.unsubscribeSubject)).subscribe((listuncheckedEvents) => {
+			this.listuncheckedEvents = listuncheckedEvents;
+			listuncheckedEvents.total > 10 ? this.totalElements = 10 : null;
+		}, e => {
+			console.log("setNotificationsEvents", e)
+		});
 
+		this.service.onPost().pipe(takeUntil(this.unsubscribeSubject)).subscribe((post) => {
+			if (post.eventDay.toLocaleDateString("es-EC", { timeZone: "UTC" }) === this.todaysDate) {
+				this.listuncheckedEvents.events.push(post);
+				++this.listuncheckedEvents.total;
+				this.listuncheckedEvents.total > 10 ? this.totalElements = 10 : null;
+				console.log("ES hoy, es hoy !!!");
+			}
+		});
+		this.service.onUpdate().pipe(takeUntil(this.unsubscribeSubject)).subscribe((post) => {
+			this.listuncheckedEvents.events.splice(this.listuncheckedEvents.events.findIndex(object => {
+				return object.id === post.id;
+			}), 1);
+			--this.listuncheckedEvents.total;
+			this.listuncheckedEvents.total > 10 ? this.totalElements = 10 : null;
+			this.totalElements === 0 ?? undefined;
+		});
+	}
 	getTitle() {
 		var titlee = this.location.prepareExternalUrl(this.location.path());
 		// if (titlee.charAt(0) === '#') {

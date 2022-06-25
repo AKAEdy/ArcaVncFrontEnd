@@ -22,41 +22,39 @@ import { VacunasService } from './api/vacunas.service';
 import { TratamientosService } from './api/tratamientos.service';
 
 import { MedicamentosService } from './api/medicamentos.service';
+import { AlarmService } from './service/alarm.service';
+import { SocketClientService } from './core/socket-client.service';
 
 @NgModule({
-  imports: [
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    ComponentsModule,
-    RouterModule,
-    AppRoutingModule,
-    
-  ],
-  declarations: [
-    AppComponent,
-    AdminLayoutComponent,
-    LoginComponent,
-    RegistroComponent,
-    
+	imports: [
+		BrowserAnimationsModule,
+		FormsModule,
+		ReactiveFormsModule,
+		HttpClientModule,
+		ComponentsModule,
+		RouterModule,
+		AppRoutingModule,
+	],
+	declarations: [
+		AppComponent,
+		AdminLayoutComponent,
+		LoginComponent,
+		RegistroComponent,
+	],
+	providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+		AdopcionControllerService,
+		AdoptanteControllerService,
+		AnimalesService,
+		FichasClnicasService,
+		PersonasService,
+		CitasService,
+		VacunasService,
+		VeterinariosService,
+		MedicamentosService,
+		TratamientosService,
+		AlarmService, SocketClientService
+	],
 
-  ],
-  providers: [{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
-    AdopcionControllerService,
-    AdoptanteControllerService,
-    AnimalesService,
-    FichasClnicasService,
-    PersonasService,
-    CitasService,
-    VacunasService,
-    VeterinariosService,
-    MedicamentosService,
-    TratamientosService,
-    MedicamentosService,
-    VeterinariosService ,
-    MedicamentosService ],
-    
-  bootstrap: [AppComponent]
+	bootstrap: [ AppComponent ]
 })
 export class AppModule { }
