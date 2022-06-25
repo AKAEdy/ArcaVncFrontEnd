@@ -76,7 +76,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'menu',      component: DashboardComponent ,canActivate:[IsAuthenticatedGuard]},
 
 
-    { path: 'user-profile',   component: UserProfileComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']} },
+    { path: 'user-profile',   component: UserProfileComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN' ,'ROLE_VETERINARIO']} },
     { path: 'table-list',     component: TableListComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']} },
     { path: 'medicacion',     component: TypographyComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
     { path: 'icons',          component: IconsComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
@@ -86,7 +86,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'RegistroVoluntariado',   component: RegistrarVoluntariadoComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}  },
 
 
-    { path: 'user-profile',   component: UserProfileComponent,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']} },
+    { path: 'user-profile',   component: UserProfileComponent,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN', 'ROLE_VETERINARIO']} },
     { path: 'table-list',     component: TableListComponent,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']} },
     { path: 'medicacion',     component: TypographyComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}},
     { path: 'icons',          component: IconsComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}},
@@ -96,7 +96,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'RegistroVoluntariado',   component: RegistrarVoluntariadoComponent,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN']}  },
 
 
-    { path: 'registrofichaclinica',   component: FichaClinicaComponent,canActivate:[IsAuthenticatedGuard,RoleGuard] ,data:{roles:['ROLE_ADMIN']} },
+    { path: 'registrofichaclinica',   component: FichaClinicaComponent,canActivate:[IsAuthenticatedGuard,RoleGuard] ,data:{roles:['ROLE_ADMIN','ROLE_VETERINARIO']} },
     { path: 'listaAdoptado',   component: ListaAdoptadoComponent,canActivate:[IsAuthenticatedGuard,RoleGuard] ,data:{roles:['ROLE_ADMIN']}},
     { path: 'registrarAdoptado',   component: RegistrarAdoptadoComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']} },
     { path: 'listaPersonas',   component: ListaPersonaComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN','ROLE_VETERINARIO']}},

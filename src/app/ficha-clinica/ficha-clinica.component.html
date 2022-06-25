@@ -5,14 +5,14 @@
                 <div class="card">
                     <div class="card-header card-header-danger">
                         <h4 class="card-title">FICHA CLINICA ARCA</h4>
-                        <p class="card-category">Complete el formulario </p>
+                        <p class="card-category">Complete el formulario {{animal.data.id}} {{loginUsuario.id}} </p>
                     </div>
                     <div class="card-body">
                         <form #f="ngForm" (ngSubmit)="guardar()" novalidate>
                             <div class="row">
                                 <!--Desparacitaciones-->
                                 <div class="col-md-5">
-                                    <input type="number" class="form-control" id="idInput" value="{{animal.data.id}}" [(ngModel)]="animal.id">
+                                    <!--    <input type="number" class="form-control" id="idInput" [value]="{{animal.data.id}}" [(ngModel)]="fichaClinica.animal.id">-->
                               </div>
                                 <!-- fecha Ingreso -->
                                 <div class="col-md-5">
@@ -108,8 +108,8 @@
                                         <div class="caja">
                                         <select class="form-select" aria-label="Default select example" [(ngModel)]="fichaClinica.tipoPaciente">
                                             <option selected disabled>Seleccione:</option>
-                                            <option value="1">INTERNO</option>
-                                            <option value="2">EXTERNO</option>
+                                            <option value="INTERNO">INTERNO</option>
+                                            <option value="EXTERNO">EXTERNO</option>
                                             
                                         </select>
                                         </div>
@@ -121,8 +121,8 @@
                                         <div class="caja">
                                             <select class="form-select" aria-label="Default select example" [(ngModel)]="fichaClinica.esterilizacion">
                                                 <option selected disabled>Seleccione:</option>
-                                                <option value="1">SI</option>
-                                                <option value="2">NO</option>
+                                                <option value="SI">SI</option>
+                                                <option value="NO">NO</option>
                                             </select>
                                         </div>
                                       

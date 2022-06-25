@@ -22,12 +22,13 @@ import { PageFichaClinica } from '../model/pageFichaClinica';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
+import { fichaClinicaPost } from 'app/model/fichaClinicaPost';
 
 
 @Injectable()
 export class FichasClnicasService {
-
-    protected basePath = 'https://vinculation.herokuapp.com/api';
+    protected basePath = '//localhost:9898/api';
+    /* protected basePath = 'https://vinculation.herokuapp.com/api';*/
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -63,10 +64,10 @@ export class FichasClnicasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createUsingPOST1(body: FichaClinica, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createUsingPOST1(body: FichaClinica, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createUsingPOST1(body: FichaClinica, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createUsingPOST1(body: FichaClinica, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createUsingPOST1(body: fichaClinicaPost, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createUsingPOST1(body: fichaClinicaPost, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createUsingPOST1(body: fichaClinicaPost, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createUsingPOST1(body: fichaClinicaPost, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling createUsingPOST1.');
