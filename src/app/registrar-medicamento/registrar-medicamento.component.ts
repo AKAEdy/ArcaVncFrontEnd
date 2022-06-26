@@ -31,7 +31,7 @@ export class RegistrarMedicamentoComponent implements OnInit {
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-          this.medicamentoService.createUsingPOST2(this.medicamento).subscribe(datea => {
+          this.medicamentoService.createUsingPOST3(this.medicamento).subscribe(datea => {
             Swal.fire({
               position: 'center',
               icon: 'success',

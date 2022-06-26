@@ -10,13 +10,16 @@
  * Do not edit the class manually.
  */
 import { Medicamento } from './medicamento';
+import { Tratamiento } from './tratamiento';
 
 export interface Medicacion { 
  
     dosis?: string;
     duracion?: string;
+    fechaCaducidad?: Date;
     frecuencia?: string;
     id?: number;
     medicamento?: Medicamento;
     descripcion_md?: string;
+    tratamiento: Tratamiento;
 }

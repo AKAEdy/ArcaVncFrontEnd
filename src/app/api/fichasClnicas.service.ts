@@ -18,6 +18,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 import { FichaClinica } from '../model/fichaClinica';
+import { FichaClinicaDTO } from '../model/fichaClinicaDTO';
 import { PageFichaClinica } from '../model/pageFichaClinica';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -69,8 +70,11 @@ export class FichasClnicasService {
     public createUsingPOST1(body: fichaClinicaPost, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
     public createUsingPOST1(body: fichaClinicaPost, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
+
+   
+
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling createUsingPOST1.');
+            throw new Error('Required parameter body was null or undefined when calling createUsingPOST2.');
         }
 
         let headers = this.defaultHeaders;
@@ -116,13 +120,13 @@ export class FichasClnicasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteUsingDELETE1(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteUsingDELETE1(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteUsingDELETE1(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteUsingDELETE1(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteUsingDELETE2(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteUsingDELETE2(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteUsingDELETE2(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteUsingDELETE2(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling deleteUsingDELETE1.');
+            throw new Error('Required parameter id was null or undefined when calling deleteUsingDELETE2.');
         }
 
         let headers = this.defaultHeaders;
@@ -162,13 +166,13 @@ export class FichasClnicasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getByIdUsingGET1(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public getByIdUsingGET1(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public getByIdUsingGET1(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public getByIdUsingGET1(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getByIdUsingGET2(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getByIdUsingGET2(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getByIdUsingGET2(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getByIdUsingGET2(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling getByIdUsingGET1.');
+            throw new Error('Required parameter id was null or undefined when calling getByIdUsingGET2.');
         }
 
         let headers = this.defaultHeaders;
@@ -193,6 +197,58 @@ export class FichasClnicasService {
 
         return this.httpClient.request<any>('get',`${this.basePath}/fichas-clinicas/${encodeURIComponent(String(id))}`,
             {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * getFichasClinicasByAnimalId
+     * 
+     * @param id id
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getFichasClinicasByAnimalIdUsingGET1(id: number, observe?: 'body', reportProgress?: boolean): Observable<Array<FichaClinicaDTO>>;
+    public getFichasClinicasByAnimalIdUsingGET1(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<FichaClinicaDTO>>>;
+    public getFichasClinicasByAnimalIdUsingGET1(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<FichaClinicaDTO>>>;
+    public getFichasClinicasByAnimalIdUsingGET1(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling getFichasClinicasByAnimalIdUsingGET1.');
+        }
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (id !== undefined && id !== null) {
+            queryParameters = queryParameters.set('id', <any>id);
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (JWT) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<Array<FichaClinicaDTO>>('get',`${this.basePath}/fichas-clinicas/findByAnimalId/${encodeURIComponent(String(id))}`,
+            {
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
@@ -247,13 +303,14 @@ export class FichasClnicasService {
      * 
      * @param page page
      * @param size size
+     * @param tipoPaciente tipoPaciente
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getFichasClinicasUsingGET1(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PageFichaClinica>;
-    public getFichasClinicasUsingGET1(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageFichaClinica>>;
-    public getFichasClinicasUsingGET1(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageFichaClinica>>;
-    public getFichasClinicasUsingGET1(page: number, size: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getFichasClinicasUsingGET1(page: number, size: number, tipoPaciente?: string, observe?: 'body', reportProgress?: boolean): Observable<PageFichaClinica>;
+    public getFichasClinicasUsingGET1(page: number, size: number, tipoPaciente?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageFichaClinica>>;
+    public getFichasClinicasUsingGET1(page: number, size: number, tipoPaciente?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageFichaClinica>>;
+    public getFichasClinicasUsingGET1(page: number, size: number, tipoPaciente?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (page === null || page === undefined) {
             throw new Error('Required parameter page was null or undefined when calling getFichasClinicasUsingGET1.');
@@ -263,12 +320,16 @@ export class FichasClnicasService {
             throw new Error('Required parameter size was null or undefined when calling getFichasClinicasUsingGET1.');
         }
 
+
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (page !== undefined && page !== null) {
             queryParameters = queryParameters.set('page', <any>page);
         }
         if (size !== undefined && size !== null) {
             queryParameters = queryParameters.set('size', <any>size);
+        }
+        if (tipoPaciente !== undefined && tipoPaciente !== null) {
+            queryParameters = queryParameters.set('tipoPaciente', <any>tipoPaciente);
         }
 
         let headers = this.defaultHeaders;
@@ -310,17 +371,17 @@ export class FichasClnicasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateUsingPUT1(body: FichaClinica, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateUsingPUT1(body: FichaClinica, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateUsingPUT1(body: FichaClinica, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateUsingPUT1(body: FichaClinica, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateUsingPUT2(body: FichaClinica, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateUsingPUT2(body: FichaClinica, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateUsingPUT2(body: FichaClinica, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateUsingPUT2(body: FichaClinica, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling updateUsingPUT1.');
+            throw new Error('Required parameter body was null or undefined when calling updateUsingPUT2.');
         }
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling updateUsingPUT1.');
+            throw new Error('Required parameter id was null or undefined when calling updateUsingPUT2.');
         }
 
         let headers = this.defaultHeaders;

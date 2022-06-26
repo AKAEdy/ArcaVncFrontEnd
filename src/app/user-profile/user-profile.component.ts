@@ -25,11 +25,13 @@ export class UserProfileComponent implements OnInit {
   animales:any[] = [];
   validacion: Validacion = new Validacion();
   
+  public formSubmitted = false;
+  
 
   animal: Animal={};
 // array de string de imagenes
   images: string[];
-  public formSubmitted = false;
+ 
 
   
   constructor(private animalesService: AnimalesService, private fichasClinicasService: FichasClnicasService, private router: Router,private _formBuilder: FormBuilder,private storage: Storage) {

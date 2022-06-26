@@ -22,12 +22,18 @@ import { VacunasService } from './api/vacunas.service';
 import { TratamientosService } from './api/tratamientos.service';
 
 import { MedicamentosService } from './api/medicamentos.service';
+<<<<<<< HEAD
 import { RegistroCarnetvacunaComponent } from './registro-carnetvacuna/registro-carnetvacuna.component';
 
 
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+=======
+import { AdoptantesService } from './api/adoptantes.service';
+import { DonacionesService } from './api/donaciones.service';
+import { VoluntariosService } from './api/voluntarios.service';
+>>>>>>> d91bca2ff3ccc0055e45abe5903c0509ada220e4
 
 @NgModule({
   imports: [
@@ -47,11 +53,15 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     AdminLayoutComponent,
     LoginComponent,
     RegistroComponent,
+<<<<<<< HEAD
     RegistroCarnetvacunaComponent,
     
+=======
+
+>>>>>>> d91bca2ff3ccc0055e45abe5903c0509ada220e4
 
   ],
-  providers: [{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     AdopcionControllerService,
     AdoptanteControllerService,
     AnimalesService,
@@ -61,11 +71,17 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     VacunasService,
     VeterinariosService,
     MedicamentosService,
+<<<<<<< HEAD
     TratamientosService,
     MedicamentosService,
     VeterinariosService ,
     MedicamentosService ],
     
+=======
+    AdoptantesService,
+    DonacionesService,
+    VoluntariosService],
+>>>>>>> d91bca2ff3ccc0055e45abe5903c0509ada220e4
   bootstrap: [AppComponent]
 })
 export class AppModule { }

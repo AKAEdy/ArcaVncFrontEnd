@@ -1,0 +1,77 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-header card-header-danger">
+          <h4 class="card-title">REGISTRO DE ADOPTANTES</h4>
+  
+        </div>
+        <div class="card-body">
+          <form #f="ngForm" (ngSubmit)="createAdoptante()" novalidate>
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="CEDULA" [(ngModel)]="adoptantes.cedula">
+                </mat-form-field>
+              </div>
+  
+              <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="NOMBRE" [(ngModel)]="adoptantes.nombre">
+                </mat-form-field>
+              </div>
+  
+            </div>
+  
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="APELLIDO" [(ngModel)]="adoptantes.apellidos">
+                </mat-form-field>
+              </div>
+  
+              <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="EMAIL ADDRESS" type="email" [(ngModel)]="adoptantes.correo">
+                </mat-form-field>
+              </div>
+  
+            </div>
+  
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="TELEFONO" type="text"  [(ngModel)]="adoptantes.telefono">
+                </mat-form-field>
+              </div>
+  
+              <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="CELULAR" type="text"  [(ngModel)]="adoptantes.celular">
+                </mat-form-field>
+              </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="TELEFONO DE FAMILIAR" [(ngModel)]="adoptantes.telefonoFamiliar">
+                  </mat-form-field>
+                </div>
+    
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="NOMBRE EN FACEBOOK"[(ngModel)]="adoptantes.nicknameFacebook">
+                  </mat-form-field>
+                </div>
+    
+                <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="DIRECCION" type="text"  [(ngModel)]="adoptantes.direccion">
+                    </mat-form-field>
+                  </div>
+                </div>
+            <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="createAdoptante()">REGISTRAR</button>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </div>
+    </div>

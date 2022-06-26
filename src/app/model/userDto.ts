@@ -9,12 +9,11 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { Usuario } from './usuario';
+import { PersonaDto } from './personaDto';
 
 export interface UserDto { 
-    email?: string;
     id?: number;
     password?: string;
-    userFromDto?: Usuario;
+    personaDto?: PersonaDto;
     username?: string;
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonasService } from 'app/api/personas.service';
 import { Persona } from 'app/model/persona';
-import { data } from 'jquery';
 
 @Component({
   selector: 'lista-persona',
