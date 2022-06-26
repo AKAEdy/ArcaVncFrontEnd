@@ -22,6 +22,7 @@ import { VacunasService } from './api/vacunas.service';
 import { TratamientosService } from './api/tratamientos.service';
 
 import { MedicamentosService } from './api/medicamentos.service';
+import { RegistroCarnetvacunaComponent } from './registro-carnetvacuna/registro-carnetvacuna.component';
 
 
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -46,6 +47,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     AdminLayoutComponent,
     LoginComponent,
     RegistroComponent,
+    RegistroCarnetvacunaComponent,
     
 
   ],
