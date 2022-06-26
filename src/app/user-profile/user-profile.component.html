@@ -18,15 +18,24 @@
 
       <div class="card-body">
         
-        <img class="card-img-top" src="../assets/img/perrito.jpeg" alt="Card image cap">
+        <img class="card-img-top" src="{{imagenes[0]}}" alt="Card image cap">
+
         <div class="mb-4">
           <br>
           <label for="formFileSm" class="form-label"
             class="control-label col-sm-4 d-flex justify-content-center align-items-center">Subir foto</label>
-          <input class="form-control form-control-sm" id="formFileSm" type="file">
+          <input class="form-control form-control-sm" id="formFileSm" type="file" accept=".png, .jpg, .jpeg" multiple(change)="cargarImagen()" id="inputFile"> 
         </div>
       </div>
+
     </div>
+
+    <!--<div class="col-md-4 image-fluid">
+
+     <input type="file" accept=".png, .jpa, .jpeg " multiple(change)="cargarImagen($event)" id="inputFile">
+    <label for="inputFile" class="labelinputFile"></label> 
+      
+    </div>-->
 
 
      <!-- formulario -->

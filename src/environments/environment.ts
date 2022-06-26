@@ -7,5 +7,15 @@ export const environment = {
   BASE_URL: 'http://localhost:9898/api/',
   AUTH_URL: 'http://localhost:9898/api/auth/',
   TOKEN_NAME :'AUTH_ARCA',
-  production: false
+  production: false,
+
+  firebaseConfig : {
+    apiKey: "AIzaSyBJmr_zsdrRV-XYxC85T9GLsURLTg2Eu0M",
+    authDomain: "arca-e0cd9.firebaseapp.com",
+    projectId: "arca-e0cd9",
+    storageBucket: "arca-e0cd9.appspot.com",
+    messagingSenderId: "1070847011124",
+    appId: "1:1070847011124:web:68eee5c0df6b25f0021d61"
+  }
+  
 };

@@ -23,13 +23,20 @@ import { PageAnimal } from '../model/pageAnimal';
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
 
+//import * as firebase from "firebase/app";
+import  firebase   from 'firebase/compat';
+import 'firebase/compat/storage';
+import { environment } from 'environments/environment';
 
+firebase.initializeApp(environment.firebaseConfig);
+const app = firebase.initializeApp(environment.firebaseConfig);
 @Injectable()
 export class AnimalesService {
 
     protected basePath = '//localhost:9898/api';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
+    public storareRef = firebase.app().storage().ref();
 
     constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
         if (basePath) {
@@ -356,6 +363,20 @@ export class AnimalesService {
                 reportProgress: reportProgress
             }
         );
+    }
+
+    
+    async subirimagen(nombre: string, imgBase64: any){
+    try {
+        let respuesta = await this.storareRef.child("users/"+nombre).putString(imgBase64, 'data_url');
+        console.log(respuesta);
+        return await respuesta.ref.getDownloadURL();
+    } catch (error) {
+        console.log(error);
+        return null;
+        }
+
+
     }
 
 }

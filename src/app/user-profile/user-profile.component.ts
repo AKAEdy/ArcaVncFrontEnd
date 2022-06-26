@@ -9,7 +9,12 @@ import { Validacion } from 'app/validaciones/Validacion';
 import { ViewChild } from '@angular/core';
 
 
+import 'firebase/compat/storage';
+
 import Swal from 'sweetalert2';
+
+import { url } from 'inspector';
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -21,6 +26,7 @@ export class UserProfileComponent implements OnInit {
   @ViewChild('MyForm', { static: false }) MyForm: NgForm;
 
  
+  imagenes: any[]=[];
   animales:any[] = [];
   validacion: Validacion = new Validacion();
   
@@ -62,6 +68,30 @@ export class UserProfileComponent implements OnInit {
   }
 
 
+  cargarImagen(event:any){
+
+    
+    let archivos = event.target.files 
+    let nombre = "imagen";
+    
+    for (let i=0; i< archivos.length; i++ ){
+
+      let readers = new FileReader(); 
+      readers.readAsDataURL(archivos[0]);
+      readers.onloadend=()=> {
+
+      console.log(readers.result);
+      this.imagenes.push(readers.result);
+      this.animalesService.subirimagen( nombre + "_" + Date.now(), readers.result).then(urlImagen=>{
+        console.log(urlImagen);
+        let usuario={
+          name:'jessi',
+          imgProfile:urlImagen
+        }
+      });
+    }
+    }
+  }
 
 
   guardarMascota(){
