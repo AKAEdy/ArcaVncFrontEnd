@@ -10,8 +10,10 @@
  * Do not edit the class manually.
  */
 
+import { CarnetVacunacion } from "./carnetVacunacion";
+import { FichaClinica } from "./fichaClinica";
+
 export interface Animal { 
-<<<<<<< HEAD
    observacionesProcedencia?: string;
     colorCaracteristicas?: string;
     edad?: number;
@@ -28,21 +30,8 @@ export interface Animal {
     sexo?: string;
     procedencia?:string;
     tamanyo?: string;
-=======
-    adoptado?: boolean;
-    colorCaracteristicas: string;
-    edad: number;
-    especie: string;
-    fechaNacimiento: Date;
-    foto: string;
-    id?: number;
-    lugarEstancia: string;
-    nombre: string;
-    observacionesProcedencia: string;
-    peso: number;
-    procedencia: string;
-    raza: string;
-    sexo: string;
-    tamanyo: string;
->>>>>>> d91bca2ff3ccc0055e45abe5903c0509ada220e4
+
+
+
+
 }

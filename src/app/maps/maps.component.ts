@@ -29,39 +29,39 @@ export class MapsComponent implements OnInit {
   }
 
 
-  guardarTratamiento(form: NgForm) {
-    this.formSubmitted = true;
-    if (form.invalid) {
-      return;
-    }
-    if (this.tratamiento.id) {
-      this.tratamientosService
-        .updateUsingPUT4(this.tratamiento, this.tratamiento.id)
-        .subscribe((animales) => {
-          Swal.fire(
-            "Actualizado",
-            `¡${this.tratamiento} actualizado con exito!`,
-            "success"
-          );
-          this.irFicha();
-        });
-    } else {
-      this.tratamientosService.createUsingPOST4(this.tratamiento).subscribe(data => {
-        this.tratamiento.idFichaClinica.id=data.idFichaClinica.id;
-        this.tratamiento.medicacion.id=2;
-        this.tratamiento = data;
+  // guardarTratamiento(form: NgForm) {
+  //   this.formSubmitted = true;
+  //   if (form.invalid) {
+  //     return;
+  //   }
+  //   if (this.tratamiento.id) {
+  //     this.tratamientosService
+  //       .updateUsingPUT4(this.tratamiento, this.tratamiento.id)
+  //       .subscribe((animales) => {
+  //         Swal.fire(
+  //           "Actualizado",
+  //           `¡${this.tratamiento} actualizado con exito!`,
+  //           "success"
+  //         );
+  //         this.irFicha();
+  //       });
+  //   } else {
+  //     this.tratamientosService.createUsingPOST4(this.tratamiento).subscribe(data => {
+  //       this.tratamiento.idFichaClinica.id=data.idFichaClinica.id;
+  //       this.tratamiento.medicacion.id=2;
+  //       this.tratamiento = data;
 
-        Swal.fire(
+  //       Swal.fire(
 
-          "Nuevo Tratamiento",
-          `¡${data.id_tratamiento} creada con exito!`,
-          "success"
-        );
-        console.log("imprimiendo", data)
-        this.irFicha();
-      });
-    }
-  }
+  //         "Nuevo Tratamiento",
+  //         `¡${data.id_tratamiento} creada con exito!`,
+  //         "success"
+  //       );
+  //       console.log("imprimiendo", data)
+  //       this.irFicha();
+  //     });
+  //   }
+  // }
 
   irFicha() {
     //  this.router.navigateByUrl("/registrofichaclinica");

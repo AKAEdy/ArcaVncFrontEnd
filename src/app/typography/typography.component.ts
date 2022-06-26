@@ -20,15 +20,15 @@ export class TypographyComponent implements OnInit {
 public formSubmitted = false;
   public medicamentos: Medicamento[] = [];
  
-  medicacion: Medicacion={};
+ // medicacion: Medicacion={};
  medicamento:Medicamento={};
 
  public medicamentosFiltrados: Observable<Medicamento[]>;
   constructor(private medicacionesService: MedicacionesService, private medicamentosService:MedicamentosService,  private activatedRoute: ActivatedRoute,) { }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(({ id }) => this.cargarMedicacion(id));
-    this.cargarMedicamento();
+    // this.activatedRoute.params.subscribe(({ id }) => this.cargarMedicacion(id));
+    // this.cargarMedicamento();
 
 
   }
@@ -89,71 +89,71 @@ public formSubmitted = false;
 
 
 
-cargarMedicamento() {
-  this.medicamentosService.getMedicamentosUsingGET().subscribe((medicamentos) => {
-    this.medicamentos= medicamentos;
-  });
-}
+// cargarMedicamento() {
+//   this.medicamentosService.getMedicamentosUsingGET().subscribe((medicamentos) => {
+//     this.medicamentos= medicamentos;
+//   });
+// }
 
 
 
-guardar(form: NgForm) {
-  this.formSubmitted = true;
-  if (form.invalid) {
-    return;
-  }
-  if (this.medicacion.id) {
-    this.medicacionesService.crearMedicacionUsingPOST( this.medicacion.id)
-      .subscribe((medicacion) => {
+// guardar(form: NgForm) {
+//   this.formSubmitted = true;
+//   if (form.invalid) {
+//     return;
+//   }
+//   if (this.medicacion.id) {
+//     this.medicacionesService.crearMedicacionUsingPOST( this.medicacion.id)
+//       .subscribe((medicacion) => {
  
-        Swal.fire(
-          "Actualizado ",
-          `¡${ this.medicacion.id
-        } actualizada con exito!`,
-          "success"
+//         Swal.fire(
+//           "Actualizado ",
+//           `¡${ this.medicacion.id
+//         } actualizada con exito!`,
+//           "success"
 
-        );
-        this.irListaResponsablePPP();
-      });
+//         );
+//         this.irListaResponsablePPP();
+//       });
 
-  }else {
+//   }else {
     
-    this.medicacionesService.crearMedicacionUsingPOST(this.medicacion.id).subscribe((medicacion) => {
-      Swal.fire(
-        "Nuevo (a) ",
-        `¡${this.medicacion.id
-          } creada con exito!`,
-        "success"
-      );
-      this.irListaResponsablePPP();
-    });
-  }
-}
+//     this.medicacionesService.crearMedicacionUsingPOST(this.medicacion.id).subscribe((medicacion) => {
+//       Swal.fire(
+//         "Nuevo (a) ",
+//         `¡${this.medicacion.id
+//           } creada con exito!`,
+//         "success"
+//       );
+//       this.irListaResponsablePPP();
+//     });
+//   }
+// }
 
 
-irListaResponsablePPP() {
-  //this.router.navigateByUrl("/dashboard/responsablesppp");
-}
+// irListaResponsablePPP() {
+//   //this.router.navigateByUrl("/dashboard/responsablesppp");
+// }
 
-compararMedicamento(m1: Medicamento, m2: Medicamento) {
-  if (m1 === undefined && m2 === undefined) {
-    return true;
-  }
-  return m1 == null || m2 == null ? false : m1.id === m2.id;
-}
+// compararMedicamento(m1: Medicamento, m2: Medicamento) {
+//   if (m1 === undefined && m2 === undefined) {
+//     return true;
+//   }
+//   return m1 == null || m2 == null ? false : m1.id === m2.id;
+// }
 
 
-cargarMedicacion(id: number) {
-  if (!id) {
-    return;
-  }
-  this.medicacionesService.getMedicacionPorIdUsingGET(id).subscribe((medicacion) => {
-    if (!medicacion) {
-      return this.irListaResponsablePPP();
-    }
-    this.medicacion= medicacion;
-  });
-}
+// cargarMedicacion(id: number) {
+//   if (!id) {
+//     return;
+//   }
+//   this.medicacionesService.getMedicacionPorIdUsingGET(id).subscribe((medicacion) => {
+//     if (!medicacion) {
+//       return this.irListaResponsablePPP();
+//     }
+//     this.medicacion= medicacion;
+//   });
+// }
 
 
 

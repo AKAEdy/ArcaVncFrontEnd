@@ -61,12 +61,9 @@ import { ListarVoluntariosComponent } from '../../listar-voluntarios/listar-volu
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
-<<<<<<< HEAD
     MatStepperModule,
-=======
     NgxPrintModule,
     
->>>>>>> d91bca2ff3ccc0055e45abe5903c0509ada220e4
   ],
   declarations: [
     DashboardComponent,

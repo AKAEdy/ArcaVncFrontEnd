@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AdopcionControllerService } from 'app/api/adopcionController.service';
-<<<<<<< HEAD
-import { AnimalesService } from 'app/api/animales.service';
-import { Adopcion } from 'app/model/adopcion';
-import { Animal } from 'app/model/animal';
-=======
+
+
 import { AdoptanteControllerService } from 'app/api/adoptanteController.service';
 import { Adopcion } from 'app/model/adopcion';
 import { Adoptante } from 'app/model/adoptante';
 import { data } from 'jquery';
 import Swal from 'sweetalert2';
->>>>>>> d91bca2ff3ccc0055e45abe5903c0509ada220e4
 
 @Component({
   selector: 'lista-adoptado',
@@ -18,14 +14,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./lista-adoptado.component.css']
 })
 export class ListaAdoptadoComponent implements OnInit {
-<<<<<<< HEAD
- 
-  //VARIABLE DE animal
-  public animales: Animal[] = [];
-  pagina=0;
-  tamaño=2;
-  constructor(private animalesService: AnimalesService) { }
-=======
+
   filterpost:any='';
   adopcion:Adopcion[]=[];
   dataSource: any ={};
@@ -34,44 +23,22 @@ export class ListaAdoptadoComponent implements OnInit {
   cedulas: string;
   descripcion:string;
   constructor(private adopcionService: AdopcionControllerService, private adoptanteService: AdoptanteControllerService) { }
->>>>>>> d91bca2ff3ccc0055e45abe5903c0509ada220e4
 
   ngOnInit(): void {
-    this.listarAnimales();
-  this.pagina = 0;
-    // this.getAnimalesPage(
-    //   this.paginaActual.toString(),
-    //   this.totalPorPagina.toString(),
-    //   this.busqueda
-    // );
+
+    this.getAllAdopcion();
+    this.filterpost=this.adopcion;
   }
-  listarAnimales(){
+  
+  
+  
 
-    this.animalesService.getAnimalsUsingGET(this.pagina,this.tamaño).subscribe(data =>{
-       this.animales = data.content
-       console.log ("listado", data)
-    })
-  }
 
-<<<<<<< HEAD
-  next(){
-    this.pagina = this.pagina + 1;
-  console.log(this.pagina);
-  this.listarAnimales();
-  }
 
-  previous(){
 
-    this.pagina = this.pagina - 1;
-    if(this.pagina < 0){
-      this.pagina = 0;
-    }
 
-    this.listarAnimales();
-    console.log(this.pagina);
 
-  }
-=======
+
   getAllAdopcion(){
     this.adopcionService.getAllAdopcionesUsingGET().subscribe(data=>{
       this.adopcion = data;
@@ -204,6 +171,5 @@ botonCancelar(){
   document.getElementById("tarjeta").style.display="none";
   document.getElementById("lista").style.display="block";
 }
->>>>>>> d91bca2ff3ccc0055e45abe5903c0509ada220e4
 
 }

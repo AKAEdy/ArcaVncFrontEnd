@@ -67,54 +67,8 @@
         
                   </div>
                   
-                  <div class="row">
-
-                    <div class="col-6">
-                      <div class="row">
-                        <div class="card col-6">
-                         <h4>Historia clinica</h4>
-                        </div>
-                        <div class="card col-6">
-                          <h3>datos: </h3>
-                        </div>
-                      </div>
-                    </div>
-                  
-                    <div class="col-6">
-                      <div class="row">
-                        <div class="card col-6">
-                         <h4>Tipo Paciente</h4>
-                        </div>
-                        <div class="card col-6">
-                          <h3>datos</h3>
-                        </div>
-                      </div>
-                    </div>
-                  
-                  </div>
-
-                  <div class="row">
-
-                    <div class="col-6">
-                      <div class="row">
-                        <div class="card col-6">
-                         <h4>Motivo consulta </h4>
-                        </div>
-                        <div class="card col-6">
-                          <h3>datos: </h3>
-                        </div>
-                      </div>
-                    </div>
-                  
-                    <div class="col-6">
-                      <div class="row">
-                        <div class="card col-6">
-                         <h4>Tipo Paciente</h4>
-                        </div>
-                        <div class="card col-6">
-                          <h3>datos</h3>
-                        </div>
-                      </div>
+                 
+                      
                     </div>
                   
                   </div>
@@ -144,16 +98,126 @@
                     </div>
 
                   </div>
+                  
+                  <div class="container"*ngFor="let ficha of fichaClinica">
+                    <h4>FICHA CLINICA</h4>
+                    <div class="row justify-content-center" >
+                     <div class="col-4">
+                          <br> 
+                          <br>
+                            <i class="fas fa-user"><b> FECHA INGRESO:</b> <label  class="card-text" >{{ficha.fechaIngreso}}</label></i>
+                            <hr>
+                          <br>
+                          <br>
+                            <i class="fas fa-user"><b> MOTIVO COLSULTA: </b> <label  class="card-text" >{{ficha.motivoConsulta}}</label></i>	
+                            <hr>
+                          <br>
+                          <br>
+                              <i class="fas fa-user"><b> HALLAZGOS: </b> <label  class="card-text" >{{ficha.hallazgos}}</label></i>	
+                              <hr>
+                          <br>
+                          <br>
+                                <i class="fas fa-user"><b> TEMPERATURA: </b> <label  class="card-text" >{{ficha.temperatura}}</label></i>	
+                                <hr>
+                          <br>
+                          <br>
+                                <i class="fas fa-user"><b> CONJUNTIVA: </b> <label  class="card-text" >{{ficha.conjuntiva}}</label></i>	
+                                <hr>
+        
+                          <br>
+                          <br>
+                                <i class="fas fa-user"><b> FRECUENCIA CARDIACA: </b> <label  class="card-text" >{{ficha.frecuenciaCardiaca}}</label></i>	
+                                <hr>
+        
+                          <br>
+                          <br>
+                               <i class="fas fa-user"><b> FRECUENCIA RESPIRATORIA: </b> <label  class="card-text" >{{ficha.frecuenciaRespiratoria}}</label></i>	
+                               <hr>
+                          <br>
+                          <br>
+                               <i class="fas fa-user"><b> TRC: </b> <label  class="card-text" ></label>{{ficha.trc}}</i>	
+                               <hr>              
+                        
+                     </div>
+        
+                      <div class="col-4">
+                          
+                          <br>
+                          <br>
+                                 <i class="fas fa-user"><b> MUCOSA: </b> <label  class="card-text" >{{ficha.mucosas}}</label></i>	
+                                 <hr>
+                          <br>
+                          <br>
+                            <i class="fas fa-user"><b> ESTERILIZACION: </b> <label  class="card-text" >{{ficha.esterilizacion}}</label></i>	
+                            <hr>
+                          <br>
+                          <br>
+                            <i class="fas fa-user"><b> PRONOSTICO: </b> <label  class="card-text" >{{ficha.pronostico}}</label></i>	
+                            <hr>
+                          <br>
+                          <br>
+                            <i class="fas fa-user"><b> TIPO PACIENTE: </b> <label  class="card-text" >{{ficha.tipoPaciente}}</label></i>	
+                            <hr>
+                          <br>
+                          <br>
+                            <i class="fas fa-user"><b> EXAMENES SOLICITADOS: </b> <label  class="card-text" >{{ficha.examenes_solicitados}}</label></i>	
+                            <hr>
+                          <br>
+                          <br>
+                            <i class="fas fa-user"><b> DIAGNOSTICO DIFERENCIAL: </b> <label  class="card-text" >{{ficha.diagnosticoDiferencial}}</label></i>	
+                            <hr>
+                          <br>
+                          <br>
+                            <i class="fas fa-user"><b>COSTO: </b> <label  class="card-text" >{{ficha.costo}}</label></i>	
+                            <hr>
+                      </div>
+        
+        
+                    </div>
+        
+                    <div class="row justify-content-center">
+                      <div class="col-md-5">
+        
+                        <div class="form-actions">
+        
+                          <button type="button" class="btn btn-inverse"(click)="irAtras()" >
+                            <i class="fa fa-reply" aria-hidden="true"></i> REGRESAR
+                          </button>
+        
+                        
+                          <button type="button" class="btn btn-danger mr-2" >
+                            <i class="fa fa-times-circle" aria-hidden="true" ></i>
+                            ELIMINAR
+                          </button>
+        
+        
+                          <button type="button" class="btn btn-success mr-2">
+                            <i class="fa fa-check"></i> EDITAR
+                          </button>
+          
+                          </div>
+                          
+                      </div>
+        
+                    </div>
+        
+                  </div>
+        
+
+
+
+
                 </div>
           
               </div>
           
             </div>
           </div>
+
+          
+          
+
+
         </div>
       </div>
-   </div>
-</div>
-
-
-
+           
