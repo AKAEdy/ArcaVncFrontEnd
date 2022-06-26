@@ -26,7 +26,7 @@ animal:Animal= null;
     const id = this.activatedRoute.snapshot.params.id;
     this.es.getByIdUsingGET(id).subscribe(data =>{
       this.animal= data;
-   
+      localStorage.setItem('animal', JSON.stringify(this.animal));
     },
       err => {
         this.list();

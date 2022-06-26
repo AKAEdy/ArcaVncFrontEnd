@@ -24,8 +24,13 @@
                                 <!--Motivo Consulta -->
                                 <div class="col-md-5">
                                     <mat-form-field class="example-full-width">
-                                        <textarea matInput placeholder="Motivo de la Consulta" type="text"[(ngModel)]="fichaClinica.motivoConsulta"></textarea>
+                                        <textarea matInput placeholder="Motivo de la Consulta" type="text"  name="motivoConsulta"  #motivoConsulta="ngModel" [(ngModel)]="fichaClinica.motivoConsulta"></textarea>
                                     </mat-form-field>
+                                    <div class="text-danger" *ngIf="
+                                    motivoConsulta.hasError('required') && motivoConsulta.touched
+                                    ">
+                                    motivoConsulta
+                                          </div>
                                 </div>
     
                                 <!-- Hallazgos -->
