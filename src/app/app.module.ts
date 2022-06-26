@@ -23,6 +23,11 @@ import { TratamientosService } from './api/tratamientos.service';
 
 import { MedicamentosService } from './api/medicamentos.service';
 
+
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -31,7 +36,9 @@ import { MedicamentosService } from './api/medicamentos.service';
     HttpClientModule,
     ComponentsModule,
     RouterModule,
-    AppRoutingModule,
+    AppRoutingModule, provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage())
+
     
   ],
   declarations: [
