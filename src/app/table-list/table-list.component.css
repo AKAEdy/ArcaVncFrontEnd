@@ -42,3 +42,62 @@
   }
   
  
+
+  .container{
+    width: 100%;
+    max-width: 940px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  p{
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+    text-align: center;
+  }
+  h3{
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+    text-align: center;
+  }
+  .color{
+    border: 2px solid red;
+  }
+  
+  
+  
+  /* GENERAL STYLES */
+  
+  .pagination{
+    padding: 30px 0;
+  }
+  
+  .pagination ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .pagination button{
+    display: inline-block;
+    width:30px;
+    border-radius: 500%;
+    color: #222;
+  }
+  
+  
+  
+  /* ELEVEN */
+  
+  .p11 button{
+    background-color: #200f6b;
+    margin: auto 5px;
+    color: #fff;
+    border: 3px solid #200f6b;
+    position: relative;
+  }
+  
+ 
