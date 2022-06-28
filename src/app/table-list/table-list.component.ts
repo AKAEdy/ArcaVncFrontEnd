@@ -41,6 +41,7 @@ dataSource:any={};
     this.router.navigate (['/upgrade', id]);
     });
   }
+  
   listarAnimales(){
 
     this.animalesService.getAnimalsUsingGET(this.pagina,this.tamaño).subscribe(data =>{

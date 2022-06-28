@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import { Vacuna } from './vacuna';
+import { Animal } from './animal';
 
 export interface CarnetVacunacion { 
     fechaAplicacion?: Date;

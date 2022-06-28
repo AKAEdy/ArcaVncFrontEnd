@@ -40,27 +40,7 @@ export class UserProfileComponent implements OnInit {
     localStorage.removeItem('animal');
 
   }
-  // saveAnimal(){
-  //  // console.log("LLEGA "+ this.adoptante.id,this.animal.id,this.adopcion.descripcion, this.adopcion.fechaAdopcion);
-    
-    
-  //     this.animalesService.createUsingPOST(this.animal).subscribe(data =>{
-  //       console.log("LOS DATOS"+data);
-  //       Swal.fire({
-  //         position: 'center',
-  //         icon: 'success',
-  //         title: 'Se a adoptado correctamente',
-  //         showConfirmButton: false,
-  //         timer: 1500
-  //       })
-  //     })
-  //   }
   
-  // }
-
-
-
-
   resetForm() {
     this.MyForm.reset();
   }

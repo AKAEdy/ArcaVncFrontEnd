@@ -40,6 +40,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { RegistrarVeterinariosComponent } from '../../registrar-veterinarios/registrar-veterinarios.component';
 import { ListarVeterinariosComponent } from '../../listar-veterinarios/listar-veterinarios.component';
+import { RegistroCarnetvacunaComponent } from 'app/registro-carnetvacuna/registro-carnetvacuna.component';
 
 @NgModule({
   imports: [
@@ -86,7 +87,6 @@ import { ListarVeterinariosComponent } from '../../listar-veterinarios/listar-ve
     RegistrarCitasComponent,
     RegistrarVeterinariosComponent,
     ListarVeterinariosComponent,
-
   ]
 })
 
