@@ -61,16 +61,19 @@ Swal.fire({
       'success'
     )
     this.donacionService.eliminarDonacionUsingDELETE(id).subscribe(data =>{})
-   this.getDonaciones();
+   
   }
+  location.reload();
+  this.getDonaciones();
 })
   }
 
 getDonacionById(id:number){
 this.donacionService.getDonacionPorIdUsingGET(id).subscribe(data => {
-this.donacionid=data
+this.donacionid=data.donacion
+this.cedulas=this.donacionid.persona.cedula
 this.descripcion=this.donacionid.descripcion
-this.cantidad=this.donacionid.cantidad
+this.cantidad= this.donacionid.cantidad
 console.log(this.descripcion+" VALORES");
 
 })
