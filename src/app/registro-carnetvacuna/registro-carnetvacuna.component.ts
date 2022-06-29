@@ -1,19 +1,14 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Vacuna } from 'app/model/vacuna';
 import { CarnetVacunacion } from 'app/model/carnetVacunacion';
-
-import { ActivatedRoute, Router } from '@angular/router';
 
 import { AnimalesService } from 'app/api/animales.service';
 import { Animal } from 'app/model/animal';
 import { VacunasService } from 'app/api/vacunas.service';
 import Swal from 'sweetalert2';
 import { CarnetVacunasService } from 'app/api/carnetvacuna.service';
-
-
-import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AnimalesService } from 'app/api/animales.service';
 
 
 @Component({
@@ -21,6 +16,7 @@ import { AnimalesService } from 'app/api/animales.service';
   templateUrl: './registro-carnetvacuna.component.html',
   styleUrls: ['./registro-carnetvacuna.component.css']
 })
+
 export class RegistroCarnetvacunaComponent implements OnInit {
 
 
@@ -38,26 +34,27 @@ export class RegistroCarnetvacunaComponent implements OnInit {
   public vacunas: Vacuna[] = [];
 
 
-  constructor(private vacunaService: VacunasService, private carnetvacunaservice: CarnetVacunasService, private animalesService: AnimalesService,private router: Router) { }
+  constructor(private vacunaService: VacunasService, private carnetvacunaservice: CarnetVacunasService, private animalesService: AnimalesService, private router: Router) { }
 
   ngOnInit(): void {
+  }
+}
     //this.filterpost=this.animales;
-    this.listarVacunas();
+    //this.listarVacunas();
     //this.pagina = 0;
     //this.getAllVacunas();
     
 
-  idAnimal:number;
+ /* idAnimal:number;
   animal:any={};
+
   constructor(private router: Router) { 
     this.animal={};
- 
+
   }
 
   ngOnInit(): void {
     this.animal = JSON.parse(localStorage.getItem('animal'));
-   
-
   }
 
   getAllVacunas(){
@@ -95,6 +92,7 @@ export class RegistroCarnetvacunaComponent implements OnInit {
         denyButtonText: `No registrar`,
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
+        /*
         if (result.isConfirmed) {
           this.carnetvacunaservice.createcarnetvacunaUsingPOST(this.carnetv).subscribe(data =>{
             this.animal=data;
@@ -125,7 +123,6 @@ export class RegistroCarnetvacunaComponent implements OnInit {
    this.router.navigateByUrl("/menu");
    localStorage.removeItem('carnetv');
  }
+ */
 
-  
 
-}

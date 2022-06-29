@@ -48,6 +48,7 @@ import { RegistrarDonacionesComponent } from '../../registrar-donaciones/registr
 import { ListarDonacionesComponent } from '../../listar-donaciones/listar-donaciones.component';
 import { RegistrarVoluntariosComponent } from '../../registrar-voluntarios/registrar-voluntarios.component';
 import { ListarVoluntariosComponent } from '../../listar-voluntarios/listar-voluntarios.component';
+import { RegistrarSeguimientoComponent } from 'app/registrar-seguimiento/registrar-seguimiento.component';
 
 
 @NgModule({
@@ -101,6 +102,7 @@ import { ListarVoluntariosComponent } from '../../listar-voluntarios/listar-volu
     ListarDonacionesComponent,
     RegistrarVoluntariosComponent,
     ListarVoluntariosComponent,
+    RegistrarSeguimientoComponent,
 
 
   ]

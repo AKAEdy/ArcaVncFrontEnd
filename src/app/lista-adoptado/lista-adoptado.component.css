@@ -13,10 +13,18 @@
 .btneliminar {
     margin-left: 20px;
     background-color: rgb(255, 58, 58);
+    text-align: center;
 }
 
 .btneditar {
     background-color: rgb(250, 193, 37);
+    text-align: center;
+}
+
+.btnseguimiento{
+    background-color: coral;
+    font-style: normal;
+    text-align: center;
 }
 
 #img {

@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AdopcionControllerService } from 'app/api/adopcionController.service';
-
-
+import { Router } from '@angular/router';
 import { AdoptanteControllerService } from 'app/api/adoptanteController.service';
 import { Adopcion } from 'app/model/adopcion';
 import { Adoptante } from 'app/model/adoptante';
-import { data } from 'jquery';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -22,7 +20,7 @@ export class ListaAdoptadoComponent implements OnInit {
   adoptante: Adoptante = {};
   cedulas: string;
   descripcion:string;
-  constructor(private adopcionService: AdopcionControllerService, private adoptanteService: AdoptanteControllerService) { }
+  constructor( private router: Router, private adopcionService: AdopcionControllerService, private adoptanteService: AdoptanteControllerService) { }
 
   ngOnInit(): void {
 
@@ -30,15 +28,6 @@ export class ListaAdoptadoComponent implements OnInit {
     this.filterpost=this.adopcion;
   }
   
-  
-  
-
-
-
-
-
-
-
   getAllAdopcion(){
     this.adopcionService.getAllAdopcionesUsingGET().subscribe(data=>{
       this.adopcion = data;
@@ -170,6 +159,10 @@ mostrarEditar(){
 botonCancelar(){
   document.getElementById("tarjeta").style.display="none";
   document.getElementById("lista").style.display="block";
+}
+
+irFicha() {
+  this.router.navigateByUrl("/registrar-seguimiento");
 }
 
 }

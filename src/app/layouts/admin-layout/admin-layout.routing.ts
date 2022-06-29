@@ -34,6 +34,7 @@ import { RegistrarDonacionesComponent } from 'app/registrar-donaciones/registrar
 import { ListarDonacionesComponent } from 'app/listar-donaciones/listar-donaciones.component';
 import { RegistrarVoluntariosComponent } from 'app/registrar-voluntarios/registrar-voluntarios.component';
 import { ListarVoluntariosComponent } from 'app/listar-voluntarios/listar-voluntarios.component';
+import { RegistrarSeguimientoComponent } from 'app/registrar-seguimiento/registrar-seguimiento.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -121,7 +122,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'listarDonaciones',   component: ListarDonacionesComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']} },
     { path: 'registrarVoluntarios',   component: RegistrarVoluntariosComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
     { path: 'listarVoluntarios',   component: ListarVoluntariosComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']} },
-    // { path: 'table-list',     component: TableListComponent },
+    { path: 'registrar-seguimiento',     component: RegistrarSeguimientoComponent, canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']} },
     // { path: 'typography',     component: TypographyComponent },
     // { path: 'icons',          component: IconsComponent },
     // { path: 'maps',           component: MapsComponent },

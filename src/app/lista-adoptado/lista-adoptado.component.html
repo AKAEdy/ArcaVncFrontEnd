@@ -44,7 +44,18 @@
                                     <i class="material-icons">delete</i>
                                 </button>
                             </div>
+                            
                         </div>
+
+                        <div class="row">
+                           <div class="col-md-6">
+                                <button mat-raised-button type="submit" class="btn btn-danger btn-round"
+                                    class="btnseguimiento" (click)="irFicha()" >
+                                    <i class="material-icons">SEGUIMIENTO</i>
+                                </button>
+                           </div> 
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -107,15 +118,20 @@
                             </mat-form-field>
                         </div>
                     </div>
+
                     <div class="col-md-6">
 
                     </div>
+
                     <div class="row">
                         <div class="col-md-6">
+
                                 <button mat-raised-button type="submit" class="btn btn-success pull-right"
                                     (click)="updateAdopcion()">EDITAR</button>
+
                                 <button mat-raised-button type="submit" class="btn btn-danger pull-right"
                                     (click)="botonCancelar()" id="cancelar">CANCELAR</button>
+
                         </div>
                     </div>
                     <div class="clearfix"></div>

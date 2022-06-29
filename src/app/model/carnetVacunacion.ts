@@ -11,7 +11,6 @@
  */
 import { Animal } from './animal';
 import { Vacuna } from './vacuna';
-import { Animal } from './animal';
 
 export interface CarnetVacunacion { 
     animal?: Animal;
