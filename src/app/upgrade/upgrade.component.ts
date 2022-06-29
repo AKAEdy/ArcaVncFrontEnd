@@ -4,7 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AnimalesService } from 'app/api/animales.service';
 import { FichasClnicasService } from 'app/api/fichasClnicas.service';
 import { Animal } from 'app/model/animal';
-import { FichaClinicaDTO } from 'app/model/fichaClinicaDTO';
+// import { FichaClinicaDTO } from 'app/model/fichaClinicaDTO';
+import { fichaClinicaPost } from 'app/model/fichaClinicaPost';
 import { data } from 'jquery';
 import Swal from 'sweetalert2';
 
@@ -18,7 +19,7 @@ export class UpgradeComponent implements OnInit {
 
 id:number;
 animal:Animal= null;
-fichaClinica:FichaClinicaDTO[]=[];
+fichaClinica:fichaClinicaPost={};
   
   constructor(private activatedRoute: ActivatedRoute, private router: Router,
     private es:AnimalesService,private fichaClinService:FichasClnicasService) { }
@@ -30,10 +31,10 @@ fichaClinica:FichaClinicaDTO[]=[];
     this.es.getByIdUsingGET(id).subscribe(data =>{
       this.animal= data;
       console.log(data,"data de animal");
-      
+      localStorage.setItem('animal', JSON.stringify(this.animal));
 this.getFichaByIdAnimal(id);
       
-      localStorage.setItem('animal', JSON.stringify(this.animal));
+     
     },
       err => {
         this.list();
@@ -44,7 +45,7 @@ this.getFichaByIdAnimal(id);
     getFichaByIdAnimal(id:number){
 
       this.fichaClinService.getFichasClinicasByAnimalIdUsingGET1(id).subscribe(data=>{
-        this.fichaClinica=data;
+        this.fichaClinica=data as any;
         console.log(data,"imprimiendo valores de la fichaclinica dentro del metodo get animal");
       });
 
@@ -76,6 +77,18 @@ this.getFichaByIdAnimal(id);
     })
 
   }
+
+irVacuna(id:number)
+{
+  this.es.getByIdUsingGET(id).subscribe(data =>{
+    this.animal=data;
+  console.log("listado",data);
+  this.router.navigate (['/registroCarnet', id]);
+  });
+ 
+}
+
+
  irAtras(){
     this.router.navigate(['/table-list']);
   }

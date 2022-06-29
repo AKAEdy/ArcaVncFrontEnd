@@ -11,6 +11,7 @@ import { Storage, ref, uploadBytes, listAll, getDownloadURL } from '@angular/fir
 
 
 import Swal from 'sweetalert2';
+import { finalize, Observable } from 'rxjs';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -32,7 +33,7 @@ export class UserProfileComponent implements OnInit {
 // array de string de imagenes
   images: string[];
  
-
+  imgUrl: Observable<string | any>; 
   
   constructor(private animalesService: AnimalesService, private fichasClinicasService: FichasClnicasService, private router: Router,private _formBuilder: FormBuilder,private storage: Storage) {
     this.images = [];
@@ -88,6 +89,10 @@ export class UserProfileComponent implements OnInit {
           location.reload();
         });
         this.irFicha();
+       
+        
+
+        
          
       } else if (result.isDenied) {
         Swal.fire('Acción cancelada', '', 'info')
@@ -117,9 +122,10 @@ uploadImage($event: any) {
     .then(response => {
       console.log(response)
       this.getImages(imgRef);
-    })
-    .catch(error => console.log(error));
 
+    })
+
+    
 }
 
 getImages($event: any) {

@@ -18,7 +18,7 @@
 
       <div class="card-body">
         
-        <img class="card-img-top" src="images" alt="Card image cap">
+        
         <div class="mb-4">
           <br>
           <label for="formFileSm" class="form-label"
@@ -183,7 +183,7 @@
                   </div>
 
 
-                  <!--tamanio-->
+                  <!--tamanio
                   <div class="col-md-3">
                     <div class="form-group">
 
@@ -204,7 +204,7 @@
 </div>
                     </div>
                   </div>
-                  <br><br><br>
+                  <br><br><br>-->
 
                     <!-- fecha nac-->
 
@@ -243,7 +243,7 @@
                   <!--OBSERVACIONES-->
                   <div class="col-md-6">
                     <mat-form-field class="example-full-width">
-                      <textarea matInput rows="5" placeholder=" Observaciones"
+                      <textarea matInput rows="5" placeholder=" Observaciones/Procedencia"
                         [(ngModel)]="animal.observacionesProcedencia">
   </textarea>
                     </mat-form-field>
@@ -266,19 +266,7 @@
 
 <!--foto-->
              
-              <div class="col-md-8">
-                <div class="form-group">
-                  <input type="text" placeholder="foto ( solo una url)" class="form-control" name="foto" #foto="ngModel"
-                    [(ngModel)]="animal.foto" required />
-                  <div class="text-danger" *ngIf="
-            foto.hasError('required') && foto.touched
-            ">
-                    foto es requerido!
-                  </div>
-
-
-                </div>
-              </div>
+              
               <hr />
               <div class="form-actions">
                 <button type="button" class="btn btn-inverse"(click)="irAtras()" >

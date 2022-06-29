@@ -54,8 +54,12 @@ buscarIdUsuario(){
 }
 
   ngOnInit(): void {
+
+   
+      this.animal = JSON.parse(localStorage.getItem('animal'))?.data??null;
+    
     // igualando objetos de tipo cualquiera con datos almacenados en localStorage
-    this.animal = JSON.parse(localStorage.getItem('animal'));
+   
     this.loginUsuario = JSON.parse(localStorage.getItem('loginUsuario')).persona;
 
 
@@ -73,7 +77,7 @@ buscarIdUsuario(){
 
 
   guardar(){
-    console.log("LLEGA "+ this.animal.data.id,this.fichaClinica.fechaIngreso, );
+    console.log("LLEGA "+ this.animal.id,this.fichaClinica.fechaIngreso, );
     
     if( this.fichaClinica.motivoConsulta === "" || this.fichaClinica.trc === ""  || this.fichaClinica.conjuntiva === ""  || this.fichaClinica.diagnosticoDiferencial === ""  || this.fichaClinica.examenes_solicitados === ""  || this.fichaClinica.hallazgos ==="" || this.fichaClinica.pronostico ==="" ){
       Swal.fire({
@@ -93,11 +97,11 @@ buscarIdUsuario(){
         if (result.isConfirmed) {
 
           this.fichaClinica.id=0;
-          this.fichaClinica.animalId=this.animal.data.id;
+          this.fichaClinica.animalId=this.animal.id;
           this.fichaClinica.personaId=this.loginUsuario.id;
           console.log(this.fichaClinica);
           this.fichasClinicasService.createUsingPOST1(this.fichaClinica).subscribe(data =>{
-        
+        localStorage.removeItem("animal");
             // this.fichaClinica.animal.nombre=this.animal.nombre;
             // this.fichaClinica.veterinario.id=this.loginUsuario.data.id;
           

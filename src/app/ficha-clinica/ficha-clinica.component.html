@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header card-header-danger">
                         <h4 class="card-title">FICHA CLINICA ARCA</h4>
-                        <p class="card-category">Complete el formulario para el pacinte : {{animal.data.nombre}} {{loginUsuario.id}} </p>
+                        <p class="card-category">Complete el formulario para el pacinte : {{animal.data?.nombre}} {{loginUsuario.id}} </p>
                     </div>
                     <div class="card-body">
                         <form #f="ngForm" (ngSubmit)="guardar()" novalidate>

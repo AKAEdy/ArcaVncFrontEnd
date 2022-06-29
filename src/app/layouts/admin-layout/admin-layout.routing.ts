@@ -24,16 +24,13 @@ import { RoleGuard } from 'app/guards/role.guard';
 import { IsAuthenticatedGuard } from 'app/guards/is-authenticated.guard';
 import { RegistrarVeterinariosComponent } from 'app/registrar-veterinarios/registrar-veterinarios.component';
 import { ListarVeterinariosComponent } from 'app/listar-veterinarios/listar-veterinarios.component';
-import { RegistroCarnetvacunaComponent } from 'app/registro-carnetvacuna/registro-carnetvacuna.component';
-
-
-
-
 import { RegistrarAdoptanteComponent } from 'app/registrar-adoptante/registrar-adoptante.component';
 import { RegistrarDonacionesComponent } from 'app/registrar-donaciones/registrar-donaciones.component';
 import { ListarDonacionesComponent } from 'app/listar-donaciones/listar-donaciones.component';
 import { RegistrarVoluntariosComponent } from 'app/registrar-voluntarios/registrar-voluntarios.component';
 import { ListarVoluntariosComponent } from 'app/listar-voluntarios/listar-voluntarios.component';
+import { RegistroCarnetComponent } from 'app/registro-carnet/registro-carnet.component';
+
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -114,9 +111,9 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'listaCitas',   component: ListarCitasComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']} },
     { path: 'registrarVeterinarios',   component: RegistrarVeterinariosComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
     { path: 'listarVeterinarios',   component: ListarVeterinariosComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']} },
-    { path: 'registrocarnetvacunas',     component: RegistroCarnetvacunaComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']} },
-    { path: 'registrarAdoptantes',   component: RegistrarAdoptanteComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
-    
+   { path: 'registrarAdoptantes',   component: RegistrarAdoptanteComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
+   { path: 'registroCarnet/:id',   component: RegistroCarnetComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
+  
     { path: 'registrarDonaciones',   component: RegistrarDonacionesComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
     { path: 'listarDonaciones',   component: ListarDonacionesComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']} },
     { path: 'registrarVoluntarios',   component: RegistrarVoluntariosComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
