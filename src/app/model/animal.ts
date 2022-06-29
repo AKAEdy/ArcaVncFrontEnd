@@ -9,8 +9,9 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { CarnetVacunacion } from './carnetVacunacion';
-import { FichaClinica } from './fichaClinica';
+
+import { CarnetVacunacion } from "./carnetVacunacion";
+import { FichaClinica } from "./fichaClinica";
 
 export interface Animal { 
    observacionesProcedencia?: string;
@@ -29,4 +30,8 @@ export interface Animal {
     sexo?: string;
     procedencia?:string;
     tamanyo?: string;
+
+
+
+
 }

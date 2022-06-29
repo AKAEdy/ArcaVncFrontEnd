@@ -14,10 +14,13 @@ import { Veterinario } from './veterinario';
 
 export interface FichaClinica { 
     alimentacion?: number;
+    animal: Animal;
     conjuntiva?: string;
     costo?: number;
     diagnosticoDiferencial?: string;
     esterilizacion?: string; 
+
+   
     fechaIngreso?: Date;
     frecuenciaCardiaca?: number;
     frecuenciaRespiratoria?: number;
@@ -27,9 +30,10 @@ export interface FichaClinica {
     mucosas?: string;
     pronostico?: string;
     temperatura?: number;
+    tipoPaciente?: string;
     trc?: string;
     veterinario?: Veterinario;
-    animal?:Animal;
+   
     examenes_solicitados?: string;
-    tipoPaciente?:string;
+   
 }

@@ -70,6 +70,12 @@
         
                   </div>
                   
+                 
+                      
+                    </div>
+                  
+                  </div>
+
                   <div class="row justify-content-center">
                     <div class="col-md-5">
 
@@ -95,6 +101,7 @@
                     </div>
 
                   </div>
+
 
                   <br>
                   <br>
@@ -125,20 +132,58 @@
                           <br>
                           <br>
                                 <i class="fas fa-user"><b> CONJUNTIVA: </b> <label  class="card-text" ></label></i>	
+
+                  
+                  <div class="container"*ngFor="let ficha of fichaClinica">
+                    <h4>FICHA CLINICA</h4>
+                    <div class="row justify-content-center" >
+                     <div class="col-4">
+                          <br> 
+                          <br>
+                            <i class="fas fa-user"><b> FECHA INGRESO:</b> <label  class="card-text" >{{ficha.fechaIngreso}}</label></i>
+                            <hr>
+                          <br>
+                          <br>
+                            <i class="fas fa-user"><b> MOTIVO COLSULTA: </b> <label  class="card-text" >{{ficha.motivoConsulta}}</label></i>	
+                            <hr>
+                          <br>
+                          <br>
+                              <i class="fas fa-user"><b> HALLAZGOS: </b> <label  class="card-text" >{{ficha.hallazgos}}</label></i>	
+                              <hr>
+                          <br>
+                          <br>
+                                <i class="fas fa-user"><b> TEMPERATURA: </b> <label  class="card-text" >{{ficha.temperatura}}</label></i>	
+                                <hr>
+                          <br>
+                          <br>
+                                <i class="fas fa-user"><b> CONJUNTIVA: </b> <label  class="card-text" >{{ficha.conjuntiva}}</label></i>	
+
                                 <hr>
         
                           <br>
                           <br>
+
                                 <i class="fas fa-user"><b> FRECUENCIA CARDIACA: </b> <label  class="card-text" ></label></i>	
+
+                                <i class="fas fa-user"><b> FRECUENCIA CARDIACA: </b> <label  class="card-text" >{{ficha.frecuenciaCardiaca}}</label></i>	
+
                                 <hr>
         
                           <br>
                           <br>
+
                                <i class="fas fa-user"><b> FRECUENCIA RESPIRATORIA: </b> <label  class="card-text" ></label></i>	
                                <hr>
                           <br>
                           <br>
                                <i class="fas fa-user"><b> TCR: </b> <label  class="card-text" ></label></i>	
+
+                               <i class="fas fa-user"><b> FRECUENCIA RESPIRATORIA: </b> <label  class="card-text" >{{ficha.frecuenciaRespiratoria}}</label></i>	
+                               <hr>
+                          <br>
+                          <br>
+                               <i class="fas fa-user"><b> TRC: </b> <label  class="card-text" ></label>{{ficha.trc}}</i>	
+
                                <hr>              
                         
                      </div>
@@ -147,6 +192,7 @@
                           
                           <br>
                           <br>
+
                                  <i class="fas fa-user"><b> MUCOSA: </b> <label  class="card-text" ></label></i>	
                                  <hr>
                           <br>
@@ -180,6 +226,34 @@
         
                           
                         
+
+                                 <i class="fas fa-user"><b> MUCOSA: </b> <label  class="card-text" >{{ficha.mucosas}}</label></i>	
+                                 <hr>
+                          <br>
+                          <br>
+                            <i class="fas fa-user"><b> ESTERILIZACION: </b> <label  class="card-text" >{{ficha.esterilizacion}}</label></i>	
+                            <hr>
+                          <br>
+                          <br>
+                            <i class="fas fa-user"><b> PRONOSTICO: </b> <label  class="card-text" >{{ficha.pronostico}}</label></i>	
+                            <hr>
+                          <br>
+                          <br>
+                            <i class="fas fa-user"><b> TIPO PACIENTE: </b> <label  class="card-text" >{{ficha.tipoPaciente}}</label></i>	
+                            <hr>
+                          <br>
+                          <br>
+                            <i class="fas fa-user"><b> EXAMENES SOLICITADOS: </b> <label  class="card-text" >{{ficha.examenes_solicitados}}</label></i>	
+                            <hr>
+                          <br>
+                          <br>
+                            <i class="fas fa-user"><b> DIAGNOSTICO DIFERENCIAL: </b> <label  class="card-text" >{{ficha.diagnosticoDiferencial}}</label></i>	
+                            <hr>
+                          <br>
+                          <br>
+                            <i class="fas fa-user"><b>COSTO: </b> <label  class="card-text" >{{ficha.costo}}</label></i>	
+                            <hr>
+
                       </div>
         
         
@@ -205,9 +279,12 @@
                             <i class="fa fa-check"></i> EDITAR
                           </button>
 
+
                           <button type="button" class="btn btn-success mr-2">
                             <i class="fa fa-check"></i> CARNET DE VACUNA 
                           </button>
+
+
           
                           </div>
                           
@@ -234,8 +311,4 @@
 
         </div>
       </div>
-   </div>
-</div>
-
-
-
+           

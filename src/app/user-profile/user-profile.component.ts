@@ -7,6 +7,7 @@ import { Animal } from 'app/model/animal';
 import { FichaClinica } from 'app/model/fichaClinica';
 import { Validacion } from 'app/validaciones/Validacion';
 import { ViewChild } from '@angular/core';
+import { Storage, ref, uploadBytes, listAll, getDownloadURL } from '@angular/fire/storage';
 
 
 import Swal from 'sweetalert2';
@@ -24,15 +25,17 @@ export class UserProfileComponent implements OnInit {
   animales:any[] = [];
   validacion: Validacion = new Validacion();
   
+  public formSubmitted = false;
+  
 
   animal: Animal={};
-
-
-  public formSubmitted = false;
+// array de string de imagenes
+  images: string[];
+ 
 
   
-  constructor(private animalesService: AnimalesService, private fichasClinicasService: FichasClnicasService, private router: Router,private _formBuilder: FormBuilder) {
-
+  constructor(private animalesService: AnimalesService, private fichasClinicasService: FichasClnicasService, private router: Router,private _formBuilder: FormBuilder,private storage: Storage) {
+    this.images = [];
    }
 
   ngOnInit():void {
@@ -40,13 +43,12 @@ export class UserProfileComponent implements OnInit {
     localStorage.removeItem('animal');
 
   }
+
   
+
   resetForm() {
     this.MyForm.reset();
   }
-
-
-
 
   guardarMascota(){
 
@@ -96,50 +98,6 @@ export class UserProfileComponent implements OnInit {
     }) 
   }
 }
-
-
-
-
-
-s
-
-
-
-  // guardarMascota(form: NgForm) {
-  //   this.formSubmitted = true;
-  //   if (form.invalid) {
-  //     return;
-  //   } 
-  //   if (this.animal.id) {
-  //     this.animalesService
-  //       .updateUsingPUT(this.animal, this.animal.id)
-  //       .subscribe((animales) => {
-  //         Swal.fire(
-  //           "Actualizar mascota",
-  //           `¡${this.animal.nombre} actualizado con exito!`,
-  //           "success"
-  //         );
-  //         this.irFicha();
-  //       });
-  //     }else {
-        
-  //     //  console.log("LLEGA "+ this.animal.nombre,this.animal.especie,this.animal.raza, this.animal.peso, this.animal.color, this.animal.sexo, this.animal.tamanyo, this.animal.edad);
-  // // this.animales.push(this.animal);this.animal={}
-  //     this.animalesService.createUsingPOST(this.animal).subscribe(data => {
-        
-  //       this.animal=data;
-  //       Swal.fire(
-
-  //        "Nueva Mascota",
-  //        `¡${this.animal.especie} creada con exito!`,
-  //         "success"
-  //       );
-  //       console.log("imprimiendo", data)
-      
-  //      this.irFicha();
-  //    });
-  //  } }
-
   irFicha() {
    this.router.navigateByUrl("/registrofichaclinica");
  }
@@ -148,53 +106,42 @@ s
   localStorage.removeItem('animal');
 }
 
-
-
-
-
-
-
-
-
-
-
-// guardarFicha(form: NgForm) {
-//   this.formSubmitted = true;
-//   if (form.invalid) {
-//     return;
-//   } 
-//   if (this.fichaClinica.id) {
-//     this.fichasClinicasService
-//       .updateUsingPUT1(this.fichaClinica, this.fichaClinica.id)
-//       .subscribe((fichasClinicas) => {
-//         Swal.fire(
-//           "Actualizar mascota",
-//           `¡${this.fichaClinica.id} actualizado con exito!`,
-//           "success"
-//         );
-//         this.irLista();
-//       });
-//     }else {
-//     //  console.log("LLEGA "+ this.animal.nombre,this.animal.especie,this.animal.raza, this.animal.peso, this.animal.color, this.animal.sexo, this.animal.tamanyo, this.animal.edad);
-// // this.animales.push(this.animal);this.animal={}
-//     this.fichasClinicasService.createUsingPOST1(this.fichaClinica).subscribe(data => {
-//       this.fichaClinica=data;
-//       Swal.fire(
-
-//        "Nueva Ficha",
-//        `¡${this.fichaClinica.id} creada con exito!`,
-//         "success"
-//       );
-//       console.log("imprimiendo", data)
-    
-//    //  this.irFicha();
-//    });
-//   }}
-
  irLista() {
   this.router.navigateByUrl("/TableList");
 }
 
+uploadImage($event: any) {
+  const file = $event.target.files[0];
+  console.log(file);
+
+  const imgRef = ref(this.storage, `images/${file.name}`);
+
+  uploadBytes(imgRef, file)
+    .then(response => {
+      console.log(response)
+      this.getImages(imgRef);
+    })
+    .catch(error => console.log(error));
+
+}
+
+getImages($event: any) {
+  const file = $event.target.files[1];
+  const imagesRef = ref(this.storage,`images/${file.name}`);
+
+  listAll(imagesRef)
+    .then(async response => {
+      console.log(response);
+      this.images = [];
+      for (let item of response.items) {
+        const url = await getDownloadURL(item);
+        this.images.push(url);
+        console.log(url,"imprimiendo la url de la imagen");
+        
+      }
+    })
+    .catch(error => console.log(error));
+}
 
 }
 

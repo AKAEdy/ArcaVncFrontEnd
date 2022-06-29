@@ -18,12 +18,16 @@
 
       <div class="card-body">
         
-        <img class="card-img-top" src="../assets/img/perrito.jpeg" alt="Card image cap">
+        <img class="card-img-top" src="images" alt="Card image cap">
         <div class="mb-4">
           <br>
           <label for="formFileSm" class="form-label"
             class="control-label col-sm-4 d-flex justify-content-center align-items-center">Subir foto</label>
-          <input class="form-control form-control-sm" id="formFileSm" type="file">
+            <input type="file" (change)="uploadImage($event)">
+
+            <div class="images">
+              <img [src]="image" *ngFor="let image of images" width="200">
+            </div>
         </div>
       </div>
     </div>
@@ -175,8 +179,6 @@
                 ">
                         Edad es requerido!
                       </div>
-
-
                     </div>
                   </div>
 
@@ -197,7 +199,9 @@
 
                       <div class="text-danger" *ngIf="tamanyo.hasError('required') && tamanyo.touched">
                         Tamaño es requerido!
-                      </div>
+
+
+</div>
                     </div>
                   </div>
                   <br><br><br>
@@ -229,13 +233,12 @@
                       </div>
                     </textarea>
                   </mat-form-field>
-                    </div>
+
+
+
+
+</div>
                   
-
-  
-
-                  
-
 
                   <!--OBSERVACIONES-->
                   <div class="col-md-6">

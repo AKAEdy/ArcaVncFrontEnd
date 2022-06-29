@@ -24,6 +24,14 @@ import { TratamientosService } from './api/tratamientos.service';
 import { MedicamentosService } from './api/medicamentos.service';
 import { RegistroCarnetvacunaComponent } from './registro-carnetvacuna/registro-carnetvacuna.component';
 
+
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+import { AdoptantesService } from './api/adoptantes.service';
+import { DonacionesService } from './api/donaciones.service';
+import { VoluntariosService } from './api/voluntarios.service';
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -32,7 +40,9 @@ import { RegistroCarnetvacunaComponent } from './registro-carnetvacuna/registro-
     HttpClientModule,
     ComponentsModule,
     RouterModule,
-    AppRoutingModule,
+    AppRoutingModule, provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage())
+
     
   ],
   declarations: [
@@ -43,8 +53,9 @@ import { RegistroCarnetvacunaComponent } from './registro-carnetvacuna/registro-
     RegistroCarnetvacunaComponent,
     
 
+
   ],
-  providers: [{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     AdopcionControllerService,
     AdoptanteControllerService,
     AnimalesService,
@@ -57,8 +68,11 @@ import { RegistroCarnetvacunaComponent } from './registro-carnetvacuna/registro-
     TratamientosService,
     MedicamentosService,
     VeterinariosService ,
-    MedicamentosService ],
+    MedicamentosService,
     
+    AdoptantesService,
+    DonacionesService,
+    VoluntariosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,12 +11,18 @@ import Swal from 'sweetalert2';
 import { CarnetVacunasService } from 'app/api/carnetvacuna.service';
 
 
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AnimalesService } from 'app/api/animales.service';
+
+
 @Component({
   selector: 'registro-carnetvacuna',
   templateUrl: './registro-carnetvacuna.component.html',
   styleUrls: ['./registro-carnetvacuna.component.css']
 })
 export class RegistroCarnetvacunaComponent implements OnInit {
+
 
   filterpost:any='';
   dataSource:any={};
@@ -40,6 +46,18 @@ export class RegistroCarnetvacunaComponent implements OnInit {
     //this.pagina = 0;
     //this.getAllVacunas();
     
+
+  idAnimal:number;
+  animal:any={};
+  constructor(private router: Router) { 
+    this.animal={};
+ 
+  }
+
+  ngOnInit(): void {
+    this.animal = JSON.parse(localStorage.getItem('animal'));
+   
+
   }
 
   getAllVacunas(){
