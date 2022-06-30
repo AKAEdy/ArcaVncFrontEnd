@@ -48,13 +48,13 @@
                         </div>
 
                         <div class="row">
-                           <div class="col-md-6">
-                                <button mat-raised-button type="submit" class="btn btn-danger btn-round"
-                                    class="btnseguimiento" (click)="irFicha()" >
-                                    <i class="material-icons">SEGUIMIENTO</i>
-                                </button>
-                           </div> 
-                        </div>
+                            <div class="col-md-6">
+                                 <button mat-raised-button type="submit" class="btn btn-danger btn-round"
+                                     class="btnseguimiento" (click)="getByIdAdoptantes(adopciones.id)" >
+                                     <i class="material-icons">SEGUIMIENTO</i>
+                                 </button>
+                            </div> 
+                         </div>
                         
                     </div>
                 </div>
@@ -81,23 +81,7 @@
                                 <input matInput placeholder="Buscar adoptante" type="text" [(ngModel)]="cedulas" disabled>
                             </mat-form-field>
                         </div>
-                        <!-- <div class="col-md-6">
-                            <div>
-                                <div class="btn-group">
-                                    <div>
-                                        <button mat-raised-button type="submit" class="btn btn-danger btn-round"
-                                            class="btneditar" (click)="getCedulaAdoptante()">
-                                            <i class="fa fa-search"></i> Buscar
-                                        </button>
-                                    </div>
-                                    <div>
-                                        <button mat-raised-button type="submit" class="btn btn-danger btn-round"
-                                            class="btneliminar">
-                                            <i class="fa fa-plus"></i> Registrar Adoptante</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
+                        
                     </div>
 
                     <div class="row">

@@ -8,161 +8,160 @@
             <div class="card"> 
             <div class="card-header card-header-danger">
                 <h5 class="card-title">"SEGUIMIENTO DE LA MASCOTA"</h5>
-                   </div>
-                    </div>
+            </div>
+            </div>
 
-                    <div class="card1">
-                        <div class="container">
-                            <div class="row justify-content-center">
-    
-    
-                                <div class="col-4">
-                                    <br>
+                    <div class="row">
+                        <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="container">
                                     <h4>Información</h4>
-                                    <br>
-                                    <br>
-                                    <i class="fas fa-user"><b> ADOPTANTE: </b> <label  class="card-text" ></label></i>	
-                                    <hr> 
-                                    <i class="fas fa-user"><b> CORREO ELECTRONICO: </b> <label  class="card-text" ></label></i>	
-                                    <hr> 
+                                    <div class="row justify-content-center">
+
+                                        <div class="row justify-content-center" *ngFor="let adopciones of adopcion">
+
+                                            <div class="col-4">
+                                                <br>
+                                                <i class="fas fa-user"><b> ADOPTANTE: </b> <label  class="card-text" >{{adopciones.adoptante.persona.nombre}} {{adopciones.adoptante.persona.apellidos}}</label></i>	
+                                                <hr>
+                                                <i class="fas fa-user"><b> CORREO ELECTRONICO: </b> <label  class="card-text" >{{adopciones.adoptante.persona.correo}}</label></i>	
+                                                <hr>
+                                            </div>
+                
+                                            <div class="col-4">
                                     
-                                </div>
-    
-                                <div class="col-4">
-                            
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <i class="fas fa-user"><b> TELEFONO: </b> <label  class="card-text" ></label></i>	
-                                    <hr> 
-                                    <i class="fas fa-user"><b> DIRECCION: </b> <label  class="card-text" ></label></i>	
-                                    <hr>
-                                    <i class="fas fa-user"><b> FECHA: </b> <label  class="card-text" ></label></i>	
-                                    <hr> 
-                                  
-                                </div>
-                                <h3>_______________________________________________________</h3>
-
-                                <div class="col-md-8">
-
-                                    <div class="row">
-                                        <h4>Mensaje:</h4>
-                                        <form>
-                                            <div class="col-md-5">
-                                                <mat-form-field class="example-full-width"> 
-                                                    <textarea matInput placeholder="ESCRIBIR MENSAJE" type="text" ></textarea>
-                                                </mat-form-field>
-
-                                                <div class="form-actions">
-                                                        <button type="submit" mat-raised-button class="btn btn-danger pull-right" >ENVIAR</button>
-                                                        <div class="clearfix"></div>
-                                                </div>
-
+                                                <br>
+                                                <i class="fas fa-user"><b> TELEFONO: </b> <label  class="card-text" >{{adopciones.adoptante.persona.telefono}}</label></i>	
+                                                <hr>
+                                                <i class="fas fa-user"><b> DIRECCION: </b> <label  class="card-text" >{{adopciones.adoptante.persona.direccion}}</label></i>	
+                                                <hr>
                                             </div>
-
-                                            
-                                        </form>
-    
-                                    </div>
-                                </div>
-
-                                <h3>___________________________________________________________</h3>
-
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <h4>En Proceso:</h4>
-                                        <div class="card-body7">
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <thead class=" text-primary">
-                                                        <th>
-                                                            FECHA:
-                                                        </th>
-                                                        <th>
-                                                            RESPUESTA:
-                                                        </th>
-                                                        <th>
-                                                            ACCIONES:
-                                                        </th>
-                                                        
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr >
-                                                            <td>
-                                                            </td>
-                                                            <td>
-                                                            </td>
-                                                            <td>
-                                                            </td>
-                                                            
-                                                            
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-
-                                <h3>__________________________________________________________</h3>
-
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <h4>Historial:</h4>
-                                        <div class="card-body7">
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <thead class=" text-primary">
-                                                        <th>
-                                                            FECHA:
-                                                        </th>
-                                                        <th>
-                                                            RESPUESTA:
-                                                        </th>
-                                                        
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr >
-                                                            <td>
-                                                            </td>
-                                                            <td>
-                                                            </td>
-                                                            
-                                                            
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-
-                                <div class="col-md-5">
-
-                                    <form>
-                                        <div class="col-md-5">
-
-
-                                            <div class="form-actions">
-                                                    <button type="submit" mat-raised-button class="btn btn-danger pull-right" >ELIMINAR SEGUIMIENTO</button>
-                                                    <div class="clearfix"></div>
-                                            </div>
-
-                                        </div>
-
+                                            <div class="col-4">
                                         
-                                    </form>
+                                                <br> 
+                                    
+                                                <i class="fas fa-user"><b> FECHA: </b> <label  class="card-text" >{{adopciones.fechaAdopcion}}</label></i>	
+                                                <hr> 
+                                              
+                                            </div>
+
+                                        </div>
+            
+                                        
+                                        
+                                        <div class="col-md-12">
+                                            <br>
+                                            <br>
+                                            <label>--MENSAJE--</label>
+        
+        
+                                            <div class="row justify-content-center">
+                                                <form>
+                                                    <div class="col-4">
+                                                        <mat-form-field class="example-full-width"> 
+                                                            <textarea matInput placeholder="ESCRIBIR MENSAJE" type="text" ></textarea>
+                                                        </mat-form-field>
+        
+                                                    </div>
+                                                    <div class="col-4">
+                                                       <div class="form-actions">
+                                                                <button type="submit" mat-raised-button class="btn btn-danger pull-right" >ENVIAR</button>
+                                                                <div class="clearfix"></div>
+                                                        </div>
+        
+                                                    </div>
+        
+                                                    
+                                                </form>
+            
+                                            </div>
+                                        </div>      
+        
+                                        <div class="row justify-content-center">
+                                            <div class="col-md-12">
+                                                <br>
+                                                <br>
+                                                <label>---------- EN PROCESO ----------</label>
+                                           
+                                                    <table class="table table-striped table-hover">
+                                                        <thead class="text-center">
+                                                            <tr>
+                                                              <th class="table-danger" scope="col">FECHA:</th>
+                                                              <th class="table-danger" scope="col">RESPUESTA ADOPTANTE:</th>
+                                                              <th class="table-danger" scope="col">ACCIONES:</th>
+                                                            </tr>
+                                                          </thead>
+                                                          <tbody class="text-center">
+                                                            <tr>
+            
+                                                                <td scope="row"></td>
+                                                                <td></td>
+                                                                <td>
+                                                                    <div class="text-center">
+                                                                        <div class="btn-group">
+                                                                            <button class="btn btn-danger" type="submit">FINALIZAR</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+            
+                                                              </tr>
+                                                          </tbody>
+                                                    
+                                                    </table>
+                                            </div>
+                                        </div>
+        
+                                        <div class="row justify-content-center">
+                                            <div class="col-md-12">
+                                                <br>
+                                                <br>
+                                                <label>---------- HISTORIAL ----------</label>
+                                                    <table class="table table-striped table-hover">
+                                                        <thead class="text-center">
+                                                            <tr>
+                                                              <th class="table-danger" scope="col">FECHA:</th>
+                                                              <th class="table-danger" scope="col">RESPUESTA ADOPTANTE:</th>
+                                                            </tr>
+                                                          </thead>
+                                                          <tbody class="text-center">
+                                                            <tr>
+            
+                                                                <td scope="row"></td>
+                                                                <td></td>
+                                                                
+            
+                                                              </tr>
+                                                          </tbody>
+                                                    
+                                                    </table>
+                                            </div>
+                                        </div>
+        
+        
+                                        
+                                                <div class="row justify-content-center">
+        
+                                                    <div class="form-actions">
+                                                            <button type="submit" mat-raised-button class="btn btn-danger pull-right" >ELIMINAR SEGUIMIENTO</button>
+                                                            <div class="clearfix"></div>
+                                                    </div>
+        
+                                                </div>
+                                        
+        
+                                      
+            
+                                    </div>
                                 </div>
-                                
-    
+        
                             </div>
                         </div>
+                        </div>
+                    </div>
 
-                    </div> <!--carda que contiene todo-->
+                    
+                    
                 
                 </div>
             </div>

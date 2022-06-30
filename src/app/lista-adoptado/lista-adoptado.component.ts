@@ -20,6 +20,13 @@ export class ListaAdoptadoComponent implements OnInit {
   adoptante: Adoptante = {};
   cedulas: string;
   descripcion:string;
+  nombreadoptante:string;
+  apellidoadoptante:string;
+  correoadoptante:string;
+  telefonoadoptante:string;
+  direcionadoptante:string;
+  fechaAdopcion:string;
+
   constructor( private router: Router, private adopcionService: AdopcionControllerService, private adoptanteService: AdoptanteControllerService) { }
 
   ngOnInit(): void {
@@ -27,6 +34,24 @@ export class ListaAdoptadoComponent implements OnInit {
     this.getAllAdopcion();
     this.filterpost=this.adopcion;
   }
+
+
+  //seguimiento
+getByIdAdoptantes(id:number){
+
+  this.adopcionService.etAdopcionPorIdUsingGET(id).subscribe(data =>{
+  this.adopcionid = data
+  this.nombreadoptante = this.adopcionid.adoptante.persona.nombre
+  this.apellidoadoptante = this.adopcionid.adoptante.persona.apellidos
+  this.correoadoptante = this.adopcionid.adoptante.persona.correo
+  this.telefonoadoptante=this.adopcionid.adoptante.persona.telefono
+  this.direcionadoptante=this.adopcionid.adoptante.persona.direccion
+  this.fechaAdopcion=this.adopcionid.fechaAdopcion
+
+})
+  this.Irseguimiento();
+}
+
   
   getAllAdopcion(){
     this.adopcionService.getAllAdopcionesUsingGET().subscribe(data=>{
@@ -75,6 +100,8 @@ this.descripcion = this.adopcionid.descripcion
 })
   this.mostrarEditar();
 }
+
+
 
 getCedulaAdoptante(){
   this.cedulas = this.adopcionid.adoptante.persona.cedula
@@ -161,7 +188,7 @@ botonCancelar(){
   document.getElementById("lista").style.display="block";
 }
 
-irFicha() {
+Irseguimiento() {
   this.router.navigateByUrl("/registrar-seguimiento");
 }
 
