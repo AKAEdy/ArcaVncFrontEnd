@@ -42,7 +42,7 @@
                                         
                                                 <br> 
                                     
-                                                <b> FECHA: </b> <label  class="card-text" >{{fechaadopcion}}</label>	
+                                                <b> FECHA: </b> <label  class="card-text" >{{fechaadopcion}}</label>
                                                 <hr> 
                                                 <b> DIRECCION: </b> <label  class="card-text" >{{direcionadoptante}}</label>	
                                                 <hr>
@@ -62,13 +62,13 @@
                                                 <form>
                                                     <div class="col-4">
                                                         <mat-form-field class="example-full-width"> 
-                                                            <textarea matInput placeholder="ESCRIBIR MENSAJE" type="text" ></textarea>
+                                                            <textarea [(ngModel)]="seguimientoAdopcion.mensajeSeguimiento" matInput placeholder="ESCRIBIR MENSAJE" type="text" ></textarea>
                                                         </mat-form-field>
         
                                                     </div>
                                                     <div class="col-4">
                                                        <div class="form-actions">
-                                                                <button type="submit" mat-raised-button class="btn btn-danger pull-right" >ENVIAR</button>
+                                                                <button type="submit" mat-raised-button class="btn btn-danger pull-right" (click)="enviarMensaje()">ENVIAR</button>
                                                                 <div class="clearfix"></div>
                                                         </div>
         

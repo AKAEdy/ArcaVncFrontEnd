@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdopcionControllerService } from 'app/api/adopcionController.service';
 import { AdoptanteControllerService } from 'app/api/adoptanteController.service';
+import { SeguimientoDeAdoptadosService } from 'app/api/seguimientoDeAdoptados.service';
 import { Adopcion } from 'app/model/adopcion';
 import { Adoptante } from 'app/model/adoptante';
+import { SeguimientoAdopcionDto } from 'app/model/seguimientoAdopcionDto';
  
 @Component({
   selector: 'registrar-seguimiento',
@@ -25,9 +27,14 @@ export class RegistrarSeguimientoComponent implements OnInit {
   telefonoadoptante:string;
   direcionadoptante:string;
   fechaadopcion:string;
-  
+  seguimientoAdopcion:SeguimientoAdopcionDto={
+    estadoSeguimiento: false,
+    fechaSeguimiento: undefined,
+    mensajeSeguimiento: ''
+  };
+  mensaje:string;
 
-  constructor( private router: Router, private adopcionService: AdopcionControllerService, private adoptanteService: AdoptanteControllerService) { }
+  constructor( private router: Router, private adopcionService: AdopcionControllerService, private adoptanteService: AdoptanteControllerService, private seguimientoAdopcionServiceImpl: SeguimientoDeAdoptadosService) { }
 
 
   ngOnInit(): void {
@@ -53,4 +60,10 @@ Irseguimiento() {
   this.router.navigateByUrl("/registrar-seguimiento");
 }
 
+enviarMensaje(){
+  var adopcion_id = parseInt (localStorage.getItem("idAdoptado"));
+  this.seguimientoAdopcion.fechaSeguimiento = new Date(this.fechaadopcion);
+  this.seguimientoAdopcionServiceImpl.crearSeguimientoUsingPOST(this.seguimientoAdopcion, adopcion_id).subscribe(data =>{
+  })
+}
 }
