@@ -1,5 +1,5 @@
 export interface AnimalRefugioRequest {
-
+ id?:number;
     nombre?: string;
 
     especie?: string;

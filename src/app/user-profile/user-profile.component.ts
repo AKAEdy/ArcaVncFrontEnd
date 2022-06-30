@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 import { finalize, Observable } from 'rxjs';
 import { AnimalRefugioRequest } from 'app/model/animalRefugioRequest';
 import { AnimalesRefugioService } from 'app/api/animalesRefugio.service';
+import { AnimalRefugioResponse } from 'app/model/animalRefugioResponse';
 
 @Component({
   selector: 'app-user-profile',
@@ -32,7 +33,7 @@ imagen:File=null;
   public formSubmitted = false;
   
  
-  animal: AnimalRefugioRequest={};
+  animal: AnimalRefugioResponse={};
 
 
   
@@ -74,7 +75,7 @@ imagen:File=null;
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        this.animalesRefugioService.guardarAnimalUsingPOSTForm(this.animal.colorCaracteristicas,this.animal.especie, this.animal.lugarEstancia, this.animal.nombre, this.animal.observacionesProcedencia, this.animal.raza, this.animal.sexo, this.imagen, this.animal.adoptado, false, this.animal.edad,this.animal.fechaNacimiento,this.animal.peso, this.animal.procedencia, null, false)
+        this.animalesRefugioService.guardarAnimalUsingPOSTForm( this.animal.colorCaracteristicas,this.animal.especie, this.animal.lugarEstancia, this.animal.nombre, this.animal.observacionesProcedencia, this.animal.raza, this.animal.sexo, this.imagen, this.animal.adoptado, false, this.animal.edad,  this.animal.fechaNacimiento,this.animal.peso, this.animal.procedencia)
       .subscribe(data =>{
           this.animal=data;
           console.log("datos enviados", data)

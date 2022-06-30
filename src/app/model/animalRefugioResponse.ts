@@ -12,18 +12,18 @@
 
 export interface AnimalRefugioResponse { 
     adoptado?: boolean;
-    colorCaracteristicas: string;
+    colorCaracteristicas?: string;
     deleted?: boolean;
     edad?: number;
-    especie: string;
+    especie?: string;
     fechaNacimiento?: Date;
     id?: number;
-    lugarEstancia: string;
-    nombre: string;
-    observacionesProcedencia: string;
+    lugarEstancia?: string;
+    nombre?: string;
+    observacionesProcedencia?: string;
     peso?: number;
     procedencia?: string;
-    raza: string;
-    sexo: string;
+    raza?: string;
+    sexo?: string;
     urlImagenAnimal?: string;
 }

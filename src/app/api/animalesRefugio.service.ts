@@ -622,5 +622,14 @@ export class AnimalesRefugioService {
             }
         );
     }
+    public guardarAnimal(colorCaracteristicas: string, especie: string, lugarEstancia: string, nombre: string, observacionesProcedencia: string, raza: string, sexo: string, adoptado?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, procedencia?: string,urlImagenAnimal?: File): Observable<any> {
+        const formData = new FormData();
+        formData.append('multipartFile', urlImagenAnimal);
+
+        return this.httpClient.request<any>('post',`${this.basePath}/animalesrefugio/saveanimal`);
+        // return this.httpClient.post<any>(this.imagenURL + 'upload', formData);
+      }
 
 }
+
+
