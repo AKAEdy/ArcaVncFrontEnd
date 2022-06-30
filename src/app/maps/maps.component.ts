@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./maps.component.css']
 })
 export class MapsComponent implements OnInit {
-  tratamiento: Tratamiento = {};
+  //tratamiento: Tratamiento = {};
   medicamento:Medicamento={};
   idFichaClinica=1 as any;
   public formSubmitted = false;
@@ -67,13 +67,13 @@ export class MapsComponent implements OnInit {
     //  this.router.navigateByUrl("/registrofichaclinica");
   }
 
-  FindByNombre(id: string){
-    console.log("recibiendo la id de medicamento", id);
+  // FindByNombre(id: string){
+  //   console.log("recibiendo la id de medicamento", id);
     
-    this.medicamentoService.getMedicamentoByNombre(id).subscribe(data=>{
-      this.medicamento=data;
-      console.log("imprimiendo texto a buscar de medicamento",data);
-    });
-  }
+  //   this.medicamentoService.getMedicamentoByNombre(id).subscribe(data=>{
+  //     this.medicamento=data;
+  //     console.log("imprimiendo texto a buscar de medicamento",data);
+  //   });
+  // }
 
 }

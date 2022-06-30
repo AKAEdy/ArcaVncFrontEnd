@@ -55,7 +55,7 @@ if (this.veterinarios.persona.cedula === undefined || this.veterinarios.cargo ==
   }).then((result) => {
     /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
-      this.veterinarioService.createUsingPOST9(this.veterinarios).subscribe(data =>{
+      this.veterinarioService.createUsingPOST8(this.veterinarios).subscribe(data =>{
         Swal.fire({
           position: 'center',
           icon: 'success',

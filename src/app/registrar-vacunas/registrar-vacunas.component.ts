@@ -35,7 +35,7 @@ if(this.vacunas.nombre === undefined || this.vacunas.tipo === undefined || this.
   }).then((result) => {
     /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
-      this.vacunaService.createUsingPOST8(this.vacunas).subscribe(data =>{
+      this.vacunaService.createUsingPOST7(this.vacunas).subscribe(data =>{
         Swal.fire({
           position: 'center',
           icon: 'success',

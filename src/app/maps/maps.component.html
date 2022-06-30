@@ -18,35 +18,35 @@
                                 <!--Descripción-->
                                 <div class="col-md-5">
                                     <mat-form-field class="example-full-width">
-                                       <textarea matInput placeholder="Descripción" type="text" name="descripcionTr" #descripcionTr="ngModel"
-                                       [(ngModel)]="tratamiento.descripcionTr" required ></textarea>
+                                       <textarea matInput placeholder="Descripción" type="text" name="descripcionTr" 
+                                       required ></textarea>
                                     </mat-form-field>
                                 </div>
                                 <!-- variables temporales de prueba seteando Id fichaclinica y medicamento -->
                                 <div class="col-md-5">
                                     <mat-form-field class="example-full-width">
-                                       <textarea matInput placeholder="Id Ficha clinica" type="text" name="idFichaClinica" #idFichaClinica="ngModel"
-                                       [(ngModel)]="tratamiento.idFichaClinica" required ></textarea>
+                                       <textarea matInput placeholder="Id Ficha clinica" type="text" name="idFichaClinica"
+                                       required ></textarea>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-5">
                                     <mat-form-field class="example-full-width">
-                                       <textarea matInput placeholder="medicacion" type="text" name="medicacion" #medicacion="ngModel"
-                                       [(ngModel)]="tratamiento.medicacion" required ></textarea>
+                                       <textarea matInput placeholder="medicacion" type="text" name="medicacion" 
+                                       required ></textarea>
                                     </mat-form-field>
                                 </div>
                                 <!--Indicaciones -->
                                 <div class="col-md-5">
                                     <mat-form-field class="example-full-width">
-                                        <textarea matInput placeholder="Indicaciones" type="text" name="indicaciones" #indicaciones="ngModel"
-                                        [(ngModel)]="tratamiento.indicaciones" required ></textarea>
+                                        <textarea matInput placeholder="Indicaciones" type="text" name="indicaciones"
+                                        required ></textarea>
                                     </mat-form-field>
                                 </div>
     
                                 <!-- Fecha Apllicacion -->
                                 <div class="col-md-5">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Fecha de Aplicación" type="date"  [(ngModel)]="tratamiento.fechaAplicacion">
+                                        <input matInput placeholder="Fecha de Aplicación" type="date">
                                     </mat-form-field>
                                 </div>
 
@@ -55,8 +55,8 @@
                                             <div class="col-md-5">
                                                 <label>ESTADO</label>
                                                 <div class="caja">
-                                                    <select class="form-select" aria-label="Default select example" name="estado" #estado="ngModel"
-                                                    [(ngModel)]="tratamiento.estado" required>>
+                                                    <select class="form-select" aria-label="Default select example" name="estado" 
+                                                    required>>
                                                         <option selected disabled>Seleccione:</option>
                                                         <option value="INICIO">INICIO</option>
                                                         <option value="CONTINUA">CONTINUA</option>
@@ -82,9 +82,9 @@
                                         <div class="col-md-5">
 
                                             <div class="input-group no-border">
-                                                <input type="text" value="" class="form-control" placeholder="Search..." [(ngModel)]="medicamento.nombreComercial">
+                                                <input type="text" value="" class="form-control" placeholder="Search..." >
                                                 <button mat-raised-button type="submit" class="btn btn-red btn-round btn-just-icon">
-                                                    <i class="material-icons" (click)="FindByNombre(medicamento.nombreComercial)">search</i>
+                                                    <i class="material-icons">search</i>
                                                     <div class="ripple-container"></div>
                                                 </button>
                                             </div>
