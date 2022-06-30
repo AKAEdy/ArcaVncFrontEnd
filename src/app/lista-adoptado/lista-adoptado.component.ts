@@ -24,7 +24,7 @@ export class ListaAdoptadoComponent implements OnInit {
 
 
   ngOnInit(): void {
- 
+ this.getAllAdopcion();
   }
 
 

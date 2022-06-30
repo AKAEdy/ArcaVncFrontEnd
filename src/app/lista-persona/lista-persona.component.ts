@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonasService } from 'app/api/personas.service';
 import { Persona } from 'app/model/persona';
-<<<<<<< HEAD
+
 import { data } from 'jquery';
 import Swal from 'sweetalert2';
-=======
 >>>>>>> origin/eddy
 
 @Component({

@@ -42,7 +42,7 @@ export class ListarVacunasComponent implements OnInit {
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-          this.vacunaService.updateUsingPUT7(this.vacunasid, this.vacunasid.id).subscribe(data =>{
+          this.vacunaService.updateUsingPUT8(this.vacunasid, this.vacunasid.id).subscribe(data =>{
             Swal.fire({
               position: 'center',
               icon: 'success',
@@ -62,7 +62,7 @@ export class ListarVacunasComponent implements OnInit {
     
   }
   getVacunasById(id: number) {
-    this.vacunaService.getByIdUsingGET7(id).subscribe(data => {
+    this.vacunaService.getByIdUsingGET8(id).subscribe(data => {
       this.vacunasid = data
       this.mostrarEditar()
       console.log(id);
@@ -89,7 +89,7 @@ export class ListarVacunasComponent implements OnInit {
         this.getAllVacunas();
       }
     })
-    this.vacunaService.deleteUsingDELETE7(id).subscribe(data => {
+    this.vacunaService.deleteUsingDELETE8(id).subscribe(data => {
 
     })
 
