@@ -9,10 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { PersonaDto } from './personaDto';
 
-export interface VeterinarioDTO { 
-    cargo?: string;
-    id?: number;
-    persona?: PersonaDto;
+export interface Body { 
+    multipartFile?: Blob;
 }

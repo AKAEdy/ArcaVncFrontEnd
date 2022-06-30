@@ -25,20 +25,22 @@ export class RegistrarSeguimientoComponent implements OnInit {
   telefonoadoptante:string;
   direcionadoptante:string;
   fechaadopcion:string;
+  
 
   constructor( private router: Router, private adopcionService: AdopcionControllerService, private adoptanteService: AdoptanteControllerService) { }
 
 
   ngOnInit(): void {
+    this.getByIdAdoptantes();
   }
 
    //seguimiento
-getByIdAdoptantes(id:number){
+getByIdAdoptantes(){
 
-  this.adopcionService.etAdopcionPorIdUsingGET(id).subscribe(data =>{
+  var adopcion_id = parseInt (localStorage.getItem("idAdoptado"));
+  this.adopcionService.etAdopcionPorIdUsingGET(adopcion_id).subscribe(data =>{
   this.adopcionid = data
-  this.nombreadoptante = this.adopcionid.adoptante.persona.nombre
-  this.nombreadoptante = this.adopcionid.adoptante.persona.apellidos
+  this.nombreadoptante = this.adopcionid.adoptante.persona.nombre + " " + this.adopcionid.adoptante.persona.apellidos
   this.correoadoptante = this.adopcionid.adoptante.persona.correo
   this.telefonoadoptante=this.adopcionid.adoptante.persona.telefono
   this.direcionadoptante=this.adopcionid.adoptante.persona.direccion

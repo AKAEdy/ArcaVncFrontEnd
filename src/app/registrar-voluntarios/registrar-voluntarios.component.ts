@@ -51,7 +51,7 @@ voluntarios:VoluntarioDto = {
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-          this.voluntarioService.createUsingPOST10(this.voluntarios).subscribe(data =>{
+          this.voluntarioService.createUsingPOST9(this.voluntarios).subscribe(data =>{
             Swal.fire({
               position: 'center',
               icon: 'success',

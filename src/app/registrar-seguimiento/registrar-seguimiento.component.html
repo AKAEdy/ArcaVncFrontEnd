@@ -4,7 +4,7 @@
   <div class="main-content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card"> 
             <div class="card-header card-header-danger">
                 <h5 class="card-title">"SEGUIMIENTO DE LA MASCOTA"</h5>
@@ -19,31 +19,33 @@
                                     <h4>Información</h4>
                                     <div class="row justify-content-center">
 
-                                        <div class="row justify-content-center" *ngFor="let adopciones of adopcion">
+                                        <div class="row justify-content-center">
 
                                             <div class="col-4">
                                                 <br>
-                                                <i class="fas fa-user"><b> ADOPTANTE: </b> <label  class="card-text" >{{adopciones.adoptante.persona.nombre}} {{adopciones.adoptante.persona.apellidos}}</label></i>	
+                                                <b> ADOPTANTE: </b> <label  class="card-text" >{{nombreadoptante}}</label>	
                                                 <hr>
-                                                <i class="fas fa-user"><b> CORREO ELECTRONICO: </b> <label  class="card-text" >{{adopciones.adoptante.persona.correo}}</label></i>	
+                                                <b> CORREO ELECTRONICO: </b>
                                                 <hr>
+                                                <b>  </b> <label class="card-text"> </label>
                                             </div>
                 
                                             <div class="col-4">
                                     
                                                 <br>
-                                                <i class="fas fa-user"><b> TELEFONO: </b> <label  class="card-text" >{{adopciones.adoptante.persona.telefono}}</label></i>	
+                                                <b> TELEFONO: </b> <label  class="card-text" >{{telefonoadoptante}}</label>	
                                                 <hr>
-                                                <i class="fas fa-user"><b> DIRECCION: </b> <label  class="card-text" >{{adopciones.adoptante.persona.direccion}}</label></i>	
+                                                <label  class="card-text" >{{correoadoptante}}</label>
                                                 <hr>
                                             </div>
                                             <div class="col-4">
                                         
                                                 <br> 
                                     
-                                                <i class="fas fa-user"><b> FECHA: </b> <label  class="card-text" >{{adopciones.fechaAdopcion}}</label></i>	
+                                                <b> FECHA: </b> <label  class="card-text" >{{fechaadopcion}}</label>	
                                                 <hr> 
-                                              
+                                                <b> DIRECCION: </b> <label  class="card-text" >{{direcionadoptante}}</label>	
+                                                <hr>
                                             </div>
 
                                         </div>

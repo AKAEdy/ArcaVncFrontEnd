@@ -38,8 +38,9 @@ export class ListaAdoptadoComponent implements OnInit {
 
   //seguimiento
 getByIdAdoptantes(id:number){
-
-  this.adopcionService.etAdopcionPorIdUsingGET(id).subscribe(data =>{
+  
+  localStorage.setItem("idAdoptado", id.toString());
+  /*this.adopcionService.etAdopcionPorIdUsingGET(id).subscribe(data =>{
   this.adopcionid = data
   this.nombreadoptante = this.adopcionid.adoptante.persona.nombre
   this.apellidoadoptante = this.adopcionid.adoptante.persona.apellidos
@@ -48,7 +49,8 @@ getByIdAdoptantes(id:number){
   this.direcionadoptante=this.adopcionid.adoptante.persona.direccion
   this.fechaAdopcion=this.adopcionid.fechaAdopcion
 
-})
+  })*/
+
   this.Irseguimiento();
 }
 

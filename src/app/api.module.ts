@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { AdopcionesService } from './api/adopciones.service';
 import { AdoptantesService } from './api/adoptantes.service';
-import { AnimalesService } from './api/animales.service';
+import { AnimalesRefugioService } from './api/animalesRefugio.service';
 import { AuthControllerService } from './api/authController.service';
 import { CarnetsDeVacunacinService } from './api/carnetsDeVacunacin.service';
 import { CitasService } from './api/citas.service';
@@ -30,7 +30,7 @@ import { VoluntariosService } from './api/voluntarios.service';
   providers: [
     AdopcionesService,
     AdoptantesService,
-    AnimalesService,
+    AnimalesRefugioService,
     AuthControllerService,
     CarnetsDeVacunacinService,
     CitasService,
@@ -49,7 +49,7 @@ import { VoluntariosService } from './api/voluntarios.service';
     VoluntariosService ]
 })
 export class ApiModule {
-    public static forRoot(configurationFactory: () => Configuration){
+    public static forRoot(configurationFactory: () => Configuration) {
         return {
             ngModule: ApiModule,
             providers: [ { provide: Configuration, useFactory: configurationFactory } ]
