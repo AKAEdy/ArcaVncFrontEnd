@@ -22,7 +22,6 @@ import { PageMedicamento } from '../model/pageMedicamento';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
-import { param } from 'jquery';
 
 
 @Injectable()
@@ -64,13 +63,13 @@ export class MedicamentosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createUsingPOST3(body: Medicamento, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createUsingPOST3(body: Medicamento, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createUsingPOST3(body: Medicamento, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createUsingPOST3(body: Medicamento, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createUsingPOST2(body: Medicamento, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createUsingPOST2(body: Medicamento, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createUsingPOST2(body: Medicamento, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createUsingPOST2(body: Medicamento, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling createUsingPOST3.');
+            throw new Error('Required parameter body was null or undefined when calling createUsingPOST2.');
         }
 
         let headers = this.defaultHeaders;
@@ -116,13 +115,13 @@ export class MedicamentosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteUsingDELETE3(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteUsingDELETE3(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteUsingDELETE3(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteUsingDELETE3(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteUsingDELETE2(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteUsingDELETE2(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteUsingDELETE2(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteUsingDELETE2(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling deleteUsingDELETE3.');
+            throw new Error('Required parameter id was null or undefined when calling deleteUsingDELETE2.');
         }
 
         let headers = this.defaultHeaders;
@@ -162,13 +161,13 @@ export class MedicamentosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getByIdUsingGET3(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public getByIdUsingGET3(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public getByIdUsingGET3(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public getByIdUsingGET3(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getByIdUsingGET2(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getByIdUsingGET2(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getByIdUsingGET2(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getByIdUsingGET2(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling getByIdUsingGET3.');
+            throw new Error('Required parameter id was null or undefined when calling getByIdUsingGET2.');
         }
 
         let headers = this.defaultHeaders;
@@ -364,17 +363,17 @@ export class MedicamentosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateUsingPUT3(body: Medicamento, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateUsingPUT3(body: Medicamento, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateUsingPUT3(body: Medicamento, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateUsingPUT3(body: Medicamento, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateUsingPUT2(body: Medicamento, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateUsingPUT2(body: Medicamento, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateUsingPUT2(body: Medicamento, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateUsingPUT2(body: Medicamento, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling updateUsingPUT3.');
+            throw new Error('Required parameter body was null or undefined when calling updateUsingPUT2.');
         }
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling updateUsingPUT3.');
+            throw new Error('Required parameter id was null or undefined when calling updateUsingPUT2.');
         }
 
         let headers = this.defaultHeaders;
@@ -413,7 +412,4 @@ export class MedicamentosService {
         );
     }
 
-  getMedicamentoByNombre(nombre: string): Observable<Medicamento> {
-    return this.httpClient.get<Medicamento>(`${this.basePath}/medicamentos/find?nombre=${nombre}`);
-  }
 }

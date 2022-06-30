@@ -64,13 +64,13 @@ export class CarnetsDeVacunacinService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createUsingPOST1(body: CarnetVacunacion, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createUsingPOST1(body: CarnetVacunacion, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createUsingPOST1(body: CarnetVacunacion, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createUsingPOST1(body: CarnetVacunacion, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createUsingPOST(body: CarnetVacunacion, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createUsingPOST(body: CarnetVacunacion, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createUsingPOST(body: CarnetVacunacion, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createUsingPOST(body: CarnetVacunacion, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling createUsingPOST1.');
+            throw new Error('Required parameter body was null or undefined when calling createUsingPOST.');
         }
 
         let headers = this.defaultHeaders;
@@ -116,13 +116,13 @@ export class CarnetsDeVacunacinService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteUsingDELETE1(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteUsingDELETE1(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteUsingDELETE1(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteUsingDELETE1(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteUsingDELETE(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteUsingDELETE(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteUsingDELETE(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteUsingDELETE(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling deleteUsingDELETE1.');
+            throw new Error('Required parameter id was null or undefined when calling deleteUsingDELETE.');
         }
 
         let headers = this.defaultHeaders;
@@ -162,13 +162,13 @@ export class CarnetsDeVacunacinService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getByIdUsingGET1(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public getByIdUsingGET1(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public getByIdUsingGET1(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public getByIdUsingGET1(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getByIdUsingGET(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getByIdUsingGET(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getByIdUsingGET(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getByIdUsingGET(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling getByIdUsingGET1.');
+            throw new Error('Required parameter id was null or undefined when calling getByIdUsingGET.');
         }
 
         let headers = this.defaultHeaders;
@@ -362,17 +362,17 @@ export class CarnetsDeVacunacinService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateUsingPUT1(body: CarnetVacunacion, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateUsingPUT1(body: CarnetVacunacion, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateUsingPUT1(body: CarnetVacunacion, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateUsingPUT1(body: CarnetVacunacion, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateUsingPUT(body: CarnetVacunacion, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateUsingPUT(body: CarnetVacunacion, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateUsingPUT(body: CarnetVacunacion, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateUsingPUT(body: CarnetVacunacion, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling updateUsingPUT1.');
+            throw new Error('Required parameter body was null or undefined when calling updateUsingPUT.');
         }
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling updateUsingPUT1.');
+            throw new Error('Required parameter id was null or undefined when calling updateUsingPUT.');
         }
 
         let headers = this.defaultHeaders;

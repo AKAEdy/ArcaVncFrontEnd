@@ -9,12 +9,10 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { AnimalRefugioResponse } from './animalRefugioResponse';
-import { VeterinarioDTO } from './veterinarioDTO';
 
-export interface FichaClinicaDTO { 
+export interface FichaClinicaRequestDTO { 
     alimentacion?: number;
-    animal?: AnimalRefugioResponse;
+    animalId?: number;
     conjuntiva?: string;
     costo?: number;
     diagnosticoDiferencial?: string;
@@ -27,9 +25,9 @@ export interface FichaClinicaDTO {
     id?: number;
     motivoConsulta?: string;
     mucosas?: string;
+    personaId?: number;
     pronostico?: string;
     temperatura?: number;
     tipoPaciente?: string;
     trc?: string;
-    veterinario?: VeterinarioDTO;
 }

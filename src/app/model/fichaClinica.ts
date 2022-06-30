@@ -9,18 +9,17 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { Animal } from './animal';
+import { AnimalRefugio } from './animalRefugio';
 import { Veterinario } from './veterinario';
 
 export interface FichaClinica { 
     alimentacion?: number;
-    animal: Animal;
+    animal: AnimalRefugio;
     conjuntiva?: string;
     costo?: number;
     diagnosticoDiferencial?: string;
-    esterilizacion?: string; 
-
-   
+    esterilizacion: string;
+    examenesSolicitados?: string;
     fechaIngreso?: Date;
     frecuenciaCardiaca?: number;
     frecuenciaRespiratoria?: number;
@@ -32,8 +31,5 @@ export interface FichaClinica {
     temperatura?: number;
     tipoPaciente?: string;
     trc?: string;
-    veterinario?: Veterinario;
-   
-    examenes_solicitados?: string;
-   
+    veterinario: Veterinario;
 }

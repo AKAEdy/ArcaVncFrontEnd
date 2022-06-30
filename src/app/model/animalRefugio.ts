@@ -13,6 +13,7 @@
 export interface AnimalRefugio { 
     adoptado?: boolean;
     colorCaracteristicas: string;
+    deleted?: boolean;
     edad: number;
     especie: string;
     fechaNacimiento: Date;
