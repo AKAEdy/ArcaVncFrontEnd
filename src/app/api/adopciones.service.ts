@@ -229,19 +229,19 @@ export class AdopcionesService {
     }
 
     /**
-     * etAdopcionPorId
+     * getAdopcionPorId
      * 
      * @param id id
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public etAdopcionPorIdUsingGET(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public etAdopcionPorIdUsingGET(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public etAdopcionPorIdUsingGET(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public etAdopcionPorIdUsingGET(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getAdopcionPorIdUsingGET(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getAdopcionPorIdUsingGET(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getAdopcionPorIdUsingGET(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getAdopcionPorIdUsingGET(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling etAdopcionPorIdUsingGET.');
+            throw new Error('Required parameter id was null or undefined when calling getAdopcionPorIdUsingGET.');
         }
 
         let headers = this.defaultHeaders;

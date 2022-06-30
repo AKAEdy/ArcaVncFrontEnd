@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { PersonasService } from 'app/api/personas.service';
 import { VeterinariosService } from 'app/api/veterinarios.service';
 import { Veterinario } from 'app/model/veterinario';
-import { data } from 'jquery';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -34,7 +33,7 @@ tamaño=2;
 
  deletVeterinarioById(id: number){
   Swal.fire({
-    title: '¿Esta seguro que decea eliminar?',
+    title: '¿Esta seguro que desea eliminar?',
     text: "No podra revertit los cambios!",
     icon: 'warning',
     showCancelButton: true,
@@ -48,12 +47,13 @@ tamaño=2;
         'Registro eliminado exitosamente.',
         'success'
       )
+      this.veterinarioService.deleteUsingDELETE9(id).subscribe(data =>{
+
+      })
       this.getAllVeterinarios();
     }
   })
-this.veterinarioService.deleteUsingDELETE8(id).subscribe(data =>{
 
-})
  }
 
  next(){
@@ -76,14 +76,14 @@ mostrarEditar(){
   document.getElementById("targeta").style.display="block";
   document.getElementById("tabla").style.display="none";
 }
-
+ 
 botonCancelar(){
   document.getElementById("targeta").style.display="none";
   document.getElementById("tabla").style.display="block";
 }
 
 getVeterinarioById(id:number){
-  this.veterinarioService.getByIdUsingGET8(id).subscribe(data =>{
+  this.veterinarioService.getByIdUsingGET9(id).subscribe(data =>{
   this.veterinarioid = data
   
   })
@@ -112,7 +112,7 @@ updateVeterinarios(){
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-        this.veterinarioService.updateUsingPUT8(this.veterinarioid, this.veterinarioid.id).subscribe(data=>{
+        this.veterinarioService.updateUsingPUT9(this.veterinarioid, this.veterinarioid.id).subscribe(data=>{
           this.veterinarioid = data
           Swal.fire({
             position: 'center',

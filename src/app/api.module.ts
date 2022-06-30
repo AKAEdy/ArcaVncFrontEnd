@@ -14,6 +14,7 @@ import { FichasClnicasService } from './api/fichasClnicas.service';
 import { MedicacionesService } from './api/medicaciones.service';
 import { MedicamentosService } from './api/medicamentos.service';
 import { PersonasService } from './api/personas.service';
+import { RolesService } from './api/roles.service';
 import { SeguimientoDeAdoptadosService } from './api/seguimientoDeAdoptados.service';
 import { ServiciosService } from './api/servicios.service';
 import { TratamientosService } from './api/tratamientos.service';
@@ -38,6 +39,7 @@ import { VoluntariosService } from './api/voluntarios.service';
     MedicacionesService,
     MedicamentosService,
     PersonasService,
+    RolesService,
     SeguimientoDeAdoptadosService,
     ServiciosService,
     TratamientosService,

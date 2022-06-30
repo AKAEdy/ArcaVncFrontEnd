@@ -18,7 +18,7 @@ export interface FichaClinicaDTO {
     conjuntiva?: string;
     costo?: number;
     diagnosticoDiferencial?: string;
-    esterilizacion?: boolean;
+    esterilizacion?: string;
     fechaIngreso?: Date;
     frecuenciaCardiaca?: number;
     frecuenciaRespiratoria?: number;
