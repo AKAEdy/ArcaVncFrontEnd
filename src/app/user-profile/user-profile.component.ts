@@ -12,6 +12,9 @@ import { Storage, ref, uploadBytes, listAll, getDownloadURL } from '@angular/fir
 
 import Swal from 'sweetalert2';
 import { finalize, Observable } from 'rxjs';
+import { AnimalRefugioRequest } from 'app/model/animalRefugioRequest';
+import { AnimalesRefugioService } from 'app/api/animalesRefugio.service';
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -21,22 +24,20 @@ export class UserProfileComponent implements OnInit {
 
   name = 'Angular';
   @ViewChild('MyForm', { static: false }) MyForm: NgForm;
-
+imagen:File=null;
  
   animales:any[] = [];
   validacion: Validacion = new Validacion();
   
   public formSubmitted = false;
   
-
-  animal: Animal={};
-// array de string de imagenes
-  images: string[];
  
-  imgUrl: Observable<string | any>; 
+  animal: AnimalRefugioRequest={};
+
+
   
-  constructor(private animalesService: AnimalesService, private fichasClinicasService: FichasClnicasService, private router: Router,private _formBuilder: FormBuilder,private storage: Storage) {
-    this.images = [];
+  constructor(private animalesRefugioService: AnimalesRefugioService, private fichasClinicasService: FichasClnicasService, private router: Router,private _formBuilder: FormBuilder,private storage: Storage) {
+   
    }
 
   ngOnInit():void {
@@ -52,11 +53,11 @@ export class UserProfileComponent implements OnInit {
 
   // console.log("LLEGA "+ this.animal.id,this.animal.nombre,this.animal.sexo, this.animal.especie, this.animal.procedencia, this.animal.lugarEstancia, this.animal.raza, this.animal.peso, this.animal.edad, this.animal.tamanyo, this.animal.fechaNacimiento, this.animal.colorCaracteristicas, this.animal.observacionesProcedencia, this.animal.foto);
     
-  if(this.animal.nombre === undefined || this.animal.sexo === undefined || this.animal.especie ===  undefined || this.animal.procedencia === undefined || this.animal.lugarEstancia === undefined || this.animal.raza===  undefined || this.animal.peso=== undefined || this.animal.edad === undefined || this.animal.tamanyo ===  undefined || this.animal.fechaNacimiento === undefined || this.animal.colorCaracteristicas=== undefined || this.animal.observacionesProcedencia ===  undefined || this.animal.foto === undefined  || 
+  if(this.animal.nombre === undefined || this.animal.sexo === undefined || this.animal.especie ===  undefined || this.animal.procedencia === undefined || this.animal.lugarEstancia === undefined || this.animal.raza===  undefined || this.animal.peso=== undefined || this.animal.edad === undefined  || this.animal.fechaNacimiento === undefined || this.animal.colorCaracteristicas=== undefined || this.animal.observacionesProcedencia ===  undefined ||
 
 
 
-    this.animal.nombre === "" || this.animal.raza === ""   || this.animal.colorCaracteristicas === "" ||this.animal.observacionesProcedencia===""|| this.animal.foto ===""){
+    this.animal.nombre === "" || this.animal.raza === ""   || this.animal.colorCaracteristicas === "" ||this.animal.observacionesProcedencia==="" ||  this.imagen== null ){
 
     Swal.fire({
       icon: 'error',
@@ -73,15 +74,23 @@ export class UserProfileComponent implements OnInit {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        this.animalesService.createUsingPOST(this.animal).subscribe(data =>{
+        this.animalesRefugioService.guardarAnimalUsingPOSTForm(this.animal.colorCaracteristicas,this.animal.especie, this.animal.lugarEstancia, this.animal.nombre, this.animal.observacionesProcedencia, this.animal.raza, this.animal.sexo, this.imagen, this.animal.adoptado, false, this.animal.edad,this.animal.fechaNacimiento,this.animal.peso, this.animal.procedencia, null, false)
+      .subscribe(data =>{
           this.animal=data;
+          console.log("datos enviados", data)
           Swal.fire({
             position: 'center',
             icon: 'success',
             title: 'Se a registrado correctamente',
             showConfirmButton: false,
             timer: 1500
-          })
+          }
+         
+          
+          
+          )
+          
+
           // almaceno los datos del animal para enviar a ficha clinica
           localStorage.setItem('animal', JSON.stringify(this.animal));
           // console.log('imprimiendo valores de la data',);
@@ -112,41 +121,13 @@ export class UserProfileComponent implements OnInit {
   this.router.navigateByUrl("/TableList");
 }
 
-uploadImage($event: any) {
-  const file = $event.target.files[0];
-  console.log(file);
+capturarImagen($event:any){
+this.imagen=$event.target.files[0]
 
-  const imgRef = ref(this.storage, `images/${file.name}`);
-
-  uploadBytes(imgRef, file)
-    .then(response => {
-      console.log(response)
-      this.getImages(imgRef);
-
-    })
-
+}
     
 }
 
-getImages($event: any) {
-  const file = $event.target.files[1];
-  const imagesRef = ref(this.storage,`images/${file.name}`);
-
-  listAll(imagesRef)
-    .then(async response => {
-      console.log(response);
-      this.images = [];
-      for (let item of response.items) {
-        const url = await getDownloadURL(item);
-        this.images.push(url);
-        console.log(url,"imprimiendo la url de la imagen");
-        
-      }
-    })
-    .catch(error => console.log(error));
-}
-
-}
 
 
 

@@ -31,6 +31,8 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AdoptantesService } from './api/adoptantes.service';
 import { DonacionesService } from './api/donaciones.service';
 import { VoluntariosService } from './api/voluntarios.service';
+import { AnimalesRefugioService } from './api/animalesRefugio.service';
+
 
 @NgModule({
   imports: [
@@ -69,7 +71,7 @@ import { VoluntariosService } from './api/voluntarios.service';
     MedicamentosService,
     VeterinariosService ,
     MedicamentosService,
-    
+ AnimalesRefugioService,
     AdoptantesService,
     DonacionesService,
     VoluntariosService],
