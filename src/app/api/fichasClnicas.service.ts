@@ -27,7 +27,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class FichasClnicasService {
 
-    protected basePath = '//localhost:9898/api';
+    protected basePath = 'https://vinculation.herokuapp.com/api';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 

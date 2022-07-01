@@ -17,11 +17,72 @@ export class FichaClinicaComponent implements OnInit {
   //animal: Animal={}
 //veterinario: Veterinario={};
 fichaClinica: FichaClinica={};
+
+// variables de tipo any o cualquiera para guardar en localStorage
+animal:any={};
+loginUsuario:any={};
+
 public formSubmitted = false;
-  constructor(private fichasClinicasService: FichasClnicasService,private router: Router,private _formBuilder: FormBuilder) { }
+  constructor(private fichasClinicasService: FichasClnicasService,private router: Router,private _formBuilder: FormBuilder) {
+  
+    this.animal={};
+    this.loginUsuario={};    
+
+   }
 
   ngOnInit(): void {
+    // igualando objetos de tipo cualquiera con datos almacenados en localStorage
+    this.animal = JSON.parse(localStorage.getItem('animal'));
+    this.loginUsuario = JSON.parse(localStorage.getItem('loginUsuario'));
+    // imprimiendo en consola
+    console.log("recibiendo información de animal con localstorage",this.animal);
+    console.log("recibiendo información de usuario logeado con localstorage",this.loginUsuario);
   }
+
+
+
+  saveAdopciones(){
+    console.log("LLEGA "+ this.fichaClinica.id,this.animal.id,this.fichaClinica.fechaIngreso, );
+    
+    if(this.fichaClinica.id ===  undefined || this.animal.id === undefined || this.fichaClinica.fechaIngreso === undefined || this.fichaClinica.motivoConsulta === "" || this.fichaClinica.trc === ""  || this.fichaClinica.conjuntiva === ""  || this.fichaClinica.diagnosticoDiferencial === ""  || this.fichaClinica.examenes_solicitados === ""  || this.fichaClinica.hallazgos ==="" || this.fichaClinica.pronostico ==="" ){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Llene todos los campos!',
+      })
+    } else{
+      Swal.fire({
+        title: 'Seguro quiere realizar esta accion??',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Registrar',
+        denyButtonText: `No registrar`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          this.fichasClinicasService.createUsingPOST1(this.fichaClinica).subscribe(data =>{
+            this.fichaClinica.animal.id=this.animal.data.id;
+            this.fichaClinica.animal.nombre=this.animal.nombre;
+            this.fichaClinica.veterinario.id=this.loginUsuario.data.id;
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Se a adoptado correctamente',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            location.reload();
+          })
+           
+        } else if (result.isDenied) {
+          Swal.fire('Acción cancelada', '', 'info')
+          
+        }
+      }) 
+    }
+  }
+
+
 
   guardar(){
       
@@ -36,6 +97,8 @@ public formSubmitted = false;
           })
         })
       }
+
+      
     
    }
   

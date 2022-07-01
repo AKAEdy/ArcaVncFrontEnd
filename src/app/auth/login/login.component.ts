@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    localStorage.removeItem('loginUsuario');
   }
   public showPass(): void {
     this.showPassword = !this.showPassword;
@@ -45,6 +46,7 @@ export class LoginComponent implements OnInit {
           icon: 'success',
           title: `Bienvenido ${data.username}`
         })
+        localStorage.setItem('loginUsuario', JSON.stringify(data));
       },
       err => {
         console.warn("code", err);
