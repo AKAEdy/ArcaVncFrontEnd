@@ -6,6 +6,7 @@ import { SeguimientoDeAdoptadosService } from 'app/api/seguimientoDeAdoptados.se
 import { Adopcion } from 'app/model/adopcion';
 import { Adoptante } from 'app/model/adoptante';
 import { SeguimientoAdopcionDto } from 'app/model/seguimientoAdopcionDto';
+import { data } from 'jquery';
  
 @Component({
   selector: 'registrar-seguimiento',
@@ -33,12 +34,14 @@ export class RegistrarSeguimientoComponent implements OnInit {
     mensajeSeguimiento: ''
   };
   mensaje:string;
+  historial:SeguimientoAdopcionDto[]=[]
 
   constructor( private router: Router, private adopcionService: AdopcionControllerService, private adoptanteService: AdoptanteControllerService, private seguimientoAdopcionServiceImpl: SeguimientoDeAdoptadosService) { }
 
 
   ngOnInit(): void {
     this.getByIdAdoptantes();
+    this.historialSeguimiento();
   }
 
    //seguimiento
@@ -64,6 +67,23 @@ enviarMensaje(){
   var adopcion_id = parseInt (localStorage.getItem("idAdoptado"));
   this.seguimientoAdopcion.fechaSeguimiento = new Date(this.fechaadopcion);
   this.seguimientoAdopcionServiceImpl.crearSeguimientoUsingPOST(this.seguimientoAdopcion, adopcion_id).subscribe(data =>{
+    this.seguimientoAdopcion = data
   })
 }
+
+finalizarRespuestaAdoptante(){
+  var adopcion_id = parseInt (localStorage.getItem("idAdoptado"));
+  this.seguimientoAdopcion.fechaSeguimiento = new Date(this.fechaadopcion);
+  this.seguimientoAdopcionServiceImpl.editarSeguimientoUsingPUT(this.seguimientoAdopcion, adopcion_id).subscribe(data =>{
+    location.reload()
+ })
+}   
+
+historialSeguimiento(){
+  var adopcion_id = parseInt (localStorage.getItem("idAdoptado"));
+  this.seguimientoAdopcionServiceImpl.getAllSeguimientosTerminadosUsingGET(adopcion_id).subscribe(data =>{
+    this.historial = data.seguimientos
+  })
+}
+
 }

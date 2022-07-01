@@ -16,9 +16,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="container">
-                                    <h4>Información</h4>
                                     <div class="row justify-content-center">
-
+                                        <h4>Información</h4>
                                         <div class="row justify-content-center">
 
                                             <div class="col-4">
@@ -61,10 +60,20 @@
                                             <div class="row justify-content-center">
                                                 <form>
                                                     <div class="col-4">
-                                                        <mat-form-field class="example-full-width"> 
-                                                            <textarea [(ngModel)]="seguimientoAdopcion.mensajeSeguimiento" matInput placeholder="ESCRIBIR MENSAJE" type="text" ></textarea>
-                                                        </mat-form-field>
-        
+                                                        <!-- <mat-form-field class="example-full-width"> 
+                                                            <textarea name="Mensaje" [(ngModel)]="seguimientoAdopcion.mensajeSeguimiento" matInput placeholder="ESCRIBIR MENSAJE" type="text"></textarea>
+                                                        </mat-form-field> -->
+                                                        
+                                                        
+                                                            <div class="form-group">
+                                                                <textarea matInput placeholder="MENSAJE" [(ngModel)]="seguimientoAdopcion.mensajeSeguimiento"
+                                                                    class="form-control" name="mensaje" #mensaje="ngModel" required style="resize: none; border: none">
+                                                                </textarea>
+                                                                <div class="text-danger" *ngIf="mensaje.hasError('required') && mensaje.touched">
+                                                                    El mensaje es requerido!
+                                                                </div>
+                                                            </div>
+                                                        
                                                     </div>
                                                     <div class="col-4">
                                                        <div class="form-actions">
@@ -90,6 +99,7 @@
                                                         <thead class="text-center">
                                                             <tr>
                                                               <th class="table-danger" scope="col">FECHA:</th>
+                                                              <!-- <th class="table-danger" scope="col">MENSAJE ARCA</th> -->
                                                               <th class="table-danger" scope="col">RESPUESTA ADOPTANTE:</th>
                                                               <th class="table-danger" scope="col">ACCIONES:</th>
                                                             </tr>
@@ -97,12 +107,24 @@
                                                           <tbody class="text-center">
                                                             <tr>
             
-                                                                <td scope="row"></td>
-                                                                <td></td>
+                                                                <td scope="row">
+                                                                    <label  class="card-text" >{{fechaadopcion}}</label>
+                                                                </td>
+                                                                
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <textarea matInput placeholder="Escriba la respuesta" [(ngModel)]="seguimientoAdopcion.respuestaAdoptante"
+                                                                            class="form-control" name="respuesta" #respuesta="ngModel" required style="background-color: transparent; border: none; resize: none;">
+                                                                        </textarea>
+                                                                        <div class="text-danger" *ngIf="respuesta.hasError('required') && respuesta.touched">
+                                                                            Las respuesta es requerida!!!
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
                                                                 <td>
                                                                     <div class="text-center">
                                                                         <div class="btn-group">
-                                                                            <button class="btn btn-danger" type="submit">FINALIZAR</button>
+                                                                            <button class="btn btn-danger" type="submit" (click)="finalizarRespuestaAdoptante()">FINALIZAR</button>
                                                                         </div>
                                                                     </div>
                                                                 </td>
@@ -127,11 +149,9 @@
                                                             </tr>
                                                           </thead>
                                                           <tbody class="text-center">
-                                                            <tr>
-            
-                                                                <td scope="row"></td>
-                                                                <td></td>
-                                                                
+                                                            <tr *ngFor="let seguimiento of historial">
+                                                                <td>{{seguimiento.fechaSeguimiento}}</td>
+                                                                <td>{{seguimiento.respuestaAdoptante}}</td>
             
                                                               </tr>
                                                           </tbody>
@@ -145,7 +165,8 @@
                                                 <div class="row justify-content-center">
         
                                                     <div class="form-actions">
-                                                            <button type="submit" mat-raised-button class="btn btn-danger pull-right" >ELIMINAR SEGUIMIENTO</button>
+                                                            <button type="submit" mat-raised-button class="btn btn-danger pull-right" >REGRESAR</button>
+                                                            <button type="submit" mat-raised-button class="btn btn-success pull-right" >FINALIZAR SEGUIMIENTO</button>
                                                             <div class="clearfix"></div>
                                                     </div>
         

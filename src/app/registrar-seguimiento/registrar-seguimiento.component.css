@@ -28,12 +28,13 @@ h2 {
   
   h4 {
     border-radius: 20px;
-    background: #E59866;
+    background: #e56c666e;
     padding: 15px;
-    width: 200px;
-    height: 40px;
+    /* width: 200px;
+    height: 40px; */
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
   }
   .card1 {
       margin-top: 10px;
