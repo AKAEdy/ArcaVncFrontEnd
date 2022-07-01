@@ -1,5 +1,5 @@
 export interface AnimalRefugioRequest {
- id?:number;
+     
     nombre?: string;
 
     especie?: string;
@@ -23,4 +23,6 @@ export interface AnimalRefugioRequest {
     adoptado?:boolean;
 
     fechaNacimiento?: Date;
+
+    
 }

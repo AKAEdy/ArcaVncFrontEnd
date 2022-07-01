@@ -33,7 +33,7 @@ imagen:File=null;
   public formSubmitted = false;
   
  
-  animal: AnimalRefugioResponse={};
+  animal: AnimalRefugioRequest={};
 
 
   
@@ -75,7 +75,9 @@ imagen:File=null;
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        this.animalesRefugioService.guardarAnimalUsingPOSTForm( this.animal.colorCaracteristicas,this.animal.especie, this.animal.lugarEstancia, this.animal.nombre, this.animal.observacionesProcedencia, this.animal.raza, this.animal.sexo, this.imagen, this.animal.adoptado, false, this.animal.edad,  this.animal.fechaNacimiento,this.animal.peso, this.animal.procedencia)
+
+
+        this.animalesRefugioService.guardarAnimal(this.animal, this.imagen)
       .subscribe(data =>{
           this.animal=data;
           console.log("datos enviados", data)
@@ -122,9 +124,10 @@ imagen:File=null;
   this.router.navigateByUrl("/TableList");
 }
 
-capturarImagen($event:any){
-this.imagen=$event.target.files[0]
-
+capturarImagen($event:Event){
+  
+this.imagen=(event.target as HTMLInputElement).files[0]
+console.log(this.imagen)
 }
     
 }
