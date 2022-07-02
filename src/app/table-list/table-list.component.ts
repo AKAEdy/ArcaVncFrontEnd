@@ -4,7 +4,7 @@ import { AnimalesService } from 'app/api/animales.service';
 import { AnimalesRefugioService } from 'app/api/animalesRefugio.service';
 import { FichasClnicasService } from 'app/api/fichasClnicas.service';
 import { Animal } from 'app/model/animal';
-import { AnimalRefugioRequest } from 'app/model/animalRefugioRequest';
+
 import { AnimalRefugioResponse } from 'app/model/animalRefugioResponse';
 import { FichaClinica } from 'app/model/fichaClinica';
 import { FichaClinicaDTO } from 'app/model/fichaClinicaDTO';
@@ -77,7 +77,7 @@ Detalle(id: number){
 
   this.animalesService.getAnimalPorIdUsingGET(id).subscribe(data =>{
       this.animales=data;
-    console.log("listado",data);
+    console.log("listado detalle", data);
     this.router.navigate (['/upgrade', id]);
     });
   }

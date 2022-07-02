@@ -26,52 +26,50 @@ export class RegistroCarnetComponent implements OnInit {
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params.id;
     this.es.getAnimalPorIdUsingGET(id).subscribe(data =>{
-      this.animal= data;
-      console.log(data,"data de animal");
-   
+      this.animal= data.animal;
+      console.log(data,"datos de animal");
+     
+     
     },
       err => {
-       
+      
       }
-    );
-  this.listarVacunas();
-}
-listarVacunas(){
-  this.vacuna.getVacunasUsingGET().subscribe(data => {
-
-
-  })
-}
+    );}
   
 
-    guardarCarnet(){
 
-      // console.log("LLEGA "+ this.animal.id,this.animal.nombre,this.animal.sexo, this.animal.especie, this.animal.procedencia, this.animal.lugarEstancia, this.animal.raza, this.animal.peso, this.animal.edad, this.animal.tamanyo, this.animal.fechaNacimiento, this.animal.colorCaracteristicas, this.animal.observacionesProcedencia, this.animal.foto);
+  
+
+  
+
+     guardarCarnet(){}
+
+    //   // console.log("LLEGA "+ this.animal.id,this.animal.nombre,this.animal.sexo, this.animal.especie, this.animal.procedencia, this.animal.lugarEstancia, this.animal.raza, this.animal.peso, this.animal.edad, this.animal.tamanyo, this.animal.fechaNacimiento, this.animal.colorCaracteristicas, this.animal.observacionesProcedencia, this.animal.foto);
         
       
-          /* igualando de id de animal pasar por routerlink */
-       //  this.carnetVacuna.animal=this.animal as Animal;
-         console.log(this.carnetVacuna);
+    //       /* igualando de id de animal pasar por routerlink */
+    //    //  this.carnetVacuna.animal=this.animal as Animal;
+    //      console.log(this.carnetVacuna);
          
-            this.carnetVacunacion.createUsingPOST(this.carnetVacuna).subscribe(data =>{
-              this.carnetVacuna=data;
-              Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Se a registrado correctamente',
-                showConfirmButton: false,
-                timer: 1500
-              })
-              ;
+    //         this.carnetVacunacion.createUsingPOST(this.carnetVacuna).subscribe(data =>{
+    //           this.carnetVacuna=data;
+    //           Swal.fire({
+    //             position: 'center',
+    //             icon: 'success',
+    //             title: 'Se a registrado correctamente',
+    //             showConfirmButton: false,
+    //             timer: 1500
+    //           })
+    //           ;
               
-              location.reload();
-            });
+    //           location.reload();
+    //         });
            
            
             
     
             
-          }
+    //       }
           
       
     

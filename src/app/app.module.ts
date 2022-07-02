@@ -42,8 +42,7 @@ import { AnimalesRefugioService } from './api/animalesRefugio.service';
     HttpClientModule,
     ComponentsModule,
     RouterModule,
-    AppRoutingModule, provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideStorage(() => getStorage())
+    AppRoutingModule, 
 
     
   ],

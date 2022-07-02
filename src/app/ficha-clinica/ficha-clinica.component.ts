@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AnimalesService } from 'app/api/animales.service';
-import { AnimalesRefugioService } from 'app/api/animalesRefugio.service';
 import { FichasClnicasService } from 'app/api/fichasClnicas.service';
 
 import { FichaClinica } from 'app/model/fichaClinica';
@@ -26,7 +25,7 @@ animal:any={};
 loginUsuario:any={};
 
 public formSubmitted = false;
-  constructor(private fichasClinicasService: FichasClnicasService,private router: Router,private _formBuilder: FormBuilder, animalesService:AnimalesRefugioService) {
+  constructor(private fichasClinicasService: FichasClnicasService,private router: Router,private _formBuilder: FormBuilder, animalesService:AnimalesService) {
   
     this.animal={};
     this.loginUsuario={};    
@@ -57,10 +56,7 @@ buscarIdUsuario(){
   ngOnInit(): void {
 
    
-     // this.animal = JSON.parse(localStorage.getItem('animal'))?.data??null;
-     this.animal=JSON.parse(localStorage.getItem('animal'))?.animal??null;
-
-
+      this.animal = JSON.parse(localStorage.getItem('animal')).animal;
     
     // igualando objetos de tipo cualquiera con datos almacenados en localStorage
    
@@ -126,9 +122,7 @@ buscarIdUsuario(){
       }) 
     }
   }
-  irLista() {
-      this.router.navigateByUrl("/menu");
-     }
+
 
 
       }

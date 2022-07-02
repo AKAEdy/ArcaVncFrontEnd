@@ -19,9 +19,10 @@ import Swal from 'sweetalert2';
 })
 export class UpgradeComponent implements OnInit {
   
+   //animal: AnimalRefugioResponse[] = [];
 
-id:number;
-animal:AnimalRefugioResponse= null;
+  
+ animal: AnimalRefugioResponse=null;
 fichaClinica:fichaClinicaPost={};
   
   constructor(private activatedRoute: ActivatedRoute, private router: Router,
@@ -32,8 +33,8 @@ fichaClinica:fichaClinicaPost={};
   
     const id = this.activatedRoute.snapshot.params.id;
     this.es.getAnimalPorIdUsingGET(id).subscribe(data =>{
-      this.animal= data;
-      console.log(data,"data de animal");
+      this.animal= data.animal;
+      console.log(data,"datos de animal");
       localStorage.setItem('animal', JSON.stringify(this.animal));
       this.getFichaByIdAnimal(id);
       
@@ -90,16 +91,18 @@ fichaClinica:fichaClinicaPost={};
 
   modificar(id: number){
     this.es.getAnimalPorIdUsingGET(id).subscribe(data =>{
-      this.animal=data;
-    console.log("listado",data);
+      this.animal=this.animal;
+    console.log("listado de animal ",data);
     this.router.navigate (['/notifications', id]);
     });
   }
 
+  
+
   irVacuna(id: number){
     this.es.getAnimalPorIdUsingGET(id).subscribe(data =>{
-     
-    console.log("listado", data);
+      this.animal=data.animal;
+    console.log("listado para vacunas", data);
     this.router.navigate (['/registroCarnet', id]);
     });
    
