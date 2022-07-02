@@ -35,7 +35,7 @@ fichaClinica:fichaClinicaPost={};
     this.es.getAnimalPorIdUsingGET(id).subscribe(data =>{
       this.animal= data.animal;
       console.log(data,"datos de animal");
-      localStorage.setItem('animal', JSON.stringify(this.animal));
+    //  localStorage.setItem('animal', JSON.stringify(this.animal));
       this.getFichaByIdAnimal(id);
       
      
@@ -91,7 +91,7 @@ fichaClinica:fichaClinicaPost={};
 
   modificar(id: number){
     this.es.getAnimalPorIdUsingGET(id).subscribe(data =>{
-      this.animal=this.animal;
+      this.animal=data;
     console.log("listado de animal ",data);
     this.router.navigate (['/notifications', id]);
     });
@@ -101,7 +101,7 @@ fichaClinica:fichaClinicaPost={};
 
   irVacuna(id: number){
     this.es.getAnimalPorIdUsingGET(id).subscribe(data =>{
-      this.animal=data.animal;
+      this.animal=data;
     console.log("listado para vacunas", data);
     this.router.navigate (['/registroCarnet', id]);
     });

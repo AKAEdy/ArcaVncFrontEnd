@@ -89,7 +89,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'tratamiento',           component: MapsComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN','ROLE_VETERINARIO']}}, // map
     { path: 'notifications',  component: NotificationsComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN','ROLE_VETERINARIO']}},
     { path: 'upgrade',        component: UpgradeComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN','ROLE_VETERINARIO']}},
-
+    { path: 'registroCarnet',   component: RegistroCarnetComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN', 'ROLE_VETERINARIO']}},
+ 
 
     { path: 'user-profile',   component: UserProfileComponent,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN', 'ROLE_VETERINARIO']} },
     { path: 'table-list',     component: TableListComponent,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN','ROLE_VETERINARIO']} },

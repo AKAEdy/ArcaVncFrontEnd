@@ -45,7 +45,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/medicacion', title: 'REGISTRO MEDICACION',  icon:'library_books', class: '' }, //typography
     { path: '/listarCitas', title: 'LISTA DE CITAS',  icon:'person', class: '' },
     { path: '/registroVeterinarios', title: 'Registro de Veterinarios',  icon:'person', class: '' },
-    { path: '/registroCarnet', title: 'Registro vacuna',  icon:'person', class: '' },
+    { path: '/registroCarnet', title: 'Registro Carnet',  icon:'person', class: '' },
 
 ];
 
