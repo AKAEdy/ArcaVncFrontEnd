@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AnimalesService } from 'app/api/animales.service';
+import { AnimalesRefugioService } from 'app/api/animalesRefugio.service';
 import { CarnetsDeVacunacinService } from 'app/api/carnetsDeVacunacin.service';
 import { VacunasService } from 'app/api/vacunas.service';
 import { Animal } from 'app/model/animal';
+import { AnimalRefugioResponse } from 'app/model/animalRefugioResponse';
 import { CarnetVacunacion } from 'app/model/carnetVacunacion';
 import { Vacuna } from 'app/model/vacuna';
 import Swal from 'sweetalert2';
@@ -14,16 +16,16 @@ import Swal from 'sweetalert2';
   styleUrls: ['./registro-carnet.component.css']
 })
 export class RegistroCarnetComponent implements OnInit {
-  animal: Animal={};
+  animal: AnimalRefugioResponse={};
   public vacunas: Vacuna[] = [];
   
   carnetVacuna: CarnetVacunacion={};
   constructor(private activatedRoute: ActivatedRoute, private router: Router,
-    private es:AnimalesService, private carnetVacunacion: CarnetsDeVacunacinService, private vacuna: VacunasService) { }
+    private es:AnimalesRefugioService, private carnetVacunacion: CarnetsDeVacunacinService, private vacuna: VacunasService) { }
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params.id;
-    this.es.getByIdUsingGET(id).subscribe(data =>{
+    this.es.getAnimalPorIdUsingGET(id).subscribe(data =>{
       this.animal= data;
       console.log(data,"data de animal");
    

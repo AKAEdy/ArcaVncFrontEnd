@@ -623,13 +623,13 @@ export class AnimalesRefugioService {
             }
         );
     }
-    public guardarAnimal(animal :AnimalRefugioRequest ,urlImagenAnimal?: File): Observable<any> {
-        const formData = new FormData();
-        formData.append('multipartFile', urlImagenAnimal);
-   formData.append("request",new Blob([JSON.stringify(animal)], { type: 'application/json' }) )
-        return this.httpClient.request<any>('post',`${this.basePath}/animalesrefugio/`, {body:formData});
-        // return this.httpClient.post<any>(this.imagenURL + 'upload', formData);
-      }
+//     public guardarAnimal(animal :AnimalRefugioRequest ,urlImagenAnimal?: File): Observable<any> {
+//         const formData = new FormData();
+//         formData.append('multipartFile', urlImagenAnimal);
+//    formData.append("request",new Blob([JSON.stringify(animal)], { type: 'application/json' }) )
+//         return this.httpClient.request<any>('post',`${this.basePath}/animalesrefugio/`, {body:formData});
+//         // return this.httpClient.post<any>(this.imagenURL + 'upload', formData);
+//       }
 
 }
 

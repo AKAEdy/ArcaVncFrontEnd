@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AnimalesService } from 'app/api/animales.service';
+
+import { AnimalesRefugioService } from 'app/api/animalesRefugio.service';
 import { FichasClnicasService } from 'app/api/fichasClnicas.service';
-import { Animal } from 'app/model/animal';
+
+
+import { AnimalRefugioResponse } from 'app/model/animalRefugioResponse';
 // import { FichaClinicaDTO } from 'app/model/fichaClinicaDTO';
 import { fichaClinicaPost } from 'app/model/fichaClinicaPost';
 import { data } from 'jquery';
@@ -18,21 +21,21 @@ export class UpgradeComponent implements OnInit {
   
 
 id:number;
-animal:Animal= null;
+animal:AnimalRefugioResponse= null;
 fichaClinica:fichaClinicaPost={};
   
   constructor(private activatedRoute: ActivatedRoute, private router: Router,
-    private es:AnimalesService,private fichaClinService:FichasClnicasService) { }
+    private es:AnimalesRefugioService,private fichaClinService:FichasClnicasService) { }
 
   ngOnInit() {
   
   
     const id = this.activatedRoute.snapshot.params.id;
-    this.es.getByIdUsingGET(id).subscribe(data =>{
+    this.es.getAnimalPorIdUsingGET(id).subscribe(data =>{
       this.animal= data;
       console.log(data,"data de animal");
       localStorage.setItem('animal', JSON.stringify(this.animal));
-this.getFichaByIdAnimal(id);
+      this.getFichaByIdAnimal(id);
       
      
     },
@@ -50,7 +53,7 @@ this.getFichaByIdAnimal(id);
       });
 
     }
-  list(){
+  list(){ 
     this.router.navigate(['/table-list']);
   }
   onDelete(id: number) {
@@ -72,21 +75,13 @@ this.getFichaByIdAnimal(id);
         this.irAtras();
       }
     })
-    this.es.deleteUsingDELETE(id).subscribe(data => {
+    this.es.eliminarAnimalUsingDELETE(id).subscribe(data => {
 
     })
 
   }
 
-irVacuna(id:number)
-{
-  this.es.getByIdUsingGET(id).subscribe(data =>{
-    this.animal=data;
-  console.log("listado",data);
-  this.router.navigate (['/registroCarnet', id]);
-  });
- 
-}
+
 
 
  irAtras(){
@@ -94,11 +89,20 @@ irVacuna(id:number)
   }
 
   modificar(id: number){
-    this.es.getByIdUsingGET(id).subscribe(data =>{
+    this.es.getAnimalPorIdUsingGET(id).subscribe(data =>{
       this.animal=data;
     console.log("listado",data);
     this.router.navigate (['/notifications', id]);
     });
+  }
+
+  irVacuna(id: number){
+    this.es.getAnimalPorIdUsingGET(id).subscribe(data =>{
+     
+    console.log("listado", data);
+    this.router.navigate (['/registroCarnet', id]);
+    });
+   
   }
   }
 

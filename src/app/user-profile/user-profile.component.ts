@@ -77,8 +77,7 @@ imagen:File=null;
       if (result.isConfirmed) {
 
 
-        this.animalesRefugioService.guardarAnimal(this.animal, this.imagen)
-      .subscribe(data =>{
+        this.animalesRefugioService.guardarAnimalUsingPOSTForm(this.animal.colorCaracteristicas,this.animal.especie, this.animal.lugarEstancia, this.animal.nombre,  this.animal.observacionesProcedencia, this.animal.raza, this.animal.sexo, this.imagen, this.animal.adoptado,false, this.animal.edad, this.animal.fechaNacimiento, this.animal.peso, this.animal.procedencia).subscribe(data =>{
           this.animal=data;
           console.log("datos enviados", data)
           Swal.fire({

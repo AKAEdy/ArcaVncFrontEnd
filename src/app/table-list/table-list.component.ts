@@ -74,6 +74,7 @@ dataSource:any={};
 
 //   }
 Detalle(id: number){
+
   this.animalesService.getAnimalPorIdUsingGET(id).subscribe(data =>{
       this.animales=data;
     console.log("listado",data);
