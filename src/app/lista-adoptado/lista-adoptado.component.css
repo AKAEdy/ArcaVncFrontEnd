@@ -11,7 +11,7 @@
 }
 
 .btneliminar {
-    margin-left: 20px;
+    margin-left: 10px;
     background-color: rgb(255, 58, 58);
     text-align: center;
 }
@@ -23,8 +23,9 @@
 
 .btnseguimiento{
     background-color: coral;
-    font-style: normal;
     text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 5px;
 }
 
 #img {
@@ -43,7 +44,7 @@
 }
 
 #card{
-    margin-bottom: 20px;
+    margin-top: 20px;
     background: rgba(255, 79, 79, 0.116);
 }
 

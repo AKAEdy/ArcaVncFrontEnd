@@ -11,7 +11,7 @@
 
             </div>
             <div class="row">
-                <div class="col-md-3" *ngFor="let adopciones of adopcion">
+                <div class="col-md-4" *ngFor="let adopciones of adopcion">
                     <div class="panel panel-info" class="list-group-item" id="card">
                         <div class="panel-body text-center">
                             <li class="list-group-item">
@@ -31,7 +31,7 @@
                                 <h5>{{adopciones.descripcion}}</h5>
                             </li>
                         </ul>
-                        <div class="btn-group">
+                        <div class="btn-group" style="display: flex; justify-content: center;">
                             <div>
                                 <button mat-raised-button type="submit" class="btn btn-danger btn-round"
                                     class="btneditar" (click)="getByIdAdopcion(adopciones.id)">
@@ -47,11 +47,11 @@
                             
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-6">
+                        <div class="row" style="display: flex; justify-content: center;">
+                            <div class="col-md-6" >
                                  <button mat-raised-button type="submit" class="btn btn-danger btn-round"
-                                     class="btnseguimiento" (click)="getByIdAdoptantes(adopciones.id)" >
-                                     <i class="material-icons">SEGUIMIENTO</i>
+                                     class="btnseguimiento" (click)="getByIdAdoptantes(adopciones.id)">
+                                     SEGUIMIENTO
                                  </button>
                             </div> 
                          </div>
