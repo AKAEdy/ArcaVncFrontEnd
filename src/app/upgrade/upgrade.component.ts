@@ -35,9 +35,16 @@ fichaClinica:fichaClinicaPost={};
     this.es.getAnimalPorIdUsingGET(id).subscribe(data =>{
       this.animal= data.animal;
       console.log(data,"datos de animal");
+
+
+
+
     //  localStorage.setItem('animal', JSON.stringify(this.animal));
+
+
+    
       this.getFichaByIdAnimal(id);
-      
+   
      
     },
       err => {
@@ -107,6 +114,24 @@ fichaClinica:fichaClinicaPost={};
     });
    
   }
+
+
+  
+  irTratamiento(id: number){
+    this.fichaClinService.getByIdUsingGET1(id).subscribe(data =>{
+      this.fichaClinica=data;
+      console.log("lista ficha para tratamiento", data);
+    this.router.navigate (['/tratamiento', id]);
+    });
+    
+     
+   
+   
+  }
+  
+
+
+
   }
 
 

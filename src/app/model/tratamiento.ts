@@ -12,10 +12,10 @@
 import { FichaClinica } from './fichaClinica';
 
 export interface Tratamiento { 
-    descripcion: string;
-    estado: string;
+    descripcion?: string;
+    estado?: string;
     fechaAplicacion?: Date;
     id?: number;
-    idFichaClinica: FichaClinica;
-    indicaciones: string;
+    idFichaClinica?: FichaClinica;
+    indicaciones?: string;
 }

@@ -52,7 +52,7 @@ import { CarnetsDeVacunacinService } from './api/carnetsDeVacunacin.service';
     AdminLayoutComponent,
     LoginComponent,
     RegistroComponent,
-   
+      
     
 
 
@@ -75,6 +75,7 @@ import { CarnetsDeVacunacinService } from './api/carnetsDeVacunacin.service';
     AdoptantesService,
     DonacionesService,
     CarnetsDeVacunacinService,
+
     VoluntariosService],
   bootstrap: [AppComponent]
 })

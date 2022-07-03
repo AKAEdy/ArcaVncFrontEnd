@@ -9,7 +9,7 @@
                         <p class="card-category">Complete el formulario</p>
                     </div>
                     <div class="card-body">
-                        <form >
+                        <form  #f="ngForm" (ngSubmit)="guardarCarnet()" novalidate >
                           <div class="row" >
                             <br>
                             <br>
@@ -17,7 +17,8 @@
                                   <label>FECHA APLICACION</label>
                                   <br>
                                  <div>
-                                    <input class="input"  matInput placeholder = "FECHA APLICACION" type="date" >
+                                    <input class="input"  matInput placeholder = "FECHA APLICACION" type="date"name="fechaAplicacion" #fechaAplicacion="ngModel"
+                                    [(ngModel)]="carnetVacuna.fechaAplicacion" >
                                  </div> 
                               </div>
                               <br>
@@ -26,30 +27,37 @@
                                   <label>FECHA PROXIMA DE APLICACION</label>
                                   <br>
                                   <div>
-                                    <input class="input" matInput placeholder="FECHA PROXIMA DE APLICACION" type="date">
+                                    <input class="input" matInput placeholder="FECHA PROXIMA DE APLICACION" type="date" name="fechaProximaAplicacion" #fechaProximaAplicacion="ngModel"
+                                    [(ngModel)]="carnetVacuna.fechaProximaAplicacion">
                                   </div>
                             </div>
                             <br>
                             <br>
-                            <div class="col-md-5">
-                                <br>
-                                <br>
-                                <label>VACUNA</label>
-                                <div class="caja">
-                                <select class="form-select" aria-label="Default select example" name="nombrevacuna">
-                                    <option selected disabled >Seleccione:</option>
-                                    <option value="vacuna">vacuna</option>
-                                    
-                                </select>
-                                </div>
-                            </div>
+
+
+
+                            
+                          
+                
+                         
+                          <div class="col-md-12">
+                              <select  
+                                [(ngModel)]="selectedvacunas" >
+                                <option [ngValue]="item" *ngFor="let item  of vacunas"> {{item.nombre}} </option>
+                              </select>
                           </div>
-                    
+                          </div>
+
+
+
+                          
+                            <button mat-raised-button type="button" class="btn btn-danger pull-right"  (click)="irAtras()" >REGRESAR</button>
+                            <div class="clearfix"></div>
                             <button mat-raised-button type="submit" class="btn btn-danger pull-right"  (click)="guardarCarnet()">REGISTRAR</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>
-                </div>
+                
             </div> 
             <!-- </div> -->
           
