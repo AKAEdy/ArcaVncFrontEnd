@@ -32,6 +32,8 @@ import { AdoptantesService } from './api/adoptantes.service';
 import { DonacionesService } from './api/donaciones.service';
 import { VoluntariosService } from './api/voluntarios.service';
 import { SeguimientoDeAdoptadosService } from './api/seguimientoDeAdoptados.service';
+import { TypographyComponent } from './typography/typography.component';
+import { MedicacionesService } from './api/medicaciones.service';
 
 @NgModule({
   imports: [
@@ -70,6 +72,8 @@ import { SeguimientoDeAdoptadosService } from './api/seguimientoDeAdoptados.serv
     MedicamentosService,
     VeterinariosService ,
     MedicamentosService,
+    MedicacionesService,
+    
     
     AdoptantesService,
     DonacionesService,
