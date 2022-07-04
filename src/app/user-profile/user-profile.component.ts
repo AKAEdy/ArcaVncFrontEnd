@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AnimalesService } from 'app/api/animales.service';
-import { FichasClnicasService } from 'app/api/fichasClnicas.service';
-import { Animal } from 'app/model/animal';
-import { FichaClinica } from 'app/model/fichaClinica';
+// import { AnimalesService } from 'app/api/animales.service';
+// import { FichasClnicasService } from 'app/api/fichasClnicas.service';
+// import { Animal } from 'app/model/animal';
+// import { FichaClinica } from 'app/model/fichaClinica';
 import { Validacion } from 'app/validaciones/Validacion';
 import { ViewChild } from '@angular/core';
 import { Storage, ref, uploadBytes, listAll, getDownloadURL } from '@angular/fire/storage';
 
 
 import Swal from 'sweetalert2';
-import { finalize, Observable } from 'rxjs';
+// import { finalize, Observable } from 'rxjs';
 import { AnimalRefugioRequest } from 'app/model/animalRefugioRequest';
 import { AnimalesRefugioService } from 'app/api/animalesRefugio.service';
-import { AnimalRefugioResponse } from 'app/model/animalRefugioResponse';
+// import { AnimalRefugioResponse } from 'app/model/animalRefugioResponse';
 
 @Component({
   selector: 'app-user-profile',
@@ -37,7 +37,7 @@ imagen:File=null;
 
 
   
-  constructor(private animalesRefugioService: AnimalesRefugioService, private fichasClinicasService: FichasClnicasService, private router: Router,private _formBuilder: FormBuilder,private storage: Storage) {
+  constructor(private animalesRefugioService: AnimalesRefugioService, private router: Router) {
    
    }
 
