@@ -10,7 +10,8 @@
  * Do not edit the class manually.
  */
 
-export interface AdoptanteDto { 
+export interface AdoptanteDto {
+    persona: any; 
     apellidos?: string;
     cedula?: string;
     celular?: string;

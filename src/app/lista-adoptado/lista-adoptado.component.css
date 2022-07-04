@@ -1,17 +1,49 @@
-#myInput{
+#myInput {
     float: right;
     width: 200px;
     color: rgb(255, 255, 255);
 }
-.required{
+
+.required {
     float: right;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
 }
 
-.btneliminar{
+.btneliminar {
     margin-left: 20px;
     background-color: rgb(255, 58, 58);
 }
 
-.btneditar{
+.btneditar {
     background-color: rgb(250, 193, 37);
+}
+
+#img {
+    margin-bottom:20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    transition: transform .2s;
+}
+
+#img:hover {
+    transform: scale(1.5);
+}
+
+#card{
+    margin-bottom: 20px;
+    background: rgba(255, 79, 79, 0.116);
+}
+
+#label{
+    color: rgb(44, 44, 44);
+}
+
+#tarjeta{
+    position: fixed;
+    width:1000px;
 }

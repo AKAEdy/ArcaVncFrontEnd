@@ -13,11 +13,10 @@ import { Persona } from './persona';
 import { Rol } from './rol';
 
 export interface Usuario { 
-    email?: string;
     enabled: boolean;
     id?: number;
-    password?: string;
+    password: string;
     persona: Persona;
     roles?: Array<Rol>;
-    username?: string;
+    username: string;
 }
