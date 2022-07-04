@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
-import { UserProfileComponent } from '../../user-profile/user-profile.component';
+import { RegistrarAnimalRefugioComponent} from '../../components/arca/animal-refugio/registrar-animal-refugio/registrar-animal-refugio';
 import { TableListComponent } from '../../table-list/table-list.component';
 import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
@@ -69,7 +69,7 @@ import { RegistrarSeguimientoComponent } from 'app/registrar-seguimiento/registr
   ],
   declarations: [
     DashboardComponent,
-    UserProfileComponent,
+    RegistrarAnimalRefugioComponent,
     TableListComponent,
     TypographyComponent,
     IconsComponent,

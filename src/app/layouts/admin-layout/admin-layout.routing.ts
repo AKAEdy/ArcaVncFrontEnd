@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { DashboardComponent } from '../../dashboard/dashboard.component';
-import { UserProfileComponent } from '../../user-profile/user-profile.component';
+import { RegistrarAnimalRefugioComponent} from '../../components/arca/animal-refugio/registrar-animal-refugio/registrar-animal-refugio';
 import { TableListComponent } from '../../table-list/table-list.component';
 import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
@@ -35,56 +35,8 @@ import { RegistrarSeguimientoComponent } from 'app/registrar-seguimiento/registr
 
 
 export const AdminLayoutRoutes: Routes = [
-    // {
-    //   path: '',
-    //   children: [ {
-    //     path: 'dashboard',
-    //     component: DashboardComponent
-    // }]}, {
-    // path: '',
-    // children: [ {
-    //   path: 'userprofile',
-    //   component: UserProfileComponent
-    // }]
-    // }, {
-    //   path: '',
-    //   children: [ {
-    //     path: 'icons',
-    //     component: IconsComponent
-    //     }]
-    // }, {
-    //     path: '',
-    //     children: [ {
-    //         path: 'notifications',
-    //         component: NotificationsComponent
-    //     }]
-    // }, {
-    //     path: '',
-    //     children: [ {
-    //         path: 'maps',
-    //         component: MapsComponent
-    //     }]
-    // }, {
-    //     path: '',
-    //     children: [ {
-    //         path: 'typography',
-    //         component: TypographyComponent
-    //     }]
-    // }, {
-    //     path: '',
-    //     children: [ {
-    //         path: 'upgrade',
-    //         component: UpgradeComponent
-    //     }]
-    // }
-
-
-    //RUTAS PARA LAS DIRECCIONES
-
     { path: 'menu',      component: DashboardComponent ,canActivate:[IsAuthenticatedGuard]},
-
-
-    { path: 'user-profile',   component: UserProfileComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN' ,'ROLE_VETERINARIO']} },
+    { path: 'registrar-animal-refugio',   component:RegistrarAnimalRefugioComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN' ,'ROLE_VETERINARIO']} },
     { path: 'table-list',     component: TableListComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN','ROLE_VETERINARIO']} },
     { path: 'medicacion',     component: TypographyComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
     { path: 'icons',          component: IconsComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
@@ -94,11 +46,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'registroCarnet',   component: RegistroCarnetComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN', 'ROLE_VETERINARIO']}},
  
 
-    { path: 'user-profile',   component: UserProfileComponent,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN', 'ROLE_VETERINARIO']} },
-    { path: 'table-list',     component: TableListComponent,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN','ROLE_VETERINARIO']} },
-    { path: 'medicacion',     component: TypographyComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN','ROLE_VETERINARIO']}},
-    { path: 'icons',          component: IconsComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN','ROLE_VETERINARIO']}},
-    { path: 'tratamiento',           component: MapsComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN','ROLE_VETERINARIO']}}, // map
+ 
+   
     { path: 'notifications/:id',  component: NotificationsComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN','ROLE_VETERINARIO']}},
     { path: 'upgrade/:id',        component: UpgradeComponent ,canActivate:[IsAuthenticatedGuard],data:{roles:['ROLE_ADMIN','ROLE_VETERINARIO']}},
      { path: 'registrofichaclinica',   component: FichaClinicaComponent,canActivate:[IsAuthenticatedGuard,RoleGuard] ,data:{roles:['ROLE_ADMIN','ROLE_VETERINARIO']} },
@@ -123,11 +72,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'listarDonaciones',   component: ListarDonacionesComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']} },
     { path: 'registrarVoluntarios',   component: RegistrarVoluntariosComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
     { path: 'listarVoluntarios',   component: ListarVoluntariosComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']} },
-    // { path: 'table-list',     component: TableListComponent },
-    // { path: 'typography',     component: TypographyComponent },
-    // { path: 'icons',          component: IconsComponent },
-    // { path: 'maps',           component: MapsComponent },
-    // { path: 'notifications',  component: NotificationsComponent },
-    // { path: 'upgrade',        component: UpgradeComponent },
-
+   
 ];
