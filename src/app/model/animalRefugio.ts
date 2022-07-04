@@ -10,24 +10,22 @@
  * Do not edit the class manually.
  */
 
-import { CarnetVacunacion } from "./carnetVacunacion";
-import { FichaClinica } from "./fichaClinica";
-
-export interface Animal { 
-  
+export interface AnimalRefugio { 
     adoptado?: boolean;
     colorCaracteristicas: string;
+    deleted?: boolean;
     edad: number;
     especie: string;
     fechaNacimiento: Date;
-    foto: string;
     id?: number;
+    idImagenAnimalCld?: string;
     lugarEstancia: string;
     nombre: string;
+    nombreImagenAnimalCld?: string;
     observacionesProcedencia: string;
     peso: number;
     procedencia: string;
     raza: string;
     sexo: string;
-    tamanyo: string;
+    urlImagenAnimalCld?: string;
 }

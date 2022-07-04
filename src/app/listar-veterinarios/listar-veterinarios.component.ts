@@ -47,7 +47,7 @@ tamaño=2;
         'Registro eliminado exitosamente.',
         'success'
       )
-      this.veterinarioService.deleteUsingDELETE9(id).subscribe(data =>{
+      this.veterinarioService.deleteUsingDELETE8(id).subscribe(data =>{
 
       })
       this.getAllVeterinarios();
@@ -83,7 +83,7 @@ botonCancelar(){
 }
 
 getVeterinarioById(id:number){
-  this.veterinarioService.getByIdUsingGET9(id).subscribe(data =>{
+  this.veterinarioService.getByIdUsingGET8(id).subscribe(data =>{
   this.veterinarioid = data
   
   })
@@ -112,7 +112,7 @@ updateVeterinarios(){
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-        this.veterinarioService.updateUsingPUT9(this.veterinarioid, this.veterinarioid.id).subscribe(data=>{
+        this.veterinarioService.updateUsingPUT8(this.veterinarioid, this.veterinarioid.id).subscribe(data=>{
           this.veterinarioid = data
           Swal.fire({
             position: 'center',

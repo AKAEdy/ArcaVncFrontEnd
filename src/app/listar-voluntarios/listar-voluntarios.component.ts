@@ -72,7 +72,7 @@ export class ListarVoluntariosComponent implements OnInit {
   }
 
   getVoluntariosById(id:number){
-this.voluntarioService.getByIdUsingGET10(id).subscribe(data =>{
+this.voluntarioService.getByIdUsingGET9(id).subscribe(data =>{
 this.voluntariosid = data
 })
 this.mostrarEditar();
@@ -106,7 +106,7 @@ this.mostrarEditar();
           'Registro eliminado exitosamente.',
           'success'
         )
-        this.voluntarioService.deleteUsingDELETE10(id).subscribe(data =>{
+        this.voluntarioService.deleteUsingDELETE9(id).subscribe(data =>{
   
         })
         this.getAllVoluntarios;
@@ -148,7 +148,7 @@ this.mostrarEditar();
             this.voluntarioid.tipo = this.voluntariosid.tipo
       
             console.log("listaaaaa" + this.voluntarioid.cedula +" " + this.voluntarioid.actividad +" " +this.voluntarioid.apellidos);
-          this.voluntarioService.updateUsingPUT10(this.voluntarioid, this.voluntariosid.id).subscribe(data=>{
+          this.voluntarioService.updateUsingPUT9(this.voluntarioid, this.voluntariosid.id).subscribe(data=>{
             this.voluntarioid = data
             Swal.fire({
               position: 'center',

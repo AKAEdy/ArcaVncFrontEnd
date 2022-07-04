@@ -25,6 +25,10 @@ import { MedicamentosService } from './api/medicamentos.service';
 import { AdoptantesService } from './api/adoptantes.service';
 import { DonacionesService } from './api/donaciones.service';
 import { VoluntariosService } from './api/voluntarios.service';
+import { AnimalesRefugioService } from './api/animalesRefugio.service';
+import { CarnetsDeVacunacinService } from './api/carnetsDeVacunacin.service';
+import { MedicacionesService } from './api/medicaciones.service';
+
 
 @NgModule({
   imports: [
@@ -34,7 +38,8 @@ import { VoluntariosService } from './api/voluntarios.service';
     HttpClientModule,
     ComponentsModule,
     RouterModule,
-    AppRoutingModule,
+    AppRoutingModule, 
+
     
   ],
   declarations: [
@@ -42,6 +47,8 @@ import { VoluntariosService } from './api/voluntarios.service';
     AdminLayoutComponent,
     LoginComponent,
     RegistroComponent,
+      
+    
 
 
   ],
@@ -58,9 +65,13 @@ import { VoluntariosService } from './api/voluntarios.service';
     TratamientosService,
     MedicamentosService,
     VeterinariosService ,
-    MedicamentosService ,
+    MedicamentosService,
+ AnimalesRefugioService,
     AdoptantesService,
     DonacionesService,
+    CarnetsDeVacunacinService,
+    MedicacionesService,
+
     VoluntariosService],
   bootstrap: [AppComponent]
 })

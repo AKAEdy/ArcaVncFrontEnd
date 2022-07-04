@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AnimalesService } from 'app/api/animales.service';
-import { Animal } from 'app/model/animal';
 import { AdoptanteControllerService } from 'app/api/adoptanteController.service';
 import { Adopcion } from 'app/model/adopcion';
 import { Adoptante } from 'app/model/adoptante';
@@ -13,6 +11,7 @@ import { AdopcionControllerService } from 'app/api/adopcionController.service';
   styleUrls: ['./lista-adoptado.component.css']
 })
 export class ListaAdoptadoComponent implements OnInit {
+
   filterpost:any='';
   adopcion:Adopcion[]=[];
   dataSource: any ={};
@@ -22,10 +21,18 @@ export class ListaAdoptadoComponent implements OnInit {
   descripcion:string;
   constructor(private adopcionService: AdopcionControllerService, private adoptanteService: AdoptanteControllerService) { }
 
-
   ngOnInit(): void {
- this.getAllAdopcion();
+
+    this.getAllAdopcion();
+    this.filterpost=this.adopcion;
   }
+  
+  
+  
+
+
+
+
 
 
 

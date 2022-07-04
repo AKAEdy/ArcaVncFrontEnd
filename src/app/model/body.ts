@@ -9,13 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { FichaClinica } from './fichaClinica';
 
-export interface Tratamiento { 
-    descripcion?: string;
-    estado?: string;
-    fechaAplicacion?: Date;
-    id?: number;
-    idFichaClinica?: FichaClinica;
-    indicaciones?: string;
+export interface Body { 
+    multipartFile?: Blob;
 }

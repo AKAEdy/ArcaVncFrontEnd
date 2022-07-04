@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AnimalesService } from 'app/api/animales.service';
 import { FichasClnicasService } from 'app/api/fichasClnicas.service';
-import { Animal } from 'app/model/animal';
-import { FichaClinica } from 'app/model/fichaClinica';
 import { Validacion } from 'app/validaciones/Validacion';
 import { ViewChild } from '@angular/core';
-
-
 import Swal from 'sweetalert2';
+import { AnimalRefugioRequest } from 'app/model/animalRefugioRequest';
+import { AnimalesRefugioService } from 'app/api/animalesRefugio.service';
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -19,34 +17,20 @@ export class UserProfileComponent implements OnInit {
 
   name = 'Angular';
   @ViewChild('MyForm', { static: false }) MyForm: NgForm;
-
+imagen:File=null;
  
   animales:any[] = [];
   validacion: Validacion = new Validacion();
   
-
-  animal: Animal={
-    colorCaracteristicas: '',
-    edad: 0,
-    especie: '',
-    fechaNacimiento: undefined,
-    foto: '',
-    lugarEstancia: '',
-    nombre: '',
-    observacionesProcedencia: '',
-    peso: 0,
-    procedencia: '',
-    raza: '',
-    sexo: '',
-    tamanyo: ''
-  };
-
-
   public formSubmitted = false;
+  
+ 
+  animal: AnimalRefugioRequest={};
+
 
   
-  constructor(private animalesService: AnimalesService, private fichasClinicasService: FichasClnicasService, private router: Router,private _formBuilder: FormBuilder) {
-
+  constructor(private animalesRefugioService: AnimalesRefugioService, private fichasClinicasService: FichasClnicasService, private router: Router,private _formBuilder: FormBuilder,private storage: Storage) {
+   
    }
 
   ngOnInit():void {
@@ -54,43 +38,19 @@ export class UserProfileComponent implements OnInit {
     localStorage.removeItem('animal');
 
   }
-  // saveAnimal(){
-  //  // console.log("LLEGA "+ this.adoptante.id,this.animal.id,this.adopcion.descripcion, this.adopcion.fechaAdopcion);
-    
-    
-  //     this.animalesService.createUsingPOST(this.animal).subscribe(data =>{
-  //       console.log("LOS DATOS"+data);
-  //       Swal.fire({
-  //         position: 'center',
-  //         icon: 'success',
-  //         title: 'Se a adoptado correctamente',
-  //         showConfirmButton: false,
-  //         timer: 1500
-  //       })
-  //     })
-  //   }
-  
-  // }
-
-
-
-
   resetForm() {
     this.MyForm.reset();
   }
-
-
-
 
   guardarMascota(){
 
   // console.log("LLEGA "+ this.animal.id,this.animal.nombre,this.animal.sexo, this.animal.especie, this.animal.procedencia, this.animal.lugarEstancia, this.animal.raza, this.animal.peso, this.animal.edad, this.animal.tamanyo, this.animal.fechaNacimiento, this.animal.colorCaracteristicas, this.animal.observacionesProcedencia, this.animal.foto);
     
-  if(this.animal.nombre === undefined || this.animal.sexo === undefined || this.animal.especie ===  undefined || this.animal.procedencia === undefined || this.animal.lugarEstancia === undefined || this.animal.raza===  undefined || this.animal.peso=== undefined || this.animal.edad === undefined || this.animal.tamanyo ===  undefined || this.animal.fechaNacimiento === undefined || this.animal.colorCaracteristicas=== undefined || this.animal.observacionesProcedencia ===  undefined || this.animal.foto === undefined  || 
+  if(this.animal.nombre === undefined || this.animal.sexo === undefined || this.animal.especie ===  undefined || this.animal.procedencia === undefined || this.animal.lugarEstancia === undefined || this.animal.raza===  undefined || this.animal.peso=== undefined || this.animal.edad === undefined  || this.animal.fechaNacimiento === undefined || this.animal.colorCaracteristicas=== undefined || this.animal.observacionesProcedencia ===  undefined ||
 
 
 
-    this.animal.nombre === "" || this.animal.raza === ""   || this.animal.colorCaracteristicas === "" ||this.animal.observacionesProcedencia===""|| this.animal.foto ===""){
+    this.animal.nombre === "" || this.animal.raza === ""   || this.animal.colorCaracteristicas === "" ||this.animal.observacionesProcedencia==="" ||  this.imagen== null ){
 
     Swal.fire({
       icon: 'error',
@@ -107,15 +67,24 @@ export class UserProfileComponent implements OnInit {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        this.animalesService.createUsingPOST(this.animal).subscribe(data =>{
-          this.animal=data;
+
+
+        this.animalesRefugioService.guardarAnimalUsingPOSTForm(this.animal.colorCaracteristicas,this.animal.especie, this.animal.lugarEstancia, this.animal.nombre,  this.animal.observacionesProcedencia, this.animal.raza, this.animal.sexo, this.imagen, this.animal.adoptado,false, this.animal.edad, this.animal.fechaNacimiento, this.animal.peso, this.animal.procedencia).subscribe(data =>{
+       this.animal=data;
+          console.log("datos enviados", data)
           Swal.fire({
             position: 'center',
             icon: 'success',
             title: 'Se a registrado correctamente',
             showConfirmButton: false,
             timer: 1500
-          })
+          }
+         
+          
+          
+          )
+          
+
           // almaceno los datos del animal para enviar a ficha clinica
           localStorage.setItem('animal', JSON.stringify(this.animal));
           // console.log('imprimiendo valores de la data',);
@@ -123,6 +92,10 @@ export class UserProfileComponent implements OnInit {
           location.reload();
         });
         this.irFicha();
+       
+        
+
+        
          
       } else if (result.isDenied) {
         Swal.fire('Acción cancelada', '', 'info')
@@ -130,50 +103,6 @@ export class UserProfileComponent implements OnInit {
     }) 
   }
 }
-
-
-
-
-
-s
-
-
-
-  // guardarMascota(form: NgForm) {
-  //   this.formSubmitted = true;
-  //   if (form.invalid) {
-  //     return;
-  //   } 
-  //   if (this.animal.id) {
-  //     this.animalesService
-  //       .updateUsingPUT(this.animal, this.animal.id)
-  //       .subscribe((animales) => {
-  //         Swal.fire(
-  //           "Actualizar mascota",
-  //           `¡${this.animal.nombre} actualizado con exito!`,
-  //           "success"
-  //         );
-  //         this.irFicha();
-  //       });
-  //     }else {
-        
-  //     //  console.log("LLEGA "+ this.animal.nombre,this.animal.especie,this.animal.raza, this.animal.peso, this.animal.color, this.animal.sexo, this.animal.tamanyo, this.animal.edad);
-  // // this.animales.push(this.animal);this.animal={}
-  //     this.animalesService.createUsingPOST(this.animal).subscribe(data => {
-        
-  //       this.animal=data;
-  //       Swal.fire(
-
-  //        "Nueva Mascota",
-  //        `¡${this.animal.especie} creada con exito!`,
-  //         "success"
-  //       );
-  //       console.log("imprimiendo", data)
-      
-  //      this.irFicha();
-  //    });
-  //  } }
-
   irFicha() {
    this.router.navigateByUrl("/registrofichaclinica");
  }
@@ -182,55 +111,18 @@ s
   localStorage.removeItem('animal');
 }
 
-
-
-
-
-
-
-
-
-
-
-// guardarFicha(form: NgForm) {
-//   this.formSubmitted = true;
-//   if (form.invalid) {
-//     return;
-//   } 
-//   if (this.fichaClinica.id) {
-//     this.fichasClinicasService
-//       .updateUsingPUT1(this.fichaClinica, this.fichaClinica.id)
-//       .subscribe((fichasClinicas) => {
-//         Swal.fire(
-//           "Actualizar mascota",
-//           `¡${this.fichaClinica.id} actualizado con exito!`,
-//           "success"
-//         );
-//         this.irLista();
-//       });
-//     }else {
-//     //  console.log("LLEGA "+ this.animal.nombre,this.animal.especie,this.animal.raza, this.animal.peso, this.animal.color, this.animal.sexo, this.animal.tamanyo, this.animal.edad);
-// // this.animales.push(this.animal);this.animal={}
-//     this.fichasClinicasService.createUsingPOST1(this.fichaClinica).subscribe(data => {
-//       this.fichaClinica=data;
-//       Swal.fire(
-
-//        "Nueva Ficha",
-//        `¡${this.fichaClinica.id} creada con exito!`,
-//         "success"
-//       );
-//       console.log("imprimiendo", data)
-    
-//    //  this.irFicha();
-//    });
-//   }}
-
  irLista() {
   this.router.navigateByUrl("/TableList");
 }
 
-
+capturarImagen($event:Event){
+  
+this.imagen=(event.target as HTMLInputElement).files[0]
+console.log(this.imagen)
 }
+    
+}
+
 
 
 

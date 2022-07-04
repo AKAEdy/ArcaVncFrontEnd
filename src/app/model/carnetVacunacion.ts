@@ -9,11 +9,12 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { Animal } from './animal';
+import { AnimalRefugio } from './animalRefugio';
+import { AnimalRefugioResponse } from './animalRefugioResponse';
 import { Vacuna } from './vacuna';
 
 export interface CarnetVacunacion { 
-    animal?: Animal;
+    animal?: AnimalRefugioResponse;
     fechaAplicacion?: Date;
     fechaProximaAplicacion?: Date;
     id?: number;

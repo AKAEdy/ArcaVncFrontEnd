@@ -20,19 +20,37 @@
             
                       <div class="card-body">
                         <div class="texto">
-                          <img src="{{animal.foto}}" class="img" alt="">
+                          <br>
+                          <p><span>FUNDACION ARCA</span></p>
+                          
+                          <img src="{{animal.urlImagenAnimal}}" class="img" alt="">
                           <br>
                           <h3 class="card-title" text="">{{animal.nombre}}</h3>
                           <br>
-                          <p><span>FUNDACION ARCA</span></p>
+                          
                         </div>
                       </div>
                     </div>
                  </div>
+                
                   <div class="col-4">
                     <br>
-                    <br>
+                    <div class="col-md-12">
+                           
+                      <div class="btn-group">
+                  <button type="button" class="btn2"(click)="irVacuna(animal.id)" >
+                    <i class="fa fa-plus-square" aria-hidden="true"></i>
+                    Agregar Vacuna
+                  </button>
+                  <button type="button" class="btn2"(click)="irVacuna(animal.id)" >
+                    <i class="fa fa-plus-square" aria-hidden="true"></i>
+                    Nueva Ficha
+                  </button>
+
+                      </div></div>
+                   
                           <h4>INFORMACIÓN</h4>
+                         
                         <i class="fas fa-user"><b> NOMBRE: </b> <label  class="card-text" >{{animal.nombre}}</label></i>	
                          <hr>
                         <i class="far fa-id-card"><b> CODIGO: </b>  <label class="card-text">{{animal.id}}</label></i>
@@ -51,8 +69,7 @@
                             <hr>
                         <i class="fab fa-internet-explorer"><b> EDAD: </b>  <label class="card-text">{{animal.edad}}</label></i>  
                             <hr>
-                        <i class="fab fa-internet-explorer">  <b> TAMAÑO: </b>  <label class="card-text">{{animal.tamanyo}}</label></i>  
-                            <hr>
+                       
                         <i class="fab fa-internet-explorer"><b> FECHA NACIMIENTO: </b>  <label class="card-text">{{animal.fechaNacimiento}}</label></i>  
                             <hr>
                         <i class="fab fa-internet-explorer"><b> COLOR / CARACTERISTICAS: </b>  <label class="card-text">{{animal.colorCaracteristicas}}</label></i>  
@@ -64,42 +81,142 @@
                             <br>
         
                   </div>
-                  
-                  <div class="row justify-content-center">
-                    <div class="col-md-5">
-
+ 
                       <div class="form-actions">
 
-                        <button type="button" class="btn btn-inverse"(click)="irAtras()" >
+                        <button type="button" class="btn4"(click)="irAtras()" >
                           <i class="fa fa-reply" aria-hidden="true"></i> REGRESAR
                         </button>
-    
-                      
-                        <button type="button" class="btn btn-danger mr-2"(click)="onDelete(animal.id)" >
+
+                        <button type="button" class="btn3"(click)="onDelete(animal.id)" >
                           <i class="fa fa-times-circle" aria-hidden="true" ></i>
                           ELIMINAR
                         </button>
-    
-    
-                        <button type="button" class="btn btn-success mr-2" (click)="modificar(animal.id)">
+                       
+
+                     <button type="button" class="btn1" (click)="modificar(animal.id)">
                           <i class="fa fa-check"></i> EDITAR
                         </button>
-        
-                        </div>
-                        
-                    </div>
+                    </div></div></div>
+                  <br>
+                  <br>
+                  <br>
+                 
 
+
+
+
+                 
+                  <div class="container"*ngFor="let ficha of fichaClinica">
+                    <h4>HISTORIAL CLINICO</h4>
+                    <div class="row justify-content-center" >
+                      
+                      <br>
+                      <br>
+                     <div class="col-4">
+                     
+                          <br> 
+                          <br>
+                            <i class="fas fa-user"><b> FECHA INGRESO:</b> <label  class="card-text" >{{ficha.fechaIngreso}}</label></i>
+                            <hr>
+                          <br>
+                          <br>
+                            <i class="fas fa-user"><b> MOTIVO COLSULTA: </b> <label  class="card-text" >{{ficha.motivoConsulta}}</label></i>	
+                            <hr>
+                          <br>
+                          <br>
+                              <i class="fas fa-user"><b> HALLAZGOS: </b> <label  class="card-text" >{{ficha.hallazgos}}</label></i>	
+                              <hr>
+                          <br>
+                          <br>
+                                <i class="fas fa-user"><b> TEMPERATURA: </b> <label  class="card-text" >{{ficha.temperatura}}</label></i>	
+                                <hr>
+                          <br>
+                          <br>
+                                <i class="fas fa-user"><b> CONJUNTIVA: </b> <label  class="card-text" >{{ficha.conjuntiva}}</label></i>	
+                                <hr>
+                          <br>
+                          <br>
+                                <i class="fas fa-user"><b> FRECUENCIA CARDIACA: </b> <label  class="card-text" >{{ficha.frecuenciaCardiaca}}</label></i>	
+                                <hr>
+                          <br>
+                          <br>
+                               <i class="fas fa-user"><b> FRECUENCIA RESPIRATORIA: </b> <label  class="card-text" >{{ficha.frecuenciaRespiratoria}}</label></i>	
+                               <hr>
+                          <br>
+                          <br>
+                               <i class="fas fa-user"><b> TRC: </b> <label  class="card-text" ></label>{{ficha.trc}}</i>	
+                               <hr>              
+                     </div>
+        
+                      <div class="col-4">
+                          
+                          <br>
+                          <br>
+                                 <i class="fas fa-user"><b> MUCOSA: </b> <label  class="card-text" >{{ficha.mucosas}}</label></i>	
+                                 <hr>
+                          <br>
+                          <br>
+                            <i class="fas fa-user"><b> ESTERILIZACION: </b> <label  class="card-text" >{{ficha.esterilizacion}}</label></i>	
+                            <hr>
+                          <br>
+                          <br>
+                            <i class="fas fa-user"><b> PRONOSTICO: </b> <label  class="card-text" >{{ficha.pronostico}}</label></i>	
+                            <hr>
+                          <br>
+                          <br>
+                            <i class="fas fa-user"><b> TIPO PACIENTE: </b> <label  class="card-text" >{{ficha.tipoPaciente}}</label></i>	
+                            <hr>
+                          <br>
+                          <br>
+                            <i class="fas fa-user"><b> EXAMENES SOLICITADOS: </b> <label  class="card-text" >{{ficha.examenes_solicitados}}</label></i>	
+                            <hr>
+                          <br>
+                          <br>
+                            <i class="fas fa-user"><b> DIAGNOSTICO DIFERENCIAL: </b> <label  class="card-text" >{{ficha.diagnosticoDiferencial}}</label></i>	
+                            <hr>
+                          <br>
+                          <br>
+                            <i class="fas fa-user"><b>COSTO: </b> <label  class="card-text" >{{ficha.costo}}</label></i>	
+                            <hr>
+                      </div>
+        
+        
+                    </div>
+        
+                    <div class="row justify-content-center">
+                      <div class="col-md-5">
+        
+                        <div class="form-actions">
+        
+                          <button type="button" class="btn btn-info"(click)="irTratamiento(ficha.id)" >
+                            <i class="fa fa-check"></i> Agregar Tratamiento
+                          </button>
+
+          
+                          </div>
+                          
+                      </div>
+        
+                    </div>
+        
                   </div>
+        
+
+
+
+
                 </div>
           
               </div>
           
             </div>
           </div>
+
+          
+          
+
+
         </div>
       </div>
-   </div>
-</div>
-
-
-
+           

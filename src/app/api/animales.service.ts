@@ -26,8 +26,8 @@ import { Configuration }                                     from '../configurat
 
 @Injectable()
 export class AnimalesService {
-
-    protected basePath = 'https://vinculation.herokuapp.com/api';
+    protected basePath = '//localhost:9898/api';
+   /* protected basePath = 'https://vinculation.herokuapp.com/api';*/
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
