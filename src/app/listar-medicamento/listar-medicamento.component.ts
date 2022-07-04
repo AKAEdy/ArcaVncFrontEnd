@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MedicamentosService } from 'app/api/medicamentos.service';
 import { Medicamento } from 'app/model/medicamento';
-import { data } from 'jquery';
-import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'listar-medicamento',
@@ -11,10 +10,9 @@ import Swal from 'sweetalert2';
 })
 export class ListarMedicamentoComponent implements OnInit {
   medicamento:Medicamento[]=[]
-  medicamentoid: Medicamento={} 
   pagina=0;
   tamaño=2;
-  constructor(private medicamentoService: MedicamentosService) { }
+  constructor(private medicamentoService: MedicamentosService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllMedicamentos();
@@ -25,50 +23,6 @@ export class ListarMedicamentoComponent implements OnInit {
     this.medicamentoService.getMedicamentosUsingGET1(this.pagina,this.tamaño).subscribe(data=>{
 this.medicamento=data.content
     })
-  }
-  updateMedicamentos(){
-    
-    this.medicamentoService.updateUsingPUT3(this.medicamentoid, this.medicamentoid.id).subscribe(data=>{
-    })
-  }
-  getMedicamentosById(id: number){
-    this.medicamentoService.getByIdUsingGET3(id).subscribe(data=>{
-      this.medicamentoid=data
-      this.mostrarEditar();
-    })
-  }
-  
-  deleteMedicamentos(id: number){
-    Swal.fire({
-      title: '¿Esta seguro que decea eliminar?',
-      text: "No podra revertit los cambios!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#FE3838',
-      cancelButtonColor: '#878787',
-      confirmButtonText: 'Si, eliminar!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Eliminado!',
-          'Registro eliminado exitosamente.',
-          'success'
-        )
-        this.getAllMedicamentos();
-      }
-    })
-    this.medicamentoService.deleteUsingDELETE3(id).subscribe(data=>{
-      
-    })
-
-  }
-  botonCancelar(){
-    document.getElementById('tarjeta').style.display='none'
-    document.getElementById('tabla').style.display='block'
-  }
-  mostrarEditar(){
-    document.getElementById('tarjeta').style.display='block'
-    document.getElementById('tabla').style.display='none'
   }
 
   next(){
@@ -87,5 +41,17 @@ this.medicamento=data.content
     this.getAllMedicamentos();
     console.log(this.pagina);
  
+  }
+
+  //medicacion
+  idmedicamento(id:number){
+  
+    localStorage.setItem("idmedicamento", id.toString());
+
+    this.irmedicacion();
+  }
+
+  irmedicacion(){
+    this.router.navigateByUrl("/medicacion");
   }
 }

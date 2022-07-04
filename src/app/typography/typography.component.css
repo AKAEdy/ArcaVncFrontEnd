@@ -33,3 +33,15 @@
      right:0px;	
      pointer-events: none;
  }
+
+ h4{
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+    text-align: center;
+ }
+ label{
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+ }

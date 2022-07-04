@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { VoluntariosService } from 'app/api/voluntarios.service';
 import { Voluntario } from 'app/model/voluntario';
 import { VoluntarioDto } from 'app/model/voluntarioDto';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 @Component({

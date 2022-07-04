@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FichasClnicasService } from 'app/api/fichasClnicas.service';
 import { Validacion } from 'app/validaciones/Validacion';
@@ -38,6 +39,9 @@ imagen:File=null;
     localStorage.removeItem('animal');
 
   }
+
+  
+
   resetForm() {
     this.MyForm.reset();
   }

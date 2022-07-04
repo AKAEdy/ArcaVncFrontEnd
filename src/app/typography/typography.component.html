@@ -8,63 +8,70 @@
                       <p class="card-category">Complete el formulario</p>
                   </div>
                   <div class="card-body">
+
+                    
+                    <div class="container">
+
+                        <div class="row">
+                            <!--Descripción-->
+                            <br>
+                              <h4>NOMBRE DEL MEDICAMENTO: <label type="text">{{nombrecomercial}}</label> </h4>
+                        </div> <!--Fin row medicamento-->
+
+                    </div>
           
-                      <form>
+                      <form #f="ngForm" (ngSubmit)="guardarmedicion()" novalidate>
 
                           <div class="container">
-
-                              <div class="row">
-
-                                  <!--Medicamento-->
-                                  <div class="col-md-3">
-                                  
-                                      <div class="col-md-5">
-                                          <label>MEDICAMENTO</label>
-                                          <div class="caja">
-                                              <select class="form-select" aria-label="Default select example">
-                                                  <option selected disabled>Seleccione:</option>
-                                                  <option value="INICIO">Paracetamol</option>
-                                              </select>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div> <!--Fin row medicamento-->
-
-
                             <div class="row">
 
                               <!--Descripción-->
                               <div class="col-md-5">
                                   <mat-form-field class="example-full-width">
-                                     <textarea matInput placeholder="Descripción" type="text"></textarea>
+                                     <textarea matInput placeholder="Descripción" type="text" [(ngModel)]="m.descripcionMd" class="form-control" name="descripcion" #descripcion ="ngModel"maxlength="300" required></textarea>
+                                     <div class="text-danger" *ngIf="descripcion.hasError('required') && descripcion.touched">
+                                        La Descripcion es requerida!
+                                    </div>
                                   </mat-form-field>
                               </div>
 
                               <!--dosis-->
                               <div class="col-md-5">
                                   <mat-form-field class="example-full-width">
-                                     <textarea matInput placeholder="Dosis" type="text"></textarea>
+                                     <textarea matInput placeholder="Dosis" type="text" [(ngModel)]="m.dosis"  class="form-control" name="dosis" #dosis ="ngModel" maxlength="100" required></textarea>
+                                     <div class="text-danger" *ngIf="dosis.hasError('required') && dosis.touched">
+                                        La Dosis es requerida!
+                                    </div>
+                                    </mat-form-field>
+                              </div>
+
+                              <!--frecuencia-->
+                              <div class="col-md-5">
+                                  <mat-form-field class="example-full-width">
+                                     <textarea matInput placeholder="Frecuencia" type="text" [(ngModel)]="m.frecuencia" class="form-control" name="frecuencia" #frecuencia ="ngModel" maxlength="100" required></textarea>
+                                     <div class="text-danger" *ngIf="frecuencia.hasError('required') && frecuencia.touched">
+                                        La Frecuencia es requerida!
+                                    </div>
                                   </mat-form-field>
                               </div>
 
                               <!--frecuencia-->
                               <div class="col-md-5">
                                   <mat-form-field class="example-full-width">
-                                     <textarea matInput placeholder="Frecuencia" type="text"></textarea>
-                                  </mat-form-field>
-                              </div>
-
-                              <!--frecuencia-->
-                              <div class="col-md-5">
-                                  <mat-form-field class="example-full-width">
-                                     <textarea matInput placeholder="Duración" type="text"></textarea>
+                                     <textarea matInput placeholder="Duración" type="text" [(ngModel)]="m.duracion" class="form-control" name="duracion" #duracion ="ngModel" maxlength="100" required></textarea>
+                                     <div class="text-danger" *ngIf="duracion.hasError('required') && duracion.touched">
+                                        La Duracion es requerida!
+                                    </div>
                                   </mat-form-field>
                               </div>
   
-                              <!-- Fecha Apllicacion -->
+                              <!-- Fecha Aplicacion -->
                               <div class="col-md-5">
                                   <mat-form-field class="example-full-width">
-                                      <input matInput placeholder="Fecha de Caducidad" type="date">
+                                      <input matInput placeholder="Fecha de Caducidad" type="date" [(ngModel)]="m.fechaCaducidad" class="form-control" name="fechac" #fechac ="ngModel" maxlength="100" required>
+                                      <div class="text-danger" *ngIf="fechac.hasError('required') && fechac.touched">
+                                        La Fecha de Caducidad es requerida!
+                                    </div>
                                   </mat-form-field>
                               </div>
 
@@ -75,11 +82,11 @@
                               <div class="row">
                               
                                       <div class="col-md-5">
-                                          <button mat-raised-button type="submit" class="btn btn-danger pull-right">CANCELAR</button>
+                                          <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="regresarlistamedicamentos()">REGRESAR</button>
                                           
                                       </div>
                                       <div class="col-md-5">
-                                          <button mat-raised-button type="submit" class="btn btn-danger pull-right">AGREGAR</button>
+                                          <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="guardarmedicion()">AGREGAR</button>
   
                                       </div>
                                   

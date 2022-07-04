@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VeterinariosService } from 'app/api/veterinarios.service';
 import { Veterinario } from 'app/model/veterinario';
 import { errorMonitor } from 'events';

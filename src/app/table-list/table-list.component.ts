@@ -82,8 +82,6 @@ Detalle(id: number){
     });
   }
 
-    
-
   listarAnimales(){
 
     this.animalesService.getAnimalesRefugioPagesUsingGET(this.pagina,this.tamaño,"").subscribe(data =>{
