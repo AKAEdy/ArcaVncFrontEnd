@@ -45,6 +45,7 @@ import { RegistrarDonacionesComponent } from '../../registrar-donaciones/registr
 import { ListarDonacionesComponent } from '../../listar-donaciones/listar-donaciones.component';
 import { RegistrarVoluntariosComponent } from '../../registrar-voluntarios/registrar-voluntarios.component';
 import { ListarVoluntariosComponent } from '../../listar-voluntarios/listar-voluntarios.component';
+import { ListarAdoptanteComponent } from '../../listar-adoptante/listar-adoptante.component';
 
 @NgModule({
   imports: [
@@ -95,6 +96,7 @@ import { ListarVoluntariosComponent } from '../../listar-voluntarios/listar-volu
     ListarDonacionesComponent,
     RegistrarVoluntariosComponent,
     ListarVoluntariosComponent,
+    ListarAdoptanteComponent,
 
   ]
 })

@@ -10,7 +10,7 @@
             <div class="row">
               <div class="col-md-6">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="CEDULA" [(ngModel)]="adoptantes.cedula">
+                  <input matInput placeholder="CEDULA" maxlength="10"  [(ngModel)]="adoptantes.cedula">
                 </mat-form-field>
               </div>
   
@@ -40,20 +40,20 @@
             <div class="row">
               <div class="col-md-6">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="TELEFONO" type="text"  [(ngModel)]="adoptantes.telefono">
+                  <input matInput placeholder="TELEFONO" type="text" maxlength="7" [(ngModel)]="adoptantes.telefono">
                 </mat-form-field>
               </div>
   
               <div class="col-md-6">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="CELULAR" type="text"  [(ngModel)]="adoptantes.celular">
+                  <input matInput placeholder="CELULAR" type="text"  maxlength="10" [(ngModel)]="adoptantes.celular">
                 </mat-form-field>
               </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="TELEFONO DE FAMILIAR" [(ngModel)]="adoptantes.telefonoFamiliar">
+                    <input matInput placeholder="TELEFONO DE FAMILIAR" maxlength="10" [(ngModel)]="adoptantes.telefonoFamiliar">
                   </mat-form-field>
                 </div>
     

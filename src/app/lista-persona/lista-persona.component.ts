@@ -108,10 +108,11 @@ export class ListaPersonaComponent implements OnInit {
     })
    
   }
-  botonCancelar(){
+  cancelar(){
     document.getElementById('tarjeta').style.display='none'
     document.getElementById('tabla').style.display='block'
   }
+
   mostrarEditar(){
     document.getElementById('tarjeta').style.display='block'
     document.getElementById('tabla').style.display='none'

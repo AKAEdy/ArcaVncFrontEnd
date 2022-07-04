@@ -27,6 +27,9 @@
                                         TELEFONO
                                     </th>
                                     <th>
+                                        CELULAR
+                                    </th>
+                                    <th>
                                         DIRECCION
                                     </th>
                                     <th>
@@ -49,6 +52,9 @@
                                         </td>
                                         <td>
                                             {{persona.telefono}}
+                                        </td>
+                                        <td>
+                                            {{persona.celular}}
                                         </td>
                                         <td>
                                             {{persona.direccion}}
@@ -107,56 +113,6 @@
 
             </div>
             <div class="card-body">
-                <form #f="ngForm" (ngSubmit)="updatePersonas()" novalidate>
-                    <!-- <div class="row">
-                        <div class="col-md-5">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="CEDULA" [(ngModel)]="cedulas">
-                            </mat-form-field>
-                        </div>
-
-                        <div class="col-md-5">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="NOMBRE" [(ngModel)]="personaid.nombre">
-                            </mat-form-field>
-                        </div>
-
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-5">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="APELLIDO" [(ngModel)]="personaid.apellidos">
-                            </mat-form-field>
-                        </div>
-
-                        <div class="col-md-5">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="EMAIL ADDRESS" type="email" [(ngModel)]="personaid.correo">
-                            </mat-form-field>
-                        </div>
-
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-5">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="TELEFONO" type="text" [(ngModel)]="personaid.telefono">
-                            </mat-form-field>
-                        </div>
-
-                        <div class="col-md-5">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="CELULAR" type="text" [(ngModel)]="personaid.celular">
-                            </mat-form-field>
-                        </div>
-
-                        <div class="col-md-5">
-                            <mat-form-field class="example-full-width">
-                                <input matInput placeholder="DIRECCION" type="text" [(ngModel)]="personaid.direccion">
-                            </mat-form-field>
-                        </div>
-                    </div> -->
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -170,14 +126,11 @@
                                 </div>
                             </div>
                         </div>
-                      
-                    </div>
 
-                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">Nombre</span>
+                                    <span class="input-group-text" id="basic-addon1">NOMBRE</span>
                                 </div>
                                 <input matInput placeholder="NOMBRE" [(ngModel)]="personaid.nombre"
                                     class="form-control" name="nombre" #nombre="ngModel" required>
@@ -186,6 +139,10 @@
                                 </div>
                             </div>
                         </div>
+                      
+                    </div>
+
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="input-group-prepend">
@@ -198,9 +155,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="input-group-prepend">
@@ -214,6 +168,9 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="input-group-prepend">
@@ -226,9 +183,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="input-group-prepend">
@@ -241,6 +195,9 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="input-group-prepend">
@@ -253,14 +210,23 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                           
+                        </div>
                     </div>
-                    <button mat-raised-button type="submit" class="btn btn-danger pull-right"
-                        (click)="botonCancelar()">CANCELAR</button>
-                    <button mat-raised-button type="submit" class="btn btn-danger pull-right"
-                        (click)="updatePersonas()">REGISTRAR</button>
+                    <div class="row">
+                        <div class="col-md-6">
 
+                        </div>
+                        <div class="col-md-6">
+                            <button mat-raised-button type="submit" class="btn btn-success pull-right"
+                                (click)="updatePersonas()">EDITAR</button>
+                                <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                                (click)="cancelar()">CANCELAR</button>
+                        </div>
+                    </div>
+                   
                     <div class="clearfix"></div>
-                </form>
             </div>
         </div>
     </div>
