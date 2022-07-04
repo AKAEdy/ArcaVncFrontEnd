@@ -43,13 +43,13 @@ export class RegistrarSeguimientoComponent implements OnInit {
     mensajeSeguimiento: ''
   }
   bloquearEnvio:boolean = false;
-  seguimientoAdopcionDto:SeguimientoAdopcionDto={
-    estadoSeguimiento: false,
-    fechaSeguimiento: undefined,
-    mensajeSeguimiento: ''
-  }
+  seguimientoAdopcionDto:SeguimientoAdopcionDto={}
 
-  constructor( private router: Router, private adopcionService: AdopcionControllerService, private adoptanteService: AdoptanteControllerService, private seguimientoAdopcionServiceImpl: SeguimientoDeAdoptadosService) { }
+  constructor( 
+    private router: Router, 
+    private adopcionService: AdopcionControllerService, 
+    private adoptanteService: AdoptanteControllerService, 
+    private seguimientoAdopcionServiceImpl: SeguimientoDeAdoptadosService) { }
 
 
   ngOnInit(): void {

@@ -16,14 +16,20 @@ import Swal from 'sweetalert2';
   styleUrls: ['./maps.component.css']
 })
 export class MapsComponent implements OnInit {
-  tratamiento: TratamientoDto = {};
+  tratamiento: TratamientoDto = {
+    descripcion: '',
+    estado: '',
+    indicaciones: ''
+  };
 
   idFichaClinica=1 as any;
   public formSubmitted = false;
   // tratamiento:Tratamiento[]=[];
   // tratamiento:Tratamiento;
 
- fichaClinica:FichaClinica={};
+ fichaClinica:FichaClinica={
+   esterilizacion: ''
+ };
   constructor(private activatedRoute: ActivatedRoute,private tratamientosService: TratamientosService, private router: Router, private medicamentoService:MedicamentosService, private fichaClinicaS:FichasClnicasService) {
   }
 

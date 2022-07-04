@@ -11,8 +11,8 @@
  */
 
 export interface SeguimientoAdopcionDto { 
-    estadoSeguimiento: boolean;
-    fechaSeguimiento: Date;
-    mensajeSeguimiento: string;
+    estadoSeguimiento?: boolean;
+    fechaSeguimiento?: Date;
+    mensajeSeguimiento?: string;
     respuestaAdoptante?: string;
 }

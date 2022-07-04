@@ -4,6 +4,8 @@ import { Adopcion } from 'app/model/adopcion';
 import { Adoptante } from 'app/model/adoptante';
 import Swal from 'sweetalert2';
 import { AdopcionControllerService } from 'app/api/adopcionController.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'lista-adoptado',
@@ -19,7 +21,10 @@ export class ListaAdoptadoComponent implements OnInit {
   adoptante: Adoptante = {};
   cedulas: string;
   descripcion:string;
-  constructor(private adopcionService: AdopcionControllerService, private adoptanteService: AdoptanteControllerService) { }
+  constructor(
+    private adopcionService: AdopcionControllerService, 
+    private adoptanteService: AdoptanteControllerService,
+    private router:Router) { }
 
   ngOnInit(): void {
 
@@ -28,14 +33,6 @@ export class ListaAdoptadoComponent implements OnInit {
   }
   
   
-  
-
-
-
-
-
-
-
   getAllAdopcion(){
     this.adopcionService.getAllAdopcionesUsingGET().subscribe(data=>{
       this.adopcion = data;
@@ -168,4 +165,27 @@ botonCancelar(){
   document.getElementById("tarjeta").style.display="none";
   document.getElementById("lista").style.display="block";
 }
+
+//seguimiento
+getByIdAdoptantes(id:number){
+  
+  localStorage.setItem("idAdoptado", id.toString());
+  /*this.adopcionService.etAdopcionPorIdUsingGET(id).subscribe(data =>{
+  this.adopcionid = data
+  this.nombreadoptante = this.adopcionid.adoptante.persona.nombre
+  this.apellidoadoptante = this.adopcionid.adoptante.persona.apellidos
+  this.correoadoptante = this.adopcionid.adoptante.persona.correo
+  this.telefonoadoptante=this.adopcionid.adoptante.persona.telefono
+  this.direcionadoptante=this.adopcionid.adoptante.persona.direccion
+  this.fechaAdopcion=this.adopcionid.fechaAdopcion
+
+  })*/
+
+  this.Irseguimiento();
+}
+
+Irseguimiento() {
+  this.router.navigateByUrl("/registrar-seguimiento");
+}
+
 }
