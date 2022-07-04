@@ -47,6 +47,7 @@ import { RegistrarVoluntariosComponent } from '../../registrar-voluntarios/regis
 import { ListarVoluntariosComponent } from '../../listar-voluntarios/listar-voluntarios.component';
 import { ListarAdoptanteComponent } from '../../listar-adoptante/listar-adoptante.component';
 import { RegistroCarnetComponent } from 'app/registro-carnet/registro-carnet.component';
+import { RegistrarSeguimientoComponent } from 'app/registrar-seguimiento/registrar-seguimiento.component';
 
 @NgModule({
   imports: [
@@ -99,6 +100,7 @@ import { RegistroCarnetComponent } from 'app/registro-carnet/registro-carnet.com
     ListarVoluntariosComponent,
     ListarAdoptanteComponent,
     RegistroCarnetComponent,
+    RegistrarSeguimientoComponent
   ]
 })
 
