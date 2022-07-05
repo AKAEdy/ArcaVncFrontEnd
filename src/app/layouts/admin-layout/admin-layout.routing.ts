@@ -8,7 +8,7 @@ import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
-import { FichaClinicaComponent } from 'app/ficha-clinica/ficha-clinica.component';
+import { FichaClinicaComponent } from 'app/components/arca/clinica/ficha-clinica/ficha-clinica.component';
 import { RegistrarAdoptadoComponent } from 'app/registrar-adoptado/registrar-adoptado.component';
 import { ListaAdoptadoComponent } from 'app/lista-adoptado/lista-adoptado.component';
 import { ListaPersonaComponent } from 'app/lista-persona/lista-persona.component';

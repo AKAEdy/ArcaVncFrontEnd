@@ -18,7 +18,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import { RouterModule } from '@angular/router';
-import { FichaClinicaComponent } from 'app/ficha-clinica/ficha-clinica.component';
 
 import { ListaAdoptadoComponent } from 'app/lista-adoptado/lista-adoptado.component';
 import { RegistrarAdoptadoComponent } from 'app/registrar-adoptado/registrar-adoptado.component';
@@ -48,6 +47,7 @@ import { ListarVoluntariosComponent } from '../../listar-voluntarios/listar-volu
 import { ListarAdoptanteComponent } from '../../listar-adoptante/listar-adoptante.component';
 import { RegistroCarnetComponent } from 'app/registro-carnet/registro-carnet.component';
 import { RegistrarSeguimientoComponent } from 'app/registrar-seguimiento/registrar-seguimiento.component';
+import { FichaClinicaComponent } from 'app/components/arca/clinica/ficha-clinica/ficha-clinica.component';
 
 @NgModule({
   imports: [

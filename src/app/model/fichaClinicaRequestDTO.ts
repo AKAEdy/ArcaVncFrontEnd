@@ -17,7 +17,7 @@ export interface FichaClinicaRequestDTO {
     costo?: number;
     diagnosticoDiferencial?: string;
     esterilizacion?: string;
-    examenesSolicitados?: string;
+    examenes_solicitados?: string;
     fechaIngreso?: Date;
     frecuenciaCardiaca?: number;
     frecuenciaRespiratoria?: number;
