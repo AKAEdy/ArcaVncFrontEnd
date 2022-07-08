@@ -5,7 +5,6 @@ import { RegistrarAnimalRefugioComponent} from '../../components/arca/animal-ref
 import { TableListComponent } from '../../table-list/table-list.component';
 import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
-import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { FichaClinicaComponent } from 'app/components/arca/clinica/ficha-clinica/ficha-clinica.component';
@@ -31,6 +30,7 @@ import { RegistrarVoluntariosComponent } from 'app/registrar-voluntarios/registr
 import { ListarVoluntariosComponent } from 'app/listar-voluntarios/listar-voluntarios.component';
 import { RegistroCarnetComponent } from 'app/registro-carnet/registro-carnet.component';
 import { RegistrarSeguimientoComponent } from 'app/registrar-seguimiento/registrar-seguimiento.component';
+import { TratamientoComponent } from 'app/components/arca/clinica/tratamiento/tratamiento.component';
 
 
 
@@ -40,7 +40,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'table-list',     component: TableListComponent,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN','ROLE_VETERINARIO']} },
     { path: 'medicacion',     component: TypographyComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
     { path: 'icons',          component: IconsComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN']}},
-    { path: 'tratamiento/:id',           component: MapsComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN','ROLE_VETERINARIO']}}, // map
+    { path: 'tratamiento/:id',           component: TratamientoComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN','ROLE_VETERINARIO']}}, // map
     { path: 'notifications',  component: NotificationsComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN','ROLE_VETERINARIO']}},
     { path: 'upgrade',        component: UpgradeComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN','ROLE_VETERINARIO']}},
     { path: 'registroCarnet',   component: RegistroCarnetComponent ,canActivate:[IsAuthenticatedGuard,RoleGuard],data:{roles:['ROLE_ADMIN', 'ROLE_VETERINARIO']}},

@@ -1,0 +1,162 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">TRATAMIENTO</h4>
+                        <p class="card-category">Complete el formulario</p>
+                    </div>
+                    <div class="card-body">
+                        <form #f="ngForm" (ngSubmit)="guardarTratamiento()" novalidate>
+
+
+                            <div class="container">
+
+                                <div class="row">
+
+                                    <!--Descripción-->
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-full-width">
+                                            <textarea matInput placeholder="Descripción" type="text" name="descripcion"
+                                                #descripcion="ngModel" [(ngModel)]="tratamiento.descripcion"></textarea>
+                                        </mat-form-field>
+                                    </div>
+
+
+                                    <!--Indicaciones -->
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-full-width">
+                                            <textarea matInput placeholder="Indicaciones" type="text"
+                                                name="indicaciones" #indicaciones="ngModel"
+                                                [(ngModel)]="tratamiento.indicaciones"></textarea>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <!-- Fecha Apllicacion -->
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="Fecha de Aplicación" type="date"
+                                                #fechaAplicacion="ngModel" [(ngModel)]="tratamiento.fechaAplicacion">
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <!--Estado-->
+                                        <div class="col-md-6">
+                                            <label>ESTADO</label>
+                                            <div class="caja">
+                                                <select class="form-select" aria-label="Default select example"
+                                                    name="estado" #estado="ngModel" [(ngModel)]="tratamiento.estado">
+
+                                                    <option [ngValue]="undefined">
+                                                        ESTADO
+                                                    </option>
+                                                    <option value="INICIO">INICIO</option>
+                                                    <option value="CONTINUA">CONTINUA</option>
+                                                    <option value="FINALIZADO">FINALIZADO</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <br>
+                            <hr>
+                            <h4>MEDICACION</h4>
+                                <input id="myInput" type="text" class="form-control" placeholder="🔎Buscar..." [(ngModel)]="filterpost" (keypress)="validarInputs($event)"/>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-primary">
+                                            <th>
+                                                MEDICAMENTO
+                                            </th>
+                                            <th>
+                                                DESCRIPCION MEDICACION
+                                            </th>
+                                            <th>
+                                                DOSIS
+                                            </th>
+                                            <th>
+                                                DURACION
+                                            </th>
+                                            <th>
+                                                FRECUENCIA
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let medicacion of medicaciones | filtermedicamentos:filterpost">
+
+                                                <td>
+                                                    {{medicacion.medicamento.nombreComercial}}
+                                                </td>
+                                                <td>
+                                                    {{medicacion.descripcionMd}}
+                                                </td>
+                                                <td>
+                                                    {{medicacion.dosis}}
+                                                </td>
+                                                <td>
+                                                    {{medicacion.duracion}}
+                                                </td>
+                                                <td>
+                                                    {{medicacion.frecuencia}}
+                                                </td>
+                                                <td>
+                                                    <button _ngcontent-uqa-c89="" mat-raised-button="" type="submit"
+                                                        class="mat-focus-indicator btneliminar mat-raised-button mat-button-base" class="btneditar"
+                                                        (click)="getPersonaById(persona.id)"><span class="mat-button-wrapper"><i
+                                                                _ngcontent-uqa-c89="" class="material-icons">mode_edit</i>
+                                                            <div _ngcontent-uqa-c89="" class="ripple-container"></div>
+                                                        </span><span matripple=""
+                                                            class="mat-ripple mat-button-ripple"></span><span
+                                                            class="mat-button-focus-overlay"></span> </button>
+                                                </td>
+                                                <td>
+                                                    <button _ngcontent-die-c89="" mat-raised-button="" type="submit"
+                                                        class="mat-focus-indicator btneliminar mat-raised-button mat-button-base" class="btneliminar"  (click)="deletePersona(persona.id)"><span
+                                                            class="mat-button-wrapper"><i _ngcontent-die-c89=""
+                                                                class="material-icons">delete</i>
+                                                            <div _ngcontent-die-c89="" class="ripple-container"></div>
+                                                        </span><span matripple=""
+                                                            class="mat-ripple mat-button-ripple"></span><span
+                                                            class="mat-button-focus-overlay"></span></button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-5">
+                                    <button mat-raised-button type="submit"
+                                        class="btn btn-danger pull-right">CANCELAR</button>
+
+                                </div>
+                                <div class="col-md-5">
+                                    <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                                        (click)="guardarTratamiento()">Guardar</button>
+
+                                </div>
+                                <div class="col-md-5">
+                                    <button mat-raised-button type="button" class="btn btn-danger pull-right">Agregar
+                                        Medicacion</button>
+
+                                </div>
+
+                            </div>
+                            <!--fin row botones tratamiento-->
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -8,7 +8,6 @@ import { RegistrarAnimalRefugioComponent} from '../../components/arca/animal-ref
 import { TableListComponent } from '../../table-list/table-list.component';
 import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
-import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import {MatButtonModule} from '@angular/material/button';
@@ -48,6 +47,9 @@ import { ListarAdoptanteComponent } from '../../listar-adoptante/listar-adoptant
 import { RegistroCarnetComponent } from 'app/registro-carnet/registro-carnet.component';
 import { RegistrarSeguimientoComponent } from 'app/registrar-seguimiento/registrar-seguimiento.component';
 import { FichaClinicaComponent } from 'app/components/arca/clinica/ficha-clinica/ficha-clinica.component';
+import { TratamientoComponent } from 'app/components/arca/clinica/tratamiento/tratamiento.component';
+import { FiltermedicamentosPipe } from '../../pipes/filtermedicamentos.pipe';
+
 
 @NgModule({
   imports: [
@@ -73,7 +75,7 @@ import { FichaClinicaComponent } from 'app/components/arca/clinica/ficha-clinica
     TableListComponent,
     TypographyComponent,
     IconsComponent,
-    MapsComponent,
+    TratamientoComponent,
     NotificationsComponent,
     UpgradeComponent,
     
@@ -100,7 +102,8 @@ import { FichaClinicaComponent } from 'app/components/arca/clinica/ficha-clinica
     ListarVoluntariosComponent,
     ListarAdoptanteComponent,
     RegistroCarnetComponent,
-    RegistrarSeguimientoComponent
+    RegistrarSeguimientoComponent,
+    FiltermedicamentosPipe
   ]
 })
 

@@ -2,20 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FichasClnicasService } from 'app/api/fichasClnicas.service';
+import { MedicacionesService } from 'app/api/medicaciones.service';
 import { MedicamentosService } from 'app/api/medicamentos.service';
 import { TratamientosService } from 'app/api/tratamientos.service';
 import { FichaClinica } from 'app/model/fichaClinica';
+import { Medicacion } from 'app/model/medicacion';
 import { Medicamento } from 'app/model/medicamento';
-import { Tratamiento } from 'app/model/tratamiento';
 import { TratamientoDto } from 'app/model/tratamientoDto';
-import { data } from 'jquery';
+import { event } from 'jquery';
+import { filter } from 'rxjs-compat/operator/filter';
 import Swal from 'sweetalert2';
 @Component({
-  selector: 'app-maps',
-  templateUrl: './maps.component.html',
-  styleUrls: ['./maps.component.css']
+  selector: 'app-tratamiento',
+  templateUrl: './tratamiento.component.html',
+  styleUrls: ['./tratamiento.component.css']
 })
-export class MapsComponent implements OnInit {
+export class TratamientoComponent implements OnInit {
   tratamiento: TratamientoDto = {
     descripcion: '',
     estado: '',
@@ -23,21 +25,24 @@ export class MapsComponent implements OnInit {
   };
 
   idFichaClinica=1 as any;
+  medicamentos : Medicamento[]=[];
+  medicaciones : Medicacion[]=[];
   public formSubmitted = false;
-  // tratamiento:Tratamiento[]=[];
-  // tratamiento:Tratamiento;
+  filterpost : any ='';
 
  fichaClinica:FichaClinica={
    esterilizacion: ''
  };
-  constructor(private activatedRoute: ActivatedRoute,private tratamientosService: TratamientosService, private router: Router, private medicamentoService:MedicamentosService, private fichaClinicaS:FichasClnicasService) {
+  constructor(private activatedRoute: ActivatedRoute,private tratamientosService: TratamientosService, private router: Router, private medicamentoService:MedicamentosService, private fichaClinicaS:FichasClnicasService, private medicacionService:MedicacionesService) {
   }
 
   ngOnInit():void {
+    //this.listarMedicamentos();
     const id = this.activatedRoute.snapshot.params.id;
     this.fichaClinicaS.getByIdUsingGET1(id).subscribe(data =>{
       this.fichaClinica= data;
       console.log(data,"datos ficha");
+    //this.filterpost = this.medicaciones;
   });
 
   }
@@ -88,27 +93,30 @@ export class MapsComponent implements OnInit {
     }
   }
 
-
-
-
-
-
-
-
-
-
-
-  irFicha() {
-    //  this.router.navigateByUrl("/registrofichaclinica");
+  listarMedicamentos(){
+    this.medicacionService.getAllMedicacionsUsingGET().subscribe(data =>{
+      this.medicaciones = data
+    })
   }
 
-  // FindByNombre(id: string){
-  //   console.log("recibiendo la id de medicamento", id);
-    
-  //   this.medicamentoService.getMedicamentoByNombre(id).subscribe(data=>{
-  //     this.medicamento=data;
-  //     console.log("imprimiendo texto a buscar de medicamento",data);
-  //   });
-  // }
+  validarInputs(event){
+    //alert("Guardado");
+    //console.log("tamaño" + this.filterpost.length);
+    let teclaBorrar = event.keyCode
+    if (teclaBorrar == 8) {
+      alert("Guardado");
+    }
+    if (this.filterpost.length > 0) {
+      //this.listarMedicamentos();
+      //this.filterpost = ''
+      console.log("variable: "+ this.filterpost.length);
+     //this.filterpost = undefined;
+    }
+
+    else {
+
+      this.listarMedicamentos();
+    }
+  }
 
 }
