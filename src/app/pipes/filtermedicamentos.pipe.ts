@@ -7,16 +7,21 @@ export class FiltermedicamentosPipe implements PipeTransform {
 
   transform(value: any, arg: any): any {
     const resultPosts = [];
-    for(const post of value){
-      if( post.medicamento.nombreComercial.indexOf(arg) > -1 
-      || post.medicamento.nombreComercial.toLowerCase().indexOf(arg.toLowerCase())  > -1
-    //  || post.fechaAdopcion.indexOf(arg) > -1 ){
-      )
-    {resultPosts.push(post);
+    
+    if (arg.length > 1) {
+      for(const post of value){
+        if( post.medicamento.nombreComercial.indexOf(arg) > -1
+        || post.medicamento.nombreComercial.toLowerCase().indexOf(arg.toLowerCase())  > -1
+        )
+        
+      {resultPosts.push(post);
+        };
+        
       };
-      
-    };
-    return resultPosts;
+      return resultPosts;
+    }
+
+    
   }
 
 }
