@@ -46,7 +46,7 @@ export class RegistroCarnetComponent implements OnInit {
        
       console.log(this.selectedvacunas,"imprimiendo selectedvacunas")
           /* igualando de id de animal pasar por routerlink */
-         this.carnetVacuna.animal=this.animal as AnimalRefugioResponse;
+        //  this.carnetVacuna.animal=this.animal as AnimalRefugioResponse;
       this.carnetVacuna.vacuna=this.selectedvacunas;
         //  console.log(this.vacuna,"mostrar objeto vacuna");
         // console.log(JSON.stringify(this.selectedvacunas),"imprimiendo objeto convertido");

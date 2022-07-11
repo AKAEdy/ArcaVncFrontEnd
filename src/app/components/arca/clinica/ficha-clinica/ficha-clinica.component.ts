@@ -30,7 +30,9 @@ animal:any={};
 loginUsuario:any={};
 
 public formSubmitted = false;
-  constructor(private fichasClinicasService: FichasClnicasService,private router: Router,private _formBuilder: FormBuilder, animalesService:AnimalesService) {
+  constructor(
+    private fichasClinicasService: FichasClnicasService,
+    private router: Router) {
     this.animal={};
     this.loginUsuario={};    
 
@@ -91,15 +93,49 @@ public formSubmitted = false;
   // }
 
   crateFichaClinica(){
+    if (this.fichaClinicaRqstDTO.alimentacion == undefined 
+      || this.fichaClinicaRqstDTO.conjuntiva == undefined
+      || this.fichaClinicaRqstDTO.costo == undefined
+      || this.fichaClinicaRqstDTO.diagnosticoDiferencial == undefined
+      || this.fichaClinicaRqstDTO.esterilizacion == undefined
+      || this.fichaClinicaRqstDTO.examenes_solicitados == undefined
+      || this.fichaClinicaRqstDTO.fechaIngreso == undefined
+      || this.fichaClinicaRqstDTO.frecuenciaCardiaca == undefined
+      || this.fichaClinicaRqstDTO.frecuenciaRespiratoria == undefined
+      || this.fichaClinicaRqstDTO.hallazgos == undefined
+      || this.fichaClinicaRqstDTO.motivoConsulta == undefined
+      || this.fichaClinicaRqstDTO.mucosas == undefined
+      || this.fichaClinicaRqstDTO.pronostico == undefined
+      || this.fichaClinicaRqstDTO.temperatura == undefined
+      || this.fichaClinicaRqstDTO.tipoPaciente == undefined
+      || this.fichaClinicaRqstDTO.trc == undefined
+      || this.fichaClinicaRqstDTO.alimentacion == undefined 
+      || this.fichaClinicaRqstDTO.conjuntiva == ''
+      || this.fichaClinicaRqstDTO.costo == null
+      || this.fichaClinicaRqstDTO.diagnosticoDiferencial == ''
+      || this.fichaClinicaRqstDTO.esterilizacion == ''
+      || this.fichaClinicaRqstDTO.examenes_solicitados == ''
+      || this.fichaClinicaRqstDTO.fechaIngreso == null
+      || this.fichaClinicaRqstDTO.frecuenciaCardiaca == null
+      || this.fichaClinicaRqstDTO.frecuenciaRespiratoria == null
+      || this.fichaClinicaRqstDTO.hallazgos == ''
+      || this.fichaClinicaRqstDTO.motivoConsulta == ''
+      || this.fichaClinicaRqstDTO.mucosas == ''
+      || this.fichaClinicaRqstDTO.pronostico ==''
+      || this.fichaClinicaRqstDTO.temperatura == null
+      || this.fichaClinicaRqstDTO.tipoPaciente == ''
+      || this.fichaClinicaRqstDTO.trc == '') {
+      
+      
     Swal.fire({
       title: 'Seguro quiere realizar esta acción?',
       showDenyButton: true,
-      showCancelButton: true,
       confirmButtonText: 'Guardar',
       denyButtonText: `Cancelar`,
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
+        
         this.fichasClinicasService.createUsingPOST1(this.fichaClinicaRqstDTO={
           alimentacion:  this.fichaClinicaRqstDTO.alimentacion,
           animalId: this.animal.id,
@@ -123,7 +159,9 @@ public formSubmitted = false;
         }).subscribe(data =>{
           
           this.fichaClinicaDTO = data
-        }, err => {
+         
+         }
+        , err => {
           console.warn("code", err);
           if(err.error.status === 500){
             console.log(err);
@@ -134,67 +172,39 @@ public formSubmitted = false;
               text: 'Llene todos los datos!',
             })
           }
-        })
+         
+        }
+        )
         Swal.fire({
           position: 'center',
           icon: 'success',
           title: 'Se a registrado exitosamente',
           showConfirmButton: false,
           timer: 1500
-        })
+          })
+       
+         
       } else if (result.isDenied) {
         Swal.fire('No se guardaron los cambios', '', 'info')
       }
     })
    
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Llene todos los datos!',
+      })
+    }
 
 
       }
 
-      
-    
-   
-  
-
-    // guardarFicha(form: NgForm) {
-    //   this.formSubmitted = true;
-    //   if (form.invalid) {
-    //     return;
-    //   } 
-    //   if (this.fichaClinica.id) {
-    //     this.fichasClinicasService
-    //       .updateUsingPUT1(this.fichaClinica, this.fichaClinica.id)
-    //       .subscribe((fichasClinicas) => {
-    //         Swal.fire(
-    //           "Actualizar mascota",
-    //           `¡${this.fichaClinica.id} actualizado con exito!`,
-    //           "success"
-    //         );
-    //         this.irLista();
-    //       });
-    //     }else {
-    //     //  console.log("LLEGA "+ this.animal.nombre,this.animal.especie,this.animal.raza, this.animal.peso, this.animal.color, this.animal.sexo, this.animal.tamanyo, this.animal.edad);
-    // // this.animales.push(this.animal);this.animal={}
-    //     this.fichasClinicasService.createUsingPOST1(this.fichaClinica).subscribe(data => {
-    //       this.fichaClinica=data;
-    //       Swal.fire(
-    
-    //        "Nueva Ficha",
-    //        `¡${this.fichaClinica.id} creada con exito!`,
-    //         "success"
-    //       );
-    //       console.log("imprimiendo", data)
-        
-    //    //  this.irFicha();
-    //    });
-    //   }}
-    
-    //  irLista() {
-    //   this.router.navigateByUrl("/TableList");
-    // }
-    
-    // }
+      agregarTratamiento(){
+ this.router.navigateByUrl("/tratamiento")
+      }
+}
 
 
-  
-    }
+
+// VALIDAR CON IF CADA UNO DE LOS MENSAJES DE SWAL 

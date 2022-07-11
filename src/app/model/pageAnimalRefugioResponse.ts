@@ -11,7 +11,7 @@
  */
 import { AnimalRefugioResponse } from './animalRefugioResponse';
 import { Pageable } from './pageable';
-import { Sort } from './sort'; 
+import { Sort } from './sort';
 
 export interface PageAnimalRefugioResponse { 
     content?: Array<AnimalRefugioResponse>;

@@ -315,8 +315,10 @@
                 </mat-form-field>
               </div>
 
-              <!-- boton guardar  -->
+             
               <div class="col-md-6">
+
+ <!-- boton guardar  -->
                 <button
                   type="submit"
                   mat-raised-button
@@ -325,6 +327,19 @@
                 >
                   REGISTRAR FICHA CLINICA
                 </button>
+
+                <!-- BOTON AGREGAR TRATAMIENTO  -->
+                <button
+                id="botontratamiento"
+                type="submit"
+                mat-raised-button
+                class="btn btn-success pull-right"
+                (click)="agregarTratamiento()"
+                style="display:none;"
+              >
+                AGREGAR TRATAMIENTO
+              </button>
+              
                 <div class="clearfix"></div>
               </div>
 

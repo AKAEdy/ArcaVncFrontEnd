@@ -9,7 +9,6 @@ import { Medicacion } from 'app/model/medicacion';
 import { MedicacionDto } from 'app/model/medicacionDto';
 import { Medicamento } from 'app/model/medicamento';
 import { TratamientoDto } from 'app/model/tratamientoDto';
-import { data } from 'jquery';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-tratamiento',
@@ -26,21 +25,27 @@ export class TratamientoComponent implements OnInit {
   idFichaClinica=1 as any;
   medicamentos : Medicamento[]=[];
   medicaciones : Medicacion[]=[];
+  medicacioneslist : Medicacion[]=[];
   medicacionPost : Medicacion = {};
   medicacionDto : MedicacionDto = {};
   idMedicamento : number;
   public formSubmitted = false;
   filterpost : any ='';
 
- fichaClinica:FichaClinica={
-   esterilizacion: ''
- };
-  constructor(private activatedRoute: ActivatedRoute,private tratamientosService: TratamientosService, private router: Router, private medicamentoService:MedicamentosService, private fichaClinicaS:FichasClnicasService, private medicacionService:MedicacionesService) {
+ fichaClinica:FichaClinica={};
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private tratamientosService: TratamientosService, 
+    private router: Router, 
+    private medicamentoService:MedicamentosService, 
+    private fichaClinicaS:FichasClnicasService, 
+    private medicacionService:MedicacionesService) {
   }
 
   ngOnInit():void {
-    //this.listarMedicamentos()
-    const id = this.activatedRoute.snapshot.params.id;
+    this.listarMedicamentos()
+    this.buscarMedicamentos()
+        const id = this.activatedRoute.snapshot.params.id;
     this.fichaClinicaS.getByIdUsingGET1(id).subscribe(data =>{
       this.fichaClinica= data;
       console.log(data,"datos ficha");
@@ -95,8 +100,19 @@ export class TratamientoComponent implements OnInit {
   }
 
   listarMedicamentos(){
+    this.medicacionService.getMedicacionesPorIdTratamientoUsingGET(1).subscribe(data =>{
+      this.medicacioneslist = data
+      console.log(this.medicacioneslist+" MEDUCAIONESSSS");
+      
+      //this.idMedicamento = data[0].medicamento.id
+    })
+  }
+
+  buscarMedicamentos(){
     this.medicacionService.getAllMedicacionsUsingGET().subscribe(data =>{
       this.medicaciones = data
+      console.log(this.medicacioneslist+" MEDUCAIONESSSS");
+      
       //this.idMedicamento = data[0].medicamento.id
     })
   }
@@ -108,7 +124,7 @@ export class TratamientoComponent implements OnInit {
     }
     else {
 
-      this.listarMedicamentos();
+      this.buscarMedicamentos();
     }
   }
 
@@ -139,6 +155,7 @@ export class TratamientoComponent implements OnInit {
           timer: 1500
           
         })
+        this.listarMedicamentos()
         location.reload()
     },err => {
       console.warn("code", err);

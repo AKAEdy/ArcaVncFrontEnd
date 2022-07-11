@@ -14,8 +14,7 @@ import Swal from 'sweetalert2';
 export class ListarAdoptanteComponent implements OnInit {
 adoptante: Adoptante[]=[]
 adoptanteDto: AdoptanteDto={
-  persona: undefined
-}
+ }
 persona:Persona={
   apellidos: '',
   cedula: '',

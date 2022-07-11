@@ -9,9 +9,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./registrar-adoptante.component.css']
 })
 export class RegistrarAdoptanteComponent implements OnInit {
-adoptantes: AdoptanteDto={
-  persona: undefined
-}
+adoptantes: AdoptanteDto={}
   constructor(private adoptanteService: AdoptantesService)  { }
 
   ngOnInit(): void {

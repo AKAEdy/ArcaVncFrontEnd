@@ -254,4 +254,50 @@ export class MedicacionesService {
         );
     }
 
+    /**
+     * getMedicacionesPorIdTratamiento
+     * 
+     * @param idTratamiento idTratamiento
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getMedicacionesPorIdTratamientoUsingGET(idTratamiento: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getMedicacionesPorIdTratamientoUsingGET(idTratamiento: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getMedicacionesPorIdTratamientoUsingGET(idTratamiento: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getMedicacionesPorIdTratamientoUsingGET(idTratamiento: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (idTratamiento === null || idTratamiento === undefined) {
+            throw new Error('Required parameter idTratamiento was null or undefined when calling getMedicacionesPorIdTratamientoUsingGET.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (JWT) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<any>('get',`${this.basePath}/medicaciones/tratamiento/${encodeURIComponent(String(idTratamiento))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
 }
