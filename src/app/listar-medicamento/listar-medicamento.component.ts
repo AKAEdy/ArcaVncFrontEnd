@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MedicamentosService } from 'app/api/medicamentos.service';
 import { Medicamento } from 'app/model/medicamento';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'listar-medicamento',
@@ -11,7 +12,7 @@ export class ListarMedicamentoComponent implements OnInit {
   medicamento:Medicamento[]=[]
   pagina=0;
   tamaño=2;
-  constructor(private medicamentoService: MedicamentosService) { }
+  constructor(private medicamentoService: MedicamentosService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllMedicamentos();
@@ -40,5 +41,17 @@ this.medicamento=data.content
     this.getAllMedicamentos();
     console.log(this.pagina);
  
+  }
+
+  //medicacion
+  idmedicamento(id:number){
+  
+    localStorage.setItem("idmedicamento", id.toString());
+
+    this.irmedicacion();
+  }
+
+  irmedicacion(){
+    this.router.navigateByUrl("/medicacion");
   }
 }

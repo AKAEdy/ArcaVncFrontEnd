@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AnimalesService } from 'app/api/animales.service';
-import { Animal } from 'app/model/animal';
+
+import { AnimalesRefugioService } from 'app/api/animalesRefugio.service';
+import { FichasClnicasService } from 'app/api/fichasClnicas.service';
+
+
+import { AnimalRefugioResponse } from 'app/model/animalRefugioResponse';
+// import { FichaClinicaDTO } from 'app/model/fichaClinicaDTO';
+import { fichaClinicaPost } from 'app/model/fichaClinicaPost';
 import { data } from 'jquery';
 import Swal from 'sweetalert2';
 
@@ -13,20 +19,33 @@ import Swal from 'sweetalert2';
 })
 export class UpgradeComponent implements OnInit {
   
+   //animal: AnimalRefugioResponse[] = [];
 
-id:number;
-animal:Animal= null;
+  
+ animal: AnimalRefugioResponse=null;
+fichaClinica:fichaClinicaPost={};
   
   constructor(private activatedRoute: ActivatedRoute, private router: Router,
-    private es:AnimalesService) { }
+    private es:AnimalesRefugioService,private fichaClinService:FichasClnicasService) { }
 
   ngOnInit() {
   
   
     const id = this.activatedRoute.snapshot.params.id;
-    this.es.getByIdUsingGET(id).subscribe(data =>{
-      this.animal= data;
+    this.es.getAnimalPorIdUsingGET(id).subscribe(data =>{
+      this.animal= data.animal;
+      console.log(data,"datos de animal");
+
+
+
+
+    //  localStorage.setItem('animal', JSON.stringify(this.animal));
+
+
+    
+      this.getFichaByIdAnimal(id);
    
+     
     },
       err => {
         this.list();
@@ -34,8 +53,15 @@ animal:Animal= null;
     );}
 
 
+    getFichaByIdAnimal(id:number){
 
-  list(){
+      this.fichaClinService.getFichasClinicasByAnimalIdUsingGET1(id).subscribe(data=>{
+        this.fichaClinica=data as any;
+        console.log(data,"imprimiendo valores de la fichaclinica dentro del metodo get animal");
+      });
+
+    }
+  list(){ 
     this.router.navigate(['/table-list']);
   }
   onDelete(id: number) {
@@ -57,22 +83,55 @@ animal:Animal= null;
         this.irAtras();
       }
     })
-    this.es.deleteUsingDELETE(id).subscribe(data => {
+    this.es.eliminarAnimalUsingDELETE(id).subscribe(data => {
 
     })
 
   }
+
+
+
+
  irAtras(){
     this.router.navigate(['/table-list']);
   }
 
   modificar(id: number){
-    this.es.getByIdUsingGET(id).subscribe(data =>{
+    this.es.getAnimalPorIdUsingGET(id).subscribe(data =>{
       this.animal=data;
-    console.log("listado",data);
+    console.log("listado de animal ",data);
     this.router.navigate (['/notifications', id]);
     });
   }
+
+  
+
+  irVacuna(id: number){
+    this.es.getAnimalPorIdUsingGET(id).subscribe(data =>{
+      this.animal=data;
+    console.log("listado para vacunas", data);
+    this.router.navigate (['/registroCarnet', id]);
+    });
+   
+  }
+
+
+  
+  irTratamiento(id: number){
+    this.fichaClinService.getByIdUsingGET1(id).subscribe(data =>{
+      this.fichaClinica=data;
+      console.log("lista ficha para tratamiento", data);
+    this.router.navigate (['/tratamiento', id]);
+    });
+    
+     
+   
+   
+  }
+  
+
+
+
   }
 
 

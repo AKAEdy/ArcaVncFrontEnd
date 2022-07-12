@@ -22,6 +22,14 @@ import { VacunasService } from './api/vacunas.service';
 import { TratamientosService } from './api/tratamientos.service';
 
 import { MedicamentosService } from './api/medicamentos.service';
+import { AdoptantesService } from './api/adoptantes.service';
+import { DonacionesService } from './api/donaciones.service';
+import { VoluntariosService } from './api/voluntarios.service';
+import { AnimalesRefugioService } from './api/animalesRefugio.service';
+import { CarnetsDeVacunacinService } from './api/carnetsDeVacunacin.service';
+import { MedicacionesService } from './api/medicaciones.service';
+import { SeguimientoDeAdoptadosService } from './api/seguimientoDeAdoptados.service';
+
 
 @NgModule({
   imports: [
@@ -31,7 +39,8 @@ import { MedicamentosService } from './api/medicamentos.service';
     HttpClientModule,
     ComponentsModule,
     RouterModule,
-    AppRoutingModule,
+    AppRoutingModule, 
+
     
   ],
   declarations: [
@@ -39,10 +48,12 @@ import { MedicamentosService } from './api/medicamentos.service';
     AdminLayoutComponent,
     LoginComponent,
     RegistroComponent,
+      
     
 
+
   ],
-  providers: [{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     AdopcionControllerService,
     AdoptanteControllerService,
     AnimalesService,
@@ -55,8 +66,14 @@ import { MedicamentosService } from './api/medicamentos.service';
     TratamientosService,
     MedicamentosService,
     VeterinariosService ,
-    MedicamentosService ],
-    
+    MedicamentosService,
+    AnimalesRefugioService,
+    AdoptantesService,
+    DonacionesService,
+    CarnetsDeVacunacinService,
+    MedicacionesService,
+    SeguimientoDeAdoptadosService,
+    VoluntariosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
