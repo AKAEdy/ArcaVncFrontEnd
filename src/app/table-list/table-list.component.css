@@ -32,16 +32,7 @@
   
   
   /* ELEVEN */
-  
-  .p11 button{
-    background-color: #200f6b;
-    margin: auto 5px;
-    color: #fff;
-    border: 3px solid #200f6b;
-    position: relative;
-  }
-  
- 
+
 
   .container{
     width: 100%;
@@ -51,21 +42,7 @@
     justify-content: center;
   }
 
-  p{
-    font-weight: bold;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: medium;
-    text-align: center;
-  }
-  h3{
-    font-weight: bold;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: medium;
-    text-align: center;
-  }
-  .color{
-    border: 2px solid red;
-  }
+  
   
   
   
@@ -100,4 +77,55 @@
     position: relative;
   }
   
- 
+  
+  .btn {
+    background-color: rgb(230, 67, 64);
+    color: #fff;
+}
+.circulo{
+  width: 140px;
+  height: 140px; 
+  border-radius: 100px;
+}
+.search{
+  position: relative;
+  box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+    
+  }
+
+  .search input{
+
+   height: 47px;
+   text-indent: 25px;
+   border: 2px solid #d6d4d4;
+
+
+  }
+
+
+  .search input:focus{
+
+   box-shadow: none;
+   border: 2px solid blue;
+
+
+  }
+
+  .search .fa-search{
+
+   position: absolute;
+   top: 20px;
+   left: 16px;
+
+  }
+
+  .search button{
+
+   position: absolute;
+   top: 5px;
+   right: 5px;
+   height: 35px;
+   width: 35px;
+   background: blue;
+
+  }
