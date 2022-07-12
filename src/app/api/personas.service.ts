@@ -246,13 +246,14 @@ export class PersonasService {
      * 
      * @param page page
      * @param size size
+     * @param cedula cedula
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getPersonasUsingGET1(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PagePersona>;
-    public getPersonasUsingGET1(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PagePersona>>;
-    public getPersonasUsingGET1(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PagePersona>>;
-    public getPersonasUsingGET1(page: number, size: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getPersonasUsingGET1(page: number, size: number, cedula?: string, observe?: 'body', reportProgress?: boolean): Observable<PagePersona>;
+    public getPersonasUsingGET1(page: number, size: number, cedula?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PagePersona>>;
+    public getPersonasUsingGET1(page: number, size: number, cedula?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PagePersona>>;
+    public getPersonasUsingGET1(page: number, size: number, cedula?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (page === null || page === undefined) {
             throw new Error('Required parameter page was null or undefined when calling getPersonasUsingGET1.');
@@ -262,7 +263,11 @@ export class PersonasService {
             throw new Error('Required parameter size was null or undefined when calling getPersonasUsingGET1.');
         }
 
+
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (cedula !== undefined && cedula !== null) {
+            queryParameters = queryParameters.set('cedula', <any>cedula);
+        }
         if (page !== undefined && page !== null) {
             queryParameters = queryParameters.set('page', <any>page);
         }

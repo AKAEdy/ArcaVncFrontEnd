@@ -1,4 +1,5 @@
 import { Location } from '@angular/common'
+<<<<<<< HEAD
 import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core'
 import { Router } from '@angular/router'
 import { AlarmPost } from 'app/alarm/interfaces/alarm-post'
@@ -7,12 +8,20 @@ import { AlarmService } from 'app/service/alarm.service'
 import { AuthService } from 'app/service/auth.service'
 import { SidebarService } from 'app/service/sidebar/sidebar.service'
 import { filter, map, Subject, takeUntil } from 'rxjs'
+=======
+import { Component, ElementRef, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
+import { AuthService } from 'app/service/auth.service'
+import { SidebarService } from 'app/service/sidebar/sidebar.service'
+import { filter } from 'rxjs'
+>>>>>>> desarrollo
 
 @Component({
 	selector: 'app-navbar',
 	templateUrl: './navbar.component.html',
 	styleUrls: [ './navbar.component.css' ]
 })
+<<<<<<< HEAD
 export class NavbarComponent implements OnInit, OnDestroy {
 	todaysDate: string = new Date().toLocaleDateString();
 	listuncheckedEvents!: ListUncheckedEvents
@@ -39,6 +48,20 @@ export class NavbarComponent implements OnInit, OnDestroy {
 		console.log("checked", id)
 		this.service.update(id)
 		this.listuncheckedEvents.events.splice(id, 1)
+=======
+export class NavbarComponent implements OnInit {
+	usernameSesion: string
+	isLogged = false;
+	private listTitles: any[]
+	location: Location
+	mobile_menu_visible: any = 0;
+	private toggleButton: any
+	private sidebarVisible: boolean
+
+	constructor (location: Location, private sidebar: SidebarService, private element: ElementRef, private router: Router, private authService: AuthService) {
+		this.location = location
+		this.sidebarVisible = false
+>>>>>>> desarrollo
 	}
 	ngOnInit() {
 		this.setNotificationsEvents()

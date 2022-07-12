@@ -1,4 +1,4 @@
-<div class="main-content">
+<div class="main-content" id ='tabla' style="display: block;">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -27,7 +27,13 @@
                                         TELEFONO
                                     </th>
                                     <th>
+                                        CELULAR
+                                    </th>
+                                    <th>
                                         DIRECCION
+                                    </th>
+                                    <th>
+                                        ACCION
                                     </th>
                                 </thead>
                                 <tbody>
@@ -48,30 +54,179 @@
                                             {{persona.telefono}}
                                         </td>
                                         <td>
+                                            {{persona.celular}}
+                                        </td>
+                                        <td>
                                             {{persona.direccion}}
+                                        </td>
+                                        <td>
+                                            <button _ngcontent-uqa-c89="" mat-raised-button="" type="submit"
+                                                class="mat-focus-indicator btneliminar mat-raised-button mat-button-base" class="btneditar"
+                                                (click)="getPersonaById(persona.id)"><span class="mat-button-wrapper"><i
+                                                        _ngcontent-uqa-c89="" class="material-icons">mode_edit</i>
+                                                    <div _ngcontent-uqa-c89="" class="ripple-container"></div>
+                                                </span><span matripple=""
+                                                    class="mat-ripple mat-button-ripple"></span><span
+                                                    class="mat-button-focus-overlay"></span> </button>
+                                        </td>
+                                        <td>
+                                            <button _ngcontent-die-c89="" mat-raised-button="" type="submit"
+                                                class="mat-focus-indicator btneliminar mat-raised-button mat-button-base" class="btneliminar"  (click)="deletePersona(persona.id)"><span
+                                                    class="mat-button-wrapper"><i _ngcontent-die-c89=""
+                                                        class="material-icons">delete</i>
+                                                    <div _ngcontent-die-c89="" class="ripple-container"></div>
+                                                </span><span matripple=""
+                                                    class="mat-ripple mat-button-ripple"></span><span
+                                                    class="mat-button-focus-overlay"></span></button>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    
-                    
+
                     <div class="container">
-                       
                         <div class="pagination p11">
-                          <ul>
-                            <button (click)="previous()"> < </button>
+                                                  <ul>
+                            <button (click)="previous()"> « </button>
                          
-                            <button (click)="next()"> > </button>
+                            <button (click)="next()"> » </button>
                           </ul>
                         </div>  
                                 
                       </div>
-                       
+                      
 
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- editar persona -->
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="card" id="tarjeta" style="display: none;" >
+            
+            <div class="card-header card-header-danger">
+                <h4 class="card-title">EDITAR PERSONAS</h4>
+
+            </div>
+            <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">CEDULA</span>
+                                </div>
+                                <input matInput placeholder="CEDULA" [(ngModel)]="personaid.cedula"
+                                    class="form-control" name="cedula" #cedula="ngModel" required>
+                                <div class="text-danger" *ngIf="cedula.hasError('required') && cedula.touched">
+                                    La cédula es requerido!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">NOMBRE</span>
+                                </div>
+                                <input matInput placeholder="NOMBRE" [(ngModel)]="personaid.nombre"
+                                    class="form-control" name="nombre" #nombre="ngModel" required>
+                                <div class="text-danger" *ngIf="nombre.hasError('required') && nombre.touched">
+                                    EL nombre es requerido!
+                                </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">APELLIDO</span>
+                                </div>
+                                <input matInput placeholder="APELLIDO" [(ngModel)]="personaid.apellidos"
+                                    class="form-control" name="apellido" #apellido="ngModel" required>
+                                <div class="text-danger" *ngIf="apellido.hasError('required') && apellido.touched">
+                                    El apellido es requerido!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">EMAIL</span>
+                                </div>
+                                <input matInput placeholder="EMAIL ADDRESS" type="email"
+                                    [(ngModel)]="personaid.correo" class="form-control" name="email"
+                                    #email="ngModel" required>
+                                <div class="text-danger" *ngIf="email.hasError('required') && email.touched">
+                                    El correo es requerido!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">TELEFONO</span>
+                                </div>
+                                <input matInput placeholder="TELEFONO" [(ngModel)]="personaid.telefono"
+                                    class="form-control" name="telefono" #telefono="ngModel" required>
+                                <div class="text-danger" *ngIf="telefono.hasError('required') && telefono.touched">
+                                    El teléfono es requerido!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">CELULAR</span>
+                                </div>
+                                <input matInput placeholder="CELULAR" [(ngModel)]="personaid.celular"
+                                    class="form-control" name="celular" #celular="ngModel" required>
+                                <div class="text-danger" *ngIf="celular.hasError('required') && celular.touched">
+                                    El celular es requerido!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">DIRECCION</span>
+                                </div>
+                                <input matInput placeholder="DIRECCION" [(ngModel)]="personaid.direccion"
+                                    class="form-control" name="direccion" #direccion="ngModel" required>
+                                <div class="text-danger" *ngIf="direccion.hasError('required') && direccion.touched">
+                                    La dirección es requerido!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                           
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+
+                        </div>
+                        <div class="col-md-6">
+                            <button mat-raised-button type="submit" class="btn btn-success pull-right"
+                                (click)="updatePersonas()">EDITAR</button>
+                                <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                                (click)="cancelar()">CANCELAR</button>
+                        </div>
+                    </div>
+                   
+                    <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>

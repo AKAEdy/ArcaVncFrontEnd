@@ -10,7 +10,15 @@ import Swal from 'sweetalert2';
 })
 export class RegistrarPersonaComponent implements OnInit {
 
-  persona: Persona = {}
+  persona: Persona = {
+    apellidos: '',
+    cedula: '',
+    celular: '',
+    correo: '',
+    direccion: '',
+    nombre: '',
+    telefono: ''
+  }
   constructor(private personaService: PersonasService) { }
 
   ngOnInit(): void {

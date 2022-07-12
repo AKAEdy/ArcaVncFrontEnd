@@ -10,17 +10,12 @@
  * Do not edit the class manually.
  */
 import { FichaClinica } from './fichaClinica';
-import { Medicacion } from './medicacion';
 
 export interface Tratamiento { 
-    
-    descripcionTr?: string;
-    estado?: string;
+    descripcion: string;
+    estado: string;
     fechaAplicacion?: Date;
     id?: number;
-    idFichaClinica?: FichaClinica;
-    indicaciones?: string;
-    medicacion?: Medicacion;
-
-
+    idFichaClinica: FichaClinica;
+    indicaciones: string;
 }

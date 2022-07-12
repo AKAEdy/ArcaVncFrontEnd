@@ -1,0 +1,258 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">TRATAMIENTO</h4>
+                        <p class="card-category">Complete el formulario</p>
+                    </div>
+                    <div class="card-body">
+                        <form #f="ngForm" (ngSubmit)="guardarTratamiento()" novalidate>
+
+
+                            <div class="container">
+
+                                <div class="row">
+
+                                    <!--Descripción-->
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-full-width">
+                                            <textarea matInput placeholder="Descripción" type="text" name="descripcion"
+                                                #descripcion="ngModel" [(ngModel)]="tratamiento.descripcion"></textarea>
+                                        </mat-form-field>
+                                    </div>
+
+
+                                    <!--Indicaciones -->
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-full-width">
+                                            <textarea matInput placeholder="Indicaciones" type="text"
+                                                name="indicaciones" #indicaciones="ngModel"
+                                                [(ngModel)]="tratamiento.indicaciones"></textarea>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <!-- Fecha Apllicacion -->
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="Fecha de Aplicación" type="date"
+                                                #fechaAplicacion="ngModel" [(ngModel)]="tratamiento.fechaAplicacion">
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <!--Estado-->
+                                        <div class="col-md-6">
+                                            <label>ESTADO</label>
+                                            <div class="caja">
+                                                <select class="form-select" aria-label="Default select example"
+                                                    name="estado" #estado="ngModel" [(ngModel)]="tratamiento.estado">
+
+                                                    <option [ngValue]="undefined">
+                                                        ESTADO
+                                                    </option>
+                                                    <option value="INICIO">INICIO</option>
+                                                    <option value="CONTINUA">CONTINUA</option>
+                                                    <option value="FINALIZADO">FINALIZADO</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <br>
+                            <hr>
+                            <h4>HISTORIAL DE MEDICACIONES</h4>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-primary">
+                                            <th>
+                                                MEDICAMENTO
+                                            </th>
+                                            <th>
+                                                DESCRIPCION MEDICACION
+                                            </th>
+                                            <th>
+                                                DOSIS
+                                            </th>
+                                            <th>
+                                                DURACION
+                                            </th>
+                                            <th>
+                                                FRECUENCIA
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let medicacion of medicacioneslist">
+
+                                                <td>
+                                                    {{medicacion.medicamento.nombreComercial}}
+                                                </td>
+                                                <td>
+                                                    {{medicacion.descripcionMd}}
+                                                </td>
+                                                <td>
+                                                    {{medicacion.dosis}}
+                                                </td>
+                                                <td>
+                                                    {{medicacion.duracion}}
+                                                </td>
+                                                <td>
+                                                    {{medicacion.frecuencia}}
+                                                </td>
+                                                <td>
+                                                    <button _ngcontent-uqa-c89="" mat-raised-button="" type="submit"
+                                                        class="mat-focus-indicator btneliminar mat-raised-button mat-button-base" class="btneditar"
+                                                        (click)="getPersonaById(persona.id)"><span class="mat-button-wrapper"><i
+                                                                _ngcontent-uqa-c89="" class="material-icons">mode_edit</i>
+                                                            <div _ngcontent-uqa-c89="" class="ripple-container"></div>
+                                                        </span><span matripple=""
+                                                            class="mat-ripple mat-button-ripple"></span><span
+                                                            class="mat-button-focus-overlay"></span> </button>
+                                                </td>
+                                                <td>
+                                                    <button _ngcontent-die-c89="" mat-raised-button="" type="submit"
+                                                        class="mat-focus-indicator btneliminar mat-raised-button mat-button-base" class="btneliminar"  (click)="deletePersona(persona.id)"><span
+                                                            class="mat-button-wrapper"><i _ngcontent-die-c89=""
+                                                                class="material-icons">delete</i>
+                                                            <div _ngcontent-die-c89="" class="ripple-container"></div>
+                                                        </span><span matripple=""
+                                                            class="mat-ripple mat-button-ripple"></span><span
+                                                            class="mat-button-focus-overlay"></span></button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <br>
+                            <hr>
+                            
+
+                            
+
+                            <div class="row">
+
+                                <div class="col-md-5">
+                                    <button mat-raised-button type="submit"
+                                        class="btn btn-danger pull-right">CANCELAR</button>
+
+                                </div>
+                                <div class="col-md-5">
+                                    <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                                        (click)="guardarTratamiento()">Guardar</button>
+
+                                </div>
+                                <div class="col-md-5">
+                                    <a href="#Modal" role="button" class="btn btn-large btn-success" data-toggle="modal">Agregar Medicacion</a>
+
+                                </div>
+
+                            </div>
+                            <!--fin row botones tratamiento-->
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Botón en HTML (lanza el modal en Bootstrap) -->
+
+  
+<!-- Modal / Ventana / Overlay en HTML -->
+
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">MEDICACION</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body">
+
+                    <input id="myInput" type="text" class="form-control" placeholder="🔎Buscar Medicamento..."
+                        [(ngModel)]="filterpost" (keypress)="validarInputs($event)" (keyup)="keyUp($event) " />
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        MEDICAMENTO
+                                    </th>
+                                    <th>
+                                        DESCRIPCION MEDICACION
+                                    </th>
+                                    <th>
+                                        DOSIS
+                                    </th>
+                                    <th>
+                                        DURACION
+                                    </th>
+                                    <th>
+                                        FRECUENCIA
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let med of medicaciones | filtermedicamentos:filterpost">
+
+                                        <td>
+                                            {{med.medicamento.nombreComercial}}
+                                        </td>
+                                        <td>
+                                            <mat-form-field class="example-full-width">
+                                                <textarea matInput placeholder="Descripcion" type="text" [(ngModel)]="medicacionDto.descripcionMd" class="form-control" name="descripcion" #descripcion ="ngModel" required></textarea>
+                                                <div class="text-danger" *ngIf="descripcion.hasError('required') && descripcion.touched">
+                                                   La descripcion es requerida!
+                                               </div>
+                                             </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Dosis" type="number" [(ngModel)]="medicacionDto.dosis" class="form-control" name="dosis" #dosis ="ngModel" maxlength="100" required>
+                                                <div class="text-danger" *ngIf="dosis.hasError('required') && dosis.touched">
+                                                  La Dosis es requerida!
+                                              </div>
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Duracion" type="text" [(ngModel)]="medicacionDto.duracion" class="form-control" name="duracion" #duracion ="ngModel" maxlength="100" required>
+                                                <div class="text-danger" *ngIf="duracion.hasError('required') && duracion.touched">
+                                                  La Duracion es requerida!
+                                              </div>
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Frecuencia" type="text" [(ngModel)]="medicacionDto.frecuencia" class="form-control" name="frecuencia" #frecuencia ="ngModel" maxlength="100" required>
+                                                <div class="text-danger" *ngIf="frecuencia.hasError('required') && frecuencia.touched">
+                                                  La Frecuencia es requerida!
+                                              </div>
+                                            </mat-form-field>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" (click)=" crearMedicacion()">AGREGAR TRATAMIENTO</button>
+            </div>
+        </div>
+    </div>
+</div>
