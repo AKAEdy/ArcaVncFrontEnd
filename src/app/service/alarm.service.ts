@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy, OnInit } from '@angular/core'
 import { PacienteAlarmInfo } from 'app/alarm/interfaces/paciente-alarm-info';
 import { AlarmPost } from 'app/alarm/interfaces/alarm-post';
 import { first, map, Observable } from 'rxjs';
@@ -9,9 +9,13 @@ import { ListUncheckedEvents } from 'app/alarm/interfaces/list-unchecked-events'
 	providedIn: 'root'
 })
 
-export class AlarmService {
+export class AlarmService implements OnInit {
 
 	constructor (private socketClient: SocketClientService) { }
+	ngOnInit(): void {
+
+	}
+
 
 	findAll(): Observable<PacienteAlarmInfo[]> {
 		return this.socketClient

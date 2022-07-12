@@ -9,9 +9,6 @@ export class DateReadableComponent implements OnChanges {
 	date!: Date;
 	dateString!: string;
 
-	constructor () {
-	}
-
 	ngOnChanges(): void {
 		const options = { timeZone: 'UTC', year: 'numeric', month: 'long', day: 'numeric' } as const;
 		this.dateString = this.date.toLocaleDateString('es-EC', options);
