@@ -21,13 +21,13 @@ export class SidebarService {
 	//De manera Predeterminada si no se asigna un tittle sera 'Dasboard'
 	private menuItems$ = new BehaviorSubject<any>([
 
-		{ /* Inicio */
+		{
 			tittle: 'Inicio',
 			icon: 'fa fa-home',
 			url: 'menu', //path que corresponde a los componentes del Admin Layout Routing o cualquier otro layout routing.
 			/* Si es necesario se pueden adicionar propiedades a este nivel como a niveles mas bajos, ejemplo : class : 'mt-2' , roles:['ROLE_EJEMPLO'] ...*/
 		},
-		{/* Adopciones */
+		{
 			tittle: 'Gestión de adopciones',
 			icon: 'fa fa-heart',
 			ref: 'adopciones',// ref(referencia) Necesario para desplegar submenus del modulo si esque contiene alguno.
@@ -41,31 +41,25 @@ export class SidebarService {
 				{
 					tittle: 'Registrar adoptados',
 					url: 'registrarAdoptado',
+				},
+				{
+					tittle: 'Registrar adoptante',
+					url: 'registrarAdoptantes',
 				}
 			]
 		},
-		{  /* Animales */
+		{
 			tittle: 'Gestión de animales',
 			icon: 'fa fa-paw',
 			ref: 'animales',
 			items: [
 				{
-					tittle: 'Listado de mascotas',
+					tittle: 'Informacion Mascotas',
 					url: 'table-list',
 				},
 				{
-					tittle: 'Registro de ingreso de mascota',
-					url: 'user-profile',
-				}
-				,
-				{
-					tittle: 'REGISTRO FICHA CLINICA',
-					url: 'registrofichaclinica',
-				}
-				,
-				{
-					tittle: 'REGISTRO TRATAMIENTO',
-					url: 'tratamiento',
+					tittle: 'Registrar nueva Mascota',
+					url: 'registrar-animal-refugio',
 				}
 				,
 				{
@@ -74,7 +68,7 @@ export class SidebarService {
 				}
 			]
 		},
-		{/* Personas */
+		{
 			tittle: 'Gestión de personas',
 			icon: 'fa fa-user',
 			ref: 'personas',
@@ -89,7 +83,7 @@ export class SidebarService {
 				}
 			]
 		}
-		, {/* Medicamentos */
+		, {
 			tittle: 'Gestión de medicamentos',
 			icon: 'fa fa-medkit',
 			ref: 'medicamentos',
@@ -104,7 +98,7 @@ export class SidebarService {
 				}
 			]
 		}
-		, {/* Citas */
+		, {
 			tittle: 'Gestión de Citas',
 			icon: 'fa fa-calendar-o',
 			ref: 'citas',
@@ -119,7 +113,7 @@ export class SidebarService {
 				}
 			]
 		}
-		, {/* Vacunas */
+		, {
 			tittle: 'Gestión de vacunas',
 			icon: 'fa fa-tint',
 			ref: 'vacunas',
@@ -134,18 +128,48 @@ export class SidebarService {
 				}
 			]
 		}
-		, {/* Veterinarios */
+		, {
 			tittle: 'Gestión de Veterinarios',
 			icon: 'fa fa-user-md',
 			ref: 'veterinarios',
 			items: [
 				{
-					tittle: 'Lista de Vacunas',
+					tittle: 'Lista de Veterinarios',
 					url: 'listarVeterinarios',
 				},
 				{
-					tittle: 'Registrar Vacunas',
+					tittle: 'Registrar Veterinarios',
 					url: 'registrarVeterinarios',
+				}
+			]
+		}
+		, {
+			tittle: ' Gestión de Voluntarios',
+			icon: 'fa fa-male',
+			ref: 'voluntarios',
+			items: [
+				{
+					tittle: 'Lista de Voluntarios',
+					url: 'listarVoluntarios',
+				},
+				{
+					tittle: 'Registrar Voluntarios',
+					url: 'registrarVoluntarios',
+				}
+			]
+		}
+		, {
+			tittle: ' Gestión de Donaciones',
+			icon: 'fa fa-money',
+			ref: 'donaciones',
+			items: [
+				{
+					tittle: 'Listar de donaciones',
+					url: 'listarDonaciones',
+				},
+				{
+					tittle: 'Registrar donaciones',
+					url: 'registrarDonaciones',
 				}
 			]
 		}
@@ -153,5 +177,3 @@ export class SidebarService {
 	_menuItems$ = this.menuItems$.asObservable();
 
 }
-
-
