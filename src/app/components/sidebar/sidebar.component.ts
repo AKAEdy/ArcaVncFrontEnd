@@ -65,9 +65,7 @@ export class SidebarComponent implements OnInit {
 		this._sidebar._menuItems$.subscribe(menuItems => this.menuItems = menuItems)
 	}
 	isMobileMenu() {
-		if ($(window).width() > 991) {
-			return false
-		}
+		if ($(window).width() > 991) {return false}
 		return true
 	};
 	hasRole(roles: any[]): boolean {

@@ -65,9 +65,8 @@ import { AlarmModule } from 'app/alarm/alarm.module'
     MatTableModule,
     MatSortModule,
     MatStepperModule,
-    CoreModule,
-    AlarmModule,
-    NgxPrintModule,
+	NgxPrintModule,
+	AlarmModule
   ],
   declarations: [
     DashboardComponent,

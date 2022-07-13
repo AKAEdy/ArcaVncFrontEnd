@@ -36,31 +36,11 @@ export class AlarmListingPageComponent implements OnInit, OnDestroy {
 	avents!: PacienteAlarmInfo[];
 	eventsUncheck!: number;
 	status!: any[];
-	asyncTabs: Observable<ExampleTab[]>;
 
-	constructor (private service: AlarmService, private pacienteStatus: PacienteStatusService) {
-		this.asyncTabs = new Observable((observer: Observer<ExampleTab[]>) => {
-			setTimeout(() => {
-				observer.next([
-					{ label: 'Todos los eventos', content: 'Content 1' },
-					{ label: 'Leidos', content: 'Content 2' },
-					{ label: 'Sin leer', content: 'Content 3' },
-				]);
-			}, 1000);
-		});
-	}
+	constructor (private service: AlarmService, private pacienteStatus: PacienteStatusService) {}
+
 	ngOnChanges(): void { }
-	onSubmit(): void {
-		this.service.save({
-			...{
-				checked: false,
-				body: "",
-				eventType: TypeEvent.VACUNA,
-				eventDay: new Date(),
-				pacienteId: 1,
-			},
-		});
-	}
+
 	ngOnInit(): void {
 		// this.service
 		// 	.findAllByCheckedIsFalse()

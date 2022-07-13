@@ -7,11 +7,13 @@ import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { NgModule } from "@angular/core";
 import { MatTabsModule } from '@angular/material/tabs';
+import { BellNotificationComponent } from "./bell-notification/bell-notification.component";
 @NgModule({
 	declarations: [
 		AlarmListingPageComponent,
 		AlarmListItemComponent,
 		AlarmListComponent,
+		BellNotificationComponent,
 	],
 	imports: [
 		ReactiveFormsModule,
@@ -19,8 +21,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 		CommonModule,
 		FormsModule,
 		CoreModule,
-		MatTabsModule
+		MatTabsModule,
 	],
-	exports: [ AlarmListComponent ],
+	exports: [AlarmListComponent, BellNotificationComponent],
 })
-export class AlarmModule { }
+export class AlarmModule {}

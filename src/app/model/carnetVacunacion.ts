@@ -10,10 +10,11 @@
  * Do not edit the class manually.
  */
 import { AnimalRefugio } from './animalRefugio';
+import { AnimalRefugioResponse } from './animalRefugioResponse';
 import { Vacuna } from './vacuna';
 
 export interface CarnetVacunacion { 
-    animal?: AnimalRefugio;
+    animal?: AnimalRefugioResponse;
     fechaAplicacion?: Date;
     fechaProximaAplicacion?: Date;
     id?: number;
