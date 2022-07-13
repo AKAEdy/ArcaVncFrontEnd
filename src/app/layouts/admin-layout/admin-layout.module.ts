@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
@@ -17,22 +16,19 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import { RouterModule } from '@angular/router';
-
 import { ListaAdoptadoComponent } from 'app/lista-adoptado/lista-adoptado.component';
 import { RegistrarAdoptadoComponent } from 'app/registrar-adoptado/registrar-adoptado.component';
 import { RegistrarPersonaComponent } from 'app/registrar-persona/registrar-persona.component';
 import { ListaPersonaComponent } from 'app/lista-persona/lista-persona.component';
 import { RegistrarMedicamentoComponent } from 'app/registrar-medicamento/registrar-medicamento.component';
 import { ListarMedicamentoComponent } from 'app/listar-medicamento/listar-medicamento.component';
-
 import { FilteradoptadosPipe } from '../../pipes/filteradoptados.pipe';
 import { RegistrarVacunasComponent } from '../../registrar-vacunas/registrar-vacunas.component';
 import { ListarVacunasComponent } from '../../listar-vacunas/listar-vacunas.component';
 import { ListarCitasComponent } from '../../listar-citas/listar-citas.component';
 import { RegistrarCitasComponent } from '../../registrar-citas/registrar-citas.component';
-
 import {MatStepperModule} from '@angular/material/stepper';
-import { MatPaginatorModule } from '@angular/material/paginator';import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { RegistrarVeterinariosComponent } from '../../registrar-veterinarios/registrar-veterinarios.component';
@@ -49,6 +45,8 @@ import { RegistrarSeguimientoComponent } from 'app/registrar-seguimiento/registr
 import { FichaClinicaComponent } from 'app/components/arca/clinica/ficha-clinica/ficha-clinica.component';
 import { TratamientoComponent } from 'app/components/arca/clinica/tratamiento/tratamiento.component';
 import { FiltermedicamentosPipe } from '../../pipes/filtermedicamentos.pipe';
+import { CoreModule } from 'app/core/core.module'
+import { AlarmModule } from 'app/alarm/alarm.module'
 
 
 @NgModule({
@@ -67,7 +65,8 @@ import { FiltermedicamentosPipe } from '../../pipes/filtermedicamentos.pipe';
     MatTableModule,
     MatSortModule,
     MatStepperModule,
-    NgxPrintModule,
+	NgxPrintModule,
+	AlarmModule
   ],
   declarations: [
     DashboardComponent,
@@ -78,12 +77,10 @@ import { FiltermedicamentosPipe } from '../../pipes/filtermedicamentos.pipe';
     TratamientoComponent,
     NotificationsComponent,
     UpgradeComponent,
-    
     // COMPONENTES DEL MENU
     FichaClinicaComponent,
     ListaAdoptadoComponent,
     RegistrarAdoptadoComponent,
-    ListaAdoptadoComponent,
     ListaPersonaComponent,
     RegistrarPersonaComponent,
     RegistrarMedicamentoComponent,

@@ -1,184 +1,36 @@
-<div class="logo" id="fondo">
-    <a href="/#/menu" class="simple-text" style="font-size:25px;">
-        <div class="logo-img">
-            <img  style="width:75px;height: 75px; margin-top:-20px;" src="/assets/img/arca-logo.png"/> 
-        </div>
-        <!-- ARCA -->
-        <br>
-    </a>
+<div class="logo" id="logoArca">
+	<a href="/#/menu" class="simple-text" >
+		<img style="width:75px;height: 75px;" src="/assets/img/arca-logo.png" />
+	</a>
 </div>
-<div class="sidebar-wrapper"id="fondo">
-  <div *ngIf="isMobileMenu()" >
-    <form class="navbar-form" >
-      <span class="bmd-form-group">
-        <div class="input-group no-border" >
-          <input type="text" value="" class="form-control" placeholder="Search...">
-          <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
-            <i class="material-icons">search</i>
-            <div class="ripple-container"></div>
-          </button>
-        </div>
-      </span>
-    </form>
-    <ul class="nav navbar-nav nav-mobile-menu">
-        <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0)">
-                <i class="material-icons">dashboard</i>
-                <p>
-                    <span class="d-lg-none d-md-block">Stats</span>
-                </p>
-            </a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="material-icons">notifications</i>
-                <span class="notification">5</span>
-                <p>
-                    <span class="d-lg-none d-md-block">Some Actions</span>
-                </p>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-                <a class="dropdown-item" href="#">Another Notification</a>
-                <a class="dropdown-item" href="#">Another One</a>
-            </div>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">
-                <i class="material-icons">person</i>
-                <p>
-                    <span class="d-lg-none d-md-block">Account</span>
-                </p>
-            </a>
-        </li>
-    </ul>
-  </div>
-    <ul class="nav" >
-        <!-- INICIO -->
-        <div class="btn-group" >
-            <button type="button" onclick="window.location.href='#/menu'" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-home"></i> 
-              Inicio
-            </button>
-          </div>
-
-          <!-- GESTION ADOPTADOS -->
-          <div class="btn-group" >
-            <button type="button"  data-toggle="dropdown" href="#/menu" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-heart"></i> 
-              Gestión de adopciones
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#/listaAdoptado">Listar adoptados</a>
-              <a class="dropdown-item" href="#/registrarAdoptado">Registrar adoptados</a>
-              <a class="dropdown-item" href="#/registrarAdoptantes">Registrar adoptante</a>
-            </div>
-          </div>
-
-          <!-- GESTION ANIMALES  -->
-          <div class="btn-group" >
-            <button type="button"  data-toggle="dropdown" href="#/menu" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-paw"></i> 
-              Gestión de animales
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#/table-list">Informacion Mascotas</a>
-              <a class="dropdown-item" href="#/registrar-animal-refugio">Registrar nueva Mascota</a>
-             
-              
-              <a class="dropdown-item" href="#/medicacion">REGISTRO MEDICACIÓN</a>
-             
-            </div>
-          </div>
-
-         
-
-
-           <!-- GESTION PERSONAS  -->
-           <div class="btn-group" >
-            <button type="button"  data-toggle="dropdown" href="#/menu" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-user"></i> 
-              Gestión de personas
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#/listaPersonas">Listar de personas</a>
-              <a class="dropdown-item" href="#/registroPersonas">Registrar personas</a>
-            </div>
-          </div>
-                  <!-- GESTION MEDICAMENTOS  -->
-                  <div class="btn-group" >
-                    <button type="button"  data-toggle="dropdown" href="#/menu" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-medkit"></i> 
-                      Gestión de medicamentos
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#/listaMedicamentos">Listar de medicamentos</a>
-                      <a class="dropdown-item" href="#/registroMedicamentos">Registrar medicamentos</a>
-                    </div>
-                  </div>
-
-                   <!-- GESTION CITAS  -->
-                   <div class="btn-group" >
-                    <button type="button"  data-toggle="dropdown" href="#/menu" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-calendar-o"></i> 
-                      Gestión de Citas
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#/listaCitas">Listar Citas</a>
-                      <a class="dropdown-item" href="#/registrarCitas">Registro de Citas</a>
-                    </div>
-                  </div>
-
-                   <!-- GESTION VACUNAS  -->
-                   <div class="btn-group" >
-                    <button type="button"  data-toggle="dropdown" href="#/menu" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-tint"></i> 
-                      Gestión de Vacunas
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#/listarVacunas">Lista de Vacunas</a>
-                      <a class="dropdown-item" href="#/registrarVacunas">Registrar Vacunas</a>
-                    </div>
-                  </div>
-
-                  <!-- GESTION VETERINARIOS  -->
-                  <div class="btn-group" >
-                    <button type="button"  data-toggle="dropdown" href="#/menu" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user-md"></i> 
-                      Gestión de Veterinarios
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#/listarVeterinarios">Lista de Veterinarios</a>
-                      <a class="dropdown-item" href="#/registrarVeterinarios">Registrar Veterinarios</a>
-                    </div>
-                  </div>
-
-                   <!-- GESTION VOLUNTARIOS  -->
-                   <div class="btn-group" >
-                    <button type="button"  data-toggle="dropdown" href="#/menu" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-male"></i> 
-                      Gestión de Voluntarios
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#/listarVoluntarios">Lista de Voluntarios</a>
-                      <a class="dropdown-item" href="#/registrarVoluntarios">Registrar Voluntarios</a>
-                    </div>
-                  </div>
-
-                   <!-- GESTION DONACIONES  -->
-           <div class="btn-group" >
-            <button type="button"  data-toggle="dropdown" href="#/menu" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-money"></i> 
-              Gestión de Donaciones
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#/listarDonaciones">Listar de donaciones</a>
-              <a class="dropdown-item" href="#/registrarDonaciones">Registrar donaciones</a>
-            </div>
-          </div>
-
-    </ul>
+<div class="sidebar-wrapper" id="fondo">
+	<ul class="nav">
+		<li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item"
+			*ngFor="let menu of menuItems">
+			<ng-container *ngIf="hasRole(menu.roles)">
+				<a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" aria-expanded="false"
+					data-toggle="collapse" [routerLink]="menu.url" [attr.data-target]="'#'+menu.ref">
+					<i [class]="menu.icon"></i>
+					<strong>
+						{{menu.tittle }}
+					</strong>
+				</a>
+				<div *ngIf="menu.ref" class="collapse" [id]="menu.ref">
+					<ul class="nav">
+						<li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item"
+							*ngFor="let items of menu.items">
+							<ng-container *ngIf="hasRole(items.roles)">
+								<a aria-expanded="false" data-toggle="collapse" [routerLink]="menu.url" class="nav-link"
+									routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="items.url">
+									<i [class]="items.icon" style="font-size: 20px">
+									</i>
+									<strong>{{ items.tittle }}</strong>
+								</a>
+							</ng-container>
+						</li>
+					</ul>
+				</div>
+			</ng-container>
+		</li>
+	</ul>
 </div>
