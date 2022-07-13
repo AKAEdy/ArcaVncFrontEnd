@@ -1,21 +1,25 @@
-#fondo{
-    background-color: rgb(255, 238, 238);
-    height:50px;
+#fondo {
+	background-color: rgb(255, 238, 238);
+	height: 50px;
 }
 
-.navbar{
-    height:50px;
+.navbar {
+	height: 50px;
 }
 
-.navbar-brand{
-    font-size: 25px;
-    color: rgb(61, 61, 61);
+.navbar-brand {
+	font-size: 25px;
+	color: rgb(61, 61, 61);
 }
 
-#h5{
-    margin-left: 25px;
-    margin-top: 10px;
-    color: black;
-    font-size:15px;
-    font-weight: bold;
+#h5 {
+	margin-left: 25px;
+	margin-top: 10px;
+	color: black;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.redic {
+	border-top: 1px solid #eeeeee;
 }

@@ -39,19 +39,13 @@ import { SeguimientoDeAdoptadosService } from './api/seguimientoDeAdoptados.serv
     HttpClientModule,
     ComponentsModule,
     RouterModule,
-    AppRoutingModule, 
-
-    
+    AppRoutingModule,
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
     RegistroComponent,
-      
-    
-
-
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     AdopcionControllerService,
@@ -61,10 +55,7 @@ import { SeguimientoDeAdoptadosService } from './api/seguimientoDeAdoptados.serv
     PersonasService,
     CitasService,
     VacunasService,
-    VeterinariosService,
-    MedicamentosService,
     TratamientosService,
-    MedicamentosService,
     VeterinariosService ,
     MedicamentosService,
     AnimalesRefugioService,

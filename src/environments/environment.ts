@@ -7,7 +7,8 @@ export const environment = {
  
     BASE_URL: 'http://localhost:9898/api/',
     AUTH_URL: 'http://localhost:9898/api/auth/',
-    TOKEN_NAME :'AUTH_ARCA',
+	TOKEN_NAME: 'AUTH_ARCA',
+	USER_VALUE: 'CURRENT_USER',
     production: false,
    
     
