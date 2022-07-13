@@ -9,10 +9,12 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { ServicioArcaDtoExtends } from './servicioArcaDtoExtends';
 
-export interface TratamientoDto { 
-    descripcion: string;
-    estado: string;
-    fechaAplicacion?: string;
-    indicaciones: string;
+export interface CitaServiciosArca { 
+    estado: boolean;
+    fechaCita: string;
+    motivo: string;
+    nombreCliente: string;
+    servicios: Array<ServicioArcaDtoExtends>;
 }

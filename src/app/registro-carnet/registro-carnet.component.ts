@@ -7,6 +7,7 @@ import { VacunasService } from 'app/api/vacunas.service';
 
 import { AnimalRefugioResponse } from 'app/model/animalRefugioResponse';
 import { CarnetVacunacion } from 'app/model/carnetVacunacion';
+import { CarnetVacunacionDTO } from 'app/model/carnetVacunacionDTO';
 import { Vacuna } from 'app/model/vacuna';
 import Swal from 'sweetalert2';
 
@@ -19,7 +20,7 @@ export class RegistroCarnetComponent implements OnInit {
   animal: AnimalRefugioResponse={};
  selectedvacunas: Vacuna={};
  vacunas: Vacuna[] = [];
-  carnetVacuna: CarnetVacunacion={};
+  carnetVacuna: CarnetVacunacionDTO={};
   constructor(private activatedRoute: ActivatedRoute, private router: Router,
     private es:AnimalesRefugioService, private carnetVacunacion: CarnetsDeVacunacinService, private vacuna: VacunasService) { }
 
@@ -47,7 +48,7 @@ export class RegistroCarnetComponent implements OnInit {
       console.log(this.selectedvacunas,"imprimiendo selectedvacunas")
           /* igualando de id de animal pasar por routerlink */
         //  this.carnetVacuna.animal=this.animal as AnimalRefugioResponse;
-      this.carnetVacuna.vacuna=this.selectedvacunas;
+      //  this.carnetVacuna.vacuna=this.selectedvacunas;
         //  console.log(this.vacuna,"mostrar objeto vacuna");
         // console.log(JSON.stringify(this.selectedvacunas),"imprimiendo objeto convertido");
          console.log(this.carnetVacuna);

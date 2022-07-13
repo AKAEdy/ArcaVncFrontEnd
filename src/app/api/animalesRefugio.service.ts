@@ -64,21 +64,20 @@ export class AnimalesRefugioService {
      * @param lugarEstancia 
      * @param nombre 
      * @param observacionesProcedencia 
+     * @param procedencia 
      * @param raza 
      * @param sexo 
      * @param adoptado 
-     * @param deleted 
      * @param edad 
      * @param fechaNacimiento 
      * @param peso 
-     * @param procedencia 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public actualizarAnimalUsingPUT(colorCaracteristicas: string, especie: string, idAnimal: number, lugarEstancia: string, nombre: string, observacionesProcedencia: string, raza: string, sexo: string, adoptado?: boolean, deleted?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, procedencia?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public actualizarAnimalUsingPUT(colorCaracteristicas: string, especie: string, idAnimal: number, lugarEstancia: string, nombre: string, observacionesProcedencia: string, raza: string, sexo: string, adoptado?: boolean, deleted?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, procedencia?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public actualizarAnimalUsingPUT(colorCaracteristicas: string, especie: string, idAnimal: number, lugarEstancia: string, nombre: string, observacionesProcedencia: string, raza: string, sexo: string, adoptado?: boolean, deleted?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, procedencia?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public actualizarAnimalUsingPUT(colorCaracteristicas: string, especie: string, idAnimal: number, lugarEstancia: string, nombre: string, observacionesProcedencia: string, raza: string, sexo: string, adoptado?: boolean, deleted?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, procedencia?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public actualizarAnimalUsingPUT(colorCaracteristicas: string, especie: string, idAnimal: number, lugarEstancia: string, nombre: string, observacionesProcedencia: string, procedencia: string, raza: string, sexo: string, adoptado?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public actualizarAnimalUsingPUT(colorCaracteristicas: string, especie: string, idAnimal: number, lugarEstancia: string, nombre: string, observacionesProcedencia: string, procedencia: string, raza: string, sexo: string, adoptado?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public actualizarAnimalUsingPUT(colorCaracteristicas: string, especie: string, idAnimal: number, lugarEstancia: string, nombre: string, observacionesProcedencia: string, procedencia: string, raza: string, sexo: string, adoptado?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public actualizarAnimalUsingPUT(colorCaracteristicas: string, especie: string, idAnimal: number, lugarEstancia: string, nombre: string, observacionesProcedencia: string, procedencia: string, raza: string, sexo: string, adoptado?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (colorCaracteristicas === null || colorCaracteristicas === undefined) {
             throw new Error('Required parameter colorCaracteristicas was null or undefined when calling actualizarAnimalUsingPUT.');
@@ -104,6 +103,10 @@ export class AnimalesRefugioService {
             throw new Error('Required parameter observacionesProcedencia was null or undefined when calling actualizarAnimalUsingPUT.');
         }
 
+        if (procedencia === null || procedencia === undefined) {
+            throw new Error('Required parameter procedencia was null or undefined when calling actualizarAnimalUsingPUT.');
+        }
+
         if (raza === null || raza === undefined) {
             throw new Error('Required parameter raza was null or undefined when calling actualizarAnimalUsingPUT.');
         }
@@ -116,17 +119,12 @@ export class AnimalesRefugioService {
 
 
 
-
-
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (adoptado !== undefined && adoptado !== null) {
             queryParameters = queryParameters.set('adoptado', <any>adoptado);
         }
         if (colorCaracteristicas !== undefined && colorCaracteristicas !== null) {
             queryParameters = queryParameters.set('colorCaracteristicas', <any>colorCaracteristicas);
-        }
-        if (deleted !== undefined && deleted !== null) {
-            queryParameters = queryParameters.set('deleted', <any>deleted);
         }
         if (edad !== undefined && edad !== null) {
             queryParameters = queryParameters.set('edad', <any>edad);
@@ -479,22 +477,21 @@ export class AnimalesRefugioService {
      * @param lugarEstancia 
      * @param nombre 
      * @param observacionesProcedencia 
+     * @param procedencia 
      * @param raza 
      * @param sexo 
      * @param multipartFile 
      * @param adoptado 
-     * @param deleted 
      * @param edad 
      * @param fechaNacimiento 
      * @param peso 
-     * @param procedencia 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public guardarAnimalUsingPOSTForm(colorCaracteristicas: string, especie: string, lugarEstancia: string, nombre: string, observacionesProcedencia: string, raza: string, sexo: string, multipartFile?: Blob, adoptado?: boolean, deleted?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, procedencia?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public guardarAnimalUsingPOSTForm(colorCaracteristicas: string, especie: string, lugarEstancia: string, nombre: string, observacionesProcedencia: string, raza: string, sexo: string, multipartFile?: Blob, adoptado?: boolean, deleted?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, procedencia?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public guardarAnimalUsingPOSTForm(colorCaracteristicas: string, especie: string, lugarEstancia: string, nombre: string, observacionesProcedencia: string, raza: string, sexo: string, multipartFile?: Blob, adoptado?: boolean, deleted?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, procedencia?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public guardarAnimalUsingPOSTForm(colorCaracteristicas: string, especie: string, lugarEstancia: string, nombre: string, observacionesProcedencia: string, raza: string, sexo: string, multipartFile?: Blob, adoptado?: boolean, deleted?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, procedencia?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public guardarAnimalUsingPOSTForm(colorCaracteristicas: string, especie: string, lugarEstancia: string, nombre: string, observacionesProcedencia: string, procedencia: string, raza: string, sexo: string, multipartFile?: File, adoptado?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public guardarAnimalUsingPOSTForm(colorCaracteristicas: string, especie: string, lugarEstancia: string, nombre: string, observacionesProcedencia: string, procedencia: string, raza: string, sexo: string, multipartFile?: File, adoptado?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public guardarAnimalUsingPOSTForm(colorCaracteristicas: string, especie: string, lugarEstancia: string, nombre: string, observacionesProcedencia: string, procedencia: string, raza: string, sexo: string, multipartFile?: File, adoptado?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public guardarAnimalUsingPOSTForm(colorCaracteristicas: string, especie: string, lugarEstancia: string, nombre: string, observacionesProcedencia: string, procedencia: string, raza: string, sexo: string, multipartFile?: File, adoptado?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (colorCaracteristicas === null || colorCaracteristicas === undefined) {
             throw new Error('Required parameter colorCaracteristicas was null or undefined when calling guardarAnimalUsingPOST.');
@@ -516,6 +513,10 @@ export class AnimalesRefugioService {
             throw new Error('Required parameter observacionesProcedencia was null or undefined when calling guardarAnimalUsingPOST.');
         }
 
+        if (procedencia === null || procedencia === undefined) {
+            throw new Error('Required parameter procedencia was null or undefined when calling guardarAnimalUsingPOST.');
+        }
+
         if (raza === null || raza === undefined) {
             throw new Error('Required parameter raza was null or undefined when calling guardarAnimalUsingPOST.');
         }
@@ -529,17 +530,12 @@ export class AnimalesRefugioService {
 
 
 
-
-
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (adoptado !== undefined && adoptado !== null) {
             queryParameters = queryParameters.set('adoptado', <any>adoptado);
         }
         if (colorCaracteristicas !== undefined && colorCaracteristicas !== null) {
             queryParameters = queryParameters.set('colorCaracteristicas', <any>colorCaracteristicas);
-        }
-        if (deleted !== undefined && deleted !== null) {
-            queryParameters = queryParameters.set('deleted', <any>deleted);
         }
         if (edad !== undefined && edad !== null) {
             queryParameters = queryParameters.set('edad', <any>edad);
@@ -548,7 +544,7 @@ export class AnimalesRefugioService {
             queryParameters = queryParameters.set('especie', <any>especie);
         }
         if (fechaNacimiento !== undefined && fechaNacimiento !== null) {
-            queryParameters = queryParameters.set('fechaNacimiento', <any>fechaNacimiento.toISOString());
+            queryParameters = queryParameters.set('fechaNacimiento', <any>fechaNacimiento);
         }
         if (lugarEstancia !== undefined && lugarEstancia !== null) {
             queryParameters = queryParameters.set('lugarEstancia', <any>lugarEstancia);

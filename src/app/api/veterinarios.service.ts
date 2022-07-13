@@ -17,8 +17,8 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { PageVeterinario } from '../model/pageVeterinario';
-import { Veterinario } from '../model/veterinario';
+import { PageVeterinarioDTO } from '../model/pageVeterinarioDTO';
+import { VeterinarioDTO } from '../model/veterinarioDTO';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -63,10 +63,10 @@ export class VeterinariosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createUsingPOST8(body: Veterinario, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createUsingPOST8(body: Veterinario, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createUsingPOST8(body: Veterinario, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createUsingPOST8(body: Veterinario, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createUsingPOST8(body: VeterinarioDTO, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createUsingPOST8(body: VeterinarioDTO, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createUsingPOST8(body: VeterinarioDTO, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createUsingPOST8(body: VeterinarioDTO, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling createUsingPOST8.');
@@ -209,9 +209,9 @@ export class VeterinariosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getVeterinariosUsingGET(page: number, size: number, cedula?: string, observe?: 'body', reportProgress?: boolean): Observable<PageVeterinario>;
-    public getVeterinariosUsingGET(page: number, size: number, cedula?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageVeterinario>>;
-    public getVeterinariosUsingGET(page: number, size: number, cedula?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageVeterinario>>;
+    public getVeterinariosUsingGET(page: number, size: number, cedula?: string, observe?: 'body', reportProgress?: boolean): Observable<PageVeterinarioDTO>;
+    public getVeterinariosUsingGET(page: number, size: number, cedula?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageVeterinarioDTO>>;
+    public getVeterinariosUsingGET(page: number, size: number, cedula?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageVeterinarioDTO>>;
     public getVeterinariosUsingGET(page: number, size: number, cedula?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (page === null || page === undefined) {
@@ -254,7 +254,7 @@ export class VeterinariosService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<PageVeterinario>('get',`${this.basePath}/veterinario/page`,
+        return this.httpClient.request<PageVeterinarioDTO>('get',`${this.basePath}/veterinario/page`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -273,10 +273,10 @@ export class VeterinariosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateUsingPUT8(body: Veterinario, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateUsingPUT8(body: Veterinario, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateUsingPUT8(body: Veterinario, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateUsingPUT8(body: Veterinario, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateUsingPUT8(body: VeterinarioDTO, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateUsingPUT8(body: VeterinarioDTO, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateUsingPUT8(body: VeterinarioDTO, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateUsingPUT8(body: VeterinarioDTO, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateUsingPUT8.');

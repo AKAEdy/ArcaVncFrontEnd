@@ -17,9 +17,9 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { PageTratamiento } from '../model/pageTratamiento';
-import { Tratamiento } from '../model/tratamiento';
+import { PageTratamientoDtoExtends } from '../model/pageTratamientoDtoExtends';
 import { TratamientoDto } from '../model/tratamientoDto';
+import { TratamientoDtoExtends } from '../model/tratamientoDtoExtends';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -258,9 +258,9 @@ export class TratamientosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getTratamientosUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<Tratamiento>>;
-    public getTratamientosUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Tratamiento>>>;
-    public getTratamientosUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Tratamiento>>>;
+    public getTratamientosUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<TratamientoDtoExtends>>;
+    public getTratamientosUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<TratamientoDtoExtends>>>;
+    public getTratamientosUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<TratamientoDtoExtends>>>;
     public getTratamientosUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -283,7 +283,7 @@ export class TratamientosService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Tratamiento>>('get',`${this.basePath}/tratamientos/`,
+        return this.httpClient.request<Array<TratamientoDtoExtends>>('get',`${this.basePath}/tratamientos/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -301,9 +301,9 @@ export class TratamientosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getTratamientosUsingGET1(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PageTratamiento>;
-    public getTratamientosUsingGET1(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageTratamiento>>;
-    public getTratamientosUsingGET1(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageTratamiento>>;
+    public getTratamientosUsingGET1(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PageTratamientoDtoExtends>;
+    public getTratamientosUsingGET1(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageTratamientoDtoExtends>>;
+    public getTratamientosUsingGET1(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageTratamientoDtoExtends>>;
     public getTratamientosUsingGET1(page: number, size: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (page === null || page === undefined) {
@@ -342,7 +342,7 @@ export class TratamientosService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<PageTratamiento>('get',`${this.basePath}/tratamientos/page`,
+        return this.httpClient.request<PageTratamientoDtoExtends>('get',`${this.basePath}/tratamientos/page`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

@@ -17,8 +17,8 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { PageVacuna } from '../model/pageVacuna';
-import { Vacuna } from '../model/vacuna';
+import { PageVacunaDTO } from '../model/pageVacunaDTO';
+import { VacunaDTO } from '../model/vacunaDTO';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -63,10 +63,10 @@ export class VacunasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createUsingPOST7(body: Vacuna, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createUsingPOST7(body: Vacuna, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createUsingPOST7(body: Vacuna, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createUsingPOST7(body: Vacuna, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createUsingPOST7(body: VacunaDTO, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createUsingPOST7(body: VacunaDTO, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createUsingPOST7(body: VacunaDTO, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createUsingPOST7(body: VacunaDTO, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling createUsingPOST7.');
@@ -206,9 +206,9 @@ export class VacunasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getVacunasUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<Vacuna>>;
-    public getVacunasUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Vacuna>>>;
-    public getVacunasUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Vacuna>>>;
+    public getVacunasUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<VacunaDTO>>;
+    public getVacunasUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<VacunaDTO>>>;
+    public getVacunasUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<VacunaDTO>>>;
     public getVacunasUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -231,7 +231,7 @@ export class VacunasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Vacuna>>('get',`${this.basePath}/vacunas/`,
+        return this.httpClient.request<Array<VacunaDTO>>('get',`${this.basePath}/vacunas/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -249,9 +249,9 @@ export class VacunasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getVacunasUsingGET1(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PageVacuna>;
-    public getVacunasUsingGET1(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageVacuna>>;
-    public getVacunasUsingGET1(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageVacuna>>;
+    public getVacunasUsingGET1(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PageVacunaDTO>;
+    public getVacunasUsingGET1(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageVacunaDTO>>;
+    public getVacunasUsingGET1(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageVacunaDTO>>;
     public getVacunasUsingGET1(page: number, size: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (page === null || page === undefined) {
@@ -290,7 +290,7 @@ export class VacunasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<PageVacuna>('get',`${this.basePath}/vacunas/page`,
+        return this.httpClient.request<PageVacunaDTO>('get',`${this.basePath}/vacunas/page`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -309,10 +309,10 @@ export class VacunasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateUsingPUT7(body: Vacuna, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateUsingPUT7(body: Vacuna, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateUsingPUT7(body: Vacuna, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateUsingPUT7(body: Vacuna, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateUsingPUT7(body: VacunaDTO, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateUsingPUT7(body: VacunaDTO, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateUsingPUT7(body: VacunaDTO, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateUsingPUT7(body: VacunaDTO, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateUsingPUT7.');

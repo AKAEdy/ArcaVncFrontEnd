@@ -17,8 +17,8 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { Medicamento } from '../model/medicamento';
-import { PageMedicamento } from '../model/pageMedicamento';
+import { MedicamentoDto } from '../model/medicamentoDto';
+import { PageMedicamentoDto } from '../model/pageMedicamentoDto';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -63,10 +63,10 @@ export class MedicamentosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createUsingPOST2(body: Medicamento, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createUsingPOST2(body: Medicamento, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createUsingPOST2(body: Medicamento, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createUsingPOST2(body: Medicamento, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createUsingPOST2(body: MedicamentoDto, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createUsingPOST2(body: MedicamentoDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createUsingPOST2(body: MedicamentoDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createUsingPOST2(body: MedicamentoDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling createUsingPOST2.');
@@ -207,9 +207,9 @@ export class MedicamentosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getMedicamentosByNombresUsingGET(nombre?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<Medicamento>>;
-    public getMedicamentosByNombresUsingGET(nombre?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Medicamento>>>;
-    public getMedicamentosByNombresUsingGET(nombre?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Medicamento>>>;
+    public getMedicamentosByNombresUsingGET(nombre?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<MedicamentoDto>>;
+    public getMedicamentosByNombresUsingGET(nombre?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<MedicamentoDto>>>;
+    public getMedicamentosByNombresUsingGET(nombre?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<MedicamentoDto>>>;
     public getMedicamentosByNombresUsingGET(nombre?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
@@ -238,7 +238,7 @@ export class MedicamentosService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Medicamento>>('get',`${this.basePath}/medicamentos/find`,
+        return this.httpClient.request<Array<MedicamentoDto>>('get',`${this.basePath}/medicamentos/find`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -255,9 +255,9 @@ export class MedicamentosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getMedicamentosUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<Medicamento>>;
-    public getMedicamentosUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Medicamento>>>;
-    public getMedicamentosUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Medicamento>>>;
+    public getMedicamentosUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<MedicamentoDto>>;
+    public getMedicamentosUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<MedicamentoDto>>>;
+    public getMedicamentosUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<MedicamentoDto>>>;
     public getMedicamentosUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -280,7 +280,7 @@ export class MedicamentosService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Medicamento>>('get',`${this.basePath}/medicamentos/`,
+        return this.httpClient.request<Array<MedicamentoDto>>('get',`${this.basePath}/medicamentos/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -299,9 +299,9 @@ export class MedicamentosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getMedicamentosUsingGET1(page: number, size: number, nombre?: string, observe?: 'body', reportProgress?: boolean): Observable<PageMedicamento>;
-    public getMedicamentosUsingGET1(page: number, size: number, nombre?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageMedicamento>>;
-    public getMedicamentosUsingGET1(page: number, size: number, nombre?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageMedicamento>>;
+    public getMedicamentosUsingGET1(page: number, size: number, nombre?: string, observe?: 'body', reportProgress?: boolean): Observable<PageMedicamentoDto>;
+    public getMedicamentosUsingGET1(page: number, size: number, nombre?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageMedicamentoDto>>;
+    public getMedicamentosUsingGET1(page: number, size: number, nombre?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageMedicamentoDto>>;
     public getMedicamentosUsingGET1(page: number, size: number, nombre?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (page === null || page === undefined) {
@@ -344,7 +344,7 @@ export class MedicamentosService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<PageMedicamento>('get',`${this.basePath}/medicamentos/page`,
+        return this.httpClient.request<PageMedicamentoDto>('get',`${this.basePath}/medicamentos/page`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -363,10 +363,10 @@ export class MedicamentosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateUsingPUT2(body: Medicamento, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateUsingPUT2(body: Medicamento, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateUsingPUT2(body: Medicamento, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateUsingPUT2(body: Medicamento, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateUsingPUT2(body: MedicamentoDto, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateUsingPUT2(body: MedicamentoDto, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateUsingPUT2(body: MedicamentoDto, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateUsingPUT2(body: MedicamentoDto, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateUsingPUT2.');

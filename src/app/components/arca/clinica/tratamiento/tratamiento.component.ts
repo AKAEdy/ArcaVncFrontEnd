@@ -7,6 +7,7 @@ import { TratamientosService } from 'app/api/tratamientos.service';
 import { FichaClinica } from 'app/model/fichaClinica';
 import { Medicacion } from 'app/model/medicacion';
 import { MedicacionDto } from 'app/model/medicacionDto';
+import { MedicacionDtoExtends } from 'app/model/medicacionDtoExtends';
 import { Medicamento } from 'app/model/medicamento';
 import { TratamientoDto } from 'app/model/tratamientoDto';
 import Swal from 'sweetalert2';
@@ -24,7 +25,7 @@ export class TratamientoComponent implements OnInit {
 
   idFichaClinica=1 as any;
   medicamentos : Medicamento[]=[];
-  medicaciones : Medicacion[]=[];
+  medicaciones : MedicacionDtoExtends[]=[];
   medicacioneslist : Medicacion[]=[];
   medicacionPost : Medicacion = {};
   medicacionDto : MedicacionDto = {};

@@ -17,9 +17,9 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { Cita } from '../model/cita';
-import { CitaDto } from '../model/citaDto';
-import { DetalleCita } from '../model/detalleCita';
+import { CitaDtoExtends } from '../model/citaDtoExtends';
+import { CitaServiciosArca } from '../model/citaServiciosArca';
+import { DetalleCitaDto } from '../model/detalleCitaDto';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -65,10 +65,10 @@ export class CitasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public crearCitaUsingPOST(body: CitaDto, idVeterinario: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public crearCitaUsingPOST(body: CitaDto, idVeterinario: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public crearCitaUsingPOST(body: CitaDto, idVeterinario: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public crearCitaUsingPOST(body: CitaDto, idVeterinario: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public crearCitaUsingPOST(body: CitaServiciosArca, idVeterinario: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public crearCitaUsingPOST(body: CitaServiciosArca, idVeterinario: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public crearCitaUsingPOST(body: CitaServiciosArca, idVeterinario: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public crearCitaUsingPOST(body: CitaServiciosArca, idVeterinario: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling crearCitaUsingPOST.');
@@ -169,9 +169,9 @@ export class CitasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAllCitasUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<Cita>>;
-    public getAllCitasUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Cita>>>;
-    public getAllCitasUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Cita>>>;
+    public getAllCitasUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<CitaDtoExtends>>;
+    public getAllCitasUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<CitaDtoExtends>>>;
+    public getAllCitasUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<CitaDtoExtends>>>;
     public getAllCitasUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -194,7 +194,7 @@ export class CitasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Cita>>('get',`${this.basePath}/citas/`,
+        return this.httpClient.request<Array<CitaDtoExtends>>('get',`${this.basePath}/citas/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -211,9 +211,9 @@ export class CitasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAllDetallesCitaUsingGET(idCita: number, observe?: 'body', reportProgress?: boolean): Observable<Array<DetalleCita>>;
-    public getAllDetallesCitaUsingGET(idCita: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<DetalleCita>>>;
-    public getAllDetallesCitaUsingGET(idCita: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<DetalleCita>>>;
+    public getAllDetallesCitaUsingGET(idCita: number, observe?: 'body', reportProgress?: boolean): Observable<Array<DetalleCitaDto>>;
+    public getAllDetallesCitaUsingGET(idCita: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<DetalleCitaDto>>>;
+    public getAllDetallesCitaUsingGET(idCita: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<DetalleCitaDto>>>;
     public getAllDetallesCitaUsingGET(idCita: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (idCita === null || idCita === undefined) {
@@ -240,7 +240,7 @@ export class CitasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<DetalleCita>>('get',`${this.basePath}/citas/detallesCita/${encodeURIComponent(String(idCita))}`,
+        return this.httpClient.request<Array<DetalleCitaDto>>('get',`${this.basePath}/citas/detallesCita/${encodeURIComponent(String(idCita))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -257,9 +257,9 @@ export class CitasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCitaPorIdUsingGET(idCita: number, observe?: 'body', reportProgress?: boolean): Observable<Cita>;
-    public getCitaPorIdUsingGET(idCita: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Cita>>;
-    public getCitaPorIdUsingGET(idCita: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Cita>>;
+    public getCitaPorIdUsingGET(idCita: number, observe?: 'body', reportProgress?: boolean): Observable<CitaDtoExtends>;
+    public getCitaPorIdUsingGET(idCita: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<CitaDtoExtends>>;
+    public getCitaPorIdUsingGET(idCita: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<CitaDtoExtends>>;
     public getCitaPorIdUsingGET(idCita: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (idCita === null || idCita === undefined) {
@@ -286,7 +286,7 @@ export class CitasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Cita>('get',`${this.basePath}/citas/${encodeURIComponent(String(idCita))}`,
+        return this.httpClient.request<CitaDtoExtends>('get',`${this.basePath}/citas/${encodeURIComponent(String(idCita))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -349,9 +349,9 @@ export class CitasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCitasPorVeterinarioUsingGET(idVeterinario: number, observe?: 'body', reportProgress?: boolean): Observable<Array<Cita>>;
-    public getCitasPorVeterinarioUsingGET(idVeterinario: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Cita>>>;
-    public getCitasPorVeterinarioUsingGET(idVeterinario: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Cita>>>;
+    public getCitasPorVeterinarioUsingGET(idVeterinario: number, observe?: 'body', reportProgress?: boolean): Observable<Array<CitaDtoExtends>>;
+    public getCitasPorVeterinarioUsingGET(idVeterinario: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<CitaDtoExtends>>>;
+    public getCitasPorVeterinarioUsingGET(idVeterinario: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<CitaDtoExtends>>>;
     public getCitasPorVeterinarioUsingGET(idVeterinario: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (idVeterinario === null || idVeterinario === undefined) {
@@ -378,7 +378,7 @@ export class CitasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Cita>>('get',`${this.basePath}/citas/veterinario/${encodeURIComponent(String(idVeterinario))}`,
+        return this.httpClient.request<Array<CitaDtoExtends>>('get',`${this.basePath}/citas/veterinario/${encodeURIComponent(String(idVeterinario))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -397,10 +397,10 @@ export class CitasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public modificarCitaUsingPUT(body: CitaDto, idCita: number, idVeterinario: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public modificarCitaUsingPUT(body: CitaDto, idCita: number, idVeterinario: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public modificarCitaUsingPUT(body: CitaDto, idCita: number, idVeterinario: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public modificarCitaUsingPUT(body: CitaDto, idCita: number, idVeterinario: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public modificarCitaUsingPUT(body: CitaServiciosArca, idCita: number, idVeterinario: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public modificarCitaUsingPUT(body: CitaServiciosArca, idCita: number, idVeterinario: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public modificarCitaUsingPUT(body: CitaServiciosArca, idCita: number, idVeterinario: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public modificarCitaUsingPUT(body: CitaServiciosArca, idCita: number, idVeterinario: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling modificarCitaUsingPUT.');

@@ -10,9 +10,13 @@
  * Do not edit the class manually.
  */
 import { PersonaDtoExtends } from './personaDtoExtends';
+import { RolDto } from './rolDto';
 
-export interface VeterinarioDTO { 
-    cargo?: string;
+export interface UsuarioDtoResponse { 
+    enabled: boolean;
     id?: number;
-    persona?: PersonaDtoExtends;
+    password: string;
+    persona: PersonaDtoExtends;
+    roles: Array<RolDto>;
+    username: string;
 }

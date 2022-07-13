@@ -1,4 +1,5 @@
-import { Persona } from "app";
+import { Persona } from "app/model/persona";
+
 
 export interface LoginResponse {
 	id?:number;

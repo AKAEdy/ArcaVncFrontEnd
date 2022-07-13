@@ -10,9 +10,13 @@
  * Do not edit the class manually.
  */
 
-export interface TratamientoDto { 
-    descripcion: string;
-    estado: string;
-    fechaAplicacion?: string;
-    indicaciones: string;
+export interface PersonaDtoExtends { 
+    apellidos: string;
+    cedula: string;
+    celular: string;
+    correo: string;
+    direccion: string;
+    id?: number;
+    nombre: string;
+    telefono: string;
 }

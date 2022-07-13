@@ -9,10 +9,13 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { FichaClinicaDTO } from './fichaClinicaDTO';
 
-export interface TratamientoDto { 
+export interface TratamientoDtoExtends { 
     descripcion: string;
     estado: string;
     fechaAplicacion?: string;
+    id?: number;
+    idFichaClinica: FichaClinicaDTO;
     indicaciones: string;
 }

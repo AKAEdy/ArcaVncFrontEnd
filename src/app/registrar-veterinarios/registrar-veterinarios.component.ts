@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VeterinariosService } from 'app/api/veterinarios.service';
 import { Veterinario } from 'app/model/veterinario';
+import { VeterinarioDTO } from 'app/model/veterinarioDTO';
 import { errorMonitor } from 'events';
 import Swal from 'sweetalert2';
 
@@ -11,20 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./registrar-veterinarios.component.css']
 })
 export class RegistrarVeterinariosComponent implements OnInit {
- veterinarios:Veterinario={
-  cargo: '',
-  id: 0,
-  persona: {
-    apellidos: '',
-    cedula: '',
-    celular: '',
-    correo: '',
-    direccion: '',
-    id: 0,
-    nombre: '',
-    telefono: ''
-  }
- };
+ veterinarios:VeterinarioDTO={};
  cargo:string
   constructor(private veterinarioService: VeterinariosService) { 
     // this.veterinarios.cargo 

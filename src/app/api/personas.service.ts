@@ -17,8 +17,8 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { PagePersona } from '../model/pagePersona';
-import { Persona } from '../model/persona';
+import { PagePersonaDtoExtends } from '../model/pagePersonaDtoExtends';
+import { PersonaDtoExtends } from '../model/personaDtoExtends';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -63,10 +63,10 @@ export class PersonasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createUsingPOST3(body: Persona, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createUsingPOST3(body: Persona, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createUsingPOST3(body: Persona, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createUsingPOST3(body: Persona, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createUsingPOST3(body: PersonaDtoExtends, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createUsingPOST3(body: PersonaDtoExtends, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createUsingPOST3(body: PersonaDtoExtends, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createUsingPOST3(body: PersonaDtoExtends, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling createUsingPOST3.');
@@ -206,9 +206,9 @@ export class PersonasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getPersonasUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<Persona>>;
-    public getPersonasUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Persona>>>;
-    public getPersonasUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Persona>>>;
+    public getPersonasUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<PersonaDtoExtends>>;
+    public getPersonasUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<PersonaDtoExtends>>>;
+    public getPersonasUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<PersonaDtoExtends>>>;
     public getPersonasUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -231,7 +231,7 @@ export class PersonasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Persona>>('get',`${this.basePath}/personas/`,
+        return this.httpClient.request<Array<PersonaDtoExtends>>('get',`${this.basePath}/personas/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -250,9 +250,9 @@ export class PersonasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getPersonasUsingGET1(page: number, size: number, cedula?: string, observe?: 'body', reportProgress?: boolean): Observable<PagePersona>;
-    public getPersonasUsingGET1(page: number, size: number, cedula?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PagePersona>>;
-    public getPersonasUsingGET1(page: number, size: number, cedula?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PagePersona>>;
+    public getPersonasUsingGET1(page: number, size: number, cedula?: string, observe?: 'body', reportProgress?: boolean): Observable<PagePersonaDtoExtends>;
+    public getPersonasUsingGET1(page: number, size: number, cedula?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PagePersonaDtoExtends>>;
+    public getPersonasUsingGET1(page: number, size: number, cedula?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PagePersonaDtoExtends>>;
     public getPersonasUsingGET1(page: number, size: number, cedula?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (page === null || page === undefined) {
@@ -295,7 +295,7 @@ export class PersonasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<PagePersona>('get',`${this.basePath}/personas/page`,
+        return this.httpClient.request<PagePersonaDtoExtends>('get',`${this.basePath}/personas/page`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -314,10 +314,10 @@ export class PersonasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateUsingPUT3(body: Persona, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateUsingPUT3(body: Persona, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateUsingPUT3(body: Persona, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateUsingPUT3(body: Persona, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateUsingPUT3(body: PersonaDtoExtends, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateUsingPUT3(body: PersonaDtoExtends, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateUsingPUT3(body: PersonaDtoExtends, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateUsingPUT3(body: PersonaDtoExtends, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateUsingPUT3.');

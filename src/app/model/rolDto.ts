@@ -10,9 +10,7 @@
  * Do not edit the class manually.
  */
 
-export interface TratamientoDto { 
-    descripcion: string;
-    estado: string;
-    fechaAplicacion?: string;
-    indicaciones: string;
+export interface RolDto { 
+    id?: number;
+    nombre: string;
 }

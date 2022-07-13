@@ -17,7 +17,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { PageVoluntario } from '../model/pageVoluntario';
+import { PageVoluntarioDtoExtends } from '../model/pageVoluntarioDtoExtends';
 import { VoluntarioDto } from '../model/voluntarioDto';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -254,9 +254,9 @@ export class VoluntariosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getVoluntariosUsingGET(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PageVoluntario>;
-    public getVoluntariosUsingGET(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageVoluntario>>;
-    public getVoluntariosUsingGET(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageVoluntario>>;
+    public getVoluntariosUsingGET(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PageVoluntarioDtoExtends>;
+    public getVoluntariosUsingGET(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageVoluntarioDtoExtends>>;
+    public getVoluntariosUsingGET(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageVoluntarioDtoExtends>>;
     public getVoluntariosUsingGET(page: number, size: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (page === null || page === undefined) {
@@ -295,7 +295,7 @@ export class VoluntariosService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<PageVoluntario>('get',`${this.basePath}/voluntario/page`,
+        return this.httpClient.request<PageVoluntarioDtoExtends>('get',`${this.basePath}/voluntario/page`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

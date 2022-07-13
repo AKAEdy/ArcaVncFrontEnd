@@ -81,15 +81,14 @@ export class RegistrarAnimalRefugioComponent implements OnInit {
               this.animal.lugarEstancia,
               this.animal.nombre,
               this.animal.observacionesProcedencia,
+              this.animal.procedencia,
               this.animal.raza,
               this.animal.sexo,
               this.imagen,
               this.animal.adoptado,
-              false,
               this.animal.edad,
               this.animal.fechaNacimiento,
-              this.animal.peso,
-              this.animal.procedencia
+              this.animal.peso
             )
             .subscribe((data) => {
               this.animal = data;

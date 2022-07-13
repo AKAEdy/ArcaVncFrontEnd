@@ -10,9 +10,10 @@
  * Do not edit the class manually.
  */
 
-export interface TratamientoDto { 
-    descripcion: string;
-    estado: string;
-    fechaAplicacion?: string;
-    indicaciones: string;
+export interface MedicamentoDto { 
+    cantidad?: number;
+    id?: number;
+    nombreComercial?: string;
+    nombreGenerico?: string;
+    precio?: number;
 }

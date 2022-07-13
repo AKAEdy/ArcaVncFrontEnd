@@ -9,10 +9,13 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { VeterinarioDTO } from './veterinarioDTO';
 
-export interface TratamientoDto { 
-    descripcion: string;
-    estado: string;
-    fechaAplicacion?: string;
-    indicaciones: string;
+export interface CitaDtoExtends { 
+    estado: boolean;
+    fechaCita: string;
+    id?: number;
+    motivo: string;
+    nombreCliente: string;
+    veterinario?: VeterinarioDTO;
 }

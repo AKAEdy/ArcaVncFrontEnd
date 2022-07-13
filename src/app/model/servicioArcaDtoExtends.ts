@@ -10,9 +10,9 @@
  * Do not edit the class manually.
  */
 
-export interface TratamientoDto { 
+export interface ServicioArcaDtoExtends { 
     descripcion: string;
-    estado: string;
-    fechaAplicacion?: string;
-    indicaciones: string;
+    id?: number;
+    nombre: string;
+    precio: number;
 }

@@ -9,10 +9,11 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { PersonaDtoExtends } from './personaDtoExtends';
 
-export interface TratamientoDto { 
-    descripcion: string;
-    estado: string;
-    fechaAplicacion?: string;
-    indicaciones: string;
+export interface UsuarioDto { 
+    id?: number;
+    password: string;
+    persona: PersonaDtoExtends;
+    username: string;
 }

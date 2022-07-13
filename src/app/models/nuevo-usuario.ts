@@ -1,5 +1,5 @@
 import { ResolveStart } from "@angular/router";
-import { Persona } from "app";
+import { Persona } from "app/model/persona";
 import { Rol } from "./rol";
 
 export interface NuevoUsuario {
