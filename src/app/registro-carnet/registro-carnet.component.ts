@@ -139,7 +139,7 @@ export class RegistroCarnetComponent implements OnInit {
 	irAtras() {
 		this.router.navigate(["/upgrade", this.animal.id]);
 	}
-
+ 
 	onComplete(cv:CarnetVacunacion): void {
 		this._alarmService.save({
 			...{
