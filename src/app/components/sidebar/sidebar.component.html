@@ -1,28 +1,25 @@
-<div class="logo" id="logoArca">
+<div class="logo arca">
 	<a href="/#/menu" class="simple-text" >
-		<img style="width:75px;height: 75px;" src="/assets/img/arca-logo.png" />
+		<img src="/assets/img/arca-logo.png" />
 	</a>
 </div>
-<div class="sidebar-wrapper" id="fondo">
+<div class="sidebar-wrapper">
 	<ul class="nav">
-		<li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item"
-			*ngFor="let menu of menuItems">
+		<li routerLinkActive="active" class="nav-item" *ngFor="let menu of menuItems">
 			<ng-container *ngIf="hasRole(menu.roles)">
-				<a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" aria-expanded="false"
-					data-toggle="collapse" [routerLink]="menu.url" [attr.data-target]="'#'+menu.ref">
+				<a data-toggle="collapse" class="nav-link" routerLinkActive="active" [routerLink]="menu.url"
+					[attr.data-target]="'#'+menu.ref">
 					<i [class]="menu.icon"></i>
 					<strong>
 						{{menu.tittle }}
 					</strong>
 				</a>
-				<div *ngIf="menu.ref" class="collapse" [id]="menu.ref">
-					<ul class="nav">
-						<li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item"
-							*ngFor="let items of menu.items">
+				<div>
+					<ul *ngIf="menu.ref" class="nav" class="collapse" [id]="menu.ref">
+						<li routerLinkActive="active" class="nav-item" *ngFor="let items of menu.items">
 							<ng-container *ngIf="hasRole(items.roles)">
-								<a aria-expanded="false" data-toggle="collapse" [routerLink]="menu.url" class="nav-link"
-									routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="items.url">
-									<i [class]="items.icon" style="font-size: 20px">
+								<a data-toggle="collapse" class="nav-link" [routerLink]="items.url">
+									<i [class]="items.icon">
 									</i>
 									<strong>{{ items.tittle }}</strong>
 								</a>

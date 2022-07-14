@@ -1,8 +1,7 @@
-body {
+.loginpage {
     margin: 0;
     padding: 0;
     background: #ffcece; 
-    /* background: url(https://veterinariaeltoro.com/wp-content/uploads/2016/06/background-fondo-veterinaria-el-toro-pet-shop-colombia.jpg) no-repeat center top; */
     background-size: cover;
     font-family: sans-serif;
     height: 100vh;
