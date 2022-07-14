@@ -19,7 +19,7 @@ import { data } from 'jquery';
   styleUrls: ['./table-list.component.css']
 })
 export class TableListComponent implements OnInit {
-filterpost:any='';
+filterAnimal:any='';
 dataSource:any={};
 
   //VARIABLE DE animal
@@ -32,7 +32,7 @@ dataSource:any={};
   constructor(private animalesService: AnimalesRefugioService,private router: Router,private fichasClinicasService: FichasClnicasService) { }
 
   ngOnInit(): void {
-    this.filterpost=this.animales;
+    this.filterAnimal=this.animales;
     this.listarAnimales();
   this.pagina = 0;
     // this.getAnimalesPage(

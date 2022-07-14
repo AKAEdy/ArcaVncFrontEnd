@@ -19,8 +19,11 @@ export class NotificationsComponent implements OnInit {
   // msjOK = '';
   // failInit = false;]
 //2
-animal: AnimalRefugioResponse={};
+imagen: File = null;
 
+animales: any[] = [];
+animal: AnimalRefugioResponse={};
+imagenPreview: File;
   constructor(private activatedRoute: ActivatedRoute, private router: Router,
     private es:AnimalesRefugioService) { }
     
@@ -46,7 +49,90 @@ animal: AnimalRefugioResponse={};
 
 
  
-  modificarAnimal()  {}
+  modificarAnimal()  {
+
+    if (
+      this.animal.nombre === undefined ||
+      this.animal.sexo === undefined ||
+      this.animal.especie === undefined ||
+      this.animal.procedencia === undefined ||
+      this.animal.lugarEstancia === undefined ||
+      this.animal.raza === undefined ||
+      this.animal.peso === undefined ||
+      this.animal.edad === undefined ||
+      this.animal.fechaNacimiento === undefined ||
+      this.animal.colorCaracteristicas === undefined ||
+      this.animal.observacionesProcedencia === undefined ||
+      this.animal.nombre === "" ||
+      this.animal.raza === "" ||
+      this.animal.colorCaracteristicas === "" ||
+      this.animal.observacionesProcedencia === "" ||
+      this.imagen == null
+    ) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Llene todos los campos!",
+      });
+    } else {
+      Swal.fire({
+        title: "Seguro quiere realizar esta accion??",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Registrar",
+        denyButtonText: `No registrar`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.es.actualizarAnimalUsingPUT
+           (
+              this.animal.colorCaracteristicas,
+              this.animal.especie,
+              this.animal.id,
+              this.animal.lugarEstancia,
+              this.animal.nombre,
+              this.animal.observacionesProcedencia,
+              this.animal.procedencia,
+              this.animal.raza,
+              this.animal.sexo,
+         
+              this.animal.adoptado,
+              this.animal.edad,
+              this.animal.fechaNacimiento,
+              this.animal.peso
+            )
+            .subscribe((data) => {
+              this.animal = data;
+              console.log("datos enviados", data);
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Se a registrado correctamente",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+
+              localStorage.setItem("animal", JSON.stringify(this.animal));
+             
+            });
+          
+        } else if (result.isDenied) {
+          Swal.fire("Acción cancelada", "", "info");
+        }
+      });
+    }
+  }
+  capturarImagen(event) {
+    this.imagen = event.target.files[0];
+    const fr = new FileReader();
+    fr.onload = (evento: any) => {
+      this.imagenPreview = evento.target.result;
+    };
+    fr.readAsDataURL(this.imagen);
+    console.log(this.imagen);
+  }
+}
+
+
   //   if(this.animal.nombre === undefined || this.animal.sexo === undefined || this.animal.especie ===  undefined || this.animal.procedencia === undefined || this.animal.lugarEstancia === undefined || this.animal.raza===  undefined || this.animal.peso=== undefined || this.animal.edad === undefined || this.animal.tamanyo ===  undefined || this.animal.fechaNacimiento === undefined || this.animal.colorCaracteristicas=== undefined || this.animal.observacionesProcedencia ===  undefined || this.animal.foto === undefined  || 
 
 
@@ -87,4 +173,4 @@ animal: AnimalRefugioResponse={};
   //   }
 
   // }
-}
+

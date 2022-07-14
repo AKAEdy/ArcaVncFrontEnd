@@ -24,7 +24,7 @@
             <br>
             <div class="search">
              
-              <input type="text" class="form-control" placeholder="Buscar por nombre">
+              <input type="text" class="form-control" placeholder="Buscar por nombre"   [(ngModel)]="filterAnimal">
              
               <button class="btn btn-primary"> <i class="fa fa-search"></i> </button>
             </div>
@@ -37,7 +37,7 @@
        
         <div class="row">
 
-          <div class="col-lg-3 col-md-3" *ngFor="let animal of animales">
+          <div class="col-lg-3 col-md-3" *ngFor="let animal of animales | filteranimales: filterAnimal">
 
             <!-- Card -->
             <div class="color" class="card border-danger mb-3" style="max-width: 18rem;" style="background-color: rgb(248, 226, 226);">

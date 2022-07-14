@@ -47,6 +47,7 @@ import { TratamientoComponent } from 'app/components/arca/clinica/tratamiento/tr
 import { FiltermedicamentosPipe } from '../../pipes/filtermedicamentos.pipe';
 import { CoreModule } from 'app/core/core.module'
 import { AlarmModule } from 'app/alarm/alarm.module'
+import { FilteranimalesPipe } from 'app/pipes/filteranimales.pipe';
 
 
 @NgModule({
@@ -100,7 +101,8 @@ import { AlarmModule } from 'app/alarm/alarm.module'
     ListarAdoptanteComponent,
     RegistroCarnetComponent,
     RegistrarSeguimientoComponent,
-    FiltermedicamentosPipe
+    FiltermedicamentosPipe,
+    FilteranimalesPipe,
   ]
 })
 

@@ -91,7 +91,9 @@ fichaClinica:fichaClinicaPost={};
 
 
 
-
+  irFicha(){
+    this.router.navigate(['/registrofichaclinica']);
+  }
  irAtras(){
     this.router.navigate(['/table-list']);
   }
