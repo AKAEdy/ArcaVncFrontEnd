@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VacunasService } from 'app/api/vacunas.service';
 import { Vacuna } from 'app/model/vacuna';
+import { VacunaDTO } from 'app/model/vacunaDTO';
 import { data } from 'jquery';
 import Swal from 'sweetalert2';
 
@@ -11,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class RegistrarVacunasComponent implements OnInit {
 
-  vacunas: Vacuna = {};
+  vacunas: VacunaDTO = {};
   constructor(private vacunaService: VacunasService) { }
 
   ngOnInit(): void {

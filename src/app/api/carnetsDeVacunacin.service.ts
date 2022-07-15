@@ -17,9 +17,8 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { CarnetVacunacion } from '../model/carnetVacunacion';
 import { CarnetVacunacionDTO } from '../model/carnetVacunacionDTO';
-import { PageCarnetVacunacion } from '../model/pageCarnetVacunacion';
+import { PageCarnetVacunacionDTO } from '../model/pageCarnetVacunacionDTO';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -64,10 +63,10 @@ export class CarnetsDeVacunacinService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createUsingPOST(body: CarnetVacunacion, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createUsingPOST(body: CarnetVacunacion, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createUsingPOST(body: CarnetVacunacion, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createUsingPOST(body: CarnetVacunacion, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createUsingPOST(body: CarnetVacunacionDTO, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createUsingPOST(body: CarnetVacunacionDTO, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createUsingPOST(body: CarnetVacunacionDTO, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createUsingPOST(body: CarnetVacunacionDTO, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling createUsingPOST.');
@@ -209,9 +208,9 @@ export class CarnetsDeVacunacinService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCarnetsVacunacionesUsingGET(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PageCarnetVacunacion>;
-    public getCarnetsVacunacionesUsingGET(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageCarnetVacunacion>>;
-    public getCarnetsVacunacionesUsingGET(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageCarnetVacunacion>>;
+    public getCarnetsVacunacionesUsingGET(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PageCarnetVacunacionDTO>;
+    public getCarnetsVacunacionesUsingGET(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageCarnetVacunacionDTO>>;
+    public getCarnetsVacunacionesUsingGET(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageCarnetVacunacionDTO>>;
     public getCarnetsVacunacionesUsingGET(page: number, size: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (page === null || page === undefined) {
@@ -250,7 +249,7 @@ export class CarnetsDeVacunacinService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<PageCarnetVacunacion>('get',`${this.basePath}/carnet-vacunacion/page`,
+        return this.httpClient.request<PageCarnetVacunacionDTO>('get',`${this.basePath}/carnet-vacunacion/page`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -319,9 +318,9 @@ export class CarnetsDeVacunacinService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getcarnetsVacunacionesUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<CarnetVacunacion>>;
-    public getcarnetsVacunacionesUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<CarnetVacunacion>>>;
-    public getcarnetsVacunacionesUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<CarnetVacunacion>>>;
+    public getcarnetsVacunacionesUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<CarnetVacunacionDTO>>;
+    public getcarnetsVacunacionesUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<CarnetVacunacionDTO>>>;
+    public getcarnetsVacunacionesUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<CarnetVacunacionDTO>>>;
     public getcarnetsVacunacionesUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -344,7 +343,7 @@ export class CarnetsDeVacunacinService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<CarnetVacunacion>>('get',`${this.basePath}/carnet-vacunacion/`,
+        return this.httpClient.request<Array<CarnetVacunacionDTO>>('get',`${this.basePath}/carnet-vacunacion/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -362,10 +361,10 @@ export class CarnetsDeVacunacinService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateUsingPUT(body: CarnetVacunacion, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateUsingPUT(body: CarnetVacunacion, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateUsingPUT(body: CarnetVacunacion, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateUsingPUT(body: CarnetVacunacion, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateUsingPUT(body: CarnetVacunacionDTO, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateUsingPUT(body: CarnetVacunacionDTO, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateUsingPUT(body: CarnetVacunacionDTO, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateUsingPUT(body: CarnetVacunacionDTO, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateUsingPUT.');

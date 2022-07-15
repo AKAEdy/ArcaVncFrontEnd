@@ -17,8 +17,8 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { Medicacion } from '../model/medicacion';
 import { MedicacionDto } from '../model/medicacionDto';
+import { MedicacionDtoExtends } from '../model/medicacionDtoExtends';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -173,9 +173,9 @@ export class MedicacionesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAllMedicacionsUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<Medicacion>>;
-    public getAllMedicacionsUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Medicacion>>>;
-    public getAllMedicacionsUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Medicacion>>>;
+    public getAllMedicacionsUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<MedicacionDtoExtends>>;
+    public getAllMedicacionsUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<MedicacionDtoExtends>>>;
+    public getAllMedicacionsUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<MedicacionDtoExtends>>>;
     public getAllMedicacionsUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -198,7 +198,7 @@ export class MedicacionesService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Medicacion>>('get',`${this.basePath}/medicaciones/`,
+        return this.httpClient.request<Array<MedicacionDtoExtends>>('get',`${this.basePath}/medicaciones/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

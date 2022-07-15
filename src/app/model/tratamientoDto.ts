@@ -13,6 +13,6 @@
 export interface TratamientoDto { 
     descripcion: string;
     estado: string;
-    fechaAplicacion?: Date;
+    fechaAplicacion?: string;
     indicaciones: string;
 }

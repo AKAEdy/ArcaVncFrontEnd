@@ -17,10 +17,9 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { FichaClinica } from '../model/fichaClinica';
 import { FichaClinicaDTO } from '../model/fichaClinicaDTO';
 import { FichaClinicaRequestDTO } from '../model/fichaClinicaRequestDTO';
-import { PageFichaClinica } from '../model/pageFichaClinica';
+import { PageFichaClinicaDTO } from '../model/pageFichaClinicaDTO';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -260,9 +259,9 @@ export class FichasClnicasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getFichasClinicasUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<FichaClinica>>;
-    public getFichasClinicasUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<FichaClinica>>>;
-    public getFichasClinicasUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<FichaClinica>>>;
+    public getFichasClinicasUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<FichaClinicaDTO>>;
+    public getFichasClinicasUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<FichaClinicaDTO>>>;
+    public getFichasClinicasUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<FichaClinicaDTO>>>;
     public getFichasClinicasUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -285,7 +284,7 @@ export class FichasClnicasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<FichaClinica>>('get',`${this.basePath}/fichas-clinicas/`,
+        return this.httpClient.request<Array<FichaClinicaDTO>>('get',`${this.basePath}/fichas-clinicas/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -304,9 +303,9 @@ export class FichasClnicasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getFichasClinicasUsingGET1(page: number, size: number, tipoPaciente?: string, observe?: 'body', reportProgress?: boolean): Observable<PageFichaClinica>;
-    public getFichasClinicasUsingGET1(page: number, size: number, tipoPaciente?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageFichaClinica>>;
-    public getFichasClinicasUsingGET1(page: number, size: number, tipoPaciente?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageFichaClinica>>;
+    public getFichasClinicasUsingGET1(page: number, size: number, tipoPaciente?: string, observe?: 'body', reportProgress?: boolean): Observable<PageFichaClinicaDTO>;
+    public getFichasClinicasUsingGET1(page: number, size: number, tipoPaciente?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageFichaClinicaDTO>>;
+    public getFichasClinicasUsingGET1(page: number, size: number, tipoPaciente?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageFichaClinicaDTO>>;
     public getFichasClinicasUsingGET1(page: number, size: number, tipoPaciente?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (page === null || page === undefined) {
@@ -349,7 +348,7 @@ export class FichasClnicasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<PageFichaClinica>('get',`${this.basePath}/fichas-clinicas/page`,
+        return this.httpClient.request<PageFichaClinicaDTO>('get',`${this.basePath}/fichas-clinicas/page`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

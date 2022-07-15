@@ -17,8 +17,8 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { PageRol } from '../model/pageRol';
-import { Rol } from '../model/rol';
+import { PageRolDto } from '../model/pageRolDto';
+import { RolDto } from '../model/rolDto';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -63,10 +63,10 @@ export class RolesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createUsingPOST4(body: Rol, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createUsingPOST4(body: Rol, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createUsingPOST4(body: Rol, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createUsingPOST4(body: Rol, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createUsingPOST4(body: RolDto, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createUsingPOST4(body: RolDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createUsingPOST4(body: RolDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createUsingPOST4(body: RolDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling createUsingPOST4.');
@@ -206,9 +206,9 @@ export class RolesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getRolesUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<Rol>>;
-    public getRolesUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Rol>>>;
-    public getRolesUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Rol>>>;
+    public getRolesUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<RolDto>>;
+    public getRolesUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<RolDto>>>;
+    public getRolesUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<RolDto>>>;
     public getRolesUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -231,7 +231,7 @@ export class RolesService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Rol>>('get',`${this.basePath}/roles/`,
+        return this.httpClient.request<Array<RolDto>>('get',`${this.basePath}/roles/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -249,9 +249,9 @@ export class RolesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getRolsUsingGET(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PageRol>;
-    public getRolsUsingGET(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageRol>>;
-    public getRolsUsingGET(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageRol>>;
+    public getRolsUsingGET(page: number, size: number, observe?: 'body', reportProgress?: boolean): Observable<PageRolDto>;
+    public getRolsUsingGET(page: number, size: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageRolDto>>;
+    public getRolsUsingGET(page: number, size: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageRolDto>>;
     public getRolsUsingGET(page: number, size: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (page === null || page === undefined) {
@@ -290,7 +290,7 @@ export class RolesService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<PageRol>('get',`${this.basePath}/roles/page`,
+        return this.httpClient.request<PageRolDto>('get',`${this.basePath}/roles/page`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -309,10 +309,10 @@ export class RolesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateUsingPUT4(body: Rol, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateUsingPUT4(body: Rol, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateUsingPUT4(body: Rol, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateUsingPUT4(body: Rol, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateUsingPUT4(body: RolDto, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateUsingPUT4(body: RolDto, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateUsingPUT4(body: RolDto, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateUsingPUT4(body: RolDto, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateUsingPUT4.');

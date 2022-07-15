@@ -1,14 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AnimalesService } from 'app/api/animales.service';
 import { FichasClnicasService } from 'app/api/fichasClnicas.service';
-
-import { FichaClinica } from 'app/model/fichaClinica';
 import { FichaClinicaDTO } from 'app/model/fichaClinicaDTO';
-import { fichaClinicaPost } from 'app/model/fichaClinicaPost';
 import { FichaClinicaRequestDTO } from 'app/model/fichaClinicaRequestDTO';
-import { Veterinario } from 'app/model/veterinario';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -93,40 +87,7 @@ public formSubmitted = false;
   // }
 
   crateFichaClinica(){
-    if (this.fichaClinicaRqstDTO.alimentacion == undefined 
-      || this.fichaClinicaRqstDTO.conjuntiva == undefined
-      || this.fichaClinicaRqstDTO.costo == undefined
-      || this.fichaClinicaRqstDTO.diagnosticoDiferencial == undefined
-      || this.fichaClinicaRqstDTO.esterilizacion == undefined
-      || this.fichaClinicaRqstDTO.examenes_solicitados == undefined
-      || this.fichaClinicaRqstDTO.fechaIngreso == undefined
-      || this.fichaClinicaRqstDTO.frecuenciaCardiaca == undefined
-      || this.fichaClinicaRqstDTO.frecuenciaRespiratoria == undefined
-      || this.fichaClinicaRqstDTO.hallazgos == undefined
-      || this.fichaClinicaRqstDTO.motivoConsulta == undefined
-      || this.fichaClinicaRqstDTO.mucosas == undefined
-      || this.fichaClinicaRqstDTO.pronostico == undefined
-      || this.fichaClinicaRqstDTO.temperatura == undefined
-      || this.fichaClinicaRqstDTO.tipoPaciente == undefined
-      || this.fichaClinicaRqstDTO.trc == undefined
-      || this.fichaClinicaRqstDTO.alimentacion == undefined 
-      || this.fichaClinicaRqstDTO.conjuntiva == ''
-      || this.fichaClinicaRqstDTO.costo == null
-      || this.fichaClinicaRqstDTO.diagnosticoDiferencial == ''
-      || this.fichaClinicaRqstDTO.esterilizacion == ''
-      || this.fichaClinicaRqstDTO.examenes_solicitados == ''
-      || this.fichaClinicaRqstDTO.fechaIngreso == null
-      || this.fichaClinicaRqstDTO.frecuenciaCardiaca == null
-      || this.fichaClinicaRqstDTO.frecuenciaRespiratoria == null
-      || this.fichaClinicaRqstDTO.hallazgos == ''
-      || this.fichaClinicaRqstDTO.motivoConsulta == ''
-      || this.fichaClinicaRqstDTO.mucosas == ''
-      || this.fichaClinicaRqstDTO.pronostico ==''
-      || this.fichaClinicaRqstDTO.temperatura == null
-      || this.fichaClinicaRqstDTO.tipoPaciente == ''
-      || this.fichaClinicaRqstDTO.trc == '') {
-      
-      
+    
     Swal.fire({
       title: 'Seguro quiere realizar esta acción?',
       showDenyButton: true,
@@ -188,16 +149,7 @@ public formSubmitted = false;
         Swal.fire('No se guardaron los cambios', '', 'info')
       }
     })
-   
-    }else{
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Llene todos los datos!',
-      })
-    }
-
-
+      
       }
 
       agregarTratamiento(){

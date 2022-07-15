@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MedicamentosService } from 'app/api/medicamentos.service';
 import { Medicamento } from 'app/model/medicamento';
+import { MedicamentoDto } from 'app/model/medicamentoDto';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -9,7 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./registrar-medicamento.component.css']
 })
 export class RegistrarMedicamentoComponent implements OnInit {
- medicamento:Medicamento={}
+ medicamento:MedicamentoDto={}
   constructor(private medicamentoService: MedicamentosService) { }
 
   createMedicamento(){

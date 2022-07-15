@@ -17,8 +17,8 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { ServicioArca } from '../model/servicioArca';
 import { ServicioArcaDto } from '../model/servicioArcaDto';
+import { ServicioArcaDtoExtends } from '../model/servicioArcaDtoExtends';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -217,9 +217,9 @@ export class ServiciosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAllServiciosArcaUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<ServicioArca>>;
-    public getAllServiciosArcaUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<ServicioArca>>>;
-    public getAllServiciosArcaUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<ServicioArca>>>;
+    public getAllServiciosArcaUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<ServicioArcaDtoExtends>>;
+    public getAllServiciosArcaUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<ServicioArcaDtoExtends>>>;
+    public getAllServiciosArcaUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<ServicioArcaDtoExtends>>>;
     public getAllServiciosArcaUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -242,7 +242,7 @@ export class ServiciosService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<ServicioArca>>('get',`${this.basePath}/servicios/`,
+        return this.httpClient.request<Array<ServicioArcaDtoExtends>>('get',`${this.basePath}/servicios/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

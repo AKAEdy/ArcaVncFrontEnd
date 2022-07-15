@@ -17,7 +17,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { Donacion } from '../model/donacion';
+import { DonacionDtoExtends } from '../model/donacionDtoExtends';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -282,9 +282,9 @@ export class DonacionesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAllDonacionesUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<Donacion>>;
-    public getAllDonacionesUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Donacion>>>;
-    public getAllDonacionesUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Donacion>>>;
+    public getAllDonacionesUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<DonacionDtoExtends>>;
+    public getAllDonacionesUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<DonacionDtoExtends>>>;
+    public getAllDonacionesUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<DonacionDtoExtends>>>;
     public getAllDonacionesUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -307,7 +307,7 @@ export class DonacionesService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Donacion>>('get',`${this.basePath}/donaciones/all`,
+        return this.httpClient.request<Array<DonacionDtoExtends>>('get',`${this.basePath}/donaciones/all`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

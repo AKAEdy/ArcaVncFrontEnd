@@ -17,9 +17,10 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { PageUsuario } from '../model/pageUsuario';
-import { UserDto } from '../model/userDto';
-import { Usuario } from '../model/usuario';
+import { PageUsuarioDtoResponse } from '../model/pageUsuarioDtoResponse';
+import { UsuarioDto } from '../model/usuarioDto';
+import { UsuarioDtoExtends } from '../model/usuarioDtoExtends';
+import { UsuarioDtoResponse } from '../model/usuarioDtoResponse';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -64,10 +65,10 @@ export class UsuariosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createUsingPOST6(body: Usuario, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createUsingPOST6(body: Usuario, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createUsingPOST6(body: Usuario, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createUsingPOST6(body: Usuario, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createUsingPOST6(body: UsuarioDtoExtends, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createUsingPOST6(body: UsuarioDtoExtends, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createUsingPOST6(body: UsuarioDtoExtends, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createUsingPOST6(body: UsuarioDtoExtends, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling createUsingPOST6.');
@@ -256,9 +257,9 @@ export class UsuariosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUsersUsingGET(page: number, size: number, username?: string, observe?: 'body', reportProgress?: boolean): Observable<PageUsuario>;
-    public getUsersUsingGET(page: number, size: number, username?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageUsuario>>;
-    public getUsersUsingGET(page: number, size: number, username?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageUsuario>>;
+    public getUsersUsingGET(page: number, size: number, username?: string, observe?: 'body', reportProgress?: boolean): Observable<PageUsuarioDtoResponse>;
+    public getUsersUsingGET(page: number, size: number, username?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageUsuarioDtoResponse>>;
+    public getUsersUsingGET(page: number, size: number, username?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageUsuarioDtoResponse>>;
     public getUsersUsingGET(page: number, size: number, username?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (page === null || page === undefined) {
@@ -301,7 +302,7 @@ export class UsuariosService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<PageUsuario>('get',`${this.basePath}/usuarios/page`,
+        return this.httpClient.request<PageUsuarioDtoResponse>('get',`${this.basePath}/usuarios/page`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -318,9 +319,9 @@ export class UsuariosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public myProfileUsingGET(observe?: 'body', reportProgress?: boolean): Observable<UserDto>;
-    public myProfileUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<UserDto>>;
-    public myProfileUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<UserDto>>;
+    public myProfileUsingGET(observe?: 'body', reportProgress?: boolean): Observable<UsuarioDto>;
+    public myProfileUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<UsuarioDto>>;
+    public myProfileUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<UsuarioDto>>;
     public myProfileUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -343,7 +344,7 @@ export class UsuariosService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<UserDto>('get',`${this.basePath}/usuarios/pofile`,
+        return this.httpClient.request<UsuarioDto>('get',`${this.basePath}/usuarios/pofile`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -476,9 +477,9 @@ export class UsuariosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public retireveUsersUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<Usuario>>;
-    public retireveUsersUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Usuario>>>;
-    public retireveUsersUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Usuario>>>;
+    public retireveUsersUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<UsuarioDtoResponse>>;
+    public retireveUsersUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<UsuarioDtoResponse>>>;
+    public retireveUsersUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<UsuarioDtoResponse>>>;
     public retireveUsersUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -501,7 +502,7 @@ export class UsuariosService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Usuario>>('get',`${this.basePath}/usuarios/`,
+        return this.httpClient.request<Array<UsuarioDtoResponse>>('get',`${this.basePath}/usuarios/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -519,10 +520,10 @@ export class UsuariosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateUsingPUT6(body: Usuario, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateUsingPUT6(body: Usuario, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateUsingPUT6(body: Usuario, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateUsingPUT6(body: Usuario, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateUsingPUT6(body: UsuarioDtoExtends, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateUsingPUT6(body: UsuarioDtoExtends, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateUsingPUT6(body: UsuarioDtoExtends, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateUsingPUT6(body: UsuarioDtoExtends, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateUsingPUT6.');
