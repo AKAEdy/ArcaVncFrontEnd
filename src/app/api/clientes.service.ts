@@ -17,15 +17,16 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { PagePersonaDtoExtends } from '../model/pagePersonaDtoExtends';
-import { PersonaDtoExtends } from '../model/personaDtoExtends';
+import { ClienteDto } from '../model/clienteDto';
+import { ClienteDtoExtends } from '../model/clienteDtoExtends';
+import { PageClienteDtoExtends } from '../model/pageClienteDtoExtends';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
 
 
 @Injectable()
-export class PersonasService {
+export class ClientesService {
 
     protected basePath = '//localhost:9898/api';
     public defaultHeaders = new HttpHeaders();
@@ -59,17 +60,17 @@ export class PersonasService {
     /**
      * create
      * 
-     * @param body persona
+     * @param body cliente
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createUsingPOST4(body: PersonaDtoExtends, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createUsingPOST4(body: PersonaDtoExtends, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createUsingPOST4(body: PersonaDtoExtends, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createUsingPOST4(body: PersonaDtoExtends, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createUsingPOST1(body: ClienteDto, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createUsingPOST1(body: ClienteDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createUsingPOST1(body: ClienteDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createUsingPOST1(body: ClienteDto, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling createUsingPOST4.');
+            throw new Error('Required parameter body was null or undefined when calling createUsingPOST1.');
         }
 
         let headers = this.defaultHeaders;
@@ -97,7 +98,7 @@ export class PersonasService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/personas/`,
+        return this.httpClient.request<any>('post',`${this.basePath}/clientes/`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -115,13 +116,13 @@ export class PersonasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteUsingDELETE4(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteUsingDELETE4(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteUsingDELETE4(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteUsingDELETE4(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteUsingDELETE1(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteUsingDELETE1(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteUsingDELETE1(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteUsingDELETE1(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling deleteUsingDELETE4.');
+            throw new Error('Required parameter id was null or undefined when calling deleteUsingDELETE1.');
         }
 
         let headers = this.defaultHeaders;
@@ -144,8 +145,60 @@ export class PersonasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('delete',`${this.basePath}/personas/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<any>('delete',`${this.basePath}/clientes/${encodeURIComponent(String(id))}`,
             {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * getByCedula
+     * 
+     * @param cedula cedula
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getByCedulaUsingGET(cedula: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getByCedulaUsingGET(cedula: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getByCedulaUsingGET(cedula: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getByCedulaUsingGET(cedula: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (cedula === null || cedula === undefined) {
+            throw new Error('Required parameter cedula was null or undefined when calling getByCedulaUsingGET.');
+        }
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (cedula !== undefined && cedula !== null) {
+            queryParameters = queryParameters.set('cedula', <any>cedula);
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (JWT) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<any>('get',`${this.basePath}/clientes/find`,
+            {
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
@@ -161,13 +214,13 @@ export class PersonasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getByIdUsingGET4(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public getByIdUsingGET4(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public getByIdUsingGET4(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public getByIdUsingGET4(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getByIdUsingGET1(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getByIdUsingGET1(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getByIdUsingGET1(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getByIdUsingGET1(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling getByIdUsingGET4.');
+            throw new Error('Required parameter id was null or undefined when calling getByIdUsingGET1.');
         }
 
         let headers = this.defaultHeaders;
@@ -190,7 +243,7 @@ export class PersonasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('get',`${this.basePath}/personas/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<any>('get',`${this.basePath}/clientes/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -201,15 +254,15 @@ export class PersonasService {
     }
 
     /**
-     * getPersonas
+     * getClientes
      * 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getPersonasUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<PersonaDtoExtends>>;
-    public getPersonasUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<PersonaDtoExtends>>>;
-    public getPersonasUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<PersonaDtoExtends>>>;
-    public getPersonasUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getClientesUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<ClienteDtoExtends>>;
+    public getClientesUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<ClienteDtoExtends>>>;
+    public getClientesUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<ClienteDtoExtends>>>;
+    public getClientesUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -231,7 +284,7 @@ export class PersonasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<PersonaDtoExtends>>('get',`${this.basePath}/personas/`,
+        return this.httpClient.request<Array<ClienteDtoExtends>>('get',`${this.basePath}/clientes/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -242,7 +295,7 @@ export class PersonasService {
     }
 
     /**
-     * getPersonas
+     * getClientes
      * 
      * @param page page
      * @param size size
@@ -250,17 +303,17 @@ export class PersonasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getPersonasUsingGET1(page: number, size: number, cedula?: string, observe?: 'body', reportProgress?: boolean): Observable<PagePersonaDtoExtends>;
-    public getPersonasUsingGET1(page: number, size: number, cedula?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PagePersonaDtoExtends>>;
-    public getPersonasUsingGET1(page: number, size: number, cedula?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PagePersonaDtoExtends>>;
-    public getPersonasUsingGET1(page: number, size: number, cedula?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getClientesUsingGET1(page: number, size: number, cedula?: string, observe?: 'body', reportProgress?: boolean): Observable<PageClienteDtoExtends>;
+    public getClientesUsingGET1(page: number, size: number, cedula?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageClienteDtoExtends>>;
+    public getClientesUsingGET1(page: number, size: number, cedula?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageClienteDtoExtends>>;
+    public getClientesUsingGET1(page: number, size: number, cedula?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (page === null || page === undefined) {
-            throw new Error('Required parameter page was null or undefined when calling getPersonasUsingGET1.');
+            throw new Error('Required parameter page was null or undefined when calling getClientesUsingGET1.');
         }
 
         if (size === null || size === undefined) {
-            throw new Error('Required parameter size was null or undefined when calling getPersonasUsingGET1.');
+            throw new Error('Required parameter size was null or undefined when calling getClientesUsingGET1.');
         }
 
 
@@ -295,7 +348,7 @@ export class PersonasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<PagePersonaDtoExtends>('get',`${this.basePath}/personas/page`,
+        return this.httpClient.request<PageClienteDtoExtends>('get',`${this.basePath}/clientes/page`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -309,22 +362,22 @@ export class PersonasService {
     /**
      * update
      * 
-     * @param body persona
+     * @param body cliente
      * @param id id
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateUsingPUT4(body: PersonaDtoExtends, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateUsingPUT4(body: PersonaDtoExtends, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateUsingPUT4(body: PersonaDtoExtends, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateUsingPUT4(body: PersonaDtoExtends, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateUsingPUT1(body: ClienteDtoExtends, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateUsingPUT1(body: ClienteDtoExtends, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateUsingPUT1(body: ClienteDtoExtends, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateUsingPUT1(body: ClienteDtoExtends, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling updateUsingPUT4.');
+            throw new Error('Required parameter body was null or undefined when calling updateUsingPUT1.');
         }
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling updateUsingPUT4.');
+            throw new Error('Required parameter id was null or undefined when calling updateUsingPUT1.');
         }
 
         let headers = this.defaultHeaders;
@@ -352,7 +405,7 @@ export class PersonasService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('put',`${this.basePath}/personas/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<any>('put',`${this.basePath}/clientes/${encodeURIComponent(String(id))}`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,

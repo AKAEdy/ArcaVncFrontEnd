@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CitasService } from 'app/api/citas.service';
+import { CitaArcaExtends } from 'app/model/citaArcaExtends';
 import { CitaDto } from 'app/model/citaDto';
 import { CitaDtoExtends } from 'app/model/citaDtoExtends';
 
@@ -9,7 +10,7 @@ import { CitaDtoExtends } from 'app/model/citaDtoExtends';
   styleUrls: ['./listar-citas.component.css']
 })
 export class ListarCitasComponent implements OnInit {
-citas: CitaDtoExtends[]=[];
+citas: CitaArcaExtends[]=[];
 cita: CitaDto={
   estado: false,
   fechaCita: '',
@@ -17,12 +18,7 @@ cita: CitaDto={
   nombreCliente: '',
   servicios: []
 }
-citasid: CitaDtoExtends={
-  estado: false,
-  fechaCita: undefined,
-  motivo: '',
-  nombreCliente: ''
-}
+citasid: CitaArcaExtends={}
 
   constructor(private citaService: CitasService) { }
 

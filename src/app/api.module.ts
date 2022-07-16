@@ -9,6 +9,7 @@ import { AnimalesRefugioService } from './api/animalesRefugio.service';
 import { AuthControllerService } from './api/authController.service';
 import { CarnetsDeVacunacinService } from './api/carnetsDeVacunacin.service';
 import { CitasService } from './api/citas.service';
+import { ClientesService } from './api/clientes.service';
 import { DonacionesService } from './api/donaciones.service';
 import { FichasClnicasService } from './api/fichasClnicas.service';
 import { MedicacionesService } from './api/medicaciones.service';
@@ -34,6 +35,7 @@ import { VoluntariosService } from './api/voluntarios.service';
     AuthControllerService,
     CarnetsDeVacunacinService,
     CitasService,
+    ClientesService,
     DonacionesService,
     FichasClnicasService,
     MedicacionesService,
@@ -49,7 +51,7 @@ import { VoluntariosService } from './api/voluntarios.service';
     VoluntariosService ]
 })
 export class ApiModule {
-    public static forRoot(configurationFactory: () => Configuration){
+    public static forRoot(configurationFactory: () => Configuration) {
         return {
             ngModule: ApiModule,
             providers: [ { provide: Configuration, useFactory: configurationFactory } ]

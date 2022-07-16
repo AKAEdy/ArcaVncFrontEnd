@@ -97,7 +97,7 @@ public formSubmitted = false;
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         
-        this.fichasClinicasService.createUsingPOST1(this.fichaClinicaRqstDTO={
+        this.fichasClinicasService.createUsingPOST2(this.fichaClinicaRqstDTO={
           alimentacion:  this.fichaClinicaRqstDTO.alimentacion,
           animalId: this.animal.id,
           conjuntiva:  this.fichaClinicaRqstDTO.conjuntiva,

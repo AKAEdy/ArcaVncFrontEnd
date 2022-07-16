@@ -45,7 +45,7 @@ export class RegistrarPersonaComponent implements OnInit {
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-          this.personaService.createUsingPOST3(this.persona).subscribe(data => {
+          this.personaService.createUsingPOST4(this.persona).subscribe(data => {
             Swal.fire({
               position: 'center',
               icon: 'success',

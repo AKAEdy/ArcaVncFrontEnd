@@ -50,7 +50,7 @@ export class TypographyComponent implements OnInit {
 
   listanombremedicamentos(){
   var medicamento_id = parseInt (localStorage.getItem("idmedicamento"));
-  this.medicamentosService.getByIdUsingGET2(medicamento_id).subscribe(data =>{
+  this.medicamentosService.getByIdUsingGET3(medicamento_id).subscribe(data =>{
     this.nombre_medicamentos =data;
     this.nombrecomercial = this.nombre_medicamentos.nombreComercial
   })

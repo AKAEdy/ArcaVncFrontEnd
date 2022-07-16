@@ -9,13 +9,13 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { Veterinario } from './veterinario';
 
-export interface Cita { 
-    estado?: boolean;
-    fechaCita?: Date;
-    id?: number;
-    motivo?: string;
-    nombreCliente?: string;
-    veterinario?: Veterinario;
+export interface ClienteDto { 
+    apellidos: string;
+    cedula: string;
+    celular: string;
+    correo: string;
+    direccion: string;
+    nombre: string;
+    telefono: string;
 }

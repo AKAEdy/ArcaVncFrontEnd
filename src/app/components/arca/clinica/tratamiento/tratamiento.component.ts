@@ -45,7 +45,7 @@ export class TratamientoComponent implements OnInit {
     this.listarMedicamentos()
     this.buscarMedicamentos()
         const id = this.activatedRoute.snapshot.params.id;
-    this.fichaClinicaS.getByIdUsingGET1(id).subscribe(data =>{
+    this.fichaClinicaS.getByIdUsingGET2(id).subscribe(data =>{
       this.fichaClinica= data;
       console.log(data,"datos ficha");
   });
@@ -71,7 +71,7 @@ export class TratamientoComponent implements OnInit {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           console.log(this.fichaClinica)
-          this.tratamientosService.createUsingPOST5(this.tratamiento,this.fichaClinica.id).subscribe(data =>{
+          this.tratamientosService.createUsingPOST6(this.tratamiento,this.fichaClinica.id).subscribe(data =>{
             this.tratamiento=data;
             console.log(data, " datos de tratamiento")
             Swal.fire({

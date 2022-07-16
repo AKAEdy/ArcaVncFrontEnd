@@ -9,11 +9,11 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { CitaDtoExtends } from './citaDtoExtends';
+import { CitaArcaExtends } from './citaArcaExtends';
 import { ServicioArcaDtoExtends } from './servicioArcaDtoExtends';
 
 export interface DetalleCitaDto { 
-    cita?: CitaDtoExtends;
+    cita?: CitaArcaExtends;
     id?: number;
     servicioArca?: ServicioArcaDtoExtends;
 }

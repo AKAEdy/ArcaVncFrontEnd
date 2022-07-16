@@ -17,7 +17,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { CitaDtoExtends } from '../model/citaDtoExtends';
+import { CitaArcaExtends } from '../model/citaArcaExtends';
 import { CitaServiciosArca } from '../model/citaServiciosArca';
 import { DetalleCitaDto } from '../model/detalleCitaDto';
 
@@ -169,9 +169,9 @@ export class CitasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAllCitasUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<CitaDtoExtends>>;
-    public getAllCitasUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<CitaDtoExtends>>>;
-    public getAllCitasUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<CitaDtoExtends>>>;
+    public getAllCitasUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<CitaArcaExtends>>;
+    public getAllCitasUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<CitaArcaExtends>>>;
+    public getAllCitasUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<CitaArcaExtends>>>;
     public getAllCitasUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -194,7 +194,7 @@ export class CitasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<CitaDtoExtends>>('get',`${this.basePath}/citas/`,
+        return this.httpClient.request<Array<CitaArcaExtends>>('get',`${this.basePath}/citas/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -257,9 +257,9 @@ export class CitasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCitaPorIdUsingGET(idCita: number, observe?: 'body', reportProgress?: boolean): Observable<CitaDtoExtends>;
-    public getCitaPorIdUsingGET(idCita: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<CitaDtoExtends>>;
-    public getCitaPorIdUsingGET(idCita: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<CitaDtoExtends>>;
+    public getCitaPorIdUsingGET(idCita: number, observe?: 'body', reportProgress?: boolean): Observable<CitaArcaExtends>;
+    public getCitaPorIdUsingGET(idCita: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<CitaArcaExtends>>;
+    public getCitaPorIdUsingGET(idCita: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<CitaArcaExtends>>;
     public getCitaPorIdUsingGET(idCita: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (idCita === null || idCita === undefined) {
@@ -286,7 +286,7 @@ export class CitasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<CitaDtoExtends>('get',`${this.basePath}/citas/${encodeURIComponent(String(idCita))}`,
+        return this.httpClient.request<CitaArcaExtends>('get',`${this.basePath}/citas/${encodeURIComponent(String(idCita))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -349,9 +349,9 @@ export class CitasService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCitasPorVeterinarioUsingGET(idVeterinario: number, observe?: 'body', reportProgress?: boolean): Observable<Array<CitaDtoExtends>>;
-    public getCitasPorVeterinarioUsingGET(idVeterinario: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<CitaDtoExtends>>>;
-    public getCitasPorVeterinarioUsingGET(idVeterinario: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<CitaDtoExtends>>>;
+    public getCitasPorVeterinarioUsingGET(idVeterinario: number, observe?: 'body', reportProgress?: boolean): Observable<Array<CitaArcaExtends>>;
+    public getCitasPorVeterinarioUsingGET(idVeterinario: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<CitaArcaExtends>>>;
+    public getCitasPorVeterinarioUsingGET(idVeterinario: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<CitaArcaExtends>>>;
     public getCitasPorVeterinarioUsingGET(idVeterinario: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (idVeterinario === null || idVeterinario === undefined) {
@@ -378,7 +378,7 @@ export class CitasService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<CitaDtoExtends>>('get',`${this.basePath}/citas/veterinario/${encodeURIComponent(String(idVeterinario))}`,
+        return this.httpClient.request<Array<CitaArcaExtends>>('get',`${this.basePath}/citas/veterinario/${encodeURIComponent(String(idVeterinario))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

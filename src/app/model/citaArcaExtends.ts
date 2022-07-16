@@ -9,13 +9,14 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { Veterinario } from './veterinario';
+import { ClienteDtoExtends } from './clienteDtoExtends';
+import { VeterinarioDTO } from './veterinarioDTO';
 
-export interface Cita { 
+export interface CitaArcaExtends { 
+    cliente?: ClienteDtoExtends;
     estado?: boolean;
-    fechaCita?: Date;
+    fechaCita?: string;
     id?: number;
     motivo?: string;
-    nombreCliente?: string;
-    veterinario?: Veterinario;
+    veterinario?: VeterinarioDTO;
 }

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CitasService } from 'app/api/citas.service';
 import { VeterinariosService } from 'app/api/veterinarios.service';
+import { Cita } from 'app/model/cita';
 import { CitaDto } from 'app/model/citaDto';
+import { CitaServiciosArca } from 'app/model/citaServiciosArca';
 import { Veterinario } from 'app/model/veterinario';
 import Swal from 'sweetalert2';
 
@@ -19,13 +21,7 @@ export class RegistrarCitasComponent implements OnInit {
 
   citaVeterinario: Veterinario = {}
   veterinarioCedula: string
-  citaDto: CitaDto={
-  estado: false,
-  fechaCita: '',
-  motivo: '',
-  nombreCliente: '',
-  servicios: []
-};
+  citaDto: CitaServiciosArca={};
   constructor(private citaService: CitasService, private veterinarioService: VeterinariosService) { }
   
   ngOnInit(): void {
@@ -34,8 +30,8 @@ export class RegistrarCitasComponent implements OnInit {
 
   createCita(){
     this.citaDto.fechaCita = this.fecha+' '+this.hora
-    if(this.citaDto.estado === undefined || this.veterinarioCedula === undefined || this.citaDto.fechaCita === undefined || this.citaDto.motivo === undefined || this.citaDto.nombreCliente === undefined ||
-      this.citaDto.estado === undefined    || this.citaDto.fechaCita === '' || this.citaDto.motivo === '' || this.citaDto.nombreCliente === '' || this.veterinarioCedula === ''){
+    if(this.citaDto.estado === undefined || this.veterinarioCedula === undefined || this.citaDto.fechaCita === undefined || this.citaDto.motivo === undefined ||
+      this.citaDto.estado === undefined    || this.citaDto.fechaCita === '' || this.citaDto.motivo === '' || this.veterinarioCedula === ''){
       Swal.fire({
         icon: 'error',
         title: 'Oops...',

@@ -30,7 +30,7 @@ export class RegistroCarnetComponent implements OnInit {
 	animal: AnimalRefugioResponse = {};
 	selectedvacunas: Vacuna = {};
 	vacunas: Vacuna[] = [];
-	carnetVacuna: CarnetVacunacion = {};
+	carnetVacuna: CarnetVacunacionDTO = {};
 	constructor(
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
@@ -58,7 +58,7 @@ export class RegistroCarnetComponent implements OnInit {
 		// console.log(this.selectedvacunas, "imprimiendo selectedvacunas");
 		/* igualando de id de animal pasar por routerlink */
 		//  this.carnetVacuna.animal=this.animal as AnimalRefugioResponse;
-		this.carnetVacuna.vacuna = this.selectedvacunas;
+		//this.carnetVacuna.vacuna = this.selectedvacunas;
 		this.carnetVacuna.animal = this.animal;
 		//  console.log(this.vacuna,"mostrar objeto vacuna");
 		// console.log(JSON.stringify(this.selectedvacunas),"imprimiendo objeto convertido");

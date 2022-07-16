@@ -57,21 +57,20 @@ export class AnimalesRefugioService {
 
     /**
      * actualizarAnimal
-     *
-     * @param colorCaracteristicas
-     * @param especie
+     * 
+     * @param colorCaracteristicas 
+     * @param especie 
      * @param idAnimal idAnimal
-     * @param lugarEstancia
-     * @param nombre
-     * @param observacionesProcedencia
-     * @param raza
-     * @param sexo
-     * @param adoptado
-     * @param deleted
-     * @param edad
-     * @param fechaNacimiento
-     * @param peso
-     * @param procedencia
+     * @param lugarEstancia 
+     * @param nombre 
+     * @param observacionesProcedencia 
+     * @param procedencia 
+     * @param raza 
+     * @param sexo 
+     * @param adoptado 
+     * @param edad 
+     * @param fechaNacimiento 
+     * @param peso 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
@@ -192,7 +191,7 @@ export class AnimalesRefugioService {
 
     /**
      * eliminarAnimal
-     *
+     * 
      * @param idAnimal idAnimal
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -241,7 +240,7 @@ export class AnimalesRefugioService {
 
     /**
      * getAllAnimales
-     *
+     * 
      * @param page page
      * @param size size
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -301,7 +300,7 @@ export class AnimalesRefugioService {
 
     /**
      * getAnimalPorId
-     *
+     * 
      * @param idAnimal idAnimal
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -347,7 +346,7 @@ export class AnimalesRefugioService {
 
     /**
      * getAnimalesNoAdoptados
-     *
+     * 
      * @param page page
      * @param size size
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -407,7 +406,7 @@ export class AnimalesRefugioService {
 
     /**
      * getAnimalesRefugioPages
-     *
+     * 
      * @param page page
      * @param size size
      * @param isDeleted isDeleted
@@ -472,28 +471,27 @@ export class AnimalesRefugioService {
 
     /**
      * guardarAnimal
-     *
-     * @param colorCaracteristicas
-     * @param especie
-     * @param lugarEstancia
-     * @param nombre
-     * @param observacionesProcedencia
-     * @param raza
-     * @param sexo
-     * @param multipartFile
-     * @param adoptado
-     * @param deleted
-     * @param edad
-     * @param fechaNacimiento
-     * @param peso
-     * @param procedencia
+     * 
+     * @param colorCaracteristicas 
+     * @param especie 
+     * @param lugarEstancia 
+     * @param nombre 
+     * @param observacionesProcedencia 
+     * @param procedencia 
+     * @param raza 
+     * @param sexo 
+     * @param multipartFile 
+     * @param adoptado 
+     * @param edad 
+     * @param fechaNacimiento 
+     * @param peso 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public guardarAnimalUsingPOSTForm(colorCaracteristicas: string, especie: string, lugarEstancia: string, nombre: string, observacionesProcedencia: string, procedencia: string, raza: string, sexo: string, multipartFile?: File, adoptado?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public guardarAnimalUsingPOSTForm(colorCaracteristicas: string, especie: string, lugarEstancia: string, nombre: string, observacionesProcedencia: string, procedencia: string, raza: string, sexo: string, multipartFile?: File, adoptado?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public guardarAnimalUsingPOSTForm(colorCaracteristicas: string, especie: string, lugarEstancia: string, nombre: string, observacionesProcedencia: string, procedencia: string, raza: string, sexo: string, multipartFile?: File, adoptado?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public guardarAnimalUsingPOSTForm(colorCaracteristicas: string, especie: string, lugarEstancia: string, nombre: string, observacionesProcedencia: string, procedencia: string, raza: string, sexo: string, multipartFile?: File, adoptado?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public guardarAnimalUsingPOSTForm(colorCaracteristicas: string, especie: string, lugarEstancia: string, nombre: string, observacionesProcedencia: string, procedencia: string, raza: string, sexo: string, multipartFile?: Blob, adoptado?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public guardarAnimalUsingPOSTForm(colorCaracteristicas: string, especie: string, lugarEstancia: string, nombre: string, observacionesProcedencia: string, procedencia: string, raza: string, sexo: string, multipartFile?: Blob, adoptado?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public guardarAnimalUsingPOSTForm(colorCaracteristicas: string, especie: string, lugarEstancia: string, nombre: string, observacionesProcedencia: string, procedencia: string, raza: string, sexo: string, multipartFile?: Blob, adoptado?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public guardarAnimalUsingPOSTForm(colorCaracteristicas: string, especie: string, lugarEstancia: string, nombre: string, observacionesProcedencia: string, procedencia: string, raza: string, sexo: string, multipartFile?: Blob, adoptado?: boolean, edad?: number, fechaNacimiento?: Date, peso?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (colorCaracteristicas === null || colorCaracteristicas === undefined) {
             throw new Error('Required parameter colorCaracteristicas was null or undefined when calling guardarAnimalUsingPOST.');
@@ -546,7 +544,7 @@ export class AnimalesRefugioService {
             queryParameters = queryParameters.set('especie', <any>especie);
         }
         if (fechaNacimiento !== undefined && fechaNacimiento !== null) {
-            queryParameters = queryParameters.set('fechaNacimiento', <any>fechaNacimiento);
+            queryParameters = queryParameters.set('fechaNacimiento', <any>fechaNacimiento.toISOString());
         }
         if (lugarEstancia !== undefined && lugarEstancia !== null) {
             queryParameters = queryParameters.set('lugarEstancia', <any>lugarEstancia);

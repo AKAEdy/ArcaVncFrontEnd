@@ -65,17 +65,17 @@ export class TratamientosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createUsingPOST5(body: TratamientoDto, idFicha: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createUsingPOST5(body: TratamientoDto, idFicha: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createUsingPOST5(body: TratamientoDto, idFicha: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createUsingPOST5(body: TratamientoDto, idFicha: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createUsingPOST6(body: TratamientoDto, idFicha: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createUsingPOST6(body: TratamientoDto, idFicha: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createUsingPOST6(body: TratamientoDto, idFicha: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createUsingPOST6(body: TratamientoDto, idFicha: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling createUsingPOST5.');
+            throw new Error('Required parameter body was null or undefined when calling createUsingPOST6.');
         }
 
         if (idFicha === null || idFicha === undefined) {
-            throw new Error('Required parameter idFicha was null or undefined when calling createUsingPOST5.');
+            throw new Error('Required parameter idFicha was null or undefined when calling createUsingPOST6.');
         }
 
         let headers = this.defaultHeaders;
@@ -121,13 +121,13 @@ export class TratamientosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteUsingDELETE5(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteUsingDELETE5(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteUsingDELETE5(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteUsingDELETE5(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteUsingDELETE6(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteUsingDELETE6(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteUsingDELETE6(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteUsingDELETE6(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling deleteUsingDELETE5.');
+            throw new Error('Required parameter id was null or undefined when calling deleteUsingDELETE6.');
         }
 
         let headers = this.defaultHeaders;
@@ -213,13 +213,13 @@ export class TratamientosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getByIdUsingGET5(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public getByIdUsingGET5(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public getByIdUsingGET5(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public getByIdUsingGET5(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getByIdUsingGET6(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getByIdUsingGET6(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getByIdUsingGET6(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getByIdUsingGET6(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling getByIdUsingGET5.');
+            throw new Error('Required parameter id was null or undefined when calling getByIdUsingGET6.');
         }
 
         let headers = this.defaultHeaders;
@@ -362,21 +362,21 @@ export class TratamientosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateUsingPUT5(body: TratamientoDto, idFicha: number, idTratamiento: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateUsingPUT5(body: TratamientoDto, idFicha: number, idTratamiento: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateUsingPUT5(body: TratamientoDto, idFicha: number, idTratamiento: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateUsingPUT5(body: TratamientoDto, idFicha: number, idTratamiento: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateUsingPUT6(body: TratamientoDto, idFicha: number, idTratamiento: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateUsingPUT6(body: TratamientoDto, idFicha: number, idTratamiento: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateUsingPUT6(body: TratamientoDto, idFicha: number, idTratamiento: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateUsingPUT6(body: TratamientoDto, idFicha: number, idTratamiento: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling updateUsingPUT5.');
+            throw new Error('Required parameter body was null or undefined when calling updateUsingPUT6.');
         }
 
         if (idFicha === null || idFicha === undefined) {
-            throw new Error('Required parameter idFicha was null or undefined when calling updateUsingPUT5.');
+            throw new Error('Required parameter idFicha was null or undefined when calling updateUsingPUT6.');
         }
 
         if (idTratamiento === null || idTratamiento === undefined) {
-            throw new Error('Required parameter idTratamiento was null or undefined when calling updateUsingPUT5.');
+            throw new Error('Required parameter idTratamiento was null or undefined when calling updateUsingPUT6.');
         }
 
         let headers = this.defaultHeaders;

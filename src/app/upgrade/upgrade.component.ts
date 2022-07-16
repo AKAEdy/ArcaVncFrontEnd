@@ -132,7 +132,7 @@ irVacuna(id: number){
 
 
 irTratamiento(id: number){
- this.fichaClinService.getByIdUsingGET1(id).subscribe(data =>{
+ this.fichaClinService.getByIdUsingGET2(id).subscribe(data =>{
    this.fichaClinica=data;
    console.log("lista ficha para tratamiento", data);
  this.router.navigate (['/tratamiento', id]);
@@ -163,7 +163,7 @@ borrarFicha(id: number) {
      this.irAtras();
    }
  })
- this.fichaClinService.deleteUsingDELETE1(id).subscribe(data => {
+ this.fichaClinService.deleteUsingDELETE2(id).subscribe(data => {
 
  })
 
