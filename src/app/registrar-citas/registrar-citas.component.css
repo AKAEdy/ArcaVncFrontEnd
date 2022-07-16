@@ -9,28 +9,6 @@ margin-left: 25px;
 }
 
 #op1{
-margin-left: 20px;
-height: 30px;
-}
-#op2{
-    margin-left: 20px; 
-    height: 30px;
-}
-#op3{
     margin-left: 20px;
     height: 30px;
-}
-#op4{
-    margin-left: 20px;
-    height: 30px;
-}
-
-#lop1{
-    text-align: left;
-    color: rgb(121, 121, 121);
-    margin-left:30px;
-    }
-    .card{
-        width: 1000px;
-        margin: auto auto;
     }

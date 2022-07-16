@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CitasService } from 'app/api/citas.service';
-import { Cita } from 'app/model/cita';
 import { CitaDto } from 'app/model/citaDto';
 import { CitaDtoExtends } from 'app/model/citaDtoExtends';
 
@@ -37,7 +36,21 @@ citasid: CitaDtoExtends={
     })
   }
   updateCitas(){
-    this.citaService.modificarCitaUsingPUT(this.cita, this.citasid.id, this.citasid.veterinario.id).subscribe(data =>{
+    this.citaService.modificarCitaUsingPUT(this.cita = 
+      {
+        "estado": true,
+        "fechaCita": "yyyy-MM-dd HH:mm",
+        "motivo": "string",
+        "nombreCliente": "string",
+        "servicios": [
+          {
+            "descripcion": "string",
+            "id": 0,
+            "nombre": "string",
+            "precio": 0
+          }
+        ]
+      }, this.citasid.id, this.citasid.veterinario.id).subscribe(data =>{
       this.citasid = data
       location.reload
     })
@@ -46,8 +59,7 @@ citasid: CitaDtoExtends={
     this.citaService.getCitaPorIdUsingGET(id).subscribe(data => {
   
       this.citasid = data
-      this.mostrarEditar()
-      console.log(id);
+     
     })
   }
   deleteCitas(id: number){

@@ -37,8 +37,6 @@ export class TratamientoComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private tratamientosService: TratamientosService, 
-    private router: Router, 
-    private medicamentoService:MedicamentosService, 
     private fichaClinicaS:FichasClnicasService, 
     private medicacionService:MedicacionesService) {
   }
