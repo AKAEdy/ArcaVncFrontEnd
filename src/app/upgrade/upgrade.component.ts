@@ -35,7 +35,7 @@ ngOnInit() {
  const id = this.activatedRoute.snapshot.params.id;
  this.es.getAnimalPorIdUsingGET(id).subscribe(data =>{
    this.animal= data.animal;
-   localStorage.setItem('animal', JSON.stringify(this.animal));
+   localStorage.setItem('anima', JSON.stringify(this.animal));
    console.log(data,"datos de animal");
 
 
