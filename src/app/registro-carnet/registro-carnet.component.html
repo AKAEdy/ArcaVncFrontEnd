@@ -1,66 +1,68 @@
 <div class="main-content">
-    <div class="container-fluid">
-        <!-- <div class="row"> -->
-            <!-- <div class="col-md-8"> -->
-                <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title">REGISTRO CARNET DE VACUNAS</h4>
-                        <p class="card-category">Complete el formulario</p>
-                    </div>
-                    <div class="card-body">
-                        <form  #f="ngForm" (ngSubmit)="guardarCarnet()" novalidate >
-                          <div class="row" >
-                            <br>
-                            <br>
-                               <div class="col-md-5">
-                                  <label>FECHA APLICACION</label>
-                                  <br>
-                                 <div>
-                                    <input class="input"  matInput placeholder = "FECHA APLICACION" type="date"name="fechaAplicacion" #fechaAplicacion="ngModel"
-                                    [(ngModel)]="carnetVacuna.fechaAplicacion" >
-                                 </div> 
+  <div class="container-fluid">
+      <!-- <div class="row"> -->
+          <!-- <div class="col-md-8"> -->
+              <div class="col-md-11">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">REGISTRO CARNET DE VACUNAS</h4>
+                      <p class="card-category">Complete el formulario</p>
+                  </div>
+                  <br>
+                  <div class="card-body">
+                      <form  #f="ngForm" (ngSubmit)="guardarCarnet()" novalidate >
+                        <div class="row" >
+                          <br>
+                          <br>
+
+
+
+
+                             <div class="col-md-5">
+                              <mat-form-field class="example-full-width">
+                                  <input class="input"  matInput placeholder = "FECHA APLICACION" type="date"name="fechaAplicacion" #fechaAplicacion="ngModel"
+                                  [(ngModel)]="carnetVacuna.fechaAplicacion" />
+                                </mat-form-field>
                               </div>
-                              <br>
-                              <br>
-                              <div class="col-md-5">
-                                  <label>FECHA PROXIMA DE APLICACION</label>
-                                  <br>
-                                  <div>
-                                    <input class="input" matInput placeholder="FECHA PROXIMA DE APLICACION" type="date" name="fechaProximaAplicacion" #fechaProximaAplicacion="ngModel"
-                                    [(ngModel)]="carnetVacuna.fechaProximaAplicacion">
-                                  </div>
+
+
+
+                            <div class="col-md-5">
+                              <mat-form-field class="example-full-width">
+                                  <input class="input" matInput placeholder="FECHA PROXIMA DE APLICACION" type="date" name="fechaProximaAplicacion" #fechaProximaAplicacion="ngModel"
+                                  [(ngModel)]="carnetVacuna.fechaProximaAplicacion"/>
+                               
+                              </mat-form-field>
                             </div>
-                            <br>
-                            <br>
 
-
-
+                        </div>
+<br>
+                        <div class="row">
+                          <div class="col-md-5">
+                          <mat-form-field appearance="fill">
+                            <mat-label>Seleccione la vacuna....</mat-label>
+                            <mat-select [(ngModel)]="selectedvacunas">
+                              <mat-option  [ngValue]="item" *ngFor="let item  of vacunas"> {{item.nombre}} 
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        
+                          </div>
                             
+                        </div>
+
+<br>
+                        
+                          <button mat-raised-button type="button" class="btn btn-danger pull-right"  (click)="irAtras()" >REGRESAR</button>
                           
-                
-                         
-                          <div class="col-md-12">
-                              <select  
-                                [(ngModel)]="selectedvacunas" >
-                                <option [ngValue]="item" *ngFor="let item  of vacunas"> {{item.nombre}} </option>
-                              </select>
-                          </div>
-                          </div>
-
-
-
-                          
-                            <button mat-raised-button type="button" class="btn btn-danger pull-right"  (click)="irAtras()" >REGRESAR</button>
-                            <div class="clearfix"></div>
-                            <button mat-raised-button type="submit" class="btn btn-danger pull-right"  (click)="guardarCarnet()">REGISTRAR</button>
-                            <div class="clearfix"></div>
-                        </form>
-                    </div>
-                
-            </div> 
-            <!-- </div> -->
-          
-        </div>
-    <!-- </div> -->
-  </div>
+                          <button mat-raised-button type="submit" class="btn btn-danger pull-right"  (click)="guardarCarnet()">REGISTRAR</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  </div>
+              
+          </div> 
+          <!-- </div> -->
+        
+      </div>
+  <!-- </div> -->
+</div></div>

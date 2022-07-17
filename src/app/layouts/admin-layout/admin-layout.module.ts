@@ -48,6 +48,8 @@ import { FiltermedicamentosPipe } from '../../pipes/filtermedicamentos.pipe';
 import { CoreModule } from 'app/core/core.module'
 import { AlarmModule } from 'app/alarm/alarm.module'
 import { FilteranimalesPipe } from 'app/pipes/filteranimales.pipe';
+import { EditCarnetComponent } from 'app/edit-carnet/edit-carnet.component';
+import { EditFichaComponent } from 'app/edit-ficha/edit-ficha.component';
 
 
 @NgModule({
@@ -103,6 +105,8 @@ import { FilteranimalesPipe } from 'app/pipes/filteranimales.pipe';
     RegistrarSeguimientoComponent,
     FiltermedicamentosPipe,
     FilteranimalesPipe,
+    EditCarnetComponent,
+    EditFichaComponent,
   ]
 })
 
