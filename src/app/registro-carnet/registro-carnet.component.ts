@@ -65,6 +65,7 @@ export class RegistroCarnetComponent implements OnInit {
 		console.log(this.carnetVacuna);
 		this.carnetVacunacion.createUsingPOST(this.carnetVacuna).subscribe(
 			(data) => {
+				this.carnetVacuna=data;
 				console.log(data, "guardando carnet");
 				Swal.fire({
 					position: "center",
@@ -82,6 +83,7 @@ export class RegistroCarnetComponent implements OnInit {
 				location.reload();
 			}
 		);
+		this.irAtras();
 	}
 
 

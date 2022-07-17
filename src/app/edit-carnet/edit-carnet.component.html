@@ -1,1 +1,61 @@
-<p>edit-carnet works!</p>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">REGISTRO DE VACUNA</h4>
+                    </div>
+
+  
+    <div class="card-body">
+        <form (ngSubmit)="modificarCarnet()" #MyForm="ngForm" novalidate>
+            <h4 class="card-title">Complete los campos.</h4>
+          <div class="row" >
+         
+               <div class="col-md-5">
+                <div class="form-group">
+                  <div class="input-group-prepend">
+                <mat-form-field class="example-full-width">
+                    <input class="input"  matInput placeholder = "FECHA APLICACION" type="date"name="fechaAplicacion" #fechaAplicacion="ngModel"
+                    [(ngModel)]="carnetVacuna.fechaAplicacion" />
+                  </mat-form-field>
+                </div>
+
+                </div></div>
+
+              <div class="col-md-5">
+                <mat-form-field class="example-full-width">
+                    <input class="input" matInput placeholder="FECHA PROXIMA DE APLICACION" type="date" name="fechaProximaAplicacion" #fechaProximaAplicacion="ngModel"
+                    [(ngModel)]="carnetVacuna.fechaProximaAplicacion"/>
+                 
+                </mat-form-field>
+              </div>
+
+          </div>
+<br>
+          <div class="row">
+            <div class="col-md-5">
+            <mat-form-field appearance="fill">
+              <mat-label>Seleccione la vacuna....</mat-label>
+              <mat-select [(ngModel)]="selectedvacunas">
+                <mat-option  [ngValue]="item" *ngFor="let item  of vacunas"> {{item.nombre}} 
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            </div>
+              
+          </div>
+
+<br>
+<div class="col-md-6">
+<button mat-raised-button type="submit" class="btn btn-success pull-right"
+  (click)="modificarCarnet()">EDITAR</button>
+<button mat-raised-button type="submit" class="btn btn-danger pull-right"
+  (click)="volver()" id="cancelar">CANCELAR</button>
+</div>
+           
+        </form>
+    </div>
+
+</div> 
