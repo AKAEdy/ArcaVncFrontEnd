@@ -26,7 +26,6 @@ import { FilteradoptadosPipe } from '../../pipes/filteradoptados.pipe';
 import { RegistrarVacunasComponent } from '../../registrar-vacunas/registrar-vacunas.component';
 import { ListarVacunasComponent } from '../../listar-vacunas/listar-vacunas.component';
 import { ListarCitasComponent } from '../../listar-citas/listar-citas.component';
-import { RegistrarCitasComponent } from '../../registrar-citas/registrar-citas.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatTableModule } from '@angular/material/table';
@@ -50,6 +49,7 @@ import { AlarmModule } from 'app/alarm/alarm.module'
 import { FilteranimalesPipe } from 'app/pipes/filteranimales.pipe';
 import { EditCarnetComponent } from 'app/edit-carnet/edit-carnet.component';
 import { EditFichaComponent } from 'app/edit-ficha/edit-ficha.component';
+import { RegistrarCitasComponent } from 'app/components/arca/servicios-arca/registrar-citas/registrar-citas.component';
 
 
 @NgModule({

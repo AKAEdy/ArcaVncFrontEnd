@@ -29,6 +29,7 @@ import { AnimalesRefugioService } from './api/animalesRefugio.service';
 import { CarnetsDeVacunacinService } from './api/carnetsDeVacunacin.service';
 import { MedicacionesService } from './api/medicaciones.service';
 import { SeguimientoDeAdoptadosService } from './api/seguimientoDeAdoptados.service';
+import { ClientesService } from './api/clientes.service';
 
 
 @NgModule({
@@ -64,7 +65,9 @@ import { SeguimientoDeAdoptadosService } from './api/seguimientoDeAdoptados.serv
     CarnetsDeVacunacinService,
     MedicacionesService,
     SeguimientoDeAdoptadosService,
-    VoluntariosService],
+    VoluntariosService,
+    ClientesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

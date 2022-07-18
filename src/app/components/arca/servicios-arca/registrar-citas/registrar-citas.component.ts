@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CitasService } from 'app/api/citas.service';
+import { ClientesService } from 'app/api/clientes.service';
 import { VeterinariosService } from 'app/api/veterinarios.service';
 import { Cita } from 'app/model/cita';
 import { CitaDto } from 'app/model/citaDto';
 import { CitaServiciosArca } from 'app/model/citaServiciosArca';
+import { ClienteDto } from 'app/model/clienteDto';
+import { ClienteDtoExtends } from 'app/model/clienteDtoExtends';
 import { Veterinario } from 'app/model/veterinario';
 import Swal from 'sweetalert2';
 
@@ -13,16 +16,22 @@ import Swal from 'sweetalert2';
   styleUrls: ['./registrar-citas.component.css']
 })
 export class RegistrarCitasComponent implements OnInit {
+
+  cedulaCliente : string = ''
+  clienteDto: ClienteDto = {}
+  cliente: ClienteDtoExtends = {}
+
   // fechaCita: Date = new Date(moment(new Date()).format('YYYY-MM-DD h:mm:ss'));
   fecha: string;
-  hora:string;
+  hora:string = 'Selecciona una hora...';
   opcionHora:string="none"; 
   veterinario: Veterinario = {}
 
   citaVeterinario: Veterinario = {}
   veterinarioCedula: string
   citaDto: CitaServiciosArca={};
-  constructor(private citaService: CitasService, private veterinarioService: VeterinariosService) { }
+  constructor(private citaService: CitasService, private veterinarioService: VeterinariosService,
+    private clienteService: ClientesService) { }
   
   ngOnInit(): void {
   }
@@ -104,6 +113,75 @@ export class RegistrarCitasComponent implements OnInit {
 
   mostrarBtnRegistrar(){
     document.getElementById("btnRegistrar").style.display="block"
+  }
+
+
+  /** @Author: Eduardo: --------------------------------------------------------------------------------------------- */
+
+  buscarCliente(): void {
+    this.clienteService.getByCedulaUsingGET(this.cedulaCliente).subscribe(data => {
+      this.cliente = data
+    },
+    err => {
+      this.mostrarMensajeWarning('Opss!', 'No se ha encontrado un cliente cedula: '+this.cedulaCliente)
+    })
+  }
+
+
+  agregarCliente(): void {
+    this.clienteService.createUsingPOST1(this.clienteDto).subscribe(
+      data => {
+        this.setCliente(data.data)
+        this.mostrarMensajeExito('Exito!','Cliente guardado exitosamente!')
+      },
+      err => {
+        let codigo: number = err.error.code
+        if(codigo == 400){
+          this.mostrarMensajeWarning('Opss', 'Por favor, llene correctamente los campos!')
+        }else if(codigo == 500){
+          this.mostrarMensajeWarning('Opss!', 'Ya existe un cliente con cédula: '+this.clienteDto.cedula)
+        }else{
+          this.mostrarMensajeError('Opss!', 'Ha ocurrido un error en el servidor, contacta con tu tecnico de confianza!')
+        }
+      }
+    )
+  }
+
+  setCliente(data): void{
+    this.cliente.apellidos = data.apellidos
+    this.cliente.cedula = data.cedula
+    this.cliente.celular = data.celular
+    this.cliente.correo = data.correo
+    this.cliente.direccion = data.direccion
+    this.cliente.id = data.id
+    this.cliente.nombre = data.nombre
+    this.cliente.telefono = data.telefono
+  }
+
+  mostrarMensajeExito(titulo: string, mensaje: string): void { 
+    Swal.fire({
+      icon: 'success',
+      title: titulo,
+      text: mensaje
+    })
+  }
+
+
+  mostrarMensajeError(titulo: string, mensaje: string): void { 
+    Swal.fire({
+      icon: 'error',
+      title: titulo,
+      text: mensaje
+    })
+  }
+
+
+  mostrarMensajeWarning(titulo: string, mensaje: string): void { 
+    Swal.fire({
+      icon: 'warning',
+      title: titulo,
+      text: mensaje
+    })
   }
 
 }

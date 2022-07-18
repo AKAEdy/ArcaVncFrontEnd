@@ -15,7 +15,6 @@ import { RegistrarPersonaComponent } from "app/registrar-persona/registrar-perso
 import { ListarMedicamentoComponent } from "app/listar-medicamento/listar-medicamento.component";
 import { RegistrarMedicamentoComponent } from "app/registrar-medicamento/registrar-medicamento.component";
 import { ListarCitasComponent } from "app/listar-citas/listar-citas.component";
-import { RegistrarCitasComponent } from "app/registrar-citas/registrar-citas.component";
 import { ListarVacunasComponent } from "app/listar-vacunas/listar-vacunas.component";
 import { RegistrarVacunasComponent } from "app/registrar-vacunas/registrar-vacunas.component";
 import { ListarAdoptanteComponent } from "app/listar-adoptante/listar-adoptante.component";
@@ -34,6 +33,7 @@ import { TratamientoComponent } from "app/components/arca/clinica/tratamiento/tr
 import { AlarmListingPageComponent } from 'app/alarm/alarm-listing-page/alarm-listing-page.component'
 import { EditCarnetComponent } from "app/edit-carnet/edit-carnet.component";
 import { EditFichaComponent } from "app/edit-ficha/edit-ficha.component";
+import { RegistrarCitasComponent } from "app/components/arca/servicios-arca/registrar-citas/registrar-citas.component";
 
 export const AdminLayoutRoutes: Routes = [
 	{
