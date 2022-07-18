@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Route } from '@angular/router';
 import { CitasService } from 'app/api/citas.service';
 import { ClientesService } from 'app/api/clientes.service';
 import { VeterinariosService } from 'app/api/veterinarios.service';
@@ -6,6 +7,7 @@ import { CitaServiciosArca } from 'app/model/citaServiciosArca';
 import { ClienteDto } from 'app/model/clienteDto';
 import { ClienteDtoExtends } from 'app/model/clienteDtoExtends';
 import { Veterinario } from 'app/model/veterinario';
+import { Router } from "@angular/router";
 import Swal from 'sweetalert2';
 
 @Component({
@@ -18,103 +20,18 @@ export class RegistrarCitasComponent implements OnInit {
   cedulaCliente : string = ''
   clienteDto: ClienteDto = {}
   cliente: ClienteDtoExtends = {}
-
-  // fechaCita: Date = new Date(moment(new Date()).format('YYYY-MM-DD h:mm:ss'));
+  veterinarios: Veterinario [] = [] 
+  cita: CitaServiciosArca = {}
+  idVeterinario:string = 'Selecciona un veterinario...'
+  hora:string = 'Selecciona una hora...'
   fecha: string;
-  hora:string = 'Selecciona una hora...';
-  opcionHora:string="none"; 
-  veterinario: Veterinario = {}
 
-  citaVeterinario: Veterinario = {}
-  veterinarioCedula: string
-  citaDto: CitaServiciosArca={};
   constructor(private citaService: CitasService, private veterinarioService: VeterinariosService,
-    private clienteService: ClientesService) { }
+    private clienteService: ClientesService, private citasServicio : CitasService, private router: Router) { }
   
   ngOnInit(): void {
+    this.llamarVeterinarios();
   }
-
-
-  createCita(){
-    this.citaDto.fechaCita = this.fecha+' '+this.hora
-    if(this.citaDto.estado === undefined || this.veterinarioCedula === undefined || this.citaDto.fechaCita === undefined || this.citaDto.motivo === undefined ||
-      this.citaDto.estado === undefined    || this.citaDto.fechaCita === '' || this.citaDto.motivo === '' || this.veterinarioCedula === ''){
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Ingrese todos los datos!',
-      })
-    }else{
-      Swal.fire({
-        title: 'Seguro quiere realizar esta acción?',
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: 'Registrar',
-        denyButtonText: `No registrar`,
-      }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-          this.citaDto.estado = true
-          this.citaService.crearCitaUsingPOST(this.citaDto, this.citaVeterinario.id).subscribe(data =>{
-            Swal.fire({
-              position: 'center',
-              icon: 'success',
-              title: 'Cita agendada exitosamente',
-              showConfirmButton: false,
-              timer: 1500
-            })
-            location.reload();
-                }, err => {
-                  Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Esta fecha y hora ya esta registrada!',
-                  })
-              })
-        } else if (result.isDenied) {
-          Swal.fire('Acción cancelada', '', 'info')
-        }
-      })
-          }
-  }
-
-
-
-  buscarVeterinario(){
-    if(this.veterinarioCedula === undefined || this.veterinarioCedula === ""){
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Ingrese la cedula!',
-      })
-    }else{
-      this.veterinarioService.getVeterinariosUsingGET(0,1, this.veterinarioCedula).subscribe  (data => {
-        if (data.content[0] === undefined) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Registro no encontrado!' ,
-          })
-          document.getElementById("btnRegistrar").style.display="none"
-        }
-        this.citaVeterinario = data.content[0]
-        Swal.fire({
-          icon: 'success',
-          title: 'Cedula encontrada',
-          text: 'El veterinario es '+this.citaVeterinario.persona.nombre + " " + this.citaVeterinario.persona.apellidos,
-        })
-        this.mostrarBtnRegistrar()
-      })
-    }
-  
-  }
-
-  mostrarBtnRegistrar(){
-    document.getElementById("btnRegistrar").style.display="block"
-  }
-
-
-  /** @Author: Eduardo: --------------------------------------------------------------------------------------------- */
 
   buscarCliente(): void {
     this.clienteService.getByCedulaUsingGET(this.cedulaCliente).subscribe(data => {
@@ -156,6 +73,31 @@ export class RegistrarCitasComponent implements OnInit {
     this.cliente.telefono = data.telefono
   }
 
+  guardarCita(){
+    this.cita.fechaCita = this.fecha+' '+this.hora
+    this.cita.cliente_id = this.cliente.id
+    this.cita.servicios = []
+    
+    if (this.idVeterinario != "Selecciona un veterinario..." ) {
+      this.citaService.crearCitaUsingPOST(this.cita, Number(this.idVeterinario)).subscribe(data =>{
+        this.mostrarMensajeExito("Exito!!!","Se ha registrado correctamente la cita.")
+        this.router.navigateByUrl("/listaCitas");
+      } ,
+      err => {
+        this.mostrarMensajeError("Opss","Por favor asegurese de llenar todos los campos.")
+      })
+    } else {
+      this.mostrarMensajeWarning("Opss","Por favor seleccione un veterinario.")
+    }
+
+
+  }
+
+  llamarVeterinarios(){
+    this.veterinarioService.getAllVeterinariosUsingGET().subscribe(data =>{
+      this.veterinarios = data
+    })
+  }
   mostrarMensajeExito(titulo: string, mensaje: string): void { 
     Swal.fire({
       icon: 'success',
@@ -181,5 +123,4 @@ export class RegistrarCitasComponent implements OnInit {
       text: mensaje
     })
   }
-
 }
