@@ -13,28 +13,28 @@
                             <div class="row">
                                 <div class="col-md-12">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="NOMBRE COMERCIAL" type="text" [(ngModel)]="medicamento.nombreComercial">
+                                    <input matInput placeholder="NOMBRE COMERCIAL" type="text" name="nombreComercial" #nombreComercial="ngModel" [(ngModel)]="medicamento.nombreComercial">
                                   </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="NOMBRE GENERICO" type="text" [(ngModel)]="medicamento.nombreGenerico">
+                                    <input matInput placeholder="NOMBRE GENERICO" type="text" name="nombreGenerico" #nombreGenerico="ngModel" [(ngModel)]="medicamento.nombreGenerico">
                                   </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="CANTIDAD" type="text" [(ngModel)]="medicamento.cantidad">
+                                    <input matInput placeholder="CANTIDAD" type="text" name="cantidad" #cantidad="ngModel" [(ngModel)]="medicamento.cantidad">
                                   </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="PRECIO $" type="text" [(ngModel)]="medicamento.precio">
+                                    <input matInput placeholder="PRECIO $" type="text" name="precio" #precio="ngModel" [(ngModel)]="medicamento.precio">
                                   </mat-form-field>
                                 </div>
                             </div>
