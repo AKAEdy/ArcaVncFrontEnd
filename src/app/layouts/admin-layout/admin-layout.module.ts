@@ -6,7 +6,6 @@ import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { RegistrarAnimalRefugioComponent} from '../../components/arca/animal-refugio/registrar-animal-refugio/registrar-animal-refugio';
 import { TableListComponent } from '../../table-list/table-list.component';
 import { TypographyComponent } from '../../typography/typography.component';
-import { IconsComponent } from '../../icons/icons.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import {MatButtonModule} from '@angular/material/button';
@@ -76,7 +75,6 @@ import { EditFichaComponent } from 'app/edit-ficha/edit-ficha.component';
     RegistrarAnimalRefugioComponent,
     TableListComponent,
     TypographyComponent,
-    IconsComponent,
     TratamientoComponent,
     NotificationsComponent,
     UpgradeComponent,

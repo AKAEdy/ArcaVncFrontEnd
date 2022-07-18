@@ -5,10 +5,10 @@ import { Persona } from 'app/model/persona';
 import { LoginResponse } from 'app/models/login-response';
 import { LoginUsuario } from 'app/models/login-usuario';
 import { Rol } from 'app/models/rol';
+import { log } from 'console';
 import { environment } from 'environments/environment';
 import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
-
 export interface ROL {
 	nombre: string;
 }
@@ -22,41 +22,41 @@ export interface CurrentUser {
 })
 export class AuthService implements OnDestroy {
 
+	constructor(private httpClient: HttpClient, private router: Router, private activateRouted: ActivatedRoute) { }
+
 	private _isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 	private _user$: BehaviorSubject<CurrentUser> = new BehaviorSubject<CurrentUser>({});
 
 	public get isLoggedIn$(): Observable<boolean> {
 		return this._isLoggedIn$.asObservable();
 	}
+
 	public get currentUser$(): Observable<CurrentUser> {
 		return this._user$.asObservable();
 	}
+
 	public ngOnDestroy(): void {
 		this._isLoggedIn$.next(false);
 		this._isLoggedIn$.complete();
 		this._user$.next({});
 		this._user$.complete();
 	}
-	constructor (private httpClient: HttpClient, private router: Router, private activateRouted: ActivatedRoute) { }
 
-	public login(loginUsuario: LoginUsuario): Observable<any> {
+	public login(loginUsuario: LoginUsuario): Observable<LoginResponse> {
 		return this.httpClient.post<LoginUsuario>(environment.AUTH_URL + 'login', loginUsuario).pipe(tap((loginResponse: LoginResponse) => {
-			this.setCurrentUser({ username: loginResponse.username, id: loginResponse.id, persona: loginResponse.persona }, loginResponse.token.tokenValue);
-			this.router.navigate([ this.activateRouted.snapshot.queryParamMap.get('redirectUrl') || '#' ]);
-		}
-		), catchError((e) => {
+			this.setCurrentUser(loginResponse);
+			this.router.navigate([this.activateRouted.snapshot.queryParamMap.get('redirectUrl') || '#']);
+		}), catchError((e) => {
 			console.log('BEEEP ERROR!')
-			return throwError(e);
-		}
-		)
-		);
+			return throwError(()=> e);
+		}));
 	}
 
-	private getUserRoles(token: string): any | null {
+	private getUserRoles(token: string): Rol[] | null {
 		if (!token) {
 			return null
 		}
-		return JSON.parse(atob(token.split('.')[ 1 ])) as any;
+		return JSON.parse(atob(token.split('.')[1])) as Rol[];
 	}
 	private getCurrentUser(user: string): CurrentUser | null {
 		if (!user) {
@@ -77,24 +77,25 @@ export class AuthService implements OnDestroy {
 		localStorage.removeItem(environment.USER_VALUE);
 	}
 	logout(hasRedirectUrl?: boolean) {
-		!hasRedirectUrl ? this.router.navigate([ 'login' ]) : null;
+		!hasRedirectUrl ? this.router.navigate(['login']) : null;
 		this.clearLocalStorage()
 		this._isLoggedIn$.next(false);
 	}
-	refreshSession(): any {
+	refreshSession(){
 		this.isAuthenticated() ?? this._user$.next(this.isUser())
 		this._isLoggedIn$.next(this.isAuthenticated());
 	}
 
 	//////Roles//////
-	get UserRoles(): any[] {
+	get UserRoles(): Rol[] {
 		try {
-			return this.getUserRoles(this.AuthToken).roles;
+			return this.getUserRoles(this.AuthToken)['roles'];
 		} catch (e) {
 			this.showToast('Algo salio mal', 'error', 'login')
 			this.logout()
 		}
 	}
+
 	get UserProfile(): CurrentUser {
 		try {
 			return this.getCurrentUser(this.CurrentUser);
@@ -103,8 +104,8 @@ export class AuthService implements OnDestroy {
 			this.logout()
 		}
 	}
+
 	hasRoles(roles: Rol[]) {
-		// console.warn('Has roles', this.UserRoles);
 		return this.UserRoles && roles.some((r) => this.UserRoles.includes(r));
 	}
 	//////ToKen//////
@@ -115,11 +116,18 @@ export class AuthService implements OnDestroy {
 		return localStorage.getItem(environment.USER_VALUE) || null;
 	}
 
-	setCurrentUser(current: CurrentUser, tokenValue: string) {
+	setCurrentUser(loginResponse: LoginResponse,) {
+		const currentUser: CurrentUser = {
+			username: loginResponse.username,
+			id: loginResponse.id,
+			persona: loginResponse.persona
+		}
+
 		this._isLoggedIn$.next(true);
-		this._user$.next(current);
-		localStorage.setItem(environment.TOKEN_NAME, tokenValue);
-		localStorage.setItem(environment.USER_VALUE, JSON.stringify(current));
+		this._user$.next(currentUser);
+		localStorage.setItem(environment.TOKEN_NAME, loginResponse.token.tokenValue);
+		localStorage.setItem(environment.USER_VALUE, JSON.stringify(currentUser));
+
 	}
 	/**
 	 *
@@ -131,8 +139,8 @@ export class AuthService implements OnDestroy {
 	 * @param {string} [description]
 	 * @memberof AuthService
 	 */
-	public showToast(errorMessage: any, icon: SweetAlertIcon, urlToNavigate?: any, description?: string) {
-		urlToNavigate ? this.router.navigate([ urlToNavigate ]) : null;
+	public showToast(errorMessage: string, icon: SweetAlertIcon, urlToNavigate?: string, description?: string) {
+		urlToNavigate ? this.router.navigate([urlToNavigate]) : null;
 		Swal.fire({
 			timer: 3000,
 			title: errorMessage,

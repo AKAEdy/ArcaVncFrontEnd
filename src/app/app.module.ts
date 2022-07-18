@@ -39,7 +39,7 @@ import { SeguimientoDeAdoptadosService } from './api/seguimientoDeAdoptados.serv
     HttpClientModule,
     ComponentsModule,
     RouterModule,
-    AppRoutingModule,
+	AppRoutingModule,
   ],
   declarations: [
     AppComponent,
@@ -64,7 +64,7 @@ import { SeguimientoDeAdoptadosService } from './api/seguimientoDeAdoptados.serv
     CarnetsDeVacunacinService,
     MedicacionesService,
     SeguimientoDeAdoptadosService,
-    VoluntariosService],
+	VoluntariosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
