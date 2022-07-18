@@ -11,13 +11,13 @@
  */
 
 export interface VoluntarioDto { 
-    actividad: string;
-    apellidos: string;
-    cedula: string;
-    celular: string;
-    correo: string;
-    direccion: string;
-    nombre: string;
-    telefono: string;
-    tipo: string;
+    actividad?: string;
+    apellidos?: string;
+    cedula?: string;
+    celular?: string;
+    correo?: string;
+    direccion?: string;
+    nombre?: string;
+    telefono?: string;
+    tipo?: string;
 }

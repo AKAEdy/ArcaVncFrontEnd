@@ -15,7 +15,6 @@ import { RegistrarPersonaComponent } from "app/registrar-persona/registrar-perso
 import { ListarMedicamentoComponent } from "app/listar-medicamento/listar-medicamento.component";
 import { RegistrarMedicamentoComponent } from "app/registrar-medicamento/registrar-medicamento.component";
 import { ListarCitasComponent } from "app/listar-citas/listar-citas.component";
-import { RegistrarCitasComponent } from "app/registrar-citas/registrar-citas.component";
 import { ListarVacunasComponent } from "app/listar-vacunas/listar-vacunas.component";
 import { RegistrarVacunasComponent } from "app/registrar-vacunas/registrar-vacunas.component";
 import { ListarAdoptanteComponent } from "app/listar-adoptante/listar-adoptante.component";
@@ -32,8 +31,11 @@ import { RegistroCarnetComponent } from "app/registro-carnet/registro-carnet.com
 import { RegistrarSeguimientoComponent } from "app/registrar-seguimiento/registrar-seguimiento.component";
 import { TratamientoComponent } from "app/components/arca/clinica/tratamiento/tratamiento.component";
 import { AlarmListingPageComponent } from 'app/alarm/alarm-listing-page/alarm-listing-page.component'
+import { RegistrarUsuariosComponent } from "app/components/arca/usuarios/registrar-usuarios/registrar-usuarios.component";
+import { ListarUsuariosComponent } from "app/components/arca/usuarios/listar-usuarios/listar-usuarios.component";
 import { EditCarnetComponent } from "app/edit-carnet/edit-carnet.component";
 import { EditFichaComponent } from "app/edit-ficha/edit-ficha.component";
+import { RegistrarCitasComponent } from "app/components/arca/servicios-arca/registrar-citas/registrar-citas.component";
 
 export const AdminLayoutRoutes: Routes = [
 	{
@@ -236,6 +238,18 @@ export const AdminLayoutRoutes: Routes = [
 	{
 		path: "listarVoluntarios",
 		component: ListarVoluntariosComponent,
+		canActivate: [IsAuthenticatedGuard, RoleGuard],
+		data: { roles: ["ROLE_ADMIN"] },
+	},
+	{
+		path: "registrarUsuarios",
+		component: RegistrarUsuariosComponent,
+		canActivate: [IsAuthenticatedGuard, RoleGuard],
+		data: { roles: ["ROLE_ADMIN"] },
+	},
+	{
+		path: "listarUsuarios",
+		component: ListarUsuariosComponent,
 		canActivate: [IsAuthenticatedGuard, RoleGuard],
 		data: { roles: ["ROLE_ADMIN"] },
 	},

@@ -51,7 +51,7 @@ import { VoluntariosService } from './api/voluntarios.service';
     VoluntariosService ]
 })
 export class ApiModule {
-    public static forRoot(configurationFactory: () => Configuration) {
+    public static forRoot(configurationFactory: () => Configuration){
         return {
             ngModule: ApiModule,
             providers: [ { provide: Configuration, useFactory: configurationFactory } ]
