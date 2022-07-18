@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CitasService } from 'app/api/citas.service';
 import { ClientesService } from 'app/api/clientes.service';
 import { VeterinariosService } from 'app/api/veterinarios.service';
-import { Cita } from 'app/model/cita';
-import { CitaDto } from 'app/model/citaDto';
 import { CitaServiciosArca } from 'app/model/citaServiciosArca';
 import { ClienteDto } from 'app/model/clienteDto';
 import { ClienteDtoExtends } from 'app/model/clienteDtoExtends';

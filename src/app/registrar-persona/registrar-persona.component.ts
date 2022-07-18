@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonasService } from 'app/api/personas.service';
 import { Persona } from 'app/model/persona';
+import { PersonaDtoExtends } from 'app/model/personaDtoExtends';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,15 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class RegistrarPersonaComponent implements OnInit {
 
-  persona: Persona = {
-    apellidos: '',
-    cedula: '',
-    celular: '',
-    correo: '',
-    direccion: '',
-    nombre: '',
-    telefono: ''
-  }
+  persona: PersonaDtoExtends = {}
   constructor(private personaService: PersonasService) { }
 
   ngOnInit(): void {

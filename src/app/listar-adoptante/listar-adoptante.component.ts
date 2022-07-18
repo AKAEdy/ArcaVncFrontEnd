@@ -15,15 +15,7 @@ export class ListarAdoptanteComponent implements OnInit {
 adoptante: Adoptante[]=[]
 adoptanteDto: AdoptanteDto={
  }
-persona:Persona={
-  apellidos: '',
-  cedula: '',
-  celular: '',
-  correo: '',
-  direccion: '',
-  nombre: '',
-  telefono: ''
-}
+persona:Persona={}
 idadoptante:number
   constructor(private adoptanteService:AdoptantesService) { }
 

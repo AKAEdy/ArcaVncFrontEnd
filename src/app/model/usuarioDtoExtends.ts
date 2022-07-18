@@ -14,8 +14,8 @@ import { RolDto } from './rolDto';
 
 export interface UsuarioDtoExtends { 
     id?: number;
-    password: string;
-    persona: PersonaDtoExtends;
-    roles: Array<RolDto>;
-    username: string;
+    password?: string;
+    persona?: PersonaDtoExtends;
+    roles?: Array<RolDto>;
+    username?: string;
 }
