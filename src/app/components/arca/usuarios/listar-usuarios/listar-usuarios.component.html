@@ -1,0 +1,91 @@
+<div class="main-content" id ='tabla' style="display: block;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">LISTA DE USUARIOS</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        CEDULA
+                                    </th>
+                                    <th>
+                                        NOMBRES
+                                    </th>
+                                    <th>
+                                        ROL
+                                    </th>
+                                    <th>
+                                        CORREO
+                                    </th>
+                                    <th>
+                                        TELEFONO
+                                    </th>
+                                    <th>
+                                        CELULAR
+                                    </th>
+                                    <th>
+                                        DIRECCION
+                                    </th>
+                                    <th>
+                                        ACCIONES
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let usuario of usuarios">
+                                        <td>
+                                            {{usuario.persona.cedula}}
+                                        </td>
+                                        <td>
+                                            {{usuario.persona.nombre}} {{usuario.persona.apellidos}}
+                                        </td>
+                                        <td>
+                                            <div *ngFor="let rol of usuario.roles">
+                                                {{rol.nombre}}
+                                            </div>
+                                           
+                                        </td>
+                                        <td>
+                                            {{usuario.persona.correo}}
+                                        </td>
+                                        <td>
+                                            {{usuario.persona.telefono}}
+                                        </td>
+                                        <td>
+                                            {{usuario.persona.celular}}
+                                        </td>
+                                        <td>
+                                            {{usuario.persona.direccion}}
+                                        </td>
+                                        <!-- <td>
+                                            <button mat-raised-button="" type="submit"
+                                                class="mat-focus-indicator mat-raised-button mat-button-base" class="btneditar btn-warning"
+                                                (click)="getPersonaById(persona.id)">
+                                                <span class="mat-button-wrapper"><i
+                                                        _ngcontent-uqa-c89="" class="material-icons">mode_edit</i>
+                                                </span><span matripple=""
+                                                    class="mat-ripple mat-button-ripple"></span><span
+                                                    class="mat-button-focus-overlay"></span> </button>
+                                        </td> -->
+                                        <td>
+                                            <button mat-raised-button="" type="submit"
+                                                class="mat-focus-indicator mat-raised-button mat-button-base" class="btneliminar btn-danger"  (click)="eliminarUsuario(usuario.id)"><span
+                                                    class="mat-button-wrapper"><i _ngcontent-die-c89="" style="color: black;"
+                                                        class="material-icons">delete</i>
+                                                </span><span matripple=""
+                                                    class="mat-ripple mat-button-ripple"></span></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -14,6 +14,6 @@ export interface MedicacionDto {
     descripcionMd?: string;
     dosis?: string;
     duracion?: string;
-    fechaCaducidad?: Date;
+    fechaCaducidad?: Date
     frecuencia?: string;
 }
