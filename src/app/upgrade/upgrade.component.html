@@ -120,30 +120,33 @@
 
                  
                               <div class="container" >
-                                <div class="card">
-                                  <div class="col-12">
-                  
-                                <button type="button" class="btn btn-danger " data-toggle="collapse" data-target="#demo"><i class="fa fa-file-text-o" aria-hidden="true"></i>fICHAS CLINICAS</button>
-                                <button type="button" class="btn btn-danger " data-toggle="collapse" data-target="#demovacu">VACUNAS</button>
+                                
+                                  <div class="col-md-12">
+                                    <button type="button" class="btn btn-danger " data-toggle="collapse" data-target="#demo"><i class="fa fa-file-text-o" aria-hidden="true"></i>fICHAS CLINICAS</button>
+                                    <button type="button" class="btn btn-danger " data-toggle="collapse" data-target="#demovacu">VACUNAS</button>
+                                   
+                                    <div class="card">
                                 <div id="demo" class="collapse">
-                                  <table class="table" *ngFor="let ficha of fichaClinica">
+
+                                  <table class="table">
+                                    
                                     <thead>
-                                      <tr>
+                                     
                                         
-                                        <th scope="col">N° HISTORIA CLINIICA</th>
-                                        <th scope="col">FECHA INGRESO</th>
-                                        <th scope="col">ACCIONES</th>
-                                      </tr>
+                                        <th >N° HISTORIA</th>
+                                        <th >FECHA INGRESO</th>
+                                        <th >ACCIONES</th>
+                                     
                                     </thead>
                                     <tbody>
-                                      <tr>
+                                      <tr *ngFor="let ficha of fichaClinica">
                                       
                                         <td>{{ficha.id}}</td>
                                         <td>{{ficha.fechaIngreso}}</td>
                                         <td>
                                           
                                           
-                                          <div>
+                                         
                                             <div class="btn-group">
                                                 <div>
                                                     <button mat-raised-button type="submit"
@@ -160,7 +163,7 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                        </div>
+                                    
                                         
                                         
                                         </td>
@@ -172,21 +175,21 @@
                                 </div>
           
           
-                                <div id="demovacu" class="collapse">
-                                  <table class="table" *ngFor="let carnet of carnetVacuna">
-                                    <thead>
-                                      <tr>
+                                <div id="demovacu" class="collapse" >
+                                  <table class="table" >
+                                    <thead class=" text-primary">
+                                     
                                         
-                                        <th scope="col">N° VACUNA</th>
-                                        <th scope="col">NOMBRE</th>
-                                        <th scope="col">FECHA APLICACION</th>
-                                        <th scope="col">FECHA PROXIMA</th>
-                                        <th scope="col">TIPO</th>
-                                        <th scope="col">ACCIONES</th>
-                                      </tr>
+                                        <th >N° VACUNA</th>
+                                        <th >NOMBRE</th>
+                                        <th >FECHA APLICACION</th>
+                                        <th >FECHA PROXIMA</th>
+                                        <th >TIPO</th>
+                                        <th >ACCIONES</th>
+                                     
                                     </thead>
                                     <tbody>
-                                      <tr>
+                                      <tr *ngFor="let carnet of carnetVacuna">
   
                                         <td>{{carnet.id}}</td>
                                         <td>{{carnet.vacuna.nombre}}</td>
