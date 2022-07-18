@@ -36,6 +36,7 @@ export class TratamientoComponent implements OnInit {
  fichaClinica:FichaClinica={};
   constructor(
     private activatedRoute: ActivatedRoute,
+    private router:Router,
     private tratamientosService: TratamientosService, 
     private fichaClinicaS:FichasClnicasService, 
     private medicacionService:MedicacionesService) {
@@ -172,5 +173,9 @@ export class TratamientoComponent implements OnInit {
         Swal.fire('Accion cancelada', '', 'info')
       }
     })
+  }
+
+  regresar(){
+    this.router.navigate(["/editFicha", this.fichaClinica.id]);
   }
 }

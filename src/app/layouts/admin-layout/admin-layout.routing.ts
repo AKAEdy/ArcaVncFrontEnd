@@ -34,6 +34,8 @@ import { TratamientoComponent } from "app/components/arca/clinica/tratamiento/tr
 import { AlarmListingPageComponent } from 'app/alarm/alarm-listing-page/alarm-listing-page.component'
 import { RegistrarUsuariosComponent } from "app/components/arca/usuarios/registrar-usuarios/registrar-usuarios.component";
 import { ListarUsuariosComponent } from "app/components/arca/usuarios/listar-usuarios/listar-usuarios.component";
+import { EditCarnetComponent } from "app/edit-carnet/edit-carnet.component";
+import { EditFichaComponent } from "app/edit-ficha/edit-ficha.component";
 
 export const AdminLayoutRoutes: Routes = [
 	{
@@ -92,6 +94,18 @@ export const AdminLayoutRoutes: Routes = [
 	{
 		path: "notifications/:id",
 		component: NotificationsComponent,
+		canActivate: [IsAuthenticatedGuard],
+		data: { roles: ["ROLE_ADMIN", "ROLE_VETERINARIO"] },
+	},
+	{
+		path: "editCarnet/:id",
+		component: EditCarnetComponent,
+		canActivate: [IsAuthenticatedGuard],
+		data: { roles: ["ROLE_ADMIN", "ROLE_VETERINARIO"] },
+	},
+	{
+		path: "editFicha/:id",
+		component: EditFichaComponent,
 		canActivate: [IsAuthenticatedGuard],
 		data: { roles: ["ROLE_ADMIN", "ROLE_VETERINARIO"] },
 	},

@@ -21,6 +21,7 @@ idAnimal:number;
 
 // variables de tipo any o cualquiera para guardar en localStorage
 animal:any={};
+animales:any={};
 loginUsuario:any={};
 
 public formSubmitted = false;
@@ -34,57 +35,13 @@ public formSubmitted = false;
     
   
   ngOnInit(): void {
+
+    this.animal = JSON.parse(localStorage.getItem('anima'));
     this.animal = JSON.parse(localStorage.getItem('animal')).animal;
     // igualando objetos de tipo cualquiera con datos almacenados en localStorage
     this.loginUsuario = JSON.parse(localStorage.getItem('loginUsuario')).persona;
   } 
 
-  // guardar(){
-  //   console.log("LLEGA "+ this.animal.id,this.fichaClinica.fechaIngreso, );
-    
-  //   if( this.fichaClinica.motivoConsulta === "" || this.fichaClinica.trc === ""  || this.fichaClinica.conjuntiva === ""  || this.fichaClinica.diagnosticoDiferencial === ""  || this.fichaClinica.examenesSolicitados === ""  || this.fichaClinica.hallazgos ==="" || this.fichaClinica.pronostico ==="" ){
-  //     Swal.fire({
-  //       icon: 'error',
-  //       title: 'Oops...',
-  //       text: 'Llene todos los campos!',
-  //     })
-  //   } else{
-  //     Swal.fire({
-  //       title: 'Seguro quiere realizar esta accion??',
-  //       showDenyButton: true,
-  //       showCancelButton: true,
-  //       confirmButtonText: 'Registrar',
-  //       denyButtonText: `No registrar`,
-  //     }).then((result) => {
-  //       /* Read more about isConfirmed, isDenied below */
-  //       if (result.isConfirmed) {
-
-  //         this.fichaClinica.animalId=this.animal.id;
-  //         this.fichaClinica.personaId=2;
-  //         console.log(this.fichaClinica);
-  //         console.log(this.fichaClinica.personaId+" IDPERSONA");
-  //         this.fichasClinicasService.createUsingPOST1(this.fichaClinica).subscribe(data =>{
-  //       localStorage.removeItem("animal");
-  //           // this.fichaClinica.animal.nombre=this.animal.nombre;
-  //           // this.fichaClinica.veterinario.id=this.loginUsuario.data.id;
-          
-  //           Swal.fire({
-  //             position: 'center',
-  //             icon: 'success',
-  //             title: 'Se a adoptado correctamente',
-  //             showConfirmButton: false,
-  //             timer: 1500
-  //           })
-  //           location.reload();
-  //         })
-           
-  //       } else if (result.isDenied) {
-  //         Swal.fire('Acción cancelada', '', 'info')
-          
-  //       }
-  //     }) 
-  //   }
-  // }
 
   crateFichaClinica(){
     
@@ -149,11 +106,14 @@ public formSubmitted = false;
         Swal.fire('No se guardaron los cambios', '', 'info')
       }
     })
-      
+      this.irAtras();
       }
 
       agregarTratamiento(){
  this.router.navigateByUrl("/tratamiento")
+      }
+      irAtras() {
+        this.router.navigate(["/upgrade", this.animal.id]);
       }
 }
 

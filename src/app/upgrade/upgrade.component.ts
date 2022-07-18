@@ -35,12 +35,10 @@ ngOnInit() {
  const id = this.activatedRoute.snapshot.params.id;
  this.es.getAnimalPorIdUsingGET(id).subscribe(data =>{
    this.animal= data.animal;
+   localStorage.setItem('anima', JSON.stringify(this.animal));
    console.log(data,"datos de animal");
 
 
-
-
- localStorage.setItem('animal', JSON.stringify(this.animal));
 
 
  
@@ -118,7 +116,20 @@ modificar(id: number){
  });
 }
 
-
+irEditarFicha(id:number){
+this.fichaClinService.getByIdUsingGET2(id).subscribe(data =>{
+  this.fichaClinica=data;
+  console.log("dato de ficha para editar", data);
+this.router.navigate (['/editFicha', id]);
+});
+}
+irEditarCarnet(id: number){
+this.carnet.getByIdUsingGET(id).subscribe(data =>{
+  this.carnetVacuna=data;
+  console.log("dato de carnet para editar", data);
+this.router.navigate (['/editCarnet', id]);
+});
+}
 
 irVacuna(id: number){
  this.es.getAnimalPorIdUsingGET(id).subscribe(data =>{
