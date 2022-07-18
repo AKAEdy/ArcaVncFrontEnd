@@ -10,6 +10,7 @@ import { FichaClinica } from 'app/model/fichaClinica';
 import { FichaClinicaDTO } from 'app/model/fichaClinicaDTO';
 import { environment } from 'environments/environment';
 import { data } from 'jquery';
+import Swal from 'sweetalert2';
 
 
 
@@ -35,44 +36,49 @@ dataSource:any={};
     this.filterAnimal=this.animales;
     this.listarAnimales();
   this.pagina = 0;
-    // this.getAnimalesPage(
-    //   this.paginaActual.toString(),
-    //   this.totalPorPagina.toString(),
-    //   this.busqueda
-    // );
+  }
+
+  
+
+  
+eliminarAnimal(id: number) {
+  Swal.fire({
+    title: '¿Esta seguro que decea eliminar?',
+    text: "No podra revertir los cambios!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#FE3838',
+    cancelButtonColor: '#878787',
+    confirmButtonText: 'Si, eliminar!',
+   
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        'Eliminado!',
+        'Registro eliminado exitosamente.',
+        'success'
+      )
+      
+     this.animalesService.eliminarAnimalUsingDELETE(id).subscribe(data => {
+      
+    })
+    this.irAtras();
+  
+  }
+    else if (result.isDenied) {
+      Swal.fire('Acción cancelada', '', 'info')
+    }
+
+  })
   }
 
 
-
-  // listarFicha(){
-
-  //   this.fichasClinicasService.getFichasClinicasUsingGET1(this.pagina,this.tamaño).subscribe(data =>{
-  //     this.fichasClinicas=data.content 
-  //     console.log("fichas", data)
-    
-    
-  //   })
-  // }
-
-
-// next(){
-//     this.pagina = this.pagina + 1;
-//   console.log(this.pagina);
-//   this.  listarFicha();
-//   }
-
-//   previous(){
-
-//     this.pagina = this.pagina - 1;
-//     if(this.pagina < 0){
-//       this.pagina = 0;
-//     }
-
-//     this.  listarFicha();
-    
-//     console.log(this.pagina);
-
-//   }
+ 
+ 
+ irAtras(){
+  this.router.navigate(['/table-list']);
+ }
+ 
 Detalle(id: number){
 
   this.animalesService.getAnimalPorIdUsingGET(id).subscribe(data =>{

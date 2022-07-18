@@ -15,7 +15,7 @@
 
 <div class="row">
   <div class="col-12">
-    <div class="card text-center" style="background-color: rgb(249, 242, 242);">
+    <div class="card text-center" >
       <div class="card-body">
         <div class="row">
          
@@ -26,7 +26,7 @@
              
               <input type="text" class="form-control" placeholder="Buscar por nombre"   [(ngModel)]="filterAnimal">
              
-              <button class="btn btn-primary"> <i class="fa fa-search"></i> </button>
+             <i class="fa fa-search"></i> 
             </div>
           </div>
           </div>
@@ -40,7 +40,7 @@
           <div class="col-lg-3 col-md-3" *ngFor="let animal of animales | filteranimales: filterAnimal">
 
             <!-- Card -->
-            <div class="color" class="card border-danger mb-3" style="max-width: 18rem;" style="background-color: rgb(248, 226, 226);">
+            <div class="color" class="card border-danger mb-3" style="max-width: 18rem;" style="background-color: rgb(240, 240, 240);">
               <h3 class="card-title" style="text-transform: uppercase">
                  {{animal.nombre}}
               </h3>
@@ -70,13 +70,18 @@
 
               </div>
             <br>
-            <br>
+          
               <div class="card-footer-center">
 
-                  <button class="btn" (click)="Detalle(animal.id)">
-                 Seleccionar
-                  </button>
-
+                <button mat-raised-button type="button" class="btn btn-danger btn-round"
+                class="btndetalle" (click)="Detalle(animal.id)">
+                Ver
+            </button>
+               
+                  <button mat-raised-button type="submit" class="btn btn-danger btn-round"
+                  class="btneliminar" (click)="eliminarAnimal(animal.id)">
+                  <i class="material-icons">delete</i>
+              </button>
                   <br>
 
               </div>
