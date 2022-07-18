@@ -90,7 +90,7 @@ loginUsuario:any={};
    
   }
       volver() {
-        this.router.navigate(["/upgrade", this.fichaClinica.id]);
+        this.router.navigate(["/table-list"]);
       }
       
 }

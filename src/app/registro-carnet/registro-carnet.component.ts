@@ -10,6 +10,7 @@ import { AnimalRefugioResponse } from 'app/model/animalRefugioResponse';
 import { CarnetVacunacion } from 'app/model/carnetVacunacion';
 import { CarnetVacunacionDTO } from 'app/model/carnetVacunacionDTO';
 import { Vacuna } from 'app/model/vacuna';
+import { VacunaDTO } from 'app/model/vacunaDTO';
 import { AlarmService } from 'app/service/alarm.service';
 import Swal from 'sweetalert2';
 
@@ -28,7 +29,7 @@ export class RegistroCarnetComponent implements OnInit {
 //     private es:AnimalesRefugioService, private carnetVacunacion: CarnetsDeVacunacinService, private vacuna: VacunasService) { }
 
 	animal: AnimalRefugioResponse = {};
-	selectedvacunas: Vacuna = {};
+	selectedvacunas: VacunaDTO = {};
 	vacunas: Vacuna[] = [];
 	carnetVacuna: CarnetVacunacionDTO = {};
 	constructor(

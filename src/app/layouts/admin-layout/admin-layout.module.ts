@@ -8,12 +8,12 @@ import { TableListComponent } from '../../table-list/table-list.component';
 import { TypographyComponent } from '../../typography/typography.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
-import {MatRippleModule} from '@angular/material/core';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatSelectModule} from '@angular/material/select';
+import { MatButtonModule} from '@angular/material/button';
+import { MatInputModule} from '@angular/material/input';
+import { MatRippleModule} from '@angular/material/core';
+import { MatFormFieldModule} from '@angular/material/form-field';
+import { MatTooltipModule} from '@angular/material/tooltip';
+import { MatSelectModule} from '@angular/material/select';
 import { RouterModule } from '@angular/router';
 import { ListaAdoptadoComponent } from 'app/lista-adoptado/lista-adoptado.component';
 import { RegistrarAdoptadoComponent } from 'app/registrar-adoptado/registrar-adoptado.component';
@@ -25,7 +25,6 @@ import { FilteradoptadosPipe } from '../../pipes/filteradoptados.pipe';
 import { RegistrarVacunasComponent } from '../../registrar-vacunas/registrar-vacunas.component';
 import { ListarVacunasComponent } from '../../listar-vacunas/listar-vacunas.component';
 import { ListarCitasComponent } from '../../listar-citas/listar-citas.component';
-import { RegistrarCitasComponent } from '../../registrar-citas/registrar-citas.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatTableModule } from '@angular/material/table';
@@ -47,8 +46,11 @@ import { FiltermedicamentosPipe } from '../../pipes/filtermedicamentos.pipe';
 import { CoreModule } from 'app/core/core.module'
 import { AlarmModule } from 'app/alarm/alarm.module'
 import { FilteranimalesPipe } from 'app/pipes/filteranimales.pipe';
+import { RegistrarUsuariosComponent } from 'app/components/arca/usuarios/registrar-usuarios/registrar-usuarios.component';
+import { ListarUsuariosComponent } from '../../components/arca/usuarios/listar-usuarios/listar-usuarios.component';
 import { EditCarnetComponent } from 'app/edit-carnet/edit-carnet.component';
 import { EditFichaComponent } from 'app/edit-ficha/edit-ficha.component';
+import { RegistrarCitasComponent } from 'app/components/arca/servicios-arca/registrar-citas/registrar-citas.component';
 
 
 @NgModule({
@@ -67,8 +69,8 @@ import { EditFichaComponent } from 'app/edit-ficha/edit-ficha.component';
     MatTableModule,
     MatSortModule,
     MatStepperModule,
-	NgxPrintModule,
-	AlarmModule
+	  NgxPrintModule,
+	  AlarmModule
   ],
   declarations: [
     DashboardComponent,
@@ -103,6 +105,8 @@ import { EditFichaComponent } from 'app/edit-ficha/edit-ficha.component';
     RegistrarSeguimientoComponent,
     FiltermedicamentosPipe,
     FilteranimalesPipe,
+    RegistrarUsuariosComponent,
+    ListarUsuariosComponent,
     EditCarnetComponent,
     EditFichaComponent,
   ]

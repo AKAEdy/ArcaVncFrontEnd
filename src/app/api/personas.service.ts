@@ -155,6 +155,98 @@ export class PersonasService {
     }
 
     /**
+     * findByCedulaNotClientes
+     * 
+     * @param cedula cedula
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public findByCedulaNotClientesUsingGET(cedula: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findByCedulaNotClientesUsingGET(cedula: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findByCedulaNotClientesUsingGET(cedula: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findByCedulaNotClientesUsingGET(cedula: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (cedula === null || cedula === undefined) {
+            throw new Error('Required parameter cedula was null or undefined when calling findByCedulaNotClientesUsingGET.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (JWT) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<any>('get',`${this.basePath}/personas/findByCedulaNotClientes/${encodeURIComponent(String(cedula))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * findByCedula
+     * 
+     * @param cedula cedula
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public findByCedulaUsingGET(cedula: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findByCedulaUsingGET(cedula: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findByCedulaUsingGET(cedula: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findByCedulaUsingGET(cedula: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (cedula === null || cedula === undefined) {
+            throw new Error('Required parameter cedula was null or undefined when calling findByCedulaUsingGET.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (JWT) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<any>('get',`${this.basePath}/personas/findByCedula/${encodeURIComponent(String(cedula))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
      * getById
      * 
      * @param id id

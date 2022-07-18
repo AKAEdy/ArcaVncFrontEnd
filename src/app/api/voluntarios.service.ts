@@ -161,13 +161,13 @@ export class VoluntariosService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public findByCedulaUsingGET(cedulaPersona: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public findByCedulaUsingGET(cedulaPersona: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public findByCedulaUsingGET(cedulaPersona: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public findByCedulaUsingGET(cedulaPersona: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public findByCedulaUsingGET1(cedulaPersona: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public findByCedulaUsingGET1(cedulaPersona: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public findByCedulaUsingGET1(cedulaPersona: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public findByCedulaUsingGET1(cedulaPersona: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (cedulaPersona === null || cedulaPersona === undefined) {
-            throw new Error('Required parameter cedulaPersona was null or undefined when calling findByCedulaUsingGET.');
+            throw new Error('Required parameter cedulaPersona was null or undefined when calling findByCedulaUsingGET1.');
         }
 
         let headers = this.defaultHeaders;

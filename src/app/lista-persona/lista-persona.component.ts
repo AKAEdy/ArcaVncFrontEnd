@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonasService } from 'app/api/personas.service';
 import { Persona } from 'app/model/persona';
+import { PersonaDtoExtends } from 'app/model/personaDtoExtends';
 import { data } from 'jquery';
 import Swal from 'sweetalert2';
 
@@ -11,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class ListaPersonaComponent implements OnInit {
   personas: Persona[] = []
-  personaid: Persona = {
+  personaid: PersonaDtoExtends = {
     apellidos: '',
     cedula: '',
     celular: '',
@@ -20,9 +21,10 @@ export class ListaPersonaComponent implements OnInit {
     nombre: '',
     telefono: ''
   }
+  totalPaginas:number
   cedulas: string
   pagina = 0;
-  tamaño = 2;
+  tamaño = 5;
   constructor(private personaService: PersonasService) { }
 
   ngOnInit(): void {
@@ -33,7 +35,8 @@ export class ListaPersonaComponent implements OnInit {
   listarAllPersonas() {
 
     this.personaService.getPersonasUsingGET1(this.pagina, this.tamaño).subscribe(data => {
-      this.personas = data.content
+      this.personas = data.content.slice().reverse()
+      this.totalPaginas= data.totalPages      
     })
   }
   updatePersonas() {
@@ -118,9 +121,14 @@ export class ListaPersonaComponent implements OnInit {
     document.getElementById('tabla').style.display='none'
   }
   next() {
-    this.pagina = this.pagina + 1;
-    console.log(this.pagina);
-    this.listarAllPersonas();
+    if(this.pagina < this.totalPaginas-1 ){
+      this.pagina = this.pagina + 1;
+      console.log('suma '+ this.pagina);
+      
+      console.log('total ', this.totalPaginas);
+      this.listarAllPersonas();
+    }
+    
   }
 
   previous() {

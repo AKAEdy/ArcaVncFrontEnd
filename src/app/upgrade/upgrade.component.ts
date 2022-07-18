@@ -171,12 +171,16 @@ borrarFicha(id: number) {
        'Registro eliminado exitosamente.',
        'success'
      )
+     this.fichaClinService.deleteUsingDELETE2(id).subscribe(data => {
+
+    })
      this.irAtras();
    }
+   else if (result.isDenied) {
+    Swal.fire('Acción cancelada', '', 'info')
+  }
  })
- this.fichaClinService.deleteUsingDELETE2(id).subscribe(data => {
 
- })
 
 }
 
@@ -198,12 +202,16 @@ borrarVacuna(id: number) {
        'Registro eliminado exitosamente.',
        'success'
      )
+     this.carnet.deleteUsingDELETE(id).subscribe(data => {
+
+    })
      this.irAtras();
    }
+   else if (result.isDenied) {
+    Swal.fire('Acción cancelada', '', 'info')
+  }
  })
- this.carnet.deleteUsingDELETE(id).subscribe(data => {
 
- })
 
 }
 }

@@ -32,14 +32,16 @@ export class EditCarnetComponent implements OnInit {
         this.volver();
       }
     );
-    this.getAllVacunas();}
+    this.getAllVacunas();
+
+  }
 
 
 
 
-volver(){
-  this.router.navigate(["/upgrade", this.carnetVacuna.id]);
-}
+  volver(){
+    this.router.navigate(["/table-list"]);
+  }
 getAllVacunas() {
   this.vacunaServic.getVacunasUsingGET().subscribe((data) => {
     this.vacunas = data;
@@ -71,7 +73,9 @@ modificarCarnet(){
     () => {
       this.onComplete(this.carnetVacuna);
       location.reload();
+     
     }
+   
   );
   this.volver();
 }

@@ -34,7 +34,7 @@
                                             {{cita.fechaCita}}
                                         </td>
                                         <td>
-                                            {{cita.nombreCliente}}
+                                            {{cita.cliente.nombre + ' ' + cita.cliente.apellidos}}
                                         </td>
                                         <td>
                                             {{cita.motivo}}
@@ -48,15 +48,7 @@
                                             </td>
                                         </ng-template>
                                         <td>
-                                            <!-- <button _ngcontent-uqa-c89="" mat-raised-button="" type="submit"
-                                                class="btn btn-warning mr-2" (click)="getCitasById(cita.id)"><span
-                                                    class="mat-button-wrapper"><i _ngcontent-uqa-c89=""
-                                                        class="material-icons">mode_edit</i>
-                                                    <div _ngcontent-uqa-c89="" class="ripple-container"></div>
-                                                </span><span matripple=""
-                                                    class="mat-ripple mat-button-ripple"></span><span
-                                                    class="mat-button-focus-overlay"></span></button> -->
-                                                    <a href="#Modal" role="button" class="btn btn-large btn-success" data-toggle="modal" (click)="getCitasById(cita.id)">AGREGAR CLIENTE</a>
+                                                    <a href="#Modal" role="button" class="btn btn-large btn-warning" data-toggle="modal" (click)="getCitasById(cita.id)">EDITAR CITA</a>
                                         </td>
                                         <td>
                                             <button _ngcontent-die-c89="" mat-raised-button="" type="submit"
@@ -111,8 +103,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <mat-form-field class="example-full-width">
-                            <input matInput placeholder="NOMBRE DEL CLIENTE" type="text"
-                                [(ngModel)]="citasid">
+                            <input matInput placeholder="NOMBRE DEL CLIENTE"  type="text"
+                                [(ngModel)]="citasid.cliente.nombre">
                         </mat-form-field>
                     </div>
                 </div>
@@ -163,7 +155,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="FECHA" type="date" [(ngModel)]="citasid.fechaCita">
+                                    <input matInput placeholder="FECHA" type="text" [(ngModel)]="citasid.fechaCita">
                                 </mat-form-field>
                             </div>
                         </div>
@@ -172,7 +164,7 @@
                             <div class="col-md-12">
                                 <mat-form-field class="example-full-width">
                                     <input matInput placeholder="NOMBRE DEL CLIENTE" type="text"
-                                        [(ngModel)]="citasid">
+                                        [(ngModel)]="citasid.cliente.nombre +' '+ citasid.cliente.apellidos  ">
                                 </mat-form-field>
                             </div>
                         </div>

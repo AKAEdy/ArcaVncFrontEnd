@@ -12,7 +12,7 @@
 import { ServicioArcaDtoExtends } from './servicioArcaDtoExtends';
 
 export interface CitaServiciosArca { 
-    clienteId?: number;
+    cliente_id?: number;
     estado?: boolean;
     fechaCita?: string;
     motivo?: string;

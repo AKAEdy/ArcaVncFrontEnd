@@ -12,15 +12,15 @@
                       <div class="card">
                         <div class="col-12">
                           <div class="container">
-                            <button type="button" class="btn2" (click)="irAtras()"style="margin:2em;">
+                            <button type="button" class="btn" (click)="irAtras()"style="margin:2em;">
                               <i class="fa fa-reply" aria-hidden="true"></i>
                              Regresar
                             </button>
-                            <button type="button" class="btn2" (click)="irFicha()" >
+                            <button type="button" class="btn btn-danger" (click)="irFicha()" >
                               <i class="fa fa-plus-square" aria-hidden="true"></i>
                               Nueva Ficha
                             </button>
-                            <button type="button" class="btn2" (click)="irVacuna(animal.id)" >
+                            <button type="button" class="btn btn-success" (click)="irVacuna(animal.id)" >
                               <i class="fa fa-plus-square" aria-hidden="true"></i>
                               Agregar Vacuna
                             </button>
@@ -115,14 +115,16 @@
                             </div>  </div>
                             </div>
                           </div>
-                        </div>
-
+                        
+<br>
 
                  
                               <div class="container" >
+                                <div class="card">
+                                  <div class="col-12">
                   
-                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">fICHAS CLINICAS</button>
-                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demovacu">VACUNAS</button>
+                                <button type="button" class="btn btn-danger " data-toggle="collapse" data-target="#demo"><i class="fa fa-file-text-o" aria-hidden="true"></i>fICHAS CLINICAS</button>
+                                <button type="button" class="btn btn-danger " data-toggle="collapse" data-target="#demovacu">VACUNAS</button>
                                 <div id="demo" class="collapse">
                                   <table class="table" *ngFor="let ficha of fichaClinica">
                                     <thead>
@@ -145,14 +147,14 @@
                                             <div class="btn-group">
                                                 <div>
                                                     <button mat-raised-button type="submit"
-                                                        class="btn btn-danger btn-round" class="btneditar"
+                                                         class="btneditar btn-success btn-round"
                                                         (click)="irEditarFicha(ficha.id)">
-                                                        <i class="material-icons">mode_edit</i>
+                                                      Ver/Editar
                                                     </button>
                                                 </div>
                                                 <div>
                                                     <button mat-raised-button type="submit"
-                                                        class="btn btn-danger btn-round" class="btneliminar"
+                                                        class="btn btn-danger btn-round" 
                                                         (click)="borrarFicha(ficha.id)">
                                                         <i class="material-icons">delete</i>
                                                     </button>
@@ -196,14 +198,14 @@
                                           <div class="btn-group">
                                               <div>
                                                   <button mat-raised-button type="submit"
-                                                      class="btn btn-danger btn-round" class="btneditar"
+                                                       class="btneditar btn-success btn-round"
                                                       (click)="irEditarCarnet(carnet.id)">
-                                                      <i class="material-icons">mode_edit</i>
+                                                      Ver/Editar
                                                   </button>
                                               </div>
                                               <div>
                                                   <button mat-raised-button type="submit"
-                                                      class="btn btn-danger btn-round" class="btneliminar"
+                                                      class="btneliiminar btn-danger btn-round" 
                                                       (click)="borrarVacuna(carnet.id)">
                                                       <i class="material-icons">delete</i>
                                                   </button>
@@ -220,12 +222,12 @@
                               </div></div>
                      
                     </div>
-                    
+                      </div></div>
                     </div>
 
                               
           </div>
-                  </div>
+                  </div></div>
                   </div>
                   </div>
       
