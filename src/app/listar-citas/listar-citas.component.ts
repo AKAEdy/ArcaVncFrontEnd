@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CitasService } from 'app/api/citas.service';
 import { CitaArcaExtends } from 'app/model/citaArcaExtends';
 import { CitaDto } from 'app/model/citaDto';
-import { CitaDtoExtends } from 'app/model/citaDtoExtends';
 
 @Component({
   selector: 'listar-citas',
@@ -55,9 +54,11 @@ citasid: CitaArcaExtends={}
     this.citaService.getCitaPorIdUsingGET(id).subscribe(data => {
   
       this.citasid = data
+     console.log(this.citasid);
      
     })
   }
+  
   deleteCitas(id: number){
     this.citaService.eliminarCitaUsingDELETE(id).subscribe(data => {
       location.reload
@@ -70,6 +71,8 @@ citasid: CitaArcaExtends={}
     document.getElementById('tabla').style.display = 'block'
   }
   mostrarEditar() {
+    console.log(this.citasid.cliente.nombre);
+    
     document.getElementById('tarjeta').style.display = 'block'
     document.getElementById('tabla').style.display = 'none'
   }
