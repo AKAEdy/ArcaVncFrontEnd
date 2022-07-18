@@ -1,0 +1,192 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header card-header-danger">
+        <h4 class="card-title">REGISTRO DE USUARIOS</h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input
+                type="text"
+                matInput
+                placeholder="BUSCAR PERSONA POR CEDULA"
+                [(ngModel)]="cedula"
+                maxlength="10"
+                minlength="10"
+                onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;"
+              />
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-6">
+            <button
+              mat-raised-button
+              type="submit"
+              class="btn btn-danger"
+              (click)="buscarPersonaByCedula()"
+            >
+              BUSCAR
+            </button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                placeholder="APELLIDO"
+                [(ngModel)]="persona.apellidos"
+              />
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                placeholder="NOMBRE"
+                [(ngModel)]="persona.nombre"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                placeholder="TELEFONO"
+                type="text"
+                [(ngModel)]="persona.telefono"
+                maxlength="9"
+                minlength="7"
+                onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;"
+              />
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                placeholder="CELULAR"
+                type="text"
+                [(ngModel)]="persona.celular"
+                maxlength="10"
+                minlength="10"
+                onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                placeholder="DIRECCION"
+                type="text"
+                [(ngModel)]="persona.direccion"
+              />
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                placeholder="EMAIL ADDRESS"
+                type="email"
+                [(ngModel)]="persona.correo"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border text-danger" role="status" id="spinner">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div  id="rolesid">
+              <label id="lop1">ROLES</label>
+              <br />
+              <select
+                id="rol"
+                name="selectroles"
+                [(ngModel)]="roles"
+                (click)="mostrarRoles()"
+              >
+                <option *ngFor="let role of rol" [ngValue]="role">
+                  {{ role.nombre }}
+                </option>
+              </select>
+            </div>
+
+            <div>
+              <div id="opcion1" style="display: none">
+                <br />
+                <mat-form-field class="example-full-width">
+                  <input
+                    matInput
+                    placeholder="ACTIVIDAD"
+                    type="text"
+                    [(ngModel)]="actividad"
+                  />
+                </mat-form-field>
+              </div>
+              <div id="opcion3" style="display: none">
+                <br />
+                <mat-form-field class="example-full-width">
+                  <input
+                    matInput
+                    placeholder="CARGO"
+                    type="text"
+                    [(ngModel)]="cargo"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div>
+              <div id="opcion2" style="display: none">
+                <br />
+                <mat-form-field class="example-full-width">
+                  <input
+                    matInput
+                    placeholder="TIPO"
+                    type="text"
+                    [(ngModel)]="tipo"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <button
+              id="botonusuario"
+              mat-raised-button
+              type="submit"
+              class="btn btn-danger pull-right"
+              (click)="createUsuarios()"
+            >
+              REGISTRAR
+            </button>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>

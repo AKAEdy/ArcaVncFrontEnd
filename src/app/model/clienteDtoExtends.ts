@@ -11,12 +11,12 @@
  */
 
 export interface ClienteDtoExtends { 
-    apellidos: string;
-    cedula: string;
-    celular: string;
-    correo: string;
-    direccion: string;
+    apellidos?: string;
+    cedula?: string;
+    celular?: string;
+    correo?: string;
+    direccion?: string;
     id?: number;
-    nombre: string;
-    telefono: string;
+    nombre?: string;
+    telefono?: string;
 }

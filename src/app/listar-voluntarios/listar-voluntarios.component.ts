@@ -167,7 +167,7 @@ this.mostrarEditar();
   }
 
   getByCedula(){
-    this.voluntarioService.findByCedulaUsingGET(this.buscarCedula).subscribe(data =>{
+    this.voluntarioService.findByCedulaUsingGET1(this.buscarCedula).subscribe(data =>{
   this.voluntarioscedula = data
   this.idvoluntario=this.voluntarioscedula.id
   this.cedulas=this.voluntarioscedula.persona.cedula

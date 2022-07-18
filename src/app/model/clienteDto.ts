@@ -11,11 +11,11 @@
  */
 
 export interface ClienteDto { 
-    apellidos: string;
-    cedula: string;
-    celular: string;
-    correo: string;
-    direccion: string;
-    nombre: string;
-    telefono: string;
+    apellidos?: string;
+    cedula?: string;
+    celular?: string;
+    correo?: string;
+    direccion?: string;
+    nombre?: string;
+    telefono?: string;
 }
