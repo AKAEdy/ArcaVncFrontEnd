@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CitasService } from 'app/api/citas.service';
 import { VeterinariosService } from 'app/api/veterinarios.service';
-import { Cita } from 'app/model/cita';
-import { CitaDto } from 'app/model/citaDto';
 import { CitaServiciosArca } from 'app/model/citaServiciosArca';
 import { Veterinario } from 'app/model/veterinario';
 import Swal from 'sweetalert2';

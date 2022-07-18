@@ -32,24 +32,24 @@ citasid: CitaArcaExtends={}
     })
   }
   updateCitas(){
-    this.citaService.modificarCitaUsingPUT(this.cita = 
-      {
-        "estado": true,
-        "fechaCita": "yyyy-MM-dd HH:mm",
-        "motivo": "string",
-        "nombreCliente": "string",
-        "servicios": [
-          {
-            "descripcion": "string",
-            "id": 0,
-            "nombre": "string",
-            "precio": 0
-          }
-        ]
-      }, this.citasid.id, this.citasid.veterinario.id).subscribe(data =>{
-      this.citasid = data
-      location.reload
-    })
+    // this.citaService.modificarCitaUsingPUT(this.cita = 
+    //   {
+    //     "estado": true,
+    //     "fechaCita": "yyyy-MM-dd HH:mm",
+    //     "motivo": "string",
+    //     "nombreCliente": "string",
+    //     "servicios": [
+    //       {
+    //         "descripcion": "string",
+    //         "id": 0,
+    //         "nombre": "string",
+    //         "precio": 0
+    //       }
+    //     ]
+    //   }, this.citasid.id, this.citasid.veterinario.id).subscribe(data =>{
+    //   this.citasid = data
+    //   location.reload
+    // })
   }
   getCitasById(id: number){
     this.citaService.getCitaPorIdUsingGET(id).subscribe(data => {
