@@ -11,13 +11,7 @@ import { CitaDtoExtends } from 'app/model/citaDtoExtends';
 })
 export class ListarCitasComponent implements OnInit {
 citas: CitaArcaExtends[]=[];
-cita: CitaDto={
-  estado: false,
-  fechaCita: '',
-  motivo: '',
-  nombreCliente: '',
-  servicios: []
-}
+cita: CitaDto={}
 citasid: CitaArcaExtends={}
 
   constructor(private citaService: CitasService) { }

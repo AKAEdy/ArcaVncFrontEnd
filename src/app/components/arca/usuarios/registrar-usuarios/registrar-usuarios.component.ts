@@ -18,16 +18,16 @@ import Swal from "sweetalert2";
   styleUrls: ["./registrar-usuarios.component.css"],
 })
 export class RegistrarUsuariosComponent implements OnInit {
-  usuarios: UsuarioDtoExtends = {};
-  persona: PersonaDtoExtends = {};
-  veterinario: VeterinarioDTO = {};
-  voluntario: VoluntarioDto = {};
-  rol: Array<RolDto>;
-  cedula: string;
-  roles: RolDto;
-  actividad: string;
-  tipo: string;
-  cargo: string;
+  usuarios?: UsuarioDtoExtends = {};
+  persona?: PersonaDtoExtends = {};
+  veterinario?: VeterinarioDTO = {};
+  voluntario?: VoluntarioDto = {};
+  rol?: Array<RolDto>;
+  cedula?: string;
+  roles?: RolDto;
+  actividad?: string;
+  tipo?: string;
+  cargo?: string;
   constructor(
     private usuarioService: UsuariosService,
     private router: Router,
@@ -258,83 +258,8 @@ export class RegistrarUsuariosComponent implements OnInit {
     });
   }
 
-  // createPersonas() {
-  //   this.persona.cedula = this.cedula
-  //   // if (this.persona.cedula === undefined || this.persona.nombre === undefined || this.persona.apellidos === undefined
-  //   //   || this.persona.correo === undefined || this.persona.telefono === undefined || this.persona.celular === undefined
-  //   //   || this.persona.direccion === undefined || this.persona.cedula === "" || this.persona.nombre === "" ||
-  //   //   this.persona.apellidos === "" || this.persona.correo === "" || this.persona.telefono === "" || this.persona.celular === ""
-  //   //   || this.persona.direccion === "") {
-  //     Swal.fire({
-  //       icon: 'error',
-  //       title: 'Oops...',
-  //       text: 'Ingrese todos los datos!',
-  //     })
-  //   // } else {
-  //     Swal.fire({
-  //       title: 'Seguro quiererealizar esta acción?',
-  //       showDenyButton: true,
-  //       showCancelButton: true,
-  //       confirmButtonText: 'Registrar',
-  //       denyButtonText: `No registrar`,
-  //     }).then((result) => {
-  //       /* Read more about isConfirmed, isDenied below */
-  //       if (result.isConfirmed) {
-  //         this.personaService.createUsingPOST4(this.persona).subscribe(data => {
-  //           Swal.fire({
-  //             position: 'center',
-  //             icon: 'success',
-  //             title: 'Persona registrada exitosamente',
-  //             showConfirmButton: false,
-  //             timer: 1500
-  //           })
-
-  //           Swal.fire({
-  //             title: 'Desea asignarle un rol?',
-  //             showDenyButton: true,
-  //             confirmButtonColor: '#3A8D40',
-  //             confirmButtonText: 'OK',
-  //             denyButtonText: `No`,
-  //           }).then((result) => {
-  //             /* Read more about isConfirmed, isDenied below */
-  //             if (result.isConfirmed) {
-  //               document.getElementById("rolesid").style.display="block"
-  //               document.getElementById("botonpersona").style.display="none"
-  //               document.getElementById("botonusuario").style.display="block"
-  //               this.buscarPersonaByCedula()
-  //             } else if (result.isDenied) {
-
-  //             }
-  //           })
-
-  //         })
-  //       }
-  //       else if (result.isDenied) {
-  //         Swal.fire('Acción cancelada', '', 'info')
-  //       }
-  //     })
-  //   // }
-
-  // }
 
   irAgregarPersona() {
     this.router.navigateByUrl("/registroPersonas");
   }
 }
-
-// precionar boton buscar por cedula
-
-// = {
-//   cargo: this.cargo,
-//   id: 0,
-//   persona:{
-//     apellidos: this.persona.apellidos,
-//     cedula: this.persona.cedula,
-//     celular: this.persona.celular,
-//     correo: this.persona.correo,
-//     direccion: this.persona.direccion,
-//     id: 0,
-//     nombre: this.persona.nombre,
-//     telefono: this.persona.telefono
-//   }
-// }

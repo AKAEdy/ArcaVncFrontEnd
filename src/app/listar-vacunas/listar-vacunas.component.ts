@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VacunasService } from 'app/api/vacunas.service';
 import { Vacuna } from 'app/model/vacuna';
+import { VacunaDTO } from 'app/model/vacunaDTO';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class ListarVacunasComponent implements OnInit {
   vacunas: Vacuna[] = [];
-  vacunasid: Vacuna = {}
+  vacunasid: VacunaDTO = {}
   constructor(private vacunaService: VacunasService) { }
 
   ngOnInit(): void {
