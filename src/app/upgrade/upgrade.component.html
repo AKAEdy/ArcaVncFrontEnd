@@ -115,7 +115,7 @@
                             </div>  </div>
                             </div>
                           </div>
-                        </div>
+                        
 <br>
 
                  
@@ -123,8 +123,8 @@
                                 <div class="card">
                                   <div class="col-12">
                   
-                                <button type="button" class="btn " data-toggle="collapse" data-target="#demo"><i class="fa fa-file-text-o" aria-hidden="true"></i>fICHAS CLINICAS</button>
-                                <button type="button" class="btn " data-toggle="collapse" data-target="#demovacu">VACUNAS</button>
+                                <button type="button" class="btn btn-danger " data-toggle="collapse" data-target="#demo"><i class="fa fa-file-text-o" aria-hidden="true"></i>fICHAS CLINICAS</button>
+                                <button type="button" class="btn btn-danger " data-toggle="collapse" data-target="#demovacu">VACUNAS</button>
                                 <div id="demo" class="collapse">
                                   <table class="table" *ngFor="let ficha of fichaClinica">
                                     <thead>
@@ -147,14 +147,14 @@
                                             <div class="btn-group">
                                                 <div>
                                                     <button mat-raised-button type="submit"
-                                                         class="btneditar btn-danger btn-round"
+                                                         class="btneditar btn-success btn-round"
                                                         (click)="irEditarFicha(ficha.id)">
                                                       Ver/Editar
                                                     </button>
                                                 </div>
                                                 <div>
                                                     <button mat-raised-button type="submit"
-                                                        class="btn btn-danger btn-round" class="btneliminar"
+                                                        class="btn btn-danger btn-round" 
                                                         (click)="borrarFicha(ficha.id)">
                                                         <i class="material-icons">delete</i>
                                                     </button>
@@ -198,14 +198,14 @@
                                           <div class="btn-group">
                                               <div>
                                                   <button mat-raised-button type="submit"
-                                                       class="btneditar btn-danger btn-round"
+                                                       class="btneditar btn-success btn-round"
                                                       (click)="irEditarCarnet(carnet.id)">
                                                       Ver/Editar
                                                   </button>
                                               </div>
                                               <div>
                                                   <button mat-raised-button type="submit"
-                                                      class="btn btn-danger btn-round" class="btneliminar"
+                                                      class="btneliiminar btn-danger btn-round" 
                                                       (click)="borrarVacuna(carnet.id)">
                                                       <i class="material-icons">delete</i>
                                                   </button>
@@ -227,7 +227,7 @@
 
                               
           </div>
-                  </div>
+                  </div></div>
                   </div>
                   </div>
       

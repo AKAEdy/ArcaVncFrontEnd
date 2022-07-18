@@ -1,15 +1,11 @@
-<div class="container-fluid">
-  <div class="main-content">
-    <div class="container-fluid">
+<div class="main-content">
+  <div class="container-fluid">
       <div class="row">
-
-        <div class="card ">
-          <div class="card-header card-header-danger">
-            <h3 class="card-title">LISTADO DE MASCOTAS</h3>
-            
-          </div>
-        </div>
-      </div>
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">LISTAS DE MASCOTAS</h4>
+                  </div>
 
 
 
@@ -40,10 +36,10 @@
           <div class="col-lg-3 col-md-3" *ngFor="let animal of animales | filteranimales: filterAnimal">
 
             <!-- Card -->
-            <div class="color" class="card border-danger mb-3" style="max-width: 18rem;" style="background-color: rgb(240, 240, 240);">
-              <h3 class="card-title" style="text-transform: uppercase">
+            <div class="color" class="card border-danger mb-3" style="background-color: rgb(240, 240, 240);" >
+              <h3 class="card-title" style="text-transform: uppercase"><strong>
                  {{animal.nombre}}
-              </h3>
+                </strong> </h3>
             
               <div class="card-header">
                 <img  class="circulo"  src={{animal.urlImagenAnimal}}   />
@@ -57,16 +53,16 @@
 
               
 
-                <p class="card-text" >
+                <h5> 
                   Raza: {{animal.raza}}
-                </p>
+                </h5>
 
-                 <p class="card-text">
+                <h5>  
                   Sexo:  {{ animal.sexo}}
-                </p>
-                <p class="card-text">
+                </h5>
+                <h5>  
                   Edad:  {{ animal.edad}}
-                </p>
+                </h5>
 
               </div>
             <br>
@@ -74,7 +70,7 @@
               <div class="card-footer-center">
 
                 <button mat-raised-button type="button" 
-                class="btndetalle  btn-success" (click)="Detalle(animal.id)">
+                class="btndetalle " (click)="Detalle(animal.id)">
                 Ver
             </button>
                
@@ -107,7 +103,9 @@
           
 </div>
 </div>
-</div>
+
 </div>
 
 
+</div>
+</div></div>
