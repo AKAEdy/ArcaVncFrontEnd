@@ -48,7 +48,7 @@ import {MatInputModule} from '@angular/material/input';
     HttpClientModule,
     ComponentsModule,
     RouterModule,
-    AppRoutingModule,
+	AppRoutingModule,
   ],
   declarations: [
     AppComponent,

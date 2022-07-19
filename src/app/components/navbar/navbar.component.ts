@@ -135,32 +135,21 @@ export class NavbarComponent implements OnInit {
 		}
 	}
 	getTitle() {
-		var titlee = this.location.prepareExternalUrl(this.location.path());
-		// if (titlee.charAt(0) === '#') {
-		// 	titlee = titlee.slice(1);
-		// }
+		var titlee = this.location.prepareExternalUrl(this.location.path()).split("#/")[1];
 
 		// Crea una lista nueva con todas las url y titulos correspondientes, ya sea menu general o submenus(items)
-		let tittles = this.listTitles.reduce(
-			(items, menu) => items.concat(menu.items ?? menu),
-			[]
-		);
+		let tittles = this.listTitles.reduce((items, menu) => items.concat(menu.items ?? menu),[]);
 
 		// Si hay algun objeto vacio proveniente del menu, lo elimina para no causar un error con undeffined al tratar de extraer la url
-		let menu = tittles
-			.filter((items) => {
-				return Object.keys(items).length !== 0;
-			})
-			.find((menu) => menu["url"] === titlee.split("#/")[1]);
+		let menu = tittles.filter((items) =>{return Object.keys(items).length !== 0}).find((menu) => menu["url"] === titlee);
 
-		return menu?.tittle ?? "Dashboard";
 
-		// for (var item = 0; item < this.listTitles.length; item++) {
-		// 	if (this.listTitles[ item ].path === titlee) {
-		// 		return this.listTitles[ item ].title;
-		// 	}
-		// }
-		// return 'Dashboard';
+		// let subTittles = tittles.reduce((subitems, menu) => subitems.concat(menu.subitems ?? menu),[]);
+
+		// let submenu = subTittles.filter((subitems) => {return Object.keys(subitems).length !== 0}).find((menu) => menu?.url === titlee );
+
+		return menu?.tittle ?? 'Dashboard';
+		// return menu?.tittle ?  menu?.tittle : submenu?.subtittle ;
 	}
 
 	abrirperfil(){

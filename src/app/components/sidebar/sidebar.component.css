@@ -1,10 +1,13 @@
-.arca {
+/* .arca {
 	padding: 0% !important;
-}
+} */
 
 .arca>a>img {
 	width: 85px;
 	height: 85px;
+}
+.arca>a>span>img {
+	width: 105px;
 }
 
 ul {
