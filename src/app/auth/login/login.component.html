@@ -1,23 +1,22 @@
-<div class="loginpage">
-  <div class="login-box">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNpkEISR_YaCa0aHGyEeP_6n9W8bArBeT1bA&usqp=CAU"
-      class="avatar" alt="Avatar Image">
-    <h1>Iniciar Sesión</h1>
-    <div class="card-body">
-      <form #f="ngForm" (ngSubmit)="onLogin(f)" novalidate>
-        <div class="alert alert-danger text-center" *ngIf="errorMessage" role="alert">
-          {{errorMessage}}
-        </div><!-- USERNAME INPUT -->
-        <label for="username">Nombre de Usuario</label>
-        <input type="text" name="username" required="true" #username="ngModel" placeholder="Nombre de usuario" ngModel>
-        <!-- PASSWORD INPUT -->
-        <label for="password">Contraseña</label>
-        <input type="password" name="password" #password="ngModel" required="true" placeholder="Contraseña" ngModel>
-        <!-- Submit -->
-        <input type="submit" value="Log In" [disabled]="!f.valid">
-        <!-- <a href="#">Lost your Password?</a><br> -->
-        <!-- <a href="/#/signup">Crear cuenta?</a> -->
-      </form>
-    </div>
-  </div>
-</div>
+<body>
+	<div class="loginpage">
+		<div class="login-box">
+			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNpkEISR_YaCa0aHGyEeP_6n9W8bArBeT1bA&usqp=CAU"
+				class="avatar" alt="Avatar Image">
+			<h1>Iniciar Sesión</h1>
+			<div class="card-body">
+				<form [formGroup]="loginForm" (ngSubmit)="onLogin()" novalidate>
+					<div class="alert alert-danger text-center" *ngIf="errorMessage" role="alert">
+						{{errorMessage}}
+					</div>
+					<label for="username">Nombre de Usuario</label>
+					<input  type="text" name="username" formControlName="username" required
+						placeholder="Nombre de usuario">
+					<label for="password">Contraseña</label>
+					<input type="password" name="password" formControlName="password" required placeholder="Contraseña">
+					<input type="submit" value="Log In" [disabled]="!loginForm.valid">
+				</form>
+			</div>
+		</div>
+	</div>
+</body>

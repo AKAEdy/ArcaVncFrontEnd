@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CitasService } from 'app/api/citas.service';
+import { VeterinariosService } from 'app/api/veterinarios.service';
 import { CitaArcaExtends } from 'app/model/citaArcaExtends';
 import { CitaDto } from 'app/model/citaDto';
+import { Veterinario } from 'app/model/veterinario';
 
 @Component({
   selector: 'listar-citas',
@@ -10,6 +12,10 @@ import { CitaDto } from 'app/model/citaDto';
 })
 export class ListarCitasComponent implements OnInit {
 citas: CitaArcaExtends[]=[];
+veterinarios: Veterinario [] = [] 
+idVeterinario:string = 'Selecciona un veterinario...'
+fecha: string;
+hora:string = 'Selecciona una hora...'
 cita: CitaDto={
   estado: false,
   fechaCita: '',
@@ -19,10 +25,11 @@ cita: CitaDto={
 }
 citasid: CitaArcaExtends={}
 
-  constructor(private citaService: CitasService) { }
+  constructor(private citaService: CitasService, private veterinarioService: VeterinariosService) { }
 
   ngOnInit(): void {
     this.listarAllCitas();
+    this.llamarVeterinarios();
   }
 
   listarAllCitas(){
@@ -75,6 +82,12 @@ citasid: CitaArcaExtends={}
     
     document.getElementById('tarjeta').style.display = 'block'
     document.getElementById('tabla').style.display = 'none'
+  }
+
+  llamarVeterinarios(){
+    this.veterinarioService.getAllVeterinariosUsingGET().subscribe(data =>{
+      this.veterinarios = data
+    })
   }
 
 }

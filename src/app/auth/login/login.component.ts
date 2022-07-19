@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { NgForm } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { LoginUsuario } from "app/models/login-usuario";
 import { AuthService } from "app/service/auth.service";
@@ -11,24 +11,22 @@ import Swal from "sweetalert2";
 	styleUrls: ["./login.component.css"],
 })
 export class LoginComponent implements OnInit {
-	public showPassword: boolean = false;
 
 	loginUsuario: LoginUsuario;
-	username: string;
-	password: string;
-	errorMessage: string;
+	errorMessage!: string;
+	loginForm!: FormGroup;
 
-	constructor(private authService: AuthService, private router: Router) {}
+	constructor(private authService: AuthService, private router: Router) { }
 
-	ngOnInit() {}
-
-	public showPass(): void {
-		this.showPassword = !this.showPassword;
+	ngOnInit() {
+		this.loginForm = new FormGroup({
+			username: new FormControl("", [Validators.required]),
+			password: new FormControl("", [Validators.required])
+		})
 	}
 
-	onLogin(f: NgForm): void {
-		this.errorMessage = "";
-		this.loginUsuario = f.value;
+	onLogin(): void {
+		this.loginUsuario = this.loginForm.value;
 		this.authService.login(this.loginUsuario).subscribe(
 			(data) => {
 				const Toast = Swal.mixin({
@@ -43,12 +41,22 @@ export class LoginComponent implements OnInit {
 				});
 			},
 			(err) => {
-				console.warn("code", err);
+				this.errorMessage = "";
 				if (err.error.code === 401) {
 					this.errorMessage = err.error.message;
-				} else if (err.error.code === 400) {
-					if (err.error.errors.length === 1) {
+				}
+
+				if (err.error.code === 400) {
+					if (err.error.errors.length === 1 && !err.error.errors.includes('registrado')) {
+						this.errorMessage = err.error.errors[0].split(" ").slice(3).join(" ");
+					}
+
+					if (err.error.errors.includes('Usuario no registrado')) {
 						this.errorMessage = err.error.errors;
+					}
+
+					if (err.error.errors.length === 2) {
+						this.errorMessage = 'Ingrese las credenciales'
 					}
 				}
 			}

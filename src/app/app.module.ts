@@ -42,7 +42,7 @@ import { RolesService } from './api/roles.service';
     HttpClientModule,
     ComponentsModule,
     RouterModule,
-    AppRoutingModule,
+	AppRoutingModule,
   ],
   declarations: [
     AppComponent,

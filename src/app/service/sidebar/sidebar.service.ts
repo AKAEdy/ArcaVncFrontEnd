@@ -36,6 +36,11 @@ export class SidebarService {
 				{
 					tittle: "Listar adoptados",
 					url: "listaAdoptado",
+
+					// subitems: [{
+					// 	subtittle: "SEGUIMIENTO DE LA MASCOTA",
+					// 	url: "registrar-seguimiento"
+					// }]
 					//Los submenus, también pueden tener roles
 				},
 				{
@@ -56,6 +61,11 @@ export class SidebarService {
 				{
 					tittle: "Informacion Mascotas",
 					url: "table-list",
+
+					subitems: [{
+						subtittle: "PERFIL ANIMAL",
+						url: "upgrade/",
+					}]
 				},
 				{
 					tittle: "Registrar nueva Mascota",
