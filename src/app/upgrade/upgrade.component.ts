@@ -35,7 +35,8 @@ ngOnInit() {
  const id = this.activatedRoute.snapshot.params.id;
  this.es.getAnimalPorIdUsingGET(id).subscribe(data =>{
    this.animal= data.animal;
-   localStorage.setItem('anima', JSON.stringify(this.animal));
+  
+   localStorage.setItem("animal", JSON.stringify(this.animal));
    console.log(data,"datos de animal");
 
 
@@ -174,7 +175,7 @@ borrarFicha(id: number) {
      this.fichaClinService.deleteUsingDELETE2(id).subscribe(data => {
 
     })
-     this.irAtras();
+    
    }
    else if (result.isDenied) {
     Swal.fire('Acción cancelada', '', 'info')
@@ -205,7 +206,7 @@ borrarVacuna(id: number) {
      this.carnet.deleteUsingDELETE(id).subscribe(data => {
 
     })
-     this.irAtras();
+   
    }
    else if (result.isDenied) {
     Swal.fire('Acción cancelada', '', 'info')

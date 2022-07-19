@@ -27,14 +27,14 @@
                             <div class="row">
                                 <div class="col-md-12">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="CANTIDAD" type="text" name="cantidad" #cantidad="ngModel" [(ngModel)]="medicamento.cantidad">
+                                    <input matInput placeholder="CANTIDAD" type="text" name="cantidad" #cantidad="ngModel" [(ngModel)]="medicamento.cantidad"   onkeypress="if ( isNaN( String.fromCharCode(event.keyCode))) return false;">
                                   </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="PRECIO $" type="text" name="precio" #precio="ngModel" [(ngModel)]="medicamento.precio">
+                                    <input matInput placeholder="PRECIO $" type="text" name="precio" #precio="ngModel" [(ngModel)]="medicamento.precio"onkeypress="if ( isNaN( String.fromCharCode(event.keyCode))) return false;">
                                   </mat-form-field>
                                 </div>
                             </div>

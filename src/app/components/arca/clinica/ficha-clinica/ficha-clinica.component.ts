@@ -36,8 +36,8 @@ public formSubmitted = false;
   
   ngOnInit(): void {
 
-    this.animal = JSON.parse(localStorage.getItem('anima'));
-    this.animal = JSON.parse(localStorage.getItem('animal')).animal;
+   // this.animal = JSON.parse(localStorage.getItem('anima'));
+    this.animal = JSON.parse(localStorage.getItem('animal'));
     // igualando objetos de tipo cualquiera con datos almacenados en localStorage
     this.loginUsuario = JSON.parse(localStorage.getItem('loginUsuario')).persona;
   } 
@@ -56,7 +56,9 @@ public formSubmitted = false;
         
         this.fichasClinicasService.createUsingPOST2(this.fichaClinicaRqstDTO={
           alimentacion:  this.fichaClinicaRqstDTO.alimentacion,
-          animalId: this.animal.id,
+
+          animalId: this.animal.animal.id,
+          
           conjuntiva:  this.fichaClinicaRqstDTO.conjuntiva,
           costo:  this.fichaClinicaRqstDTO.costo,
           diagnosticoDiferencial:  this.fichaClinicaRqstDTO.diagnosticoDiferencial,
@@ -113,7 +115,7 @@ public formSubmitted = false;
  this.router.navigateByUrl("/tratamiento")
       }
       irAtras() {
-        this.router.navigate(["/upgrade", this.animal.id]);
+        this.router.navigate(["/upgrade", this.animal.animal.id]);
       }
 }
 

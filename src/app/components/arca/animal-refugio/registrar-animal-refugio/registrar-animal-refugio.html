@@ -209,7 +209,7 @@
                           class="form-control"
                           name="edad"
                           #edad="ngModel"
-                          [(ngModel)]="animal.edad"
+                          [(ngModel)]="animal.edad"  onkeypress="if ( isNaN( String.fromCharCode(event.keyCode))) return false;"
                           required
                         />
                         <div
@@ -225,12 +225,12 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <input
-                          type="number"
+                          type="text"
                           placeholder="Peso"
                           class="form-control"
                           name="peso"
                           #peso="ngModel"
-                          [(ngModel)]="animal.peso"
+                          [(ngModel)]="animal.peso" maxlength="9" minlength="7" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode))) return false;"
                           required
                         />
                         <div

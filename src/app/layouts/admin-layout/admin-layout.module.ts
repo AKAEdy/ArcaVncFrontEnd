@@ -52,6 +52,7 @@ import { ListarUsuariosComponent } from '../../components/arca/usuarios/listar-u
 import { EditCarnetComponent } from 'app/edit-carnet/edit-carnet.component';
 import { EditFichaComponent } from 'app/edit-ficha/edit-ficha.component';
 import { RegistrarCitasComponent } from 'app/components/arca/servicios-arca/registrar-citas/registrar-citas.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import { RegistrarCitasComponent } from 'app/components/arca/servicios-arca/regi
     MatSortModule,
     MatStepperModule,
 	  NgxPrintModule,
-	  AlarmModule
+	  AlarmModule,
+    MatTabsModule,
   ],
   declarations: [
     DashboardComponent,

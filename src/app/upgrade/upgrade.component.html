@@ -16,11 +16,11 @@
                               <i class="fa fa-reply" aria-hidden="true"></i>
                              Regresar
                             </button>
-                            <button type="button" class="btn btn-danger" (click)="irFicha()" >
+                            <button type="button" class="btn btn-info" (click)="irFicha()" >
                               <i class="fa fa-plus-square" aria-hidden="true"></i>
                               Nueva Ficha
                             </button>
-                            <button type="button" class="btn btn-success" (click)="irVacuna(animal.id)" >
+                            <button type="button" class="btn btn-info" (click)="irVacuna(animal.id)" >
                               <i class="fa fa-plus-square" aria-hidden="true"></i>
                               Agregar Vacuna
                             </button>
@@ -114,71 +114,70 @@
                                 </div>
                             </div>  </div>
                             </div>
-                          </div>
-                        
-<br>
+                          
+                        <br>
 
                  
                               <div class="container" >
-                                
-                                  <div class="col-md-12">
-                                    <button type="button" class="btn btn-danger " data-toggle="collapse" data-target="#demo"><i class="fa fa-file-text-o" aria-hidden="true"></i>fICHAS CLINICAS</button>
-                                    <button type="button" class="btn btn-danger " data-toggle="collapse" data-target="#demovacu">VACUNAS</button>
-                                   
+                                <mat-tab-group mat-align-tabs="center">
+                                  <mat-tab label="Fichas Clinicas"> 
                                     <div class="card">
-                                <div id="demo" class="collapse">
-
-                                  <table class="table">
                                     
-                                    <thead>
-                                     
+    
+                                      <table class="table">
                                         
-                                        <th >N° HISTORIA</th>
-                                        <th >FECHA INGRESO</th>
-                                        <th >ACCIONES</th>
-                                     
-                                    </thead>
-                                    <tbody>
-                                      <tr *ngFor="let ficha of fichaClinica">
-                                      
-                                        <td>{{ficha.id}}</td>
-                                        <td>{{ficha.fechaIngreso}}</td>
-                                        <td>
-                                          
-                                          
+                                        <thead>
                                          
-                                            <div class="btn-group">
-                                                <div>
-                                                    <button mat-raised-button type="submit"
-                                                         class="btneditar btn-success btn-round"
-                                                        (click)="irEditarFicha(ficha.id)">
-                                                      Ver/Editar
-                                                    </button>
+                                            
+                                            <th >N° HISTORIA</th>
+                                            <th >FECHA INGRESO</th>
+                                            <th >ACCIONES</th>
+                                         
+                                        </thead>
+                                        <tbody>
+                                          <tr *ngFor="let ficha of fichaClinica">
+                                          
+                                            <td>{{ficha.id}}</td>
+                                            <td>{{ficha.fechaIngreso}}</td>
+                                            <td>
+                                              
+                                              
+                                             
+                                                <div class="btn-group">
+                                                    <div>
+                                                        <button mat-raised-button type="submit"
+                                                             class="btneditar btn-info btn-round"
+                                                            (click)="irEditarFicha(ficha.id)">
+                                                          Ver/Editar
+                                                        </button>
+                                                    </div>
+                                                    <div>
+                                                        <button mat-raised-button type="submit"
+                                                            class="btneliminar btn-danger btn-round" 
+                                                            (click)="borrarFicha(ficha.id)">
+                                                            <i class="material-icons">delete</i>
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <button mat-raised-button type="submit"
-                                                        class="btn btn-danger btn-round" 
-                                                        (click)="borrarFicha(ficha.id)">
-                                                        <i class="material-icons">delete</i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                    
                                         
+                                            
+                                            
+                                            </td>
+                                          </tr>
+                                         
                                         
-                                        </td>
-                                      </tr>
-                                     
-                                    
-                                    </tbody>
-                                  </table>
-                                </div>
-          
-          
-                                <div id="demovacu" class="collapse" >
-                                  <table class="table" >
-                                    <thead class=" text-primary">
-                                     
+                                        </tbody>
+                                      </table>
+                                    </div>
+              </mat-tab>
+
+            
+                                  <mat-tab label="Vacunas"> 
+                                   
+                                      <div class="card">
+                                    <table class="table">
+                                   
+                                     <thead>
                                         
                                         <th >N° VACUNA</th>
                                         <th >NOMBRE</th>
@@ -193,7 +192,7 @@
   
                                         <td>{{carnet.id}}</td>
                                         <td>{{carnet.vacuna.nombre}}</td>
-                                        <td>{{carnet.fechaAplicacion}}</td>
+                                      <td>{{carnet.fechaAplicacion}}</td>
                                         <td>{{carnet.fechaProximaAplicacion}}</td>
                                         <td>{{carnet.vacuna.tipo}}</td>
                                        
@@ -201,7 +200,7 @@
                                           <div class="btn-group">
                                               <div>
                                                   <button mat-raised-button type="submit"
-                                                       class="btneditar btn-success btn-round"
+                                                       class="btneditar btn-info btn-round"
                                                       (click)="irEditarCarnet(carnet.id)">
                                                       Ver/Editar
                                                   </button>
@@ -220,9 +219,14 @@
                                     
                                     </tbody>
                                   </table>
-                                </div>
-          
-                              </div></div>
+                                
+                                      </div>
+                           </mat-tab>
+                                 
+                                </mat-tab-group>
+                                
+                                
+                                  
                      
                     </div>
                       </div></div>
@@ -231,8 +235,8 @@
                               
           </div>
                   </div></div>
-                  </div>
-                  </div>
+                  </div></div>
+                  </div></div>
       
       
 

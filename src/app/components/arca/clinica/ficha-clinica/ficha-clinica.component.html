@@ -115,7 +115,7 @@
                     type="number"
                     name="temperatura"
                     #temperatura="ngModel"
-                    [(ngModel)]="fichaClinicaRqstDTO.temperatura"
+                    [(ngModel)]="fichaClinicaRqstDTO.temperatura" maxlength="3" minlength="2" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode))) return false;"
                     required
                   />
                 </mat-form-field>
@@ -166,7 +166,7 @@
                     matInput
                     placeholder="Frecuencia Cardiaca (F.C)"
                     type="number"
-                    [(ngModel)]="fichaClinicaRqstDTO.frecuenciaCardiaca"
+                    [(ngModel)]="fichaClinicaRqstDTO.frecuenciaCardiaca"  maxlength="3" minlength="1" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode))) return false;"
                   >
                 </mat-form-field>
               </div>
@@ -180,7 +180,7 @@
                     matInput
                     placeholder="Frecuencia Respiratoria (F.R)"
                     type="number"
-                    [(ngModel)]="fichaClinicaRqstDTO.frecuenciaRespiratoria"
+                    [(ngModel)]="fichaClinicaRqstDTO.frecuenciaRespiratoria" maxlength="3" minlength="1" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode))) return false;"
                   >
                 </mat-form-field>
               </div>
