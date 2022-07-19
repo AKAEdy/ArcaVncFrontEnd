@@ -49,6 +49,8 @@ export class NavbarComponent implements OnInit {
 			}
 		});
 		this.OnInit();
+		//console.log(this.usernameSesion);
+		
 	}
 
 	OnInit() {}
@@ -159,5 +161,9 @@ export class NavbarComponent implements OnInit {
 		// 	}
 		// }
 		// return 'Dashboard';
+	}
+
+	abrirperfil(){
+		this.router.navigateByUrl("/perfil");
 	}
 }

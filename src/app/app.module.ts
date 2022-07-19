@@ -28,16 +28,22 @@ import { AnimalesRefugioService } from './api/animalesRefugio.service';
 import { CarnetsDeVacunacinService } from './api/carnetsDeVacunacin.service';
 import { MedicacionesService } from './api/medicaciones.service';
 import { SeguimientoDeAdoptadosService } from './api/seguimientoDeAdoptados.service';
+
 import { ClientesService } from './api/clientes.service';
 import { AppRoutingModule } from './app.routing';
 import { UsuariosService } from './api/usuarios.service';
 import { RolesService } from './api/roles.service';
+
+import { PerfilusuarioComponent } from './perfilusuario/perfilusuario.component';
+import {MatInputModule} from '@angular/material/input';
+
 
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     FormsModule,
+    MatInputModule,
     ReactiveFormsModule,
     HttpClientModule,
     ComponentsModule,
@@ -66,6 +72,7 @@ import { RolesService } from './api/roles.service';
     DonacionesService,
     CarnetsDeVacunacinService,
     MedicacionesService,
+    UsuariosService,
     SeguimientoDeAdoptadosService,
     VoluntariosService,
     ClientesService,

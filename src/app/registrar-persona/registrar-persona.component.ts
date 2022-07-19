@@ -15,6 +15,7 @@ export class RegistrarPersonaComponent implements OnInit {
   constructor(private personaService: PersonasService) { }
 
   ngOnInit(): void {
+    
   }
 
   createPersonas() {
@@ -56,4 +57,12 @@ export class RegistrarPersonaComponent implements OnInit {
     }
 
   }
+
+
+  mostrarperfil(){
+    document.getElementById("perfilusuario").style.display="block";
+    document.getElementById("registropersona").style.display="none";
+  }
+
+
 }
