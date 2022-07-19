@@ -32,6 +32,7 @@ import { RegistroCarnetComponent } from "app/registro-carnet/registro-carnet.com
 import { RegistrarSeguimientoComponent } from "app/registrar-seguimiento/registrar-seguimiento.component";
 import { TratamientoComponent } from "app/components/arca/clinica/tratamiento/tratamiento.component";
 import { AlarmListingPageComponent } from 'app/alarm/alarm-listing-page/alarm-listing-page.component'
+import { PerfilusuarioComponent } from "app/perfilusuario/perfilusuario.component";
 
 export const AdminLayoutRoutes: Routes = [
 	{
@@ -226,4 +227,10 @@ export const AdminLayoutRoutes: Routes = [
 		data: { roles: ["ROLE_ADMIN"] },
 	},
 	{ path: 'alarms', component: AlarmListingPageComponent },
+	{
+		path: "perfil",
+		component: PerfilusuarioComponent,
+		canActivate: [IsAuthenticatedGuard, RoleGuard],
+		data: { roles: ["ROLE_ADMIN"] },
+	}
 ];

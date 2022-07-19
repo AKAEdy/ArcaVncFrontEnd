@@ -29,12 +29,16 @@ import { AnimalesRefugioService } from './api/animalesRefugio.service';
 import { CarnetsDeVacunacinService } from './api/carnetsDeVacunacin.service';
 import { MedicacionesService } from './api/medicaciones.service';
 import { SeguimientoDeAdoptadosService } from './api/seguimientoDeAdoptados.service';
+import { PerfilusuarioComponent } from './perfilusuario/perfilusuario.component';
+import {MatInputModule} from '@angular/material/input';
+import { UsuariosService } from './api/usuarios.service';
 
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     FormsModule,
+    MatInputModule,
     ReactiveFormsModule,
     HttpClientModule,
     ComponentsModule,
@@ -63,6 +67,7 @@ import { SeguimientoDeAdoptadosService } from './api/seguimientoDeAdoptados.serv
     DonacionesService,
     CarnetsDeVacunacinService,
     MedicacionesService,
+    UsuariosService,
     SeguimientoDeAdoptadosService,
     VoluntariosService],
   bootstrap: [AppComponent]
