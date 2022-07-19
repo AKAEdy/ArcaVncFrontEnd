@@ -46,12 +46,15 @@ import { FiltermedicamentosPipe } from '../../pipes/filtermedicamentos.pipe';
 import { CoreModule } from 'app/core/core.module'
 import { AlarmModule } from 'app/alarm/alarm.module'
 import { FilteranimalesPipe } from 'app/pipes/filteranimales.pipe';
+
 import { RegistrarUsuariosComponent } from 'app/components/arca/usuarios/registrar-usuarios/registrar-usuarios.component';
 import { ListarUsuariosComponent } from '../../components/arca/usuarios/listar-usuarios/listar-usuarios.component';
 import { EditCarnetComponent } from 'app/edit-carnet/edit-carnet.component';
 import { EditFichaComponent } from 'app/edit-ficha/edit-ficha.component';
 import { RegistrarCitasComponent } from 'app/components/arca/servicios-arca/registrar-citas/registrar-citas.component';
 import { MatTabsModule } from '@angular/material/tabs';
+
+import { PerfilusuarioComponent } from 'app/perfilusuario/perfilusuario.component';
 
 
 @NgModule({
@@ -111,6 +114,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     ListarUsuariosComponent,
     EditCarnetComponent,
     EditFichaComponent,
+
+    PerfilusuarioComponent,
   ]
 })
 

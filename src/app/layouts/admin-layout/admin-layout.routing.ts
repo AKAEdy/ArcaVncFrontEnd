@@ -30,11 +30,15 @@ import { RegistroCarnetComponent } from "app/registro-carnet/registro-carnet.com
 import { RegistrarSeguimientoComponent } from "app/registrar-seguimiento/registrar-seguimiento.component";
 import { TratamientoComponent } from "app/components/arca/clinica/tratamiento/tratamiento.component";
 import { AlarmListingPageComponent } from 'app/alarm/alarm-listing-page/alarm-listing-page.component'
+
 import { RegistrarUsuariosComponent } from "app/components/arca/usuarios/registrar-usuarios/registrar-usuarios.component";
 import { ListarUsuariosComponent } from "app/components/arca/usuarios/listar-usuarios/listar-usuarios.component";
 import { EditCarnetComponent } from "app/edit-carnet/edit-carnet.component";
 import { EditFichaComponent } from "app/edit-ficha/edit-ficha.component";
 import { RegistrarCitasComponent } from "app/components/arca/servicios-arca/registrar-citas/registrar-citas.component";
+
+import { PerfilusuarioComponent } from "app/perfilusuario/perfilusuario.component";
+
 
 export const AdminLayoutRoutes: Routes = [
 	{
@@ -247,4 +251,10 @@ export const AdminLayoutRoutes: Routes = [
 		data: { roles: ["ROLE_ADMIN"] },
 	},
 	{ path: 'alarms', component: AlarmListingPageComponent },
+	{
+		path: "perfil",
+		component: PerfilusuarioComponent,
+		canActivate: [IsAuthenticatedGuard, RoleGuard],
+		data: { roles: ["ROLE_ADMIN"] },
+	}
 ];
