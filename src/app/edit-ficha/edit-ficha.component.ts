@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FichasClnicasService } from 'app/api/fichasClnicas.service';
+import { TratamientosService } from 'app/api/tratamientos.service';
 import { FichaClinicaDTO } from 'app/model/fichaClinicaDTO';
 import { FichaClinicaRequestDTO } from 'app/model/fichaClinicaRequestDTO';
+import { TratamientoDtoExtends } from 'app/model/tratamientoDtoExtends';
+import { Tratamientos } from 'app/models/tratamientos';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,13 +15,16 @@ import Swal from 'sweetalert2';
 })
 export class EditFichaComponent implements OnInit {
   fichaClinica: FichaClinicaRequestDTO={};
- // fichaClinicaDTO:FichaClinicaDTO={}
+  tratamientos: Tratamientos;
+   // fichaClinicaDTO:FichaClinicaDTO={}
   idAnimal:number;
+  idfichatratamiento: number;
   animal:any={};
-animales:any={};
-loginUsuario:any={};
+  animales:any={};
+  loginUsuario:any={};
+
   constructor( private activatedRoute: ActivatedRoute,private fichasClinicasService: FichasClnicasService,
-    private router: Router) { }
+    private router: Router, private  ts: TratamientosService ) { }
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.params.id;
@@ -30,7 +36,20 @@ loginUsuario:any={};
         this.volver();
       }
     );
+
+    this.listatratmiento()
   }
+
+
+  listatratmiento(){
+    const id = this.activatedRoute.snapshot.params.id;
+    this.ts.findByFichaClinicaUsingGET(id).subscribe(data =>{
+
+      this.tratamientos =data;
+      
+    })                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+  }
+
   modificarFicha(){
     
     Swal.fire({

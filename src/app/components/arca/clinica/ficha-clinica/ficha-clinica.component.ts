@@ -115,7 +115,7 @@ public formSubmitted = false;
  this.router.navigateByUrl("/tratamiento")
       }
       irAtras() {
-        this.router.navigate(["/upgrade", this.animal.animal.id]);
+        this.router.navigate(["/upgrade", this.animal.id]);
       }
 }
 
