@@ -1,14 +1,4 @@
-/* #select{
-margin-top: 15px;
-margin-left: 25px;
+.example-additional-selection {
+    opacity: 0.75;
+    font-size: 0.75em;
 }
-
-#label{
-    color: rgb(121, 121, 121);
-
-}
-
-#op1{
-    margin-left: 20px;
-    height: 30px;
-    }  */

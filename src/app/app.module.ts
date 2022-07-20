@@ -36,6 +36,7 @@ import { RolesService } from './api/roles.service';
 
 import { PerfilusuarioComponent } from './perfilusuario/perfilusuario.component';
 import {MatInputModule} from '@angular/material/input';
+import { ServiciosService } from './api/servicios.service';
 
 
 
@@ -77,7 +78,8 @@ import {MatInputModule} from '@angular/material/input';
     VoluntariosService,
     ClientesService,
     UsuariosService,
-    RolesService
+    RolesService,
+    ServiciosService
   ],
   bootstrap: [AppComponent]
 })

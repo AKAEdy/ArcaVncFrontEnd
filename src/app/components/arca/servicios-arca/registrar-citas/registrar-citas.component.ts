@@ -9,6 +9,9 @@ import { ClienteDtoExtends } from 'app/model/clienteDtoExtends';
 import { Veterinario } from 'app/model/veterinario';
 import { Router } from "@angular/router";
 import Swal from 'sweetalert2';
+import {FormControl} from '@angular/forms';
+import { ServiciosService } from 'app/api/servicios.service';
+import { ServicioArcaDtoExtends } from 'app/model/servicioArcaDtoExtends';
 
 @Component({
   selector: 'registrar-citas',
@@ -17,20 +20,36 @@ import Swal from 'sweetalert2';
 })
 export class RegistrarCitasComponent implements OnInit {
 
-  cedulaCliente : string = ''
+  //Variables para el multiple select dropdown de servicios ARCA.
+  fcServicios = new FormControl('');
+  nombresServicios: Array<string> = [];
+
   clienteDto: ClienteDto = {}
   cliente: ClienteDtoExtends = {}
   veterinarios: Veterinario [] = [] 
   cita: CitaServiciosArca = {}
+  serviciosArca: Array<ServicioArcaDtoExtends> = []
+
   idVeterinario:string = 'Selecciona un veterinario...'
   hora:string = 'Selecciona una hora...'
+  cedulaCliente : string = ''
   fecha: string;
 
   constructor(private citaService: CitasService, private veterinarioService: VeterinariosService,
-    private clienteService: ClientesService, private citasServicio : CitasService, private router: Router) { }
+    private clienteService: ClientesService, private serviciosArcaService: ServiciosService, private router: Router) { }
   
   ngOnInit(): void {
-    this.llamarVeterinarios();
+    this.llamarVeterinarios()
+    this.getAllServiciosArca()
+  }
+
+
+  getAllServiciosArca(): void {
+    this.serviciosArcaService.getAllServiciosArcaUsingGET().subscribe(data => {
+      this.serviciosArca = data
+      //Añadimos los nombres de los servicios a la lista del multiple select dropdown.
+      this.serviciosArca.map((servicio) => this.nombresServicios.push(servicio.nombre))
+    })
   }
 
   buscarCliente(): void {
@@ -73,10 +92,24 @@ export class RegistrarCitasComponent implements OnInit {
     this.cliente.telefono = data.telefono
   }
 
+  getServiciosArcaSeleccionados(): Array<ServicioArcaDtoExtends>{
+    let serviciosSeleccionados = []
+
+    Array.from(this.fcServicios.value).forEach(servicioSelect => {
+      this.serviciosArca.map((servicio) => {
+        if(servicio.nombre == servicioSelect){
+          serviciosSeleccionados.push(servicio)
+        }
+      })
+    });
+
+    return serviciosSeleccionados
+  }
+
   guardarCita(){
     this.cita.fechaCita = this.fecha+' '+this.hora
     this.cita.cliente_id = this.cliente.id
-    this.cita.servicios = []
+    this.cita.servicios = this.getServiciosArcaSeleccionados()
     
     if (this.idVeterinario != "Selecciona un veterinario..." ) {
       this.citaService.crearCitaUsingPOST(this.cita, Number(this.idVeterinario)).subscribe(data =>{
@@ -89,9 +122,8 @@ export class RegistrarCitasComponent implements OnInit {
     } else {
       this.mostrarMensajeWarning("Opss","Por favor seleccione un veterinario.")
     }
-
-
   }
+  
 
   llamarVeterinarios(){
     this.veterinarioService.getAllVeterinariosUsingGET().subscribe(data =>{

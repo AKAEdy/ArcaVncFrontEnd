@@ -56,7 +56,7 @@
           
         </div>
 
-        <!-- Fila 3: Veterinario, Fecha y hora -->
+        <!-- Fila 3: Servicios, Fecha, hora y Veterinario-->
         <div style="margin: 30px 0; font-weight: bold;">
           <hr>
           <h4 style="font-weight: bold;">DATOS DE LA CITA</h4>
@@ -64,15 +64,22 @@
 
         <div class="row">
 
-          <div class="col-md-1"> <label style="margin-top: 10px;"> Veterinario: </label></div>
-          <div class="col-md-4">
-            <select  style="padding-left: 10px;" class="custom-select" placeholder="Seleccione un veterinario..." [(ngModel)]="idVeterinario">
-              <option value = "Selecciona un veterinario..." selected disabled >Selecciona un veterinario...</option>
-              <option value="{{veterinario.id}}" *ngFor="let veterinario of veterinarios"> {{veterinario.persona.nombre + ' ' + veterinario.persona.apellidos}}</option>
-            </select>
+          <div class="col-md-3">
+            <mat-form-field>
+              <mat-label>Servicios: </mat-label>
+              <mat-select [formControl]="fcServicios" multiple>
+                <mat-select-trigger>
+                  {{fcServicios.value?.[0] || ''}}
+                  <span *ngIf="(fcServicios.value?.length || 0) > 1" class="example-additional-selection">
+                    (+{{(fcServicios.value?.length || 0) - 1}} {{fcServicios.value?.length === 2 ? 'seleccionado' : 'seleccionados'}})
+                  </span>
+                </mat-select-trigger>
+                <mat-option *ngFor="let servicio of nombresServicios" [value]="servicio">{{servicio}}</mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md-3">
             <mat-form-field class="example-full-width">
               <input matInput placeholder="Fecha Cita: " type="date"  [(ngModel)]="fecha">
             </mat-form-field>
@@ -100,6 +107,17 @@
                 <option value="18:00:00">18:00pm - 18:30pm</option>
                 <option value="18:30:00">18:30pm - 19:00pm</option>
               </select>
+          </div>
+
+          <div class="col-md-3">
+            <label *ngIf="idVeterinario == 'Selecciona un veterinario...'" style="margin: 11px 0 0 10px; color:#495057; font-size: 1rem; font-weight: 400;">
+              Selecciona un veterinario...
+            </label>
+            <label *ngIf="idVeterinario != 'Selecciona un veterinario...'" style="margin-bottom: 52px;"></label>
+            <select  style="padding-left: 10px; margin-top: -55px;" class="custom-select" placeholder="Seleccione un veterinario..." [(ngModel)]="idVeterinario">
+              <option value = "Selecciona un veterinario..." selected disabled >Selecciona un veterinario...</option>
+              <option value="{{veterinario.id}}" *ngFor="let veterinario of veterinarios"> {{veterinario.persona.nombre + ' ' + veterinario.persona.apellidos}}</option>
+            </select>
           </div>
 
         </div>
