@@ -133,7 +133,7 @@ export class AnimalesRefugioService {
             queryParameters = queryParameters.set('especie', <any>especie);
         }
         if (fechaNacimiento !== undefined && fechaNacimiento !== null) {
-            queryParameters = queryParameters.set('fechaNacimiento', <any>fechaNacimiento);
+            queryParameters = queryParameters.set('fechaNacimiento', <any>fechaNacimiento.toISOString());
         }
         if (lugarEstancia !== undefined && lugarEstancia !== null) {
             queryParameters = queryParameters.set('lugarEstancia', <any>lugarEstancia);
@@ -544,7 +544,7 @@ export class AnimalesRefugioService {
             queryParameters = queryParameters.set('especie', <any>especie);
         }
         if (fechaNacimiento !== undefined && fechaNacimiento !== null) {
-            queryParameters = queryParameters.set('fechaNacimiento', <any>fechaNacimiento);
+            queryParameters = queryParameters.set('fechaNacimiento', <any>fechaNacimiento.toISOString());
         }
         if (lugarEstancia !== undefined && lugarEstancia !== null) {
             queryParameters = queryParameters.set('lugarEstancia', <any>lugarEstancia);
