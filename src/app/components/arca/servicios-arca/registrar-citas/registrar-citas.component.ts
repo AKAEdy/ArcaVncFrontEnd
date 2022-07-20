@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 import {FormControl} from '@angular/forms';
 import { ServiciosService } from 'app/api/servicios.service';
 import { ServicioArcaDtoExtends } from 'app/model/servicioArcaDtoExtends';
+import { ServicioArcaDto } from 'app/model/servicioArcaDto';
 
 @Component({
   selector: 'registrar-citas',
@@ -29,6 +30,8 @@ export class RegistrarCitasComponent implements OnInit {
   veterinarios: Veterinario [] = [] 
   cita: CitaServiciosArca = {}
   serviciosArca: Array<ServicioArcaDtoExtends> = []
+  servicios: ServicioArcaDtoExtends = {}
+  service: ServicioArcaDto={}
 
   idVeterinario:string = 'Selecciona un veterinario...'
   hora:string = 'Selecciona una hora...'
@@ -130,6 +133,13 @@ export class RegistrarCitasComponent implements OnInit {
   llamarVeterinarios(){
     this.veterinarioService.getAllVeterinariosUsingGET().subscribe(data =>{
       this.veterinarios = data
+    })
+  }
+
+  guardarServicio(){
+    this.serviciosArcaService.crearServicioArcaUsingPOST(this.service).subscribe(data =>{
+      this.servicios = data
+      this.mostrarMensajeExito('Exito!','Servicio creado exitosamente!')
     })
   }
 

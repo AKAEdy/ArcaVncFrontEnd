@@ -11,7 +11,7 @@
  */
 
 export interface ServicioArcaDto { 
-    descripcion: string;
-    nombre: string;
-    precio: number;
+    descripcion?: string;
+    nombre?: string;
+    precio?: number;
 }
