@@ -15,7 +15,9 @@ citas: CitaArcaExtends[]=[];
 veterinarios: Veterinario [] = [] 
 idVeterinario:string = 'Selecciona un veterinario...'
 fecha: string;
-hora:string = 'Selecciona una hora...'
+hora:string = 'Selecciona una hora...';
+
+
 cita: CitaDto={
   estado: false,
   fechaCita: '',
@@ -25,15 +27,17 @@ cita: CitaDto={
 }
 citasid: CitaArcaExtends={}
 
+
   constructor(private citaService: CitasService, private veterinarioService: VeterinariosService) { }
 
   ngOnInit(): void {
+    this.fechaAnterior();
     this.listarAllCitas();
     this.llamarVeterinarios();
   }
 
   listarAllCitas(){
-    this.citaService.getAllCitasUsingGET().subscribe(data => {
+      this.citaService.getAllCitasUsingGET().subscribe(data => {
       this.citas = data;
     })
   }
@@ -90,4 +94,20 @@ citasid: CitaArcaExtends={}
     })
   }
 
+  fechaAnterior(){
+    var fecha = new Date();
+    var anio = fecha.getFullYear();
+    var dia = fecha.getDate();
+    var _mes = fecha.getMonth(); //viene con valores de 0 al 11
+    var mes = ""
+    _mes = _mes + 1; //ahora lo tienes de 1 al 12
+    if (_mes < 10) //ahora le agregas un 0 para el formato date
+    {
+      mes = "0" + _mes;
+    }else {
+      mes = _mes.toString();
+    }
+    mes = anio + '-' + mes + '-' + dia;
+    document.getElementById('fechaReserva').setAttribute('min', mes)
+  }
 }
