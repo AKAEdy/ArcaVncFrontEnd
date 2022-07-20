@@ -39,6 +39,7 @@ export class RegistrarCitasComponent implements OnInit {
     private clienteService: ClientesService, private serviciosArcaService: ServiciosService, private router: Router) { }
   
   ngOnInit(): void {
+    this.fechaAnterior(); 
     this.llamarVeterinarios()
     this.getAllServiciosArca()
   }
@@ -107,6 +108,7 @@ export class RegistrarCitasComponent implements OnInit {
   }
 
   guardarCita(){
+
     this.cita.fechaCita = this.fecha+' '+this.hora
     this.cita.cliente_id = this.cliente.id
     this.cita.servicios = this.getServiciosArcaSeleccionados()
@@ -130,6 +132,27 @@ export class RegistrarCitasComponent implements OnInit {
       this.veterinarios = data
     })
   }
+
+  fechaAnterior(){
+    var fecha = new Date();
+    var anio = fecha.getFullYear();
+    var dia = fecha.getDate();
+    var _mes = fecha.getMonth(); //viene con valores de 0 al 11
+    var mes = ""
+    _mes = _mes + 1; //ahora lo tienes de 1 al 12
+    if (_mes < 10) //ahora le agregas un 0 para el formato date
+    {
+      mes = "0" + _mes;
+    }else {
+      mes = _mes.toString();
+    }
+    mes = anio + '-' + mes + '-' + dia;
+    document.getElementById('fechaReserva').setAttribute('min', mes)
+
+    this.fecha = mes
+  }
+
+
   mostrarMensajeExito(titulo: string, mensaje: string): void { 
     Swal.fire({
       icon: 'success',

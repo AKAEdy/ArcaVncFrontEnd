@@ -169,7 +169,14 @@
                                   <input matInput placeholder="Nueva Fecha: " type="date" [(ngModel)]="fecha">
                                 </mat-form-field>
                             </div>
-
+                            <div>
+                                    <label>
+                                        Seleccione la nueva fecha: 
+                                    </label>
+                                    <input type="date" id="fechaReserva" (timeupdate)="2022-07-19" min="2022-07-19" name="txtfechainicio"><br>
+                                    <hr>
+                            </div>
+                            
                                 <div class="col-md-4">
                                     <select style="padding-left: 10px;" id="op1" class="custom-select" name="select" [(ngModel)]="hora">
                                         <option value = "Selecciona una hora..." selected disabled>Nueva hora...</option>
