@@ -1,0 +1,588 @@
+<body>
+    <div class="main-content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="card">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title">REGISTRO DE ADOPCION</h4>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input
+                        matInput
+                        placeholder="Buscar adoptante por cédula"
+                        type="text"
+                        [(ngModel)]="cedulas"
+                        maxlength="10"
+                        minlength="10"
+                        onkeypress="if ( isNaN( String.fromCharCode(event.keyCode))) return false;"
+                      />
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-2">
+                    <button
+                      mat-raised-button
+                      type="submit"
+                      class="float-right btn btn-danger"
+                      (click)="getCedulaAdoptante()"
+                    >
+                      Buscar
+                    </button>
+                  </div>
+
+                  <div class="col-md-4">
+                    <a
+                      href="#Modal"
+                      role="button"
+                      class="btn btn-large btn-success"
+                      data-toggle="modal"
+                      >AGREGAR ADOPTANTE</a
+                    >
+                  </div>
+                </div>
+
+                <!-- --------------------- INPUTS PARA MOSTRAR INFORMACION DEL ADOPTANTE -------------------  -->
+                <div style="margin: 30px 0">
+                  <hr />
+                  <h4 style="font-weight: bold">DATOS DEL ADOPTANTE</h4>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <label style="margin-right: 10px">Nombres: </label>
+                    <input
+                      value="{{ nombres }}"
+                      disabled
+                      matInput
+                      style="color: black"
+                    />
+                  </div>
+
+                  <div class="col-md-4">
+                    <label style="margin-right: 10px"
+                      >Correo electrónico:
+                    </label>
+                    <input
+                      value="{{ correo }}"
+                      disabled
+                      matInput
+                      style="color: black"
+                    />
+                  </div>
+
+                  <div class="col-md-4">
+                    <label style="margin-right: 10px">Celular: </label>
+                    <input
+                      value="{{ celular }}"
+                      disabled
+                      matInput
+                      style="color: black"
+                    />
+                  </div>
+                </div>
+
+                <!-- ---------------------------- IMPUT DEL ANIMAL ----------------------------  -->
+                <div style="margin: 30px 0">
+                  <hr />
+                  <h4 style="font-weight: bold">DATOS DEL ANIMAL</h4>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <label style="margin-right: 10px">Nombre: </label>
+                    <input
+                      matInput
+                      placeholder="Nombre del animal"
+                      type="text"
+                      value="{{ animalStorage.animal.nombre }}"
+                      disabled
+                      style="color: black"
+                    />
+                  </div>
+                </div>
+                <br />
+                <div class="row">
+                  <div class="col-md-12">
+                    <mat-form-field class="example-full-width">
+                      <input
+                        matInput
+                        placeholder="Fecha de adopcion"
+                        type="date"
+                        [(ngModel)]="adopcion.fechaAdopcion"
+                      />
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <mat-form-field class="example-full-width">
+                      <textarea
+                      type="text"
+                        matInput
+                        placeholder="Decripción de adopción"
+                        [(ngModel)]="adopcion.descripcion"
+                      >
+                      </textarea>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <!-- <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled > -->
+                  <label
+                    class="form-check-label"
+                    for="flexCheckIndeterminate"
+                    style="color: rgb(69, 36, 255); text-decoration: underline"
+                    data-toggle="modal"
+                    data-target="#ducumentoAdopcion"
+                  >
+                    Documento de adopción
+                  </label>
+                </div>
+
+                <button
+                  mat-raised-button
+                  type="submit"
+                  class="btn btn-info pull-right"
+                  (click)="saveAdopciones()"
+                  style="display: none"
+                  id="botonReg"
+                >
+                  Registrar
+                </button>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+
+<!-- ------------------------------------------ VENTANA DEL DOCUMENTO DE ADOPCION ----------------------------------  -->
+
+<div
+  class="modal fade"
+  id="ducumentoAdopcion"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog"
+    role="document"
+    style="max-width: 1000px !important"
+  >
+    >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">
+          Documento de adopción
+        </h3>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="print-section">
+        <p>
+          <img
+            style="display: block; margin-left: auto; margin-right: auto"
+            src="../../assets/img/arca-logo.png"
+            alt=""
+            width="90"
+            height="90"
+          />
+        </p>
+        <p style="text-align: center">
+          BALTAZARA DE CALDERON 2-37 Y MIGUEL VELEZ
+        </p>
+        <p style="text-align: center">TELF: 2835201&nbsp; CELULAR:0983350434</p>
+        <p style="text-align: center">DOCUMENTO DE ADOPCION</p>
+        <p style="text-align: justify; font-size: 15px">
+          ADOPTADO(A):
+          <strong
+            ><span style="text-decoration: underline">NOMBRE&nbsp; </span>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong
+          >CLINICA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input class="form-check-input" type="checkbox" value="" />&nbsp;
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp;EVENTO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+          />
+        </p>
+        <p style="text-align: justify; font-size: 15px">
+          Nombre del adoptante:
+          <span style="text-decoration: underline"
+            ><strong>{{ nombres }}</strong></span
+          >
+        </p>
+        <p style="text-align: justify; font-size: 15px">
+          Dirección:
+          <span style="text-decoration: underline"
+            ><strong>{{ direccion }}</strong></span
+          >
+        </p>
+        <p style="text-align: justify; font-size: 15px">
+          Teléfono de casa:
+          <span style="text-decoration: underline"
+            ><strong>{{ telefono }}&nbsp;</strong> </span
+          >&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Celular:
+          <span style="text-decoration: underline"
+            ><strong>{{ celular }}</strong></span
+          >
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          &nbsp; Telf de familiar:
+          <span style="text-decoration: underline"
+            ><strong>{{ telfamiliar }}</strong></span
+          >
+        </p>
+        <p style="text-align: justify; font-size: 15px">
+          Correo electrónico:
+          <span style="text-decoration: underline"
+            ><strong>{{ correo }}</strong
+            >&nbsp;</span
+          >
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp; &nbsp;&nbsp;Fabook:<span
+            style="text-decoration: underline"
+            ><strong>{{ facebook }}</strong></span
+          >
+        </p>
+        <p style="text-align: justify; font-size: 14px">
+          EL Sr. o Sra. ADOPTANTE mayor de edad, con cédula de identidad N°;
+          CEDULA a quien en adelante se le denominara el
+          <strong>Adoptante</strong>, suscribe el presente convenio con ARCA
+          Fundación Protectora de animales a quien se le denominará la<em
+            ><strong> Fundación</strong>&nbsp;</em
+          >bajo la siguente cláusulas:
+        </p>
+        <p style="text-align: justify; font-size: 14px">
+          <strong>PRIMERA:</strong> El motivo del convénio es la adopción de un
+          PERRO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+          />
+          &nbsp; &nbsp;GATO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+          />&nbsp; &nbsp; HEMBRA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+          />
+          &nbsp; MACHO &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+          />&nbsp;&nbsp;de nombre
+          <span style="text-decoration: underline">MASCOTA</span>&nbsp; de
+          <span style="text-decoration: underline">AÑOS</span> aÑos
+          <span style="text-decoration: underline">MESES</span> meses de edad de
+          raza RAZA de COLOR el cual se encuentra en perfecto estado de salud,
+          vacunado, desparacitado, con su respectivo collar de identificaciÓn,
+          con derecho a consultas veterinarias gratuita duranre el primer mes de
+          adopción, esterizado&nbsp; &nbsp; &nbsp;
+          &nbsp;SI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+          />
+          &nbsp; &nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+          />
+          &nbsp;FECHA ________ PRENDA __________
+        </p>
+        <p style="text-align: justify; font-size: 14px">
+          <strong>SEGUNDA:&nbsp;</strong>El adoptante acogera al adoptado en su
+          hogar, en un&nbsp; espacio adecuado para el efecto, otorgandole todos
+          los cuidadosque requiere y cubriendo sus necesidades de salud,
+          alimentacion, afecto y acicalamiento. Asi mismo debera mantenerlo con
+          su respectivo collar de identificacion.
+        </p>
+        <p style="text-align: justify; font-size: 14px">
+          <strong>TERCERA:&nbsp;</strong>Bajo ningun concepto, el adoptado podra
+          ser encadenado y peor aun ser victimade algun tipo de maltrato,
+          violencia o atropello.
+        </p>
+        <p style="text-align: justify; font-size: 14px">
+          <strong>CUARTA:&nbsp;</strong>El adoptante esta en la obligacion de
+          reportar a la Fundacion cualquier novedad que se presente en la salud
+          del adoptado, asi como cambio de domicilio o perdida.
+        </p>
+        <p style="text-align: justify; font-size: 14px">
+          <strong>QUINTA:&nbsp;</strong>El adoptante es responsable de la
+          vacunacion y desparasitacion periodicas del adoptado y en caso de
+          enfermedad sera responsable de proporcionarle ATENCION VETERINARIA
+          INMEDIATA.
+        </p>
+        <p style="text-align: justify; font-size: 14px">
+          <strong>SEXTA:&nbsp;</strong>El adoptante&nbsp; en ningun caso
+          podra&nbsp; entregar al adoptado a otro tutor. En caso de presentar
+          alguna dificultad que le impida continuar manteniendolo, el adoptante
+          debera reingresarlo a la FUNCION ARCA.
+        </p>
+        <p style="text-align: justify; font-size: 14px">
+          <strong>SEPTIMA:&nbsp;</strong>Los miembros de la Fundacion podran
+          visitar al adoptado las veces que la Fundacion considere necesarias
+          constatar.
+        </p>
+        <p style="text-align: justify; font-size: 14px">
+          <strong>OCTAVA:&nbsp;</strong>En caso de que la fundacion llegara a
+          detectar alguna anomalia o iregularidad en la tendencia del adoptado,
+          la Fundacion procedera inmediatamente a retirarlo y de reingresarlo a
+          la Fundacion.
+        </p>
+        <p style="text-align: justify; font-size: 14px">
+          <strong>NOVENA:</strong> El adoptante aportara la cantidad de $20
+          DOLARES POR CONCEPTOS DE LA ADOPCION, valor que servira para continuar
+          con la labor del rescate, proteccion y alimentacion de animales.
+        </p>
+        <p style="text-align: justify; font-size: 14px">
+          Luego de conocer a cabalidad las clausulas del presente convenio y
+          expresar su conformidad, firme para constancia:
+        </p>
+        <p style="text-align: justify; font-size: 14px">
+          Cuenca, a los ____ dias del mes de ___________ del ________ .
+        </p>
+        <p style="text-align: center; font-size: 14px">
+          RESPONSABLE______________&nbsp; &nbsp; &nbsp;ADOPTANTE______________
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <div class="col-md-12">
+          <p>
+            Documento de adopción leido&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input
+              class="form-check-input"
+              type="checkbox"
+              (click)="comfirmarDocumento()"
+            />
+          </p>
+        </div>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          printSectionId="print-section"
+          ngxPrint
+          style="display: none"
+          id="botonImp"
+        >
+          Imprimir
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------------------------------------- VENTANA MODAL: CREAR CLIENTE ---------------------------------------- -->
+<div
+  class="modal fade"
+  id="Modal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <!-- ---------------------------------------- Cabecera ---------------------------------------- -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          REGISTRO DE ADOPTANTE
+        </h5>
+
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!-- ---------------------------------------- Cuerpo ---------------------------------------- -->
+      <div class="modal-body">
+        <!-- --------------- Formulario --------------- -->
+        <form>
+          <!-- Fila 1: Cedula y nombre -->
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="example-full-width">
+                <input
+                  matInput
+                  name="cedula"
+                  placeholder="Cédula: "
+                  type="text"
+                  [(ngModel)]="adoptantesDto.cedula"
+                  maxlength="10"
+                  minlength="10"
+                  onkeypress="if ( isNaN( String.fromCharCode(event.keyCode))) return false;"
+                />
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+              <mat-form-field class="example-full-width">
+                <input
+                  matInput
+                  placeholder="Nombre: "
+                  [(ngModel)]="adoptantesDto.nombre"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!-- Fila 2: Apellido y correo -->
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="example-full-width">
+                <input
+                  matInput
+                  placeholder="Apellido: "
+                  [(ngModel)]="adoptantesDto.apellidos"
+                />
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+              <mat-form-field class="example-full-width">
+                <input
+                  matInput
+                  placeholder="Correo electrónico: "
+                  type="email"
+                  [(ngModel)]="adoptantesDto.correo"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!-- Fila 3: Celular y telefono -->
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="example-full-width">
+                <input
+                  matInput
+                  name="telefono"
+                  placeholder="Teléfono: "
+                  type="text"
+                  [(ngModel)]="adoptantesDto.telefono"
+                  maxlength="9"
+                  minlength="7"
+                  onkeypress="if ( isNaN( String.fromCharCode(event.keyCode))) return false;"
+                />
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+              <mat-form-field class="example-full-width">
+                <input
+                  matInput
+                  name="celular"
+                  placeholder="Celular: "
+                  type="text"
+                  [(ngModel)]="adoptantesDto.celular"
+                  maxlength="10"
+                  minlength="10"
+                  onkeypress="if ( isNaN( String.fromCharCode(event.keyCode))) return false;"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!-- Fila 3: Telefono Familiar y NickName -->
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="example-full-width">
+                <input
+                  matInput
+                  name="telefono"
+                  placeholder="Teléfono de Familiar: "
+                  type="text"
+                  [(ngModel)]="adoptantesDto.telefonoFamiliar"
+                  maxlength="9"
+                  minlength="7"
+                  onkeypress="if ( isNaN( String.fromCharCode(event.keyCode))) return false;"
+                />
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+              <mat-form-field class="example-full-width">
+                <input
+                  matInput
+                  name="celular"
+                  placeholder="Nombre en facebook: "
+                  type="text"
+                  [(ngModel)]="adoptantesDto.nicknameFacebook"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!-- Fila 4: Direccion-->
+          <div class="row">
+            <div class="col-md-9">
+              <mat-form-field class="example-full-width">
+                <input
+                  matInput
+                  placeholder="Dirección: "
+                  type="text"
+                  [(ngModel)]="adoptantesDto.direccion"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!-- Fila 5: Btn Cancelar y Guardar -->
+          <div class="row mx-auto">
+            <div class="col-md-12">
+              <div style="width: fit-content; margin: auto">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  data-dismiss="modal"
+                  style="margin-right: 10px"
+                >
+                  Regresar
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-info"
+                  (click)="createAdoptante()"
+                >
+                  Guardar
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

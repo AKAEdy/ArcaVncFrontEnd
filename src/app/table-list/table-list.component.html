@@ -73,6 +73,19 @@
               </button>
                 </div>
                 <div>
+            <br>
+          
+              <div class="card-footer-center">
+
+                <button mat-raised-button type="button" 
+                class="btndetalle " (click)="Detalle(animal.id)">
+                Ver
+            </button>
+            <button mat-raised-button type="button" 
+                class="btndetalle " (click)="animalSelect(animal.id)">
+                Adoptar
+            </button>
+               
                   <button mat-raised-button type="submit" class="btn btn-danger btn-round"
                   class="btneliminar" (click)="eliminarAnimal(animal.id)">
                   <i class="material-icons">delete</i>

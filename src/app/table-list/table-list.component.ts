@@ -22,6 +22,7 @@ import Swal from 'sweetalert2';
 export class TableListComponent implements OnInit {
 filterAnimal:any='';
 dataSource:any={};
+animalId:AnimalRefugioResponse={}
 
   //VARIABLE DE animal
   public animales: AnimalRefugioResponse[] = [];
@@ -33,12 +34,17 @@ dataSource:any={};
   constructor(private animalesService: AnimalesRefugioService,private router: Router,private fichasClinicasService: FichasClnicasService) { }
 
   ngOnInit(): void {
+    // localStorage.removeItem('animaladoptar');
     this.filterAnimal=this.animales;
     this.listarAnimales();
   this.pagina = 0;
   }
 
-  
+  delays(n) {
+    return new Promise(function (resolve) {
+      setTimeout(resolve, n * 1000);
+    });
+  }
 
   
 eliminarAnimal(id: number) {
@@ -78,7 +84,19 @@ eliminarAnimal(id: number) {
  irAtras(){
   this.router.navigate(['/table-list']);
  }
- 
+
+ async animalSelect(id:number){
+  this.animalesService.getAnimalPorIdUsingGET(id).subscribe( data =>{
+    localStorage.setItem('animaladoptar', JSON.stringify(data));
+   
+    this.animalId=data
+    console.log(this.animalId);
+  })
+  await this.delays(0.5);
+  this.router.navigate(['/registrarAdoptado']);
+ }
+
+
 Detalle(id: number){
 
   this.animalesService.getAnimalPorIdUsingGET(id).subscribe(data =>{
