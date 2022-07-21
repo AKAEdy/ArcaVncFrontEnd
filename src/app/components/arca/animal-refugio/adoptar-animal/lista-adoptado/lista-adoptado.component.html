@@ -1,22 +1,48 @@
-<div class="main-content" id="lista" style="display:block;">
+<div class="main-content">
     <div class="container-fluid">
-        <div class="container">
-            <div class="card-header" style="background-color: rgb(252, 77, 77);">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">LISTAS DE MASCOTAS ADOPTADAS</h4>
+                    </div>
+  
+                    <div class="card-body">
+                        <div class="row">
+                         
+                          <div class="col-md-5">
+                          
+                            <br>
+                            <div class="search">
+                             
+                                <input id="myInput" type="text" class="form-control" placeholder="🔎Buscar..."
+                                [(ngModel)]="filterpost" name="filterpost" />
+                            </div>
+                          </div>
+                          </div>
 
-                <div><label><span class="required">LISTA DE ADOPTADOS </span></label>
-                    <input id="myInput" type="text" class="form-control" placeholder="🔎Buscar..."
-                        [(ngModel)]="filterpost" name="filterpost" />
-                </div>
 
-            </div>
+
+
+
+
+
+
+
+
+
+
+
             <div class="row">
+            
                 <div class="col-md-4" *ngFor="let adopciones of adopcion">
                     <div class="panel panel-info" class="list-group-item" id="card">
                         <div class="panel-body text-center">
                             <li class="list-group-item">
-                                <img src="https://s1.eestatic.com/2021/06/24/curiosidades/mascotas/591454065_193121170_1706x960.jpg"
-                                    id="img" alt="Error">
                                 <p class="lead" style="font-size:30px"><strong>{{adopciones.animal.nombre}}</strong></p>
+                                <img class="circulo" src={{adopciones.animal.urlImagenAnimal}}
+                                    id="img" alt="Error">
+                                
                             </li>
                         </div>
                         <ul class="list-group list-group-flush text-center">
@@ -32,13 +58,13 @@
                         </ul>
                         <div class="btn-group" style="display: flex; justify-content: center;">
                             <div>
-                                <button mat-raised-button type="submit" class="btn btn-danger btn-round"
+                                <button mat-raised-button type="submit" class="btn btn-round"
                                     class="btneditar" (click)="getByIdAdopcion(adopciones.id)">
                                     <i class="material-icons">mode_edit</i>
                                 </button>
                             </div>
                             <div>
-                                <button mat-raised-button type="submit" class="btn btn-danger btn-round"
+                                <button mat-raised-button type="submit" class="btn  btn-round"
                                     class="btneliminar" (click)="deleteAdopcion(adopciones.id)">
                                     <i class="material-icons">delete</i>
                                 </button>
@@ -48,8 +74,8 @@
 
                         <div class="row" style="display: flex; justify-content: center;">
                             <div class="col-md-6" >
-                                 <button mat-raised-button type="submit" class="btn btn-danger btn-round"
-                                     class="btnseguimiento" (click)="getByIdAdoptantes(adopciones.id)">
+                                 <button mat-raised-button type="submit" class="btnseguimiento"
+                                    (click)="getByIdAdoptantes(adopciones.id)">
                                      SEGUIMIENTO
                                  </button>
                             </div> 

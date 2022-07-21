@@ -45,26 +45,7 @@
   
   
   
-  
-  /* GENERAL STYLES */
-  
-  .pagination{
-    padding: 30px 0;
-  }
-  
-  .pagination ul{
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-  }
-  
-  .pagination button{
-    display: inline-block;
-    width:30px;
-    border-radius: 500%;
-    color: #222;
-  }
-  
+
   
   
   /* ELEVEN */
@@ -82,54 +63,23 @@
     background-color: rgb(230, 67, 64);
     color: #fff;
 }
-.circulo{
+ .circulo{
   width: 140px;
   height: 140px; 
   border-radius: 100px;
 }
-.search{
-  position: relative;
-  box-shadow: 0 0 40px rgba(51, 51, 51, .1);
-    
-  }
-
-  .search input{
-
-   height: 47px;
-   text-indent: 25px;
-   border: 2px solid #d6d4d4;
-
-
-  }
-
-
-  .search input:focus{
-
-   box-shadow: none;
-   border: 2px solid blue;
-
-
-  }
-
-  .search .fa-search{
-
-   position: absolute;
-   top: 20px;
-   left: 16px;
-
-  }
-
-  .search button{
-
-   position: absolute;
-   top: 5px;
-   right: 5px;
-   height: 35px;
-   width: 35px;
-   background: blue;
-
-
-  }
   .h3{
     font-weight: bold;
   }
+  .btnadoptar{
+    background-color: rgb(125, 184, 248);
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 5px;
+}
+
+.btneliminar {
+  margin-left: 10px;
+  
+  text-align: center;
+}
