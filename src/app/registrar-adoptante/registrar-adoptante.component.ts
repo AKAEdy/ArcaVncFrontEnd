@@ -14,7 +14,7 @@ adoptantes: AdoptanteDto={}
 
   ngOnInit(): void {
   }
-
+ 
   createAdoptante(){
     if (this.adoptantes.cedula === undefined || this.adoptantes.nombre === undefined || this.adoptantes.apellidos === undefined
       || this.adoptantes.correo === undefined || this.adoptantes.telefono === undefined || this.adoptantes.celular === undefined

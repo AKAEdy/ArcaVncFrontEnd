@@ -3,7 +3,7 @@ import { PacienteAlarmInfo } from 'app/alarm/interfaces/paciente-alarm-info';
 import { AlarmPost } from 'app/alarm/interfaces/alarm-post';
 import { first, map, Observable } from 'rxjs';
 import { SocketClientService } from '../core/socket-client.service';
-import { ListaAdoptadoComponent } from 'app/lista-adoptado/lista-adoptado.component';
+import { ListaAdoptadoComponent } from 'app/components/arca/animal-refugio/adoptar-animal/lista-adoptado/lista-adoptado.component';
 import { ListUncheckedEvents } from 'app/alarm/interfaces/list-unchecked-events';
 @Injectable({
 	providedIn: 'root'

@@ -7,8 +7,8 @@ import { TypographyComponent } from "../../typography/typography.component";
 import { NotificationsComponent } from "../../notifications/notifications.component";
 import { UpgradeComponent } from "../../upgrade/upgrade.component";
 import { FichaClinicaComponent } from "app/components/arca/clinica/ficha-clinica/ficha-clinica.component";
-import { RegistrarAdoptadoComponent } from "app/registrar-adoptado/registrar-adoptado.component";
-import { ListaAdoptadoComponent } from "app/lista-adoptado/lista-adoptado.component";
+import { RegistrarAdoptadoComponent } from "app/components/arca/animal-refugio/adoptar-animal/registrar-adoptado/registrar-adoptado.component";
+import { ListaAdoptadoComponent } from "app/components/arca/animal-refugio/adoptar-animal/lista-adoptado/lista-adoptado.component";
 import { ListaPersonaComponent } from "app/lista-persona/lista-persona.component";
 import { RegistrarPersonaComponent } from "app/registrar-persona/registrar-persona.component";
 import { ListarMedicamentoComponent } from "app/listar-medicamento/listar-medicamento.component";
@@ -126,6 +126,12 @@ export const AdminLayoutRoutes: Routes = [
 	},
 	{
 		path: "registrarAdoptado",
+		component: RegistrarAdoptadoComponent,
+		canActivate: [IsAuthenticatedGuard, RoleGuard],
+		data: { roles: ["ROLE_ADMIN"] },
+	},
+	{
+		path: "registrarAdoptado/:id",
 		component: RegistrarAdoptadoComponent,
 		canActivate: [IsAuthenticatedGuard, RoleGuard],
 		data: { roles: ["ROLE_ADMIN"] },
