@@ -60,8 +60,8 @@ export class EditFichaComponent implements OnInit {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        this.fichasClinicasService.updateUsingPUT2(this.fichaClinica, this.fichaClinica.id).subscribe(
-          (data) => {
+        console.log(this.fichaClinica)
+        this.fichasClinicasService.updateUsingPUT2(this.fichaClinica, this.fichaClinica.id).subscribe( data => {
          
           this.fichaClinica = data
          
@@ -93,7 +93,7 @@ export class EditFichaComponent implements OnInit {
         Swal.fire('No se guardaron los cambios', '', 'info')
       }
     })
-      this.volver();
+     // this.volver();
       }
 
      

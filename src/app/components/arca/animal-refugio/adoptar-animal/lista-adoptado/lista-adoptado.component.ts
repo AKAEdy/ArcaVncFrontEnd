@@ -35,7 +35,8 @@ export class ListaAdoptadoComponent implements OnInit {
   
   getAllAdopcion(){
     this.adopcionService.getAllAdopcionesUsingGET().subscribe(data=>{
-      this.adopcion = data;
+      this.adopcion = data.slice().reverse()
+     // this.adopcion = data;
     })
     
     
