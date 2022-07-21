@@ -33,10 +33,13 @@ export class RegistrarCitasComponent implements OnInit {
   servicios: ServicioArcaDtoExtends = {}
   service: ServicioArcaDto={}
 
+  horasDisponibles: Array<string> = []
   idVeterinario:string = 'Selecciona un veterinario...'
   hora:string = 'Selecciona una hora...'
   cedulaCliente : string = ''
-  fecha: string;
+  fecha: string = this.dateToString(new Date())
+  fcFechaSeleccionada = new FormControl(this.dateToString(new Date()))
+
 
   constructor(private citaService: CitasService, private veterinarioService: VeterinariosService,
     private clienteService: ClientesService, private serviciosArcaService: ServiciosService, private router: Router) { }
@@ -45,6 +48,10 @@ export class RegistrarCitasComponent implements OnInit {
     this.fechaAnterior(); 
     this.llamarVeterinarios()
     this.getAllServiciosArca()
+  }
+
+  getHorasDisponibles(fecha: string): void {
+    this.citaService.getHorasDisponiblesUsingGET(fecha).subscribe(data => this.horasDisponibles = data.horas);
   }
 
 
@@ -144,19 +151,7 @@ export class RegistrarCitasComponent implements OnInit {
   }
 
   fechaAnterior(){
-    var fecha = new Date();
-    var anio = fecha.getFullYear();
-    var dia = fecha.getDate();
-    var _mes = fecha.getMonth(); //viene con valores de 0 al 11
-    var mes = ""
-    _mes = _mes + 1; //ahora lo tienes de 1 al 12
-    if (_mes < 10) //ahora le agregas un 0 para el formato date
-    {
-      mes = "0" + _mes;
-    }else {
-      mes = _mes.toString();
-    }
-    mes = anio + '-' + mes + '-' + dia;
+    let mes = this.dateToString(new Date())
     document.getElementById('fechaReserva').setAttribute('min', mes)
 
     this.fecha = mes
@@ -187,5 +182,28 @@ export class RegistrarCitasComponent implements OnInit {
       title: titulo,
       text: mensaje
     })
+  }
+
+  dateToString(fecha: Date): string {
+    let anio = fecha.getFullYear();
+    let _dia = fecha.getDate();
+    let _mes = fecha.getMonth() + 1; //viene con valores de 0 al 11
+
+    let mes = (_mes < 10)? '0'+_mes : ''+_mes
+    let dia = (_dia < 10)? '0'+_dia : ''+_dia
+
+    return anio + '-' + mes + '-'+ dia
+  }
+
+  getHoraConFormatoAmPm(hora: string): string {
+    return (Number(hora.substring(0, 2)) < 12) ? hora + ' am' : hora + ' pm'
+  }
+
+  getNombresVeterinario(veterinario: Veterinario): string {
+    return veterinario.persona.nombre + ' '+ veterinario.persona.apellidos
+  }
+
+  setHorasSeleccionadas(): void {
+    this.getHorasDisponibles(this.fecha)
   }
 }

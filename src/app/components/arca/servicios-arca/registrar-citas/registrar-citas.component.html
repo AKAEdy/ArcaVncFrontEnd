@@ -82,31 +82,14 @@
 
           <div class="col-md-3">
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Fecha Cita: " id="fechaReserva" min="2022-07-19" type="date"  [(ngModel)]="fecha">
+              <input matInput placeholder="Fecha Cita: " id="fechaReserva" min="2022-07-19" type="date"  [(ngModel)]="fecha" (ngModelChange)="setHorasSeleccionadas()">
             </mat-form-field>
           </div>
 
           <div class="col-md-3">
               <select style="padding-left: 10px;" id="op1" class="custom-select" name="select" [(ngModel)]="hora">
                 <option value = "Selecciona una hora..." selected disabled>Selecciona una hora...</option>
-                <option value="08:00:00">08:00am - 08:30am</option>
-                <option value="08:30:00">08:30am - 09:00am</option>
-                <option value="09:00:00">09:00am - 09:30am</option>
-                <option value="09:30:00">09:30am - 10:00pm</option>
-                <option value="10:00:00">10:00pm - 10:30pm</option>
-                <option value="10:30:00">10:30pm - 11:00pm</option>
-                <option value="11:00:00">11:00pm - 11:30pm</option>
-                <option value="11:30:00">11:30pm - 12:00pm</option>
-                <option value="14:00:00">14:00pm - 14:30pm</option>
-                <option value="14:30:00">14:30pm - 15:00pm</option>
-                <option value="15:00:00">15:00pm - 15:30pm</option>
-                <option value="15:30:00">15:30pm - 16:00pm</option>
-                <option value="16:00:00">16:00pm - 16:30pm</option>
-                <option value="16:30:00">16:30pm - 17:00pm</option>
-                <option value="17:00:00">17:00pm - 17:30pm</option>
-                <option value="17:30:00">17:30pm - 18:00pm</option>
-                <option value="18:00:00">18:00pm - 18:30pm</option>
-                <option value="18:30:00">18:30pm - 19:00pm</option>
+                <option value="{{hora}}" *ngFor="let hora of horasDisponibles"> {{getHoraConFormatoAmPm(hora)}}</option>
               </select>
           </div>
 
@@ -117,7 +100,7 @@
             <label *ngIf="idVeterinario != 'Selecciona un veterinario...'" style="margin-bottom: 52px;"></label>
             <select  style="padding-left: 10px; margin-top: -55px;" class="custom-select" placeholder="Seleccione un veterinario..." [(ngModel)]="idVeterinario">
               <option value = "Selecciona un veterinario..." selected disabled >Selecciona un veterinario...</option>
-              <option value="{{veterinario.id}}" *ngFor="let veterinario of veterinarios"> {{veterinario.persona.nombre + ' ' + veterinario.persona.apellidos}}</option>
+              <option value="{{veterinario.id}}" *ngFor="let veterinario of veterinarios"> {{getNombresVeterinario(veterinario)}}</option>
             </select>
           </div>
 
