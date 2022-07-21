@@ -164,6 +164,52 @@ export class CitasService {
     }
 
     /**
+     * getAllCitasActivasPorCliente
+     * 
+     * @param cedula cedula
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getAllCitasActivasPorClienteUsingGET(cedula: string, observe?: 'body', reportProgress?: boolean): Observable<Array<CitaArcaExtends>>;
+    public getAllCitasActivasPorClienteUsingGET(cedula: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<CitaArcaExtends>>>;
+    public getAllCitasActivasPorClienteUsingGET(cedula: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<CitaArcaExtends>>>;
+    public getAllCitasActivasPorClienteUsingGET(cedula: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (cedula === null || cedula === undefined) {
+            throw new Error('Required parameter cedula was null or undefined when calling getAllCitasActivasPorClienteUsingGET.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (JWT) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<Array<CitaArcaExtends>>('get',`${this.basePath}/citas/by-cliente/${encodeURIComponent(String(cedula))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
      * getAllCitas
      * 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
