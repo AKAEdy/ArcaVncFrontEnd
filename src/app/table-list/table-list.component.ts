@@ -89,9 +89,9 @@ Detalle(id: number){
   }
 
   listarAnimales(){
-
-    this.animalesService.getAnimalesRefugioPagesUsingGET(this.pagina,this.tamaño,"").subscribe(data =>{
-       this.animales = data.content
+    
+this.animalesService.getAnimalesNoAdoptadosUsingGET(this.pagina,this.tamaño).subscribe(data =>{
+       this.animales = data.animales;
        console.log ("listado", data)
     })
   }
@@ -112,6 +112,7 @@ Detalle(id: number){
     this.listarAnimales();
     console.log(this.pagina);
 
-  }
 
+  }
+  
 }

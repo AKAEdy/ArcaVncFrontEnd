@@ -133,3 +133,15 @@
   .h3{
     font-weight: bold;
   }
+  .btnadoptar{
+    background-color: rgb(125, 184, 248);
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 5px;
+}
+
+.btneliminar {
+  margin-left: 10px;
+  
+  text-align: center;
+}

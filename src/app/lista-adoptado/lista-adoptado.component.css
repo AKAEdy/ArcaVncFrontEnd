@@ -12,40 +12,34 @@
 
 .btneliminar {
     margin-left: 10px;
-    background-color: rgb(255, 58, 58);
+    
     text-align: center;
 }
 
 .btneditar {
-    background-color: rgb(250, 193, 37);
+    
     text-align: center;
 }
 
 .btnseguimiento{
-    background-color: coral;
+    background-color: rgb(125, 184, 248);
     text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-left: 5px;
 }
 
-#img {
-    margin-bottom:20px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    transition: transform .2s;
+
+.circulo{
+  width: 140px;
+  height: 140px; 
+  border-radius: 100px;
 }
 
-#img:hover {
-    transform: scale(1.5);
-}
+
 
 #card{
     margin-top: 20px;
-    background: rgba(255, 79, 79, 0.116);
+    background:  rgb(240, 240, 240);
 }
 
 #label{
