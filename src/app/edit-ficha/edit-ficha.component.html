@@ -324,7 +324,7 @@
                     type="submit"
                     mat-raised-button
                     class="btn btn-danger pull-right"
-                    (click)="volver(this.fichaClinica.animalId)"
+                    (click)="volver"
                   >
                     CANCELAR
                   </button>
@@ -397,7 +397,7 @@
                             </td>
                         
                             <td>
-                                <button _ngcontent-uqa-c89="" mat-raised-button="" type="submit"
+                                <!-- <button _ngcontent-uqa-c89="" mat-raised-button="" type="submit"
                                     class="mat-focus-indicator btneliminar mat-raised-button mat-button-base"
                                     class="btneditar" ><span
                                         class="mat-button-wrapper"><i _ngcontent-uqa-c89=""
@@ -405,12 +405,17 @@
                                         <div _ngcontent-uqa-c89="" class="ripple-container"></div>
                                     </span><span matripple=""
                                         class="mat-ripple mat-button-ripple"></span><span
-                                        class="mat-button-focus-overlay"></span> </button>
+                                        class="mat-button-focus-overlay"></span> </button> -->
+                                        <a href="#Modal" role="button" class="btn btn-large btn-info" (click)="getTratamientoById(tratamientos.id)" data-toggle="modal"><span
+                                          class="mat-button-wrapper"><i _ngcontent-uqa-c89=""
+                                              class="material-icons">mode_edit</i>
+                                          <div _ngcontent-uqa-c89="" class="ripple-container"></div>
+                                      </span></a>
                             </td>
                             <td>
                                 <button _ngcontent-die-c89="" mat-raised-button="" type="submit"
                                     class="mat-focus-indicator btneliminar mat-raised-button mat-button-base"
-                                    class="btneliminar"><span
+                                    class="btneliminar" (click)="eliminarTratamiento(tratamientos.id)"><span
                                         class="mat-button-wrapper"><i _ngcontent-die-c89=""
                                             class="material-icons">delete</i>
                                         <div _ngcontent-die-c89="" class="ripple-container"></div>
@@ -431,3 +436,89 @@
     </div>
   </div>
   
+<!-- ---------------------------------------- VENTANA MODAL: CREAR SERVICIO ---------------------------------------- -->
+<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+
+      <!-- ---------------------------------------- Cabecera ---------------------------------------- -->
+      <div class="modal-header">
+
+        <h5 class="modal-title" id="exampleModalLabel">EDITAR TRATAMIENTO</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+      </div>
+
+      <!-- ---------------------------------------- Cuerpo ---------------------------------------- -->
+      <div class="modal-body">
+        <!-- --------------- Formulario --------------- -->
+        
+
+         
+          <div class="row">
+
+            <!--Descripción-->
+            <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="Descripción" type="text" name="descripcion"
+                        #descripcion="ngModel" [(ngModel)]="tratamientosid.descripcion"></textarea>
+                </mat-form-field>
+            </div>
+
+
+            <!--Indicaciones -->
+            <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="Indicaciones" type="text"
+                        name="indicaciones" #indicaciones="ngModel"
+                        [(ngModel)]="tratamientosid.indicaciones"></textarea>
+                </mat-form-field>
+            </div>
+
+            <!-- Fecha Apllicacion -->
+            <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Fecha de Aplicación" type="date"
+                        #fechaAplicacion="ngModel" [(ngModel)]="tratamientosid.fechaAplicacion">
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+                <!--Estado-->
+                <div class="col-md-6">
+                    <label>ESTADO</label>
+                    <div class="caja">
+                        <select class="form-select" aria-label="Default select example"
+                            name="estado" #estado="ngModel" [(ngModel)]="tratamientosid.estado">
+
+                            <option [ngValue]="undefined">
+                                ESTADO
+                            </option>
+                            <option value="INICIO">INICIO</option>
+                            <option value="CONTINUA">CONTINUA</option>
+                            <option value="FINALIZADO">FINALIZADO</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row mx-auto">
+
+              <div class="col-md-12">
+                <div style="width: fit-content; margin: auto;">
+                  <button type="button" class="btn btn-large" data-dismiss="modal"
+                    style="margin-right: 10px;">Regresar</button>
+                  <button type="button" class="btn btn-info" (click)="editarTratamiento()">Guardar Tratamiento</button>
+                </div>
+              </div>
+  
+            </div>
+  
+         
+  
+        </div>
+      </div>
+    </div>
+  </div>

@@ -11,8 +11,8 @@
  */
 
 export interface TratamientoDto { 
-    descripcion: string;
-    estado: string;
+    descripcion?: string;
+    estado?: string;
     fechaAplicacion?: string;
-    indicaciones: string;
+    indicaciones?: string;
 }
