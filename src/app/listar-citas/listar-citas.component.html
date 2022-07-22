@@ -146,6 +146,37 @@
                     <div class="card-body">
         
                         <div class="row">
+                            <div class="col-md-12">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="NOMBRE DEL CLIENTE" 
+                                        [(ngModel)]="citasid.cliente.nombre +' '+ citasid.cliente.apellidos" disabled>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Fecha Cita: " id="fechaReserva" type="text" [(ngModel)]="citasid.fechaCita" disabled>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-5">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Nueva Fecha: " id="fechaReserva" min="2022-07-19" type="date"  [(ngModel)]="fecha" (ngModelChange)="setHorasSeleccionadas()">
+                                    </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                                <select style="padding-left: 10px;" id="op1" class="custom-select" name="select" [(ngModel)]="hora">
+                                  <option value = "Selecciona una hora..." selected disabled>HORA...</option>
+                                  <option value="{{hora}}" *ngFor="let hora of horasDisponibles"> {{getHoraConFormatoAmPm(hora)}}</option>
+                                </select>
+                            </div>
+                            <br>
+                        </div>
+                        <br>
+                        <div class="row">
+                            
                             <div class="col-md-6">
                                 <mat-form-field class="example-full-width">
                                     <input matInput placeholder="VETERINARIO" type="text" [(ngModel)]="citasid.veterinario.persona.nombre + ' ' + citasid.veterinario.persona.apellidos" disabled>
@@ -162,55 +193,6 @@
                         </div>
         
                         <div class="row">
-                            <div class="col-md-6">
-                                <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="FECHA" type="text" [(ngModel)]="citasid.fechaCita" disabled>
-                                </mat-form-field>
-                            </div>
-                            <div class="col-md-6">
-                                <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Nueva Fecha: "  id="fechaReserva" (timeupdate)="2022-07-19" min="2022-07-19" type="date">
-                                </mat-form-field>
-                                <br>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <select style="padding-left: 10px;" id="op1" class="custom-select" name="select" [(ngModel)]="hora">
-                                        <option value = "Selecciona una hora..." selected disabled>Nueva hora...</option>
-                                        <option value="08:00:00">08:00am - 08:30am</option>
-                                        <option value="08:30:00">08:30am - 09:00am</option>
-                                        <option value="09:00:00">09:00am - 09:30am</option>
-                                        <option value="09:30:00">09:30am - 10:00pm</option>
-                                        <option value="10:00:00">10:00pm - 10:30pm</option>
-                                        <option value="10:30:00">10:30pm - 11:00pm</option>
-                                        <option value="11:00:00">11:00pm - 11:30pm</option>
-                                        <option value="11:30:00">11:30pm - 12:00pm</option>
-                                        <option value="14:00:00">14:00pm - 14:30pm</option>
-                                        <option value="14:30:00">14:30pm - 15:00pm</option>
-                                        <option value="15:00:00">15:00pm - 15:30pm</option>
-                                        <option value="15:30:00">15:30pm - 16:00pm</option>
-                                        <option value="16:00:00">16:00pm - 16:30pm</option>
-                                        <option value="16:30:00">16:30pm - 17:00pm</option>
-                                        <option value="17:00:00">17:00pm - 17:30pm</option>
-                                        <option value="17:30:00">17:30pm - 18:00pm</option>
-                                        <option value="18:00:00">18:00pm - 18:30pm</option>
-                                        <option value="18:30:00">18:30pm - 19:00pm</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <br>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="NOMBRE DEL CLIENTE" 
-                                        [(ngModel)]="citasid.cliente.nombre +' '+ citasid.cliente.apellidos" disabled>
-                                </mat-form-field>
-                            </div>
-                        </div>
-        
-                        <div class="row">
                             <div class="col-md-12">
                                 <mat-form-field class="example-full-width">
                                     <textarea matInput rows="5" placeholder="MOTIVO DE CITA" [(ngModel)]="citasid.motivo">
@@ -218,14 +200,13 @@
                                 </mat-form-field>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
-                <div class="modal-footer">
+                <!-- <div class="modal-footer">
                     <button type="button" class="btn btn-large" data-dismiss="modal">CANCELAR</button>
                     <button mat-raised-button type="submit" class="btn btn-info pull-right"
-                            (click)="updateCitas()">REGISTRAR</button>
-                </div>
+                            (click)="updateCitas()">ACTUALIZAR CITA</button>
+                </div> -->
             </div>
         </div>
     </div>
