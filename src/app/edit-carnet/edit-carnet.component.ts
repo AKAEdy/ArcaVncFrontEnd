@@ -40,8 +40,11 @@ export class EditCarnetComponent implements OnInit {
 
 
   volver(){
-    this.router.navigate(["/table-list"]);
+    this.router.navigate(["/upgrade",this.carnetVacuna.animal.id]);
   }
+
+
+
 getAllVacunas() {
   this.vacunaServic.getVacunasUsingGET().subscribe((data) => {
     this.vacunas = data;
@@ -53,12 +56,15 @@ modificarCarnet(){
   //  console.log(this.vacuna,"mostrar objeto vacuna");
   // console.log(JSON.stringify(this.selectedvacunas),"imprimiendo objeto convertido");
   console.log(this.carnetVacuna);
- // this.carnetVacuna.vacuna = this.selectedvacunas;
+  this.carnetVacuna.vacuna=this.selectedvacunas;
+ 
   this.carnet.updateUsingPUT(this.carnetVacuna, this.carnetVacuna.id ).subscribe(
     (data) => {
      
-      this.carnetVacuna=data;
-      console.log(data, "guardando carnet");
+      this.carnetVacuna=data.carnetVacunacion;
+  
+      console.warn( "guardando carnet", data);
+      this.volver();
       Swal.fire({
         position: "center",
         icon: "success",
@@ -72,12 +78,12 @@ modificarCarnet(){
     },
     () => {
       this.onComplete(this.carnetVacuna);
-      location.reload();
+     
      
     }
    
   );
-  this.volver();
+  
 }
 
 onComplete(cv:CarnetVacunacion): void {

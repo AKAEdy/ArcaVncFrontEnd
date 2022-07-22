@@ -20,9 +20,8 @@
             <br>
             <div class="search">
              
-              <input type="text" class="form-control" placeholder="Buscar por nombre"   [(ngModel)]="filterAnimal">
-             
-             <i class="fa fa-search"></i> 
+              <input type="text" class="form-control" placeholder="🔎Buscar por nombre..."   [(ngModel)]="filterAnimal">
+            
             </div>
           </div>
           </div>
@@ -33,10 +32,10 @@
        
         <div class="row">
 
-          <div class="col-lg-3 col-md-3" *ngFor="let animal of animales | filteranimales: filterAnimal">
+          <div class="col-lg-4 col-md-3" *ngFor="let animal of animales | filteranimales: filterAnimal">
 
             <!-- Card -->
-            <div class="color" class="card border-danger mb-5" style="background-color: rgb(240, 240, 240);" >
+            <div class="color" class="card border-danger mb-12" style="background-color: rgb(240, 240, 240);" >
               <h3 class="card-title" style="text-transform: uppercase"><strong>
                  {{animal.nombre}}
                 </strong> </h3>
@@ -65,6 +64,7 @@
                 </h5>
 
               </div>
+
               <div class="btn-group" style="display: flex; justify-content: center;">
                 <div>
                   <button mat-raised-button type="button" 
@@ -73,19 +73,8 @@
               </button>
                 </div>
                 <div>
-            <br>
+                  
           
-              <div class="card-footer-center">
-
-                <button mat-raised-button type="button" 
-                class="btndetalle " (click)="Detalle(animal.id)">
-                Ver
-            </button>
-            <button mat-raised-button type="button" 
-                class="btndetalle " (click)="animalSelect(animal.id)">
-                Adoptar
-            </button>
-               
                   <button mat-raised-button type="submit" class="btn btn-danger btn-round"
                   class="btneliminar" (click)="eliminarAnimal(animal.id)">
                   <i class="material-icons">delete</i>
@@ -96,11 +85,15 @@
 
             <div class="row" style="display: flex; justify-content: center;">
                 <div class="col-md-6" >
-                     <button mat-raised-button type="submit" class="btnadoptar">
-                         ADOPTAR
-                     </button>
+                     <button mat-raised-button type="button" 
+                     class="btnadoptar " (click)="animalSelect(animal.id)">
+                     Adoptar
+                 </button>
                 </div> 
              </div>
+
+
+      
 
 
 

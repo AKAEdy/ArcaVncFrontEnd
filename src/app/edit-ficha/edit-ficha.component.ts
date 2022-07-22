@@ -4,6 +4,7 @@ import { FichasClnicasService } from 'app/api/fichasClnicas.service';
 import { TratamientosService } from 'app/api/tratamientos.service';
 import { FichaClinicaDTO } from 'app/model/fichaClinicaDTO';
 import { FichaClinicaRequestDTO } from 'app/model/fichaClinicaRequestDTO';
+import { TratamientoDto } from 'app/model/tratamientoDto';
 import { TratamientoDtoExtends } from 'app/model/tratamientoDtoExtends';
 import { Tratamientos } from 'app/models/tratamientos';
 import Swal from 'sweetalert2';
@@ -16,6 +17,8 @@ import Swal from 'sweetalert2';
 export class EditFichaComponent implements OnInit {
   fichaClinica: FichaClinicaRequestDTO={};
   tratamientos: Tratamientos;
+  tratamientosid: TratamientoDto ={}
+  idtratamiento: number;
    // fichaClinicaDTO:FichaClinicaDTO={}
   idAnimal:number;
   idfichatratamiento: number;
@@ -50,6 +53,44 @@ export class EditFichaComponent implements OnInit {
     })                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
   }
 
+  getTratamientoById(id: number){ 
+    this.idtratamiento = id
+    this.ts.getByIdUsingGET6(id).subscribe(data =>{
+
+      this.tratamientosid=data.Tratamiento;
+      console.log('tratamientos' + this.tratamientosid.indicaciones)
+    })  
+  }
+  editarTratamiento(){
+    this.ts.updateUsingPUT6(this.tratamientosid, this.fichaClinica.id, this.idtratamiento ).subscribe(data =>{
+
+    })  
+  }
+  eliminarTratamiento(id: number){
+    Swal.fire({
+      title: '¿Esta seguro que decea eliminar?',
+      text: "No podra revertit los cambios!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#FE3838',
+      cancelButtonColor: '#878787',
+      confirmButtonText: 'Si, eliminar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.ts.deleteUsingDELETE6(id).subscribe(data =>{
+
+        }) 
+        Swal.fire(
+          'Eliminado!',
+          'Registro eliminado exitosamente.',
+          'success'
+        )
+       
+      }
+    })
+    
+  }
+
   modificarFicha(){
     
     Swal.fire({
@@ -60,8 +101,8 @@ export class EditFichaComponent implements OnInit {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        this.fichasClinicasService.updateUsingPUT2(this.fichaClinica, this.fichaClinica.id).subscribe(
-          (data) => {
+        console.log(this.fichaClinica)
+        this.fichasClinicasService.updateUsingPUT2(this.fichaClinica, this.fichaClinica.id).subscribe( data => {
          
           this.fichaClinica = data
          
@@ -93,7 +134,7 @@ export class EditFichaComponent implements OnInit {
         Swal.fire('No se guardaron los cambios', '', 'info')
       }
     })
-      this.volver();
+     // this.volver();
       }
 
      

@@ -29,7 +29,7 @@ animalId:AnimalRefugioResponse={}
   //fc
   public fichasClinicas: FichaClinicaDTO[] = [];
   pagina=0;
-  tamaño=8;
+  tamaño=300;
   // router: any;
   constructor(private animalesService: AnimalesRefugioService,private router: Router,private fichasClinicasService: FichasClnicasService) { }
 
@@ -109,7 +109,8 @@ Detalle(id: number){
   listarAnimales(){
     
 this.animalesService.getAnimalesNoAdoptadosUsingGET(this.pagina,this.tamaño).subscribe(data =>{
-       this.animales = data.animales;
+
+       this.animales = data.animales.slice().reverse()
        console.log ("listado", data)
     })
   }
