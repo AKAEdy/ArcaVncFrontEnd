@@ -44,7 +44,15 @@ public formSubmitted = false;
 
 
   crateFichaClinica(){
-    
+    console.log(this.animal)
+     if (this.animal.animal===undefined) {
+      this.idAnimal=this.animal.id;
+    }else{
+      this.idAnimal=this.animal.animal.id
+    }
+
+
+
     Swal.fire({
       title: 'Seguro quiere realizar esta acción?',
       showDenyButton: true,
@@ -57,7 +65,7 @@ public formSubmitted = false;
         this.fichasClinicasService.createUsingPOST2(this.fichaClinicaRqstDTO={
           alimentacion:  this.fichaClinicaRqstDTO.alimentacion,
 
-          animalId: this.animal.animal.id,
+          animalId: this.idAnimal,
           
           conjuntiva:  this.fichaClinicaRqstDTO.conjuntiva,
           costo:  this.fichaClinicaRqstDTO.costo,
@@ -78,8 +86,8 @@ public formSubmitted = false;
           trc:  this.fichaClinicaRqstDTO.trc
         }).subscribe(data =>{
           
-          this.fichaClinicaDTO = data
-         
+          this.fichaClinicaDTO = data.data
+          this.irAtras();
          }
         , err => {
           console.warn("code", err);
@@ -108,14 +116,17 @@ public formSubmitted = false;
         Swal.fire('No se guardaron los cambios', '', 'info')
       }
     })
-      this.irAtras();
+     
       }
 
       agregarTratamiento(){
  this.router.navigateByUrl("/tratamiento")
       }
+
+
       irAtras() {
-        this.router.navigate(["/upgrade", this.animal.id]);
+        this.router.navigate(["/upgrade", this.fichaClinicaDTO.animal.id]);
+
       }
 }
 
