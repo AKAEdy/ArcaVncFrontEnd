@@ -74,6 +74,7 @@ export class TratamientoComponent implements OnInit {
           console.log(this.fichaClinica)
           this.tratamientosService.createUsingPOST6(this.tratamiento,this.fichaClinica.id).subscribe(data =>{
             this.tratamiento=data;
+            
             console.log(data, " datos de tratamiento")
             Swal.fire({
               position: 'center',
@@ -82,7 +83,7 @@ export class TratamientoComponent implements OnInit {
               showConfirmButton: false,
               timer: 1500
             })
-            location.reload();
+            this.regresar()
           }, err =>{
             Swal.fire({
               icon: 'error',

@@ -334,22 +334,10 @@
                     class="btn btn-info pull-right"
                     (click)="modificarFicha()"
                   >
-                    GUARDAR FICHA CLINICA
+                    ACTUALIZAR FICHA CLINICA
                   </button>
   
-                  <!-- BOTON AGREGAR TRATAMIENTO  -->
-                  <button
-                  id="botontratamiento"
-                  type="submit"
-                  mat-raised-button
-                  class="btn btn-success pull-right"
-                  (click)="irTratamiento(fichaClinica.id)"
                   
-                >
-               
-
-                  AGREGAR TRATAMIENTO
-                </button>
                 
                   <div class="clearfix"></div>
                 </div>
@@ -360,22 +348,44 @@
              <!-- TRATAMIENTOS  -->
 
              <div class="card-body">
+              <!--Costo -->
+              <div class="col-md-12">
+                <mat-form-field class="example-full-width">
+                  <input disabled
+                    matInput
+                    placeholder=""
+                  />
+                </mat-form-field>
+              </div>
+              <br>
+              <!-- BOTON AGREGAR TRATAMIENTO  -->
+              <button
+              id="botontratamiento"
+              type="submit"
+              mat-raised-button
+              class="btn btn-info"
+              (click)="irTratamiento(fichaClinica.id)"
+              
+            >
+              AGREGAR TRATAMIENTO NUEVO
+            </button>
+            <br>
               <div class="table-responsive">
-                  <table class="table">
-                      <thead class=" text-primary">
-                          <th>
+                  <table class="table table-sm">
+                      <thead class=" text-primary" >
+                          <th scope="col">
                               DESCRIPCION
                           </th>
-                          <th>
+                          <th scope="col">
                                INDICACIONES
                           </th>
-                          <th>
+                          <th scope="col">
                               FECHA DE APLICACION
                           </th>
-                          <th>
+                          <th scope="col">
                               ESTADO
                           </th>
-                          <th>
+                          <th scope="col">
                               ACCION
                           </th>
                          
@@ -406,7 +416,7 @@
                                     </span><span matripple=""
                                         class="mat-ripple mat-button-ripple"></span><span
                                         class="mat-button-focus-overlay"></span> </button> -->
-                                        <a href="#Modal" role="button" class="btn btn-large btn-info" (click)="getTratamientoById(tratamientos.id)" data-toggle="modal"><span
+                                        <a href="#Modal" role="button" class="btn btn-warning" (click)="getTratamientoById(tratamientos.id)" data-toggle="modal"><span
                                           class="mat-button-wrapper"><i _ngcontent-uqa-c89=""
                                               class="material-icons">mode_edit</i>
                                           <div _ngcontent-uqa-c89="" class="ripple-container"></div>
@@ -415,7 +425,7 @@
                             <td>
                                 <button _ngcontent-die-c89="" mat-raised-button="" type="submit"
                                     class="mat-focus-indicator btneliminar mat-raised-button mat-button-base"
-                                    class="btneliminar" (click)="eliminarTratamiento(tratamientos.id)"><span
+                                    class="btneliminar" (click)="eliminarTratamiento(tratamientos.id)" class="btn btn-danger" ><span
                                         class="mat-button-wrapper"><i _ngcontent-die-c89=""
                                             class="material-icons">delete</i>
                                         <div _ngcontent-die-c89="" class="ripple-container"></div>

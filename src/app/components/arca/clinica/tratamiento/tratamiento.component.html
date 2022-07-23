@@ -64,30 +64,20 @@
                             </div>
 
                             <br>
-                            <hr>
-
-
-
-                            <br>
-                            <hr>
-                            
-
                             
 
                             <div class="row">
-
+                                <div class="col-md-5">
+                                    <button mat-raised-button type="submit" class="btn btn-info pull-right"
+                                        (click)="guardarTratamiento()">GUARDAR</button>
+                                </div>
                                 <div class="col-md-5">
                                     <button mat-raised-button type="submit"
                                         class="btn btn-danger pull-right"  (click)="regresar()">CANCELAR</button>
 
                                 </div>
                                 <div class="col-md-5">
-                                    <button mat-raised-button type="submit" class="btn btn-danger pull-right"
-                                        (click)="guardarTratamiento()">Guardar</button>
-
-                                </div>
-                                <div class="col-md-5">
-                                    <a href="#Modal" role="button" class="btn btn-large btn-success" data-toggle="modal">Agregar Medicacion</a>
+                                    <a href="#Modal" role="button" class="btn btn-info" data-toggle="modal">AGREGAR MEDICACION</a>
 
                                 </div>
 
@@ -188,8 +178,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success" (click)=" crearMedicacion()">AGREGAR TRATAMIENTO</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info" (click)=" crearMedicacion()">AGREGAR MEDICACION</button>
             </div>
         </div>
     </div>

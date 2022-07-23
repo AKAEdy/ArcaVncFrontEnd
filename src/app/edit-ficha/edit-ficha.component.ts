@@ -63,15 +63,19 @@ export class EditFichaComponent implements OnInit {
       console.log('tratamientos' + this.tratamientosid.indicaciones)
     })  
   }
-  editarTratamiento(){
+
+  /*editarTratamiento1(){
     this.ts.updateUsingPUT6(this.tratamientosid, this.fichaClinica.id, this.idtratamiento ).subscribe(data =>{
 
+      location.reload()
+
     })  
-  }
+  }*/
+
   eliminarTratamiento(id: number){
     Swal.fire({
       title: '¿Esta seguro que decea eliminar?',
-      text: "No podra revertit los cambios!",
+      text: "No podra revertir los cambios!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#FE3838',
@@ -80,6 +84,8 @@ export class EditFichaComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.ts.deleteUsingDELETE6(id).subscribe(data =>{
+
+          this.listatratmiento()
 
         }) 
         Swal.fire(
@@ -140,7 +146,7 @@ export class EditFichaComponent implements OnInit {
       }
     })
      // this.volver();
-      }
+  }
 
      
   irTratamiento(id: number){
@@ -149,15 +155,60 @@ export class EditFichaComponent implements OnInit {
       console.log("lista ficha para tratamiento", data);
     this.router.navigate (['/tratamiento', id]);
     });
-    
      
-   
-   
   }
+
   volver(id?: number) {
     id?        this.router.navigateByUrl(`/upgrade/${id}`):this.router.navigateByUrl(`/table-list/`)
   }
-      
+
+  editarTratamiento(){
+    
+    Swal.fire({
+      title: 'Seguro quiere modificar?',
+      showDenyButton: true,
+      confirmButtonText: 'Guardar',
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        
+        this.ts.updateUsingPUT6(this.tratamientosid, this.fichaClinica.id, this.idtratamiento ).subscribe(data =>{
+
+          this.listatratmiento()
+    
+          
+        }
+        , err => {
+          console.warn("code", err);
+          if(err.error.status === 500){
+            console.log(err);
+            
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Llene todos los datos!',
+            })
+          }
+         
+        }
+        )
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Se a modificado exitosamente',
+          showConfirmButton: false,
+          timer: 1500
+          })
+       
+         
+      } else if (result.isDenied) {
+        Swal.fire('No se guardaron los cambios', '', 'info')
+      }
+    })
+
+  }
+  
 }
 
 
