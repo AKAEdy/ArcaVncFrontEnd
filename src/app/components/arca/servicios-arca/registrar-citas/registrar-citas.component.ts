@@ -118,7 +118,7 @@ export class RegistrarCitasComponent implements OnInit {
   }
 
   guardarCita(){
-
+    this.cita.estado = true
     this.cita.fechaCita = this.fecha+' '+this.hora
     this.cita.cliente_id = this.cliente.id
     this.cita.servicios = this.getServiciosArcaSeleccionados()

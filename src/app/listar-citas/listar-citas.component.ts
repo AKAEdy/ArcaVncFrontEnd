@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CitasService } from 'app/api/citas.service';
-import { VeterinariosService } from 'app/api/veterinarios.service';
 import { CitaArcaExtends } from 'app/model/citaArcaExtends';
-import { CitaDto } from 'app/model/citaDto';
-import { Veterinario } from 'app/model/veterinario';
 
 @Component({
   selector: 'listar-citas',
@@ -11,103 +8,59 @@ import { Veterinario } from 'app/model/veterinario';
   styleUrls: ['./listar-citas.component.css']
 })
 export class ListarCitasComponent implements OnInit {
-citas: CitaArcaExtends[]=[];
-veterinarios: Veterinario [] = [] 
-idVeterinario:string = 'Selecciona un veterinario...'
-fecha: string;
-hora:string = 'Selecciona una hora...';
+  citas: CitaArcaExtends[]=[];
+  fechaBusqueda: string = this.dateToString(new Date())
+  cedulaBusqueda: string = ""
+  citaSeleccionada:CitaArcaExtends = {}
 
 
-cita: CitaDto={
-  estado: false,
-  fechaCita: '',
-  motivo: '',
-  nombreCliente: '',
-  servicios: []
-}
-citasid: CitaArcaExtends={}
+  constructor(private citaService: CitasService) { }
 
-
-  constructor(private citaService: CitasService, private veterinarioService: VeterinariosService) { }
 
   ngOnInit(): void {
-    this.fechaAnterior();
-    this.listarAllCitas();
-    this.llamarVeterinarios();
+    this.getCitasPorFecha();
   }
 
-  listarAllCitas(){
-      this.citaService.getAllCitasUsingGET().subscribe(data => {
-      this.citas = data;
-    })
-  }
-  updateCitas(){
-    // this.citaService.modificarCitaUsingPUT(this.cita = 
-    //   {
-    //     "estado": true,
-    //     "fechaCita": "yyyy-MM-dd HH:mm",
-    //     "motivo": "string",
-    //     "nombreCliente": "string",
-    //     "servicios": [
-    //       {
-    //         "descripcion": "string",
-    //         "id": 0,
-    //         "nombre": "string",
-    //         "precio": 0
-    //       }
-    //     ]
-    //   }, this.citasid.id, this.citasid.veterinario.id).subscribe(data =>{
-    //   this.citasid = data
-    //   location.reload
-    // })
-  }
-  getCitasById(id: number){
-    this.citaService.getCitaPorIdUsingGET(id).subscribe(data => {
-  
-      this.citasid = data
-     console.log(this.citasid);
-     
-    })
-  }
-  
-  deleteCitas(id: number){
-    this.citaService.eliminarCitaUsingDELETE(id).subscribe(data => {
-      location.reload
-      console.log(id);
-    })
-
-  }
-  botonCancelar() {
-    document.getElementById('tarjeta').style.display = 'none'
-    document.getElementById('tabla').style.display = 'block'
-  }
-  mostrarEditar() {
-    console.log(this.citasid.cliente.nombre);
+  getCitasPorFecha(){
+    console.log("Fecha: "+ this.fechaBusqueda);
     
-    document.getElementById('tarjeta').style.display = 'block'
-    document.getElementById('tabla').style.display = 'none'
-  }
-
-  llamarVeterinarios(){
-    this.veterinarioService.getAllVeterinariosUsingGET().subscribe(data =>{
-      this.veterinarios = data
-    })
-  }
-
-  fechaAnterior(){
-    var fecha = new Date();
-    var anio = fecha.getFullYear();
-    var dia = fecha.getDate();
-    var _mes = fecha.getMonth(); //viene con valores de 0 al 11
-    var mes = ""
-    _mes = _mes + 1; //ahora lo tienes de 1 al 12
-    if (_mes < 10) //ahora le agregas un 0 para el formato date
-    {
-      mes = "0" + _mes;
-    }else {
-      mes = _mes.toString();
+    if (this.fechaBusqueda != null && this.fechaBusqueda != undefined && this.fechaBusqueda != "") {
+      this.citas = []
+      this.citaService.getCitasPorFechaAgendaUsingGET(this.fechaBusqueda).subscribe(data =>{
+        this.citas = data.citas
+      })
     }
-    mes = anio + '-' + mes + '-' + dia;
-    document.getElementById('fechaReserva').setAttribute('min', mes)
+  }
+
+  getCitasPorCedula(){
+    if (this.cedulaBusqueda != null && this.cedulaBusqueda != undefined && this.cedulaBusqueda != "") {
+      this.citas = []
+      this.citaService.getAllCitasActivasPorClienteUsingGET(this.cedulaBusqueda).subscribe(data => {
+        this.citas = data
+      })
+    }
+  }
+
+  setCitaSeleccionada(cita: CitaArcaExtends){
+    this.citaSeleccionada = cita
+  }
+
+  getHora(fecha:string){
+    return fecha.substring(11)
+  }
+
+  getFecha(fecha:string){
+    return fecha.substring(0,11)
+  }
+
+  dateToString(fecha: Date): string {
+    let anio = fecha.getFullYear();
+    let _dia = fecha.getDate();
+    let _mes = fecha.getMonth() + 1; //viene con valores de 0 al 11
+
+    let mes = (_mes < 10)? '0'+_mes : ''+_mes
+    let dia = (_dia < 10)? '0'+_dia : ''+_dia
+
+    return anio + '-' + mes + '-'+ dia
   }
 }

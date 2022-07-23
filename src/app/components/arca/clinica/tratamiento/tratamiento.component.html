@@ -65,70 +65,8 @@
 
                             <br>
                             <hr>
-                            <h4>HISTORIAL DE MEDICACIONES</h4>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead class=" text-primary">
-                                            <th>
-                                                MEDICAMENTO
-                                            </th>
-                                            <th>
-                                                DESCRIPCION MEDICACION
-                                            </th>
-                                            <th>
-                                                DOSIS
-                                            </th>
-                                            <th>
-                                                DURACION
-                                            </th>
-                                            <th>
-                                                FRECUENCIA
-                                            </th>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let medicacion of medicacioneslist">
 
-                                                <td>
-                                                    {{medicacion.medicamento.nombreComercial}}
-                                                </td>
-                                                <td>
-                                                    {{medicacion.descripcionMd}}
-                                                </td>
-                                                <td>
-                                                    {{medicacion.dosis}}
-                                                </td>
-                                                <td>
-                                                    {{medicacion.duracion}}
-                                                </td>
-                                                <td>
-                                                    {{medicacion.frecuencia}}
-                                                </td>
-                                                <td>
-                                                    <button _ngcontent-uqa-c89="" mat-raised-button="" type="submit"
-                                                        class="mat-focus-indicator btneliminar mat-raised-button mat-button-base" class="btneditar"
-                                                        (click)="getPersonaById(persona.id)"><span class="mat-button-wrapper"><i
-                                                                _ngcontent-uqa-c89="" class="material-icons">mode_edit</i>
-                                                            <div _ngcontent-uqa-c89="" class="ripple-container"></div>
-                                                        </span><span matripple=""
-                                                            class="mat-ripple mat-button-ripple"></span><span
-                                                            class="mat-button-focus-overlay"></span> </button>
-                                                </td>
-                                                <td>
-                                                    <button _ngcontent-die-c89="" mat-raised-button="" type="submit"
-                                                        class="mat-focus-indicator btneliminar mat-raised-button mat-button-base" class="btneliminar"  (click)="deletePersona(persona.id)"><span
-                                                            class="mat-button-wrapper"><i _ngcontent-die-c89=""
-                                                                class="material-icons">delete</i>
-                                                            <div _ngcontent-die-c89="" class="ripple-container"></div>
-                                                        </span><span matripple=""
-                                                            class="mat-ripple mat-button-ripple"></span><span
-                                                            class="mat-button-focus-overlay"></span></button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+
 
                             <br>
                             <hr>
