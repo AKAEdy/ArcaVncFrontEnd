@@ -54,8 +54,6 @@ import { EditFichaComponent } from 'app/edit-ficha/edit-ficha.component';
 import { RegistrarCitasComponent } from 'app/components/arca/servicios-arca/registrar-citas/registrar-citas.component';
 import { MatTabsModule } from '@angular/material/tabs';
 
-import { PerfilusuarioComponent } from 'app/perfilusuario/perfilusuario.component';
-
 
 @NgModule({
   imports: [
@@ -113,9 +111,7 @@ import { PerfilusuarioComponent } from 'app/perfilusuario/perfilusuario.componen
     RegistrarUsuariosComponent,
     ListarUsuariosComponent,
     EditCarnetComponent,
-    EditFichaComponent,
-
-    PerfilusuarioComponent,
+    EditFichaComponent
   ]
 })
 
