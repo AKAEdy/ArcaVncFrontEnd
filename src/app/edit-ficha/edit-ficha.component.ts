@@ -33,6 +33,8 @@ export class EditFichaComponent implements OnInit {
     const id = this.activatedRoute.snapshot.params.id;
     this.fichasClinicasService.getByIdUsingGET2(id).subscribe(data =>{
       this.fichaClinica= data;
+      this.fichaClinica.animalId=data.animal.id;
+      this.fichaClinica.personaId=data.veterinario.persona.id;
    
     },
       err => {
@@ -101,10 +103,13 @@ export class EditFichaComponent implements OnInit {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        console.log(this.fichaClinica)
+        console.warn(this.fichaClinica)
         this.fichasClinicasService.updateUsingPUT2(this.fichaClinica, this.fichaClinica.id).subscribe( data => {
          
-          this.fichaClinica = data
+          console.log("ruta", data)
+          this.fichaClinica = data.data
+
+         this.volver(data.data.animal.id);
          
          }
         , err => {
@@ -149,9 +154,9 @@ export class EditFichaComponent implements OnInit {
    
    
   }
-      volver() {
-        this.router.navigate(["/table-list"]);
-      }
+  volver(id?: number) {
+    id?        this.router.navigateByUrl(`/upgrade/${id}`):this.router.navigateByUrl(`/table-list/`)
+  }
       
 }
 
