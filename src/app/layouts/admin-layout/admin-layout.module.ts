@@ -24,7 +24,7 @@ import { ListarMedicamentoComponent } from 'app/listar-medicamento/listar-medica
 import { FilteradoptadosPipe } from '../../pipes/filteradoptados.pipe';
 import { RegistrarVacunasComponent } from '../../registrar-vacunas/registrar-vacunas.component';
 import { ListarVacunasComponent } from '../../listar-vacunas/listar-vacunas.component';
-import { ListarCitasComponent } from '../../listar-citas/listar-citas.component';
+import { ListarCitasComponent } from '../../components/arca/servicios-arca/listar-citas/listar-citas.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatTableModule } from '@angular/material/table';

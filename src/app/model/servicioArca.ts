@@ -11,8 +11,8 @@
  */
 
 export interface ServicioArca { 
-    descripcion: string;
+    descripcion?: string;
     id?: number;
-    nombre: string;
-    precio: number;
+    nombre?: string;
+    precio?: number;
 }

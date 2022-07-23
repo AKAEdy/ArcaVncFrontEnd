@@ -68,7 +68,7 @@ export class RegistrarCitasComponent implements OnInit {
       this.cliente = data
     },
     err => {
-      this.mostrarMensajeWarning('Opss!', 'No se ha encontrado un cliente cedula: '+this.cedulaCliente)
+      this.mostrarMensajeWarning('Opss!', 'No se ha encontrado un cliente con número de cédula: '+this.cedulaCliente)
     })
   }
 
@@ -84,7 +84,7 @@ export class RegistrarCitasComponent implements OnInit {
         if(codigo == 400){
           this.mostrarMensajeWarning('Opss', 'Por favor, llene correctamente los campos!')
         }else if(codigo == 500){
-          this.mostrarMensajeWarning('Opss!', 'Ya existe un cliente con cédula: '+this.clienteDto.cedula)
+          this.mostrarMensajeWarning('Opss!', 'Ya existe un cliente con número cédula: '+this.clienteDto.cedula)
         }else{
           this.mostrarMensajeError('Opss!', 'Ha ocurrido un error en el servidor, contacta con tu tecnico de confianza!')
         }

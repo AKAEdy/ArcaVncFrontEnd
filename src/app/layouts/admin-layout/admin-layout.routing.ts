@@ -13,7 +13,7 @@ import { ListaPersonaComponent } from "app/lista-persona/lista-persona.component
 import { RegistrarPersonaComponent } from "app/registrar-persona/registrar-persona.component";
 import { ListarMedicamentoComponent } from "app/listar-medicamento/listar-medicamento.component";
 import { RegistrarMedicamentoComponent } from "app/registrar-medicamento/registrar-medicamento.component";
-import { ListarCitasComponent } from "app/listar-citas/listar-citas.component";
+import { ListarCitasComponent } from "app/components/arca/servicios-arca/listar-citas/listar-citas.component";
 import { ListarVacunasComponent } from "app/listar-vacunas/listar-vacunas.component";
 import { RegistrarVacunasComponent } from "app/registrar-vacunas/registrar-vacunas.component";
 import { ListarAdoptanteComponent } from "app/listar-adoptante/listar-adoptante.component";

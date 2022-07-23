@@ -49,7 +49,7 @@ animalId:AnimalRefugioResponse={}
   
 eliminarAnimal(id: number) {
   Swal.fire({
-    title: '¿Esta seguro que decea eliminar?',
+    title: '¿Esta seguro que desea eliminar?',
     text: "No podra revertir los cambios!",
     icon: 'warning',
     showCancelButton: true,

@@ -1,0 +1,302 @@
+<div class="main-content" id="tabla">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Lista de citas </h4>
+                        <p class="card-category"> CITAS
+                        </p>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="row" style="margin: 30px 0;">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label style="margin-top: 16px;"> Buscar reservación por fecha: </label>
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput id="fechaReserva" type="date" [(ngModel)]="fechaBusqueda">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button class="btn btn-success pull-left" (click)="getCitasPorFecha()"
+                                            style="margin-top:43px ;">BUSCAR</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label style="margin-top: 16px;">Buscar reservaciones por cédula: </label>
+                                        <input type="text" style="margin-top: 10px; width: 100%;"
+                                            [(ngModel)]="cedulaBusqueda">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button class="btn btn-success pull-left" (click)="getCitasPorCedula()"
+                                            style="margin-top:43px ;">BUSCAR</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <th>
+                                            FECHA
+                                        </th>
+                                        <th>
+                                            HORA
+                                        </th>
+                                        <th>
+                                            CLIENTE
+                                        </th>
+                                        <th>
+                                            MOTIVO_CITA
+                                        </th>
+                                        <th style="text-align:center;">
+                                            ESTADO_CITA
+                                        </th>
+                                        <th style="text-align: center; width: 290px;">
+                                            ACCIONES
+                                        </th>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let cita of citas">
+                                            <td>
+                                                {{getFecha(cita.fechaCita)}}
+                                            </td>
+                                            <td>
+                                                {{getHora(cita.fechaCita)}}
+                                            </td>
+                                            <td>
+                                                {{cita.cliente.nombre + ' ' + cita.cliente.apellidos}}
+                                            </td>
+                                            <td>
+                                                {{cita.motivo}}
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <div class="row">
+                                                    <div class="col-md-12" *ngIf="cita.estado">
+                                                        🟢
+                                                    </div>
+                                                    <div class="col-md-12" *ngIf="!cita.estado">
+                                                        🔴
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td style="width: 290px;">
+                                                <a href="#mdlVerCita" role="button" class="btn btn-large btn-success"
+                                                    style="margin-right: 10px;" data-toggle="modal"
+                                                    (click)="setCitaSeleccionada(cita)">
+                                                    VER
+                                                </a>
+
+                                                <a href="#mdlModificarCita" role="button"
+                                                    class="btn btn-large btn-warning" data-toggle="modal"
+                                                    style="margin-right: 10px;" (click)="setCitaSeleccionada(cita)">
+                                                    <span class="mat-button-wrapper">
+                                                        <i _ngcontent-uqa-c89="" class="material-icons">mode_edit</i>
+                                                        <div _ngcontent-uqa-c89="" class="ripple-container"></div>
+                                                    </span>
+                                                    <span matripple="" class="mat-ripple mat-button-ripple">
+                                                    </span>
+                                                    <span class="mat-button-focus-overlay">
+                                                    </span>
+                                                </a>
+
+                                                <button _ngcontent-die-c89="" mat-raised-button="" type="submit"
+                                                    class="btn btn-danger mr-2" (click)="eliminarCita(cita.id)">
+                                                    <span class="mat-button-wrapper">
+                                                        <i _ngcontent-die-c89="" class="material-icons">delete
+                                                        </i>
+                                                        <div _ngcontent-die-c89="" class="ripple-container">
+                                                        </div>
+                                                    </span>
+                                                    <span matripple="" class="mat-ripple mat-button-ripple">
+                                                    </span>
+                                                    <span class="mat-button-focus-overlay">
+                                                    </span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="mdlVerCita" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 style="color: black; font-weight: bold; font-size: 20px; text-align: center; width: 100%;"
+                    class="modal-title">DATOS DE LA CITA</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+                    <h4 style="font-weight: bold; margin: 20px 0;"> DATOS DEL CLIENTE</h4>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Cédula: </label>
+                        <input type="text" [value]="citaSeleccionada.cliente.cedula" disabled>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label>Nombres: </label>
+                        <input type="text"
+                            value="{{citaSeleccionada.cliente.nombre+ ' '+ citaSeleccionada.cliente.apellidos}}"
+                            disabled>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label>Teléfono: </label>
+                        <input type="text" [value]="citaSeleccionada.cliente.telefono" disabled>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <h4 style="font-weight: bold; margin: 25px 0;"> DATOS DE LA CITA</h4>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Fecha: </label>
+                        <input type="text" [value]="citaSeleccionada.fechaCita" disabled>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label>Veterinario: </label>
+                        <input type="text"
+                            value="{{citaSeleccionada.veterinario.persona.nombre + ' '+citaSeleccionada.veterinario.persona.apellidos}}"
+                            disabled>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Motivo: </label>
+                        <input style="width: 100%;" type="text" value="{{citaSeleccionada.motivo}}" disabled>
+                    </div>
+                </div>
+
+                <div style="margin: 10px 0;" class="row">
+                    <div class="col-md-12">
+                        <label>Servicios: </label>
+                        <input style="width: 100%;" type="text" [value]="detallesCita" disabled>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="mdlModificarCita" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 style="color: black; font-weight: bold; font-size: 20px; text-align: center; width: 100%;"
+                    class="modal-title">EDITAR FECHA Y VETERINARIO</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form>
+
+                    <div class="row">
+                        <h4 style="font-weight: bold; margin: 20px 0;"> DATOS DEL CLIENTE</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Cédula: </label>
+                            <input type="text" [value]="citaSeleccionada.cliente.cedula" disabled>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Nombres: </label>
+                            <input type="text"
+                                value="{{citaSeleccionada.cliente.nombre+ ' '+ citaSeleccionada.cliente.apellidos}}"
+                                disabled>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Teléfono: </label>
+                            <input type="text" [value]="citaSeleccionada.cliente.telefono" disabled>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <h4 style="font-weight: bold; margin: 25px 0;"> DATOS DE LA CITA</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label style="margin-bottom: -30px;">Fecha: </label>
+                            <mat-form-field class="example-full-width">
+                                <input matInput id="fechaReservaEdit" type="date" value="{{fechaCitaEdit}}"
+                                    [(ngModel)]="fechaCitaEdit">
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label>Veterinario: </label>
+                            <select class="custom-select" [(ngModel)]="idVeterinarioEdit">
+                                <option disabled>Selecciona un veterinario...</option>
+                                <option value="{{veterinario.id}}" *ngFor="let veterinario of veterinarios">
+                                    {{veterinario.persona.nombre+' '+veterinario.persona.apellidos}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>Motivo: </label>
+                            <input style="width: 100%; height: 40px;" type="text" value="{{citaSeleccionada.motivo}}"
+                                disabled>
+                        </div>
+                    </div>
+
+                    <div style="margin: 10px 0;" class="row">
+                        <div class="col-md-12">
+                            <label>Servicios: </label>
+                            <input style="width: 100%;" type="text" [value]="detallesCita" disabled>
+                        </div>
+                    </div>
+
+                    <div class="row mx-auto">
+
+                        <div class="col-md-12">
+                          <div style="width: fit-content; margin: auto;">
+                            <button type="button" class="btn btn-large" data-dismiss="modal"
+                              style="margin-right: 10px;">Regresar</button>
+                            <button type="button" class="btn btn-info" (click)="editarCita()">Editar</button>
+                          </div>
+                        </div>
+            
+                      </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
