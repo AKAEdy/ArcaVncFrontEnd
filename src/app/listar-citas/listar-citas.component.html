@@ -124,3 +124,45 @@
         </div>
     </div>
 </div>
+
+
+<!-- ---------------------------------------- VENTANA MODAL: VISTA CITA---------------------------------------- -->
+<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+
+            <!-- ---------------------------------------- Cabecera ---------------------------------------- -->
+            <div class="modal-header">
+
+                <h5 class="modal-title" id="exampleModalLabel">CITA VISTA</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>
+
+            <!-- ---------------------------------------- Cuerpo ---------------------------------------- -->
+            <div class="modal-body">
+                <!-- --------------- Formulario --------------- -->
+                <form>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label> Cédula: </label>
+                            <input type="text" [value]="citaSeleccionada.cliente.cedula">
+                        </div>
+                        <div class="col-md-4">
+                            <label> Nombres: </label>
+                            <input type="text" [value]="citaSeleccionada.cliente.nombre">
+                        </div>
+                        <div class="col-md-4">
+                            <label> Teléfono: </label>
+                            <input type="text" [value]="citaSeleccionada.cliente.telefono">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
