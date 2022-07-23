@@ -34,7 +34,6 @@ import { AppRoutingModule } from './app.routing';
 import { UsuariosService } from './api/usuarios.service';
 import { RolesService } from './api/roles.service';
 
-import { PerfilusuarioComponent } from './perfilusuario/perfilusuario.component';
 import {MatInputModule} from '@angular/material/input';
 import { ServiciosService } from './api/servicios.service';
 
