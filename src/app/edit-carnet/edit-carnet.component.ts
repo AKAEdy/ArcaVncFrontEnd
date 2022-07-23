@@ -7,6 +7,7 @@ import { AnimalRefugioResponse } from 'app/model/animalRefugioResponse';
 import { CarnetVacunacion } from 'app/model/carnetVacunacion';
 import { CarnetVacunacionDTO } from 'app/model/carnetVacunacionDTO';
 import { Vacuna } from 'app/model/vacuna';
+import { VacunaDTO } from 'app/model/vacunaDTO';
 import { AlarmService } from 'app/service/alarm.service';
 import Swal from 'sweetalert2';
 
@@ -17,16 +18,18 @@ import Swal from 'sweetalert2';
 })
 export class EditCarnetComponent implements OnInit {
   vacunas:Vacuna[] = [];
-  selectedvacunas: Vacuna = {};
+  selectedvacunas: VacunaDTO = {};
   carnetVacuna: CarnetVacunacionDTO={};
   animal: AnimalRefugioResponse = {};
+ seleccione:string;
   constructor(private carnet:CarnetsDeVacunacinService,private activatedRoute: ActivatedRoute, private router: Router,private vacunaServic: VacunasService,private _alarmService:AlarmService) { }
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.params.id;
     this.carnet.getByIdUsingGET(id).subscribe(data =>{
       this.carnetVacuna= data;
-   
+  //this.nombreVacuna=data.vacuna.nombre;
+  // console.log(this.nombreVacuna)
     },
       err => {
         this.volver();

@@ -15,12 +15,12 @@
       <div class="card-body">
         <div class="row">
          
-          <div class="col-md-5">
+          <div class="col-md-11">
           
             <br>
-            <div class="search">
+            <div class="search"  style="float:right;">
              
-              <input type="text" class="form-control" placeholder="🔎Buscar por nombre..."   [(ngModel)]="filterAnimal">
+              <input type="text" class="form-control" placeholder="🔎Buscar ..."   [(ngModel)]="filterAnimal">
             
             </div>
           </div>
@@ -50,7 +50,9 @@
 
                
 
-              
+                <h5> 
+                  Raza: {{animal.lugarEstancia}}
+                </h5>
 
                 <h5> 
                   Raza: {{animal.raza}}
@@ -112,17 +114,7 @@
 </div>
 </div>
 
-<div class="container " >
-                     
-  <div class="pagination p11 " >
-    <ul>
-      <button (click)="previous()"> < </button>
-   
-      <button (click)="next()"> > </button>
-    </ul>
-  </div>  
-          
-</div>
+
 </div>
 
 </div>
