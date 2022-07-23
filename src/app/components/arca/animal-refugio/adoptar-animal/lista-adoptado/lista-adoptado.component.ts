@@ -13,8 +13,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./lista-adoptado.component.css']
 })
 export class ListaAdoptadoComponent implements OnInit {
-
-  filterpost:any='';
+  filterAnimal:any='';
+  
   adopcion:Adopcion[]=[];
   dataSource: any ={};
   adopcionid:Adopcion ={};
@@ -29,7 +29,7 @@ export class ListaAdoptadoComponent implements OnInit {
   ngOnInit(): void {
 
     this.getAllAdopcion();
-    this.filterpost=this.adopcion;
+    this.filterAnimal=this.adopcion;
   }
   
   

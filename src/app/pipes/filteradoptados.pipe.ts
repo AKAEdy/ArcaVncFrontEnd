@@ -12,7 +12,11 @@ export class FilteradoptadosPipe implements PipeTransform {
       || post.adoptante.persona.nombre.toLowerCase().indexOf(arg.toLowerCase())  > -1
       || post.fechaAdopcion.indexOf(arg) > -1 
       || post.adoptante.persona.cedula.indexOf(arg) > -1
-      || post.adoptante.persona.cedula.toLowerCase().indexOf(arg.toLowerCase())>-1){
+      || post.adoptante.persona.cedula.toLowerCase().indexOf(arg.toLowerCase())>-1
+      
+      || post.animal.nombre.indexOf(arg) > -1
+      || post.animal.nombre.toLowerCase().indexOf(arg.toLowerCase())>-1
+      ){
          resultPosts.push(post);
       };
       

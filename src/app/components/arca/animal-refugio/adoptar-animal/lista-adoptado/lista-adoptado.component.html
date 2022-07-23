@@ -10,32 +10,23 @@
                     <div class="card-body">
                         <div class="row">
                          
-                          <div class="col-md-6">
-                          
-                            <br>
-                            <div class="search">
-                             
-                                <input id="myInput" type="text" class="form-control" placeholder="🔎Buscar..."
-                                [(ngModel)]="filterpost" name="filterpost" />
-                            </div>
+                            <div class="col-md-11">
+          
+                                <br>
+                                <div class="search"  style="float:right;">
+                                 
+                                  <input type="text" class="form-control" placeholder="🔎Buscar por nombre..."   [(ngModel)]="filterAnimal">
+                                
+                                </div>
+                              </div>
                           </div>
-                          </div>
-
-
-
-
-
-
-
-
-
 
 
 
 
             <div class="row">
             
-                <div class="col-md-4" *ngFor="let adopciones of adopcion">
+                <div class="col-md-4" *ngFor="let adopciones of adopcion | filteradoptados: filterAnimal">
                     <div class="panel panel-info" class="list-group-item" id="card">
                         <div class="panel-body text-center">
                             <li class="list-group-item">
