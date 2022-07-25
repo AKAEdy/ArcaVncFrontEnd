@@ -4,7 +4,7 @@
           <div class="col-md-12">
               <div class="card">
                   <div class="card-header card-header-danger">
-                      <h4 class="card-title">LISTAS DE MASCOTAS</h4>
+                      <h4 class="card-title">LISTADO DE MASCOTAS</h4>
                   </div>
 
 
@@ -14,16 +14,22 @@
     <div class="card text-center" >
       <div class="card-body">
         <div class="row">
-         
           <div class="col-md-11">
-          
-            <br>
             <div class="search"  style="float:right;">
+              
              
-              <input type="text" class="forms-control"style="width:250px;height:30px"  placeholder="🔎 Buscar por nombre, sexo o estancia..."   [(ngModel)]="filterAnimal">
+              <input type="text" class="forms-control"style="width:270px;height:30px"  placeholder="🔎 Buscar por nombre, sexo o estancia..."   [(ngModel)]="filterAnimal">
             
             </div>
           </div>
+          <div class="col-md-11">
+            <button type="button"style="float:right;" class="btn btn-info" (click)="irRegistro()" >
+              <i class="fa fa-plus-square" aria-hidden="true"></i>
+             Nueva Mascota
+            </button>
+            <br></div>
+            <br>
+           
           </div>
          
         
@@ -78,8 +84,8 @@
                   
           
                   <button mat-raised-button type="submit" class="btn btn-danger btn-round"
-                  class="btneliminar" (click)="eliminarAnimal(animal.id)">
-                  <i class="material-icons">delete</i>
+                  class="btneliminar" (click)="eliminarAnimal(animal.id)" >
+                  <i class="material-icons"title="Eliminar">delete</i>
               </button>
                 </div>
                 

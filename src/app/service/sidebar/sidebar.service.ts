@@ -60,11 +60,11 @@ export class SidebarService {
 			items: [
 				{
 					tittle: "Informacion Mascotas",
-					url: "table-list",
+					url: "listaMascotas",
 
 					subitems: [{
 						subtittle: "PERFIL ANIMAL",
-						url: "upgrade/",
+						url: "perfilAnimal",
 					}]
 				},
 				{

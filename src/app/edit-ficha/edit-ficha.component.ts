@@ -159,7 +159,7 @@ export class EditFichaComponent implements OnInit {
   }
 
   volver(id?: number) {
-    id?        this.router.navigateByUrl(`/upgrade/${id}`):this.router.navigateByUrl(`/table-list/`)
+    id?        this.router.navigateByUrl(`/perfilAnimal/${id}`):this.router.navigateByUrl(`/table-list/`)
   }
 
   editarTratamiento(){

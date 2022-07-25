@@ -140,7 +140,7 @@ export class RegistroCarnetComponent implements OnInit {
 	}
 
 	irAtras() {
-		this.router.navigate(["/upgrade", this.animal.id]);
+		this.router.navigate(["/perfilAnimal", this.animal.id]);
 	}
  
 	onComplete(cv:CarnetVacunacion): void {
