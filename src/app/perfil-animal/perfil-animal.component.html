@@ -146,7 +146,7 @@
                                                 <div class="btn-group">
                                                     <div>
                                                         <button mat-raised-button type="submit"
-                                                             class="btneditar btn-info btn-round"
+                                                             class="btneditar btn-warning btn-round"
                                                             (click)="irEditarFicha(ficha.id)">
                                                           Ver/Editar
                                                         </button>
@@ -200,7 +200,7 @@
                                           <div class="btn-group">
                                               <div>
                                                   <button mat-raised-button type="submit"
-                                                       class="btneditar btn-info btn-round"
+                                                       class="btneditar btn-warning btn-round"
                                                       (click)="irEditarCarnet(carnet.id)">
                                                       Ver/Editar
                                                   </button>
@@ -208,8 +208,8 @@
                                               <div>
                                                   <button mat-raised-button type="submit"
                                                       class="btneliiminar btn-danger btn-round" 
-                                                      (click)="borrarVacuna(carnet.id)">
-                                                      <i class="material-icons">delete</i>
+                                                      (click)="borrarVacuna(carnet.id)"title="Eliminar">
+                                                      <i class="material-icons"  title="Eliminar">delete</i>
                                                   </button>
                                               </div>
                                           </div>

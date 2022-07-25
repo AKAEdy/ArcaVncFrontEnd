@@ -1,12 +1,14 @@
 <div class="container-fluid">
   <div class="main-content">
     <div class="row">
+      <div class="col-md-12">
       <div class="card">
         <div class="card-header card-header-danger">
-          <h4 class="card-title">REGISTRO DE ANIMAL</h4>
+          <h4 class="card-title">REGISTRO DE INGRESO DE MASCOTAS</h4>
         </div>
         <!-- formulario -->
         <div class="card">
+          <div class="col-md-10">
           <div class="card-body">
             <form
               (ngSubmit)="guardarMascota()"
@@ -298,7 +300,7 @@
                 <div class="form-actions  pull-right" >
                   <button
                     type="button"
-                    class="btn btn-inverse"
+                    class="btn btn-inverse mr-2"
                     (click)="irAtras()"
                   >
                     <i class="fa fa-reply" aria-hidden="true"></i> Regresar
@@ -323,8 +325,9 @@
               </div>
             </form>
           </div>
-        </div>
+        </div></div>
       </div>
     </div>
   </div>
+</div>
 </div>

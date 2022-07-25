@@ -25,8 +25,12 @@ export class ListarCitasComponent implements OnInit {
   serviciosCita: ServicioArca[] = []
   citaEdit: CitaServiciosArca = {}
 
-  fechaCitaEdit: string = this.dateToString(new Date())
+  fechaMinInput: string = this.dateToString(new Date())
+  fechaCitaEdit: string = ''
   idVeterinarioEdit: number = 0
+  horasDisponibles: Array<string> = []
+  horaEdit:string = 'Selecciona una hora...'
+  
 
   constructor(private citaService: CitasService, private veterinarioService: VeterinariosService, private router: Router) { }
 
@@ -35,6 +39,10 @@ export class ListarCitasComponent implements OnInit {
     this.limpiarCamposCita()
     this.getCitasPorFecha()
     this.getAllVeterinarios()
+  }
+
+  getHorasDisponibles(fecha: string): void {
+    this.citaService.getHorasDisponiblesUsingGET(fecha).subscribe(data => this.horasDisponibles = data.horas);
   }
 
   getAllVeterinarios(){
@@ -93,12 +101,28 @@ export class ListarCitasComponent implements OnInit {
   }
 
   editarCita(): void{
-    this.citaEdit.cliente_id = this.citaSeleccionada.cliente.id
-    this.citaEdit.estado = true
-    this.citaEdit.servicios = this.serviciosCita
-    this.citaService.modificarCitaUsingPUT(this.citaEdit, this.citaSeleccionada.id, this.idVeterinarioEdit).subscribe(data => {
-
-    })
+    if(this.horaEdit != 'Selecciona una hora...' && this.fechaCitaEdit != '' && this.idVeterinarioEdit > 0){
+      this.mostrarMensajeConfirmacion('¿Esta seguro que desea modificar esta cita?',  'No podra revertir los cambios!', 'Sí, modificar!').then((result) => {
+        if(result.isConfirmed){
+          this.citaEdit.cliente_id = this.citaSeleccionada.cliente.id
+          this.citaEdit.estado = true
+          this.citaEdit.servicios = this.serviciosCita
+          this.citaEdit.fechaCita = this.fechaCitaEdit+' '+this.horaEdit
+          this.citaEdit.motivo = this.citaSeleccionada.motivo
+          console.log('Data: '+this.citaEdit);
+          console.log('Data: '+this.citaEdit.servicios[0].id);
+          
+          this.citaService.modificarCitaUsingPUT(this.citaEdit, this.citaSeleccionada.id, this.idVeterinarioEdit).subscribe(data => {
+            this.router.navigateByUrl('/listaCitas')
+            this.mostrarMensajeExito('Exito!', 'Se han modificado los datos correctamente.')
+          })
+        }else if(result.isDenied){
+          Swal.fire('Acción cancelada', '', 'info')
+        }
+      })
+    }else{
+      this.mostrarMensajeWarning('Ops!', 'favor, llene correctamente los datos de fecha, hora y veterinario!')
+    }
   }
 
   setCitaSeleccionada(cita: CitaArcaExtends){
@@ -187,6 +211,14 @@ export class ListarCitasComponent implements OnInit {
 
   getDateOf(fechaCita: string): Date {
     return new Date(fechaCita)
+  }
+
+  getHoraConFormatoAmPm(hora: string): string {
+    return (Number(hora.substring(0, 2)) < 12) ? hora + ' am' : hora + ' pm'
+  }
+
+  setHorasSeleccionadas(): void {
+    this.getHorasDisponibles(this.fechaCitaEdit)
   }
 
 }

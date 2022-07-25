@@ -2,6 +2,7 @@
     <div class="main-content">
       <div class="container-fluid">
         <div class="row">
+          <div class="col-md-11">
           <div class="card">
             <div class="card-header card-header-danger">
               <h4 class="card-title">REGISTRO DE ADOPCION</h4>
@@ -26,9 +27,9 @@
                     <button
                       mat-raised-button
                       type="submit"
-                      class="float-right btn btn-danger"
+                      class="float-right btn btn-success"
                       (click)="getCedulaAdoptante()"
-                    >
+                    >  <i class="fa fa-search"></i>
                       Buscar
                     </button>
                   </div>
@@ -37,10 +38,10 @@
                     <a
                       href="#Modal"
                       role="button"
-                      class="btn btn-large btn-success"
+                      class="btn btn-large btn-info"
                       data-toggle="modal"
-                      >AGREGAR ADOPTANTE</a
-                    >
+                      > <i class="fa fa-plus-square" aria-hidden="true"></i>AGREGAR ADOPTANTE</a
+                    > 
                   </div>
                 </div>
 
@@ -159,7 +160,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div></div>
 </body>
 
 <!-- ------------------------------------------ VENTANA DEL DOCUMENTO DE ADOPCION ----------------------------------  -->

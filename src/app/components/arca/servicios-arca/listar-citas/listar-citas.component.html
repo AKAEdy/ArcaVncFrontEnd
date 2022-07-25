@@ -249,15 +249,23 @@
                         <h4 style="font-weight: bold; margin: 25px 0;"> DATOS DE LA CITA</h4>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label style="margin-bottom: -30px;">Fecha: </label>
                             <mat-form-field class="example-full-width">
-                                <input matInput id="fechaReservaEdit" type="date" value="{{fechaCitaEdit}}"
-                                    [(ngModel)]="fechaCitaEdit">
+                                <input matInput id="fechaReservaEdit" [value]="fechaMinInput" type="date" value="{{fechaCitaEdit}}" [min]="fechaMinInput"
+                                    [(ngModel)]="fechaCitaEdit" (ngModelChange)="setHorasSeleccionadas()">
                             </mat-form-field>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-4">
+                            <label>Hora: </label>
+                            <select style="padding-left: 10px;" id="op1" class="custom-select" name="select" [(ngModel)]="horaEdit">
+                                <option value = "Selecciona una hora..." selected disabled>Selecciona una hora...</option>
+                                <option value="{{hora}}" *ngFor="let hora of horasDisponibles"> {{getHoraConFormatoAmPm(hora)}}</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
                             <label>Veterinario: </label>
                             <select class="custom-select" [(ngModel)]="idVeterinarioEdit">
                                 <option disabled>Selecciona un veterinario...</option>
@@ -267,7 +275,10 @@
                             </select>
                         </div>
 
-                        <div class="col-md-6">
+                    </div>
+
+                    <div  style="margin: 10px 0;" class="row">
+                        <div class="col-md-12">
                             <label>Motivo: </label>
                             <input style="width: 100%; height: 40px;" type="text" value="{{citaSeleccionada.motivo}}"
                                 disabled>
@@ -277,13 +288,13 @@
                     <div style="margin: 10px 0;" class="row">
                         <div class="col-md-12">
                             <label>Servicios: </label>
-                            <input style="width: 100%;" type="text" [value]="detallesCita" disabled>
+                            <input style="width: 100%; height: 40px;" type="text" [value]="detallesCita" disabled>
                         </div>
                     </div>
 
                     <div class="row mx-auto">
 
-                        <div class="col-md-12">
+                        <div style="margin-top: 20px;" class="col-md-12">
                           <div style="width: fit-content; margin: auto;">
                             <button type="button" class="btn btn-large" data-dismiss="modal"
                               style="margin-right: 10px;">Regresar</button>

@@ -2,10 +2,10 @@ import { Routes } from "@angular/router";
 
 import { DashboardComponent } from "../../dashboard/dashboard.component";
 import { RegistrarAnimalRefugioComponent } from "../../components/arca/animal-refugio/registrar-animal-refugio/registrar-animal-refugio";
-import { TableListComponent } from "../../table-list/table-list.component";
+import { ListaMascotasComponent } from "../../lista-mascotas/lista-mascotas.component";
 import { TypographyComponent } from "../../typography/typography.component";
 import { NotificationsComponent } from "../../notifications/notifications.component";
-import { UpgradeComponent } from "../../upgrade/upgrade.component";
+import { PerfilAnimalComponent } from "../../perfil-animal/perfil-animal.component";
 import { FichaClinicaComponent } from "app/components/arca/clinica/ficha-clinica/ficha-clinica.component";
 import { RegistrarAdoptadoComponent } from "app/components/arca/animal-refugio/adoptar-animal/registrar-adoptado/registrar-adoptado.component";
 import { ListaAdoptadoComponent } from "app/components/arca/animal-refugio/adoptar-animal/lista-adoptado/lista-adoptado.component";
@@ -51,8 +51,8 @@ export const AdminLayoutRoutes: Routes = [
 		data: { roles: ["ROLE_ADMIN", "ROLE_VETERINARIO"] },
 	},
 	{
-		path: "table-list",
-		component: TableListComponent,
+		path: "listaMascotas",
+		component: ListaMascotasComponent,
 		canActivate: [IsAuthenticatedGuard, RoleGuard],
 		data: { roles: ["ROLE_ADMIN", "ROLE_VETERINARIO"] },
 	},
@@ -75,8 +75,8 @@ export const AdminLayoutRoutes: Routes = [
 		data: { roles: ["ROLE_ADMIN", "ROLE_VETERINARIO"] },
 	},
 	{
-		path: "upgrade",
-		component: UpgradeComponent,
+		path: "perfilAnimal",
+		component: PerfilAnimalComponent,
 		canActivate: [IsAuthenticatedGuard, RoleGuard],
 		data: { roles: ["ROLE_ADMIN", "ROLE_VETERINARIO"] },
 	},
@@ -105,8 +105,8 @@ export const AdminLayoutRoutes: Routes = [
 		data: { roles: ["ROLE_ADMIN", "ROLE_VETERINARIO"] },
 	},
 	{
-		path: "upgrade/:id",
-		component: UpgradeComponent,
+		path: "perfilAnimal/:id",
+		component: PerfilAnimalComponent,
 		canActivate: [IsAuthenticatedGuard],
 		data: { roles: ["ROLE_ADMIN", "ROLE_VETERINARIO"] },
 	},

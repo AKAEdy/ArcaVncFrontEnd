@@ -15,11 +15,11 @@ import Swal from 'sweetalert2';
 
 
 @Component({
-  selector: 'app-table-list',
-  templateUrl: './table-list.component.html',
-  styleUrls: ['./table-list.component.css']
+  selector: 'app-lista-mascotas',
+  templateUrl: './lista-mascotas.component.html',
+  styleUrls: ['./lista-mascotas.component.css']
 })
-export class TableListComponent implements OnInit {
+export class ListaMascotasComponent implements OnInit {
 filterAnimal:any='';
 dataSource:any={};
 animalId:AnimalRefugioResponse={}
@@ -79,10 +79,12 @@ eliminarAnimal(id: number) {
   }
 
 
- 
+  irRegistro(){
+    this.router.navigate(['/registrar-animal-refugio']);
+   }
  
  irAtras(){
-  this.router.navigate(['/table-list']);
+  this.router.navigate(['/listaMascotas']);
  }
 
  async animalSelect(id:number){
@@ -102,7 +104,7 @@ Detalle(id: number){
   this.animalesService.getAnimalPorIdUsingGET(id).subscribe(data =>{
       this.animales=data;
     console.log("listado detalle", data);
-    this.router.navigate (['/upgrade', id]);
+    this.router.navigate (['/perfilAnimal', id]);
     });
   }
 

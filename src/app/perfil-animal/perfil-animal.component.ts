@@ -15,11 +15,11 @@ import { data } from 'jquery';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-upgrade',
-  templateUrl: './upgrade.component.html',
-  styleUrls: ['./upgrade.component.css']
+  selector: 'app-perfil-animal',
+  templateUrl: './perfil-animal.component.html',
+  styleUrls: ['./perfil-animal.component.css']
 })
-export class UpgradeComponent implements OnInit {
+export class PerfilAnimalComponent implements OnInit {
   //animal: AnimalRefugioResponse[] = [];
 carnetVacuna:CarnetVacunacion={};
 
@@ -73,7 +73,7 @@ ngOnInit() {
 
 
 list(){ 
- this.router.navigate(['/table-list']);
+ this.router.navigate(['/listaMascotas']);
 }
 onDelete(id: number) {
  Swal.fire({
@@ -106,7 +106,7 @@ irFicha(){
  this.router.navigate(['/registrofichaclinica']);
 }
 irAtras(){
- this.router.navigate(['/table-list']);
+ this.router.navigate(['/listaMascotas']);
 }
 
 modificar(id: number){

@@ -82,7 +82,7 @@
 
           <div class="col-md-3">
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Fecha Cita: " id="fechaReserva" min="2022-07-19" type="date"  [(ngModel)]="fecha" (ngModelChange)="setHorasSeleccionadas()">
+              <input matInput placeholder="Fecha Cita: " id="fechaReserva" [min]="fechaMinInput" type="date"  [(ngModel)]="fecha" (ngModelChange)="setHorasSeleccionadas()">
             </mat-form-field>
           </div>
 

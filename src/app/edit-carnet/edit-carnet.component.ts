@@ -43,7 +43,7 @@ export class EditCarnetComponent implements OnInit {
 
 
   volver(){
-    this.router.navigate(["/upgrade",this.carnetVacuna.animal.id]);
+    this.router.navigate(["/perfilAnimal",this.carnetVacuna.animal.id]);
   }
 
 
@@ -80,7 +80,7 @@ modificarCarnet(){
       console.error(error);
     },
     () => {
-      this.onComplete(this.carnetVacuna);
+      // this.onComplete(this.carnetVacuna);
      
      
     }

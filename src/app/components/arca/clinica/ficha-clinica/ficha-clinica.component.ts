@@ -125,7 +125,7 @@ public formSubmitted = false;
 
 
       irAtras() {
-        this.router.navigate(["/upgrade", this.fichaClinicaDTO.animal.id]);
+        this.router.navigate(["/perfilAnimal", this.fichaClinicaDTO.animal.id]);
 
       }
 }

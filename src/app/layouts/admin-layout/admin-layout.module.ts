@@ -1,17 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatRippleModule } from '@angular/material/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSelectModule } from '@angular/material/select';
-import { MatSortModule } from '@angular/material/sort';
-import { MatStepperModule } from '@angular/material/stepper';
-import { MatTableModule } from '@angular/material/table';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { ListaMascotasComponent } from '../../lista-mascotas/lista-mascotas.component';
+import { PerfilAnimalComponent } from '../../perfil-animal/perfil-animal.component';
+import { MatButtonModule} from '@angular/material/button';
+import { MatInputModule} from '@angular/material/input';
+import { MatRippleModule} from '@angular/material/core';
+import { MatFormFieldModule} from '@angular/material/form-field';
+import { MatTooltipModule} from '@angular/material/tooltip';
+import { MatSelectModule} from '@angular/material/select';
 import { RouterModule } from '@angular/router';
 import { AlarmModule } from 'app/components/alarm/alarm.module';
 import { ListaAdoptadoComponent } from 'app/components/arca/animal-refugio/adoptar-animal/lista-adoptado/lista-adoptado.component';
@@ -47,11 +44,13 @@ import { RegistrarDonacionesComponent } from '../../registrar-donaciones/registr
 import { RegistrarVacunasComponent } from '../../registrar-vacunas/registrar-vacunas.component';
 import { RegistrarVeterinariosComponent } from '../../registrar-veterinarios/registrar-veterinarios.component';
 import { RegistrarVoluntariosComponent } from '../../registrar-voluntarios/registrar-voluntarios.component';
-import { TableListComponent } from '../../table-list/table-list.component';
 import { TypographyComponent } from '../../typography/typography.component';
-import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { AdminLayoutRoutes } from './admin-layout.routing';
-
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 @NgModule({
@@ -77,11 +76,11 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
   declarations: [
     DashboardComponent,
     RegistrarAnimalRefugioComponent,
-    TableListComponent,
+    ListaMascotasComponent,
     TypographyComponent,
     TratamientoComponent,
     NotificationsComponent,
-    UpgradeComponent,
+    PerfilAnimalComponent,
     // COMPONENTES DEL MENU
     FichaClinicaComponent,
     ListaAdoptadoComponent,

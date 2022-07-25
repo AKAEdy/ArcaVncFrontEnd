@@ -1,14 +1,16 @@
 .card{
-    width: 800px;
+    width: 900px;
     margin: auto auto;
 }
+.card-header{
+    background-color: rgba(169, 209, 232, 0.996);
+    background: rgb(162,10,221);
+    background: linear-gradient(90deg, rgba(162,10,221,0.6951155462184874) 0%, rgba(223,204,182,1) 18%, rgba(86,87,209,0.76234243697479) 38%, rgba(68,205,63,0.7287289915966386) 60%, rgba(230,111,111,0.7651435574229692) 82%); 
 
-.btneliminar{
-    margin-left: 20px;
-    background-color: rgb(47, 179, 91);
-}
-    
+    /* background: rgb(162,10,221);
+background: linear-gradient(90deg, rgba(162,10,221,0.2497373949579832) 0%, rgba(223,204,182,1) 18%, rgba(86,87,209,0.31976540616246496) 38%, rgba(68,205,63,0.4066001400560224) 60%, rgba(230,111,111,0.43461134453781514) 82%);  */
 
-.btneditar{
-    background-color: rgb(255, 74, 74);
+/* background: rgb(162,10,221);
+background: linear-gradient(138deg, rgba(162,10,221,0.2497373949579832) 0%, rgba(223,204,182,1) 18%, rgba(86,87,209,0.31976540616246496) 38%, rgba(68,205,63,0.4066001400560224) 60%, rgba(230,111,111,0.43461134453781514) 82%); */
 }
+
