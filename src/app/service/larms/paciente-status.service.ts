@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TypeEvent } from 'app/alarm/interfaces/type-event';
+import { TypeEvent } from 'app/components/alarm/interfaces/type-event';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -10,11 +10,11 @@ export class PacienteStatusService {
 	constructor () { }
 	eventStatus = [
 		{
-			alertSuccess: 'alert-success',
+			alertSuccess: '',
 			checked: true
 		}
 		, {
-			alertWarning: 'alert-warning',
+			alertWarning: '',
 			checked: false
 		}
 	]

@@ -8,6 +8,12 @@ import { RouterModule } from "@angular/router";
 import { NgModule } from "@angular/core";
 import { MatTabsModule } from '@angular/material/tabs';
 import { BellNotificationComponent } from "./bell-notification/bell-notification.component";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
+import { SpanishPaginatorIntl } from "./alarm-listing-page/spanish-paginator-intl";
+import { MatInputModule } from "@angular/material/input";
+import { MatSelectModule } from "@angular/material/select";
 @NgModule({
 	declarations: [
 		AlarmListingPageComponent,
@@ -22,7 +28,11 @@ import { BellNotificationComponent } from "./bell-notification/bell-notification
 		FormsModule,
 		CoreModule,
 		MatTabsModule,
+		MatProgressSpinnerModule,
+		MatCheckboxModule,MatPaginatorModule,MatInputModule,MatSelectModule
 	],
-	exports: [AlarmListComponent, BellNotificationComponent],
+	exports: [AlarmListComponent, BellNotificationComponent],providers: [
+		{ provide: MatPaginatorIntl, useValue: SpanishPaginatorIntl() }
+	  ]
 })
 export class AlarmModule {}

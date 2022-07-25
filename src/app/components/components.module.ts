@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { AlarmModule } from 'app/alarm/alarm.module';
+import { AlarmModule } from 'app/components/alarm/alarm.module';
 import { CoreModule } from 'app/core/core.module';
 @NgModule({
 	imports: [CommonModule, RouterModule, CoreModule, AlarmModule],

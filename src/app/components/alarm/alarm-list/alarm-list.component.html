@@ -1,0 +1,5 @@
+<div *ngFor="let event of events">
+	<alarm-list-item  (eventAlarm)="updateEventAlarm($event)" *ngFor="let st of status" [events]="event" [status]="st">
+	</alarm-list-item>
+</div>
+

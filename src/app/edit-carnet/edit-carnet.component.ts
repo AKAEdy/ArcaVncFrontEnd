@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TypeEvent } from 'app/alarm/interfaces/type-event';
+import { TypeEvent } from 'app/components/alarm/interfaces/type-event';
 import { CarnetsDeVacunacinService } from 'app/api/carnetsDeVacunacin.service';
 import { VacunasService } from 'app/api/vacunas.service';
 import { AnimalRefugioResponse } from 'app/model/animalRefugioResponse';

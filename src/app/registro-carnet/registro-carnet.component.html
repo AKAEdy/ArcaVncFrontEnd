@@ -10,14 +10,14 @@
                  
                     </div>
                     <div class="card-body">
-                        <form  #f="ngForm" (ngSubmit)="guardarCarnet()" novalidate >
+                        <form  #f="ngForm" (ngSubmit)="guardarCarnet(f)" >
                           <div class="row" >
 
                             <div class="col-md-6">
                               <div class="form-group">
                                 <div class="input-group-prepend">
                               <mat-form-field class="example-full-width">
-                                  <input class="input"  matInput placeholder = "FECHA APLICACION" type="date"name="fechaAplicacion" #fechaAplicacion="ngModel"
+                                  <input required class="input"  matInput placeholder = "FECHA APLICACION" type="date" name="fechaAplicacion" #fechaAplicacion="ngModel"
                                   [(ngModel)]="carnetVacuna.fechaAplicacion" />
                                 </mat-form-field>
                               </div>
@@ -26,7 +26,7 @@
               
                             <div class="col-md-5">
                               <mat-form-field class="example-full-width">
-                                  <input class="input" matInput placeholder="FECHA PROXIMA DE APLICACION" type="date" name="fechaProximaAplicacion" #fechaProximaAplicacion="ngModel"
+                                  <input required class="input" matInput placeholder="FECHA PROXIMA DE APLICACION" type="date" name="fechaProximaAplicacion" #fechaProximaAplicacion="ngModel"
                                   [(ngModel)]="carnetVacuna.fechaProximaAplicacion"/>
                                
                               </mat-form-field>
@@ -41,7 +41,7 @@
                               <div class="col-md-5">
                               <mat-form-field appearance="fill">
                                 <mat-label>Seleccione la vacuna....</mat-label>
-                                <mat-select [(ngModel)]="selectedvacunas">
+                                <mat-select required [(ngModel)]="selectedvacunas">
                                   <mat-option  [value]="item" *ngFor="let item  of vacunas"> {{item.nombre}} 
                                   </mat-option>
                                 </mat-select>
@@ -51,7 +51,7 @@
                             </div>
 
 
-                            <button mat-raised-button type="submit" class="btn btn-info pull-right"  (click)="guardarCarnet()">REGISTRAR</button>
+                            <button mat-raised-button type="submit" class="btn btn-info pull-right">REGISTRAR</button>
                             <button mat-raised-button type="button" class="btn  pull-right"  (click)="irAtras()" >REGRESAR</button>
                           
                            

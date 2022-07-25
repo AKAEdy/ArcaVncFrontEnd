@@ -29,7 +29,7 @@ import { ListarVoluntariosComponent } from "app/listar-voluntarios/listar-volunt
 import { RegistroCarnetComponent } from "app/registro-carnet/registro-carnet.component";
 import { RegistrarSeguimientoComponent } from "app/registrar-seguimiento/registrar-seguimiento.component";
 import { TratamientoComponent } from "app/components/arca/clinica/tratamiento/tratamiento.component";
-import { AlarmListingPageComponent } from 'app/alarm/alarm-listing-page/alarm-listing-page.component'
+import { AlarmListingPageComponent } from 'app/components/alarm/alarm-listing-page/alarm-listing-page.component'
 
 import { RegistrarUsuariosComponent } from "app/components/arca/usuarios/registrar-usuarios/registrar-usuarios.component";
 import { ListarUsuariosComponent } from "app/components/arca/usuarios/listar-usuarios/listar-usuarios.component";

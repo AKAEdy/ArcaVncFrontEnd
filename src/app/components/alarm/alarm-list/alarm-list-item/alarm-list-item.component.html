@@ -1,0 +1,29 @@
+<ng-template [ngIf]="events.eventType=== status.eventType">
+	<div *ngFor="let eventStatus of status.eventStatus">
+		<a (click)="updateEventAlarm(events.id)" [routerLink]="['/upgrade', events.id]">
+			<ng-template [ngIf]="events.checked === eventStatus.checked">
+				<div [ngClass]="eventStatus.checked ? ' mb-0 rounded border border-5 alert alert-with-icon '+ eventStatus?.alertSuccess : ' alert alert-with-icon mb-0 rounded border '+ eventStatus?.alertWarning "
+					data-notify="container">
+					<i [ngClass]="eventStatus.checked ? 'material-icons  text-secondary ': ' material-icons  text-danger ' "
+						data-notify="icon">{{status.icon}}</i>
+					<i *ngIf="events.checked===false" class="close material-icons text-danger">radio_button_checked</i>
+					<span data-notify="message">
+						<span class="fs-5 mb-2">
+							<strong>
+								{{status.name}}
+							</strong>
+						</span>
+						<span>
+							Paciente:&nbsp;<a href=""
+								[routerLink]="['/upgrade', events.paciente.id]"><strong>{{events.paciente.nombre}}</strong></a>
+						</span>
+						<span>Fecha aplicacion: &nbsp;<strong>
+								<date-readable [date]="events.eventDay"></date-readable>
+							</strong>
+						</span>
+					</span>
+				</div>
+			</ng-template>
+		</a>
+	</div>
+</ng-template>

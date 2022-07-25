@@ -2,7 +2,7 @@ import { AnimalRefugio } from 'app/model/animalRefugio'
 import { AnimalRefugioResponse } from 'app/model/animalRefugioResponse'
 import { TypeEvent } from './type-event';
 
-export interface PacienteAlarmInfo {
+export interface EventAlarmDto {
 	id?: number;
 	checked: Boolean;
 	body: string;

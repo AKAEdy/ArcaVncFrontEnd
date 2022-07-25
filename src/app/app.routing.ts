@@ -1,15 +1,12 @@
-import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { Routes, RouterModule } from "@angular/router";
-
-import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
+import { RouterModule, Routes } from "@angular/router";
 import { LoginComponent } from "./auth/login/login.component";
 import { RegistroComponent } from "./auth/registro/registro.component";
-import { RoleGuard } from "./guards/role.guard";
 import { IsAuthenticatedGuard } from "./guards/is-authenticated.guard";
-import { CoreModule } from "./core/core.module";
-import { AlarmModule } from "./alarm/alarm.module";
+import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
+
 
 const routes: Routes = [
 	{
