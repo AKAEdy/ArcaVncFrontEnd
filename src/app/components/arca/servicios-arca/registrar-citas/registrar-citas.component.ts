@@ -39,13 +39,13 @@ export class RegistrarCitasComponent implements OnInit {
   cedulaCliente : string = ''
   fecha: string = this.dateToString(new Date())
   fcFechaSeleccionada = new FormControl(this.dateToString(new Date()))
+  fechaMinInput: string = this.dateToString(new Date())
 
 
   constructor(private citaService: CitasService, private veterinarioService: VeterinariosService,
     private clienteService: ClientesService, private serviciosArcaService: ServiciosService, private router: Router) { }
   
   ngOnInit(): void {
-    this.fechaAnterior(); 
     this.llamarVeterinarios()
     this.getAllServiciosArca()
   }
@@ -149,14 +149,6 @@ export class RegistrarCitasComponent implements OnInit {
       this.mostrarMensajeExito('Exito!','Servicio creado exitosamente!')
     })
   }
-
-  fechaAnterior(){
-    let mes = this.dateToString(new Date())
-    document.getElementById('fechaReserva').setAttribute('min', mes)
-
-    this.fecha = mes
-  }
-
 
   mostrarMensajeExito(titulo: string, mensaje: string): void { 
     Swal.fire({
